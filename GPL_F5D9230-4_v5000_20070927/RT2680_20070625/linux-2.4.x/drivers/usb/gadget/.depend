@@ -1,0 +1,224 @@
+config.o: config.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/errno.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kernel.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/list.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/string.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_ch9.h
+epautoconf.o: epautoconf.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kernel.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/init.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/types.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/list.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/errno.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/ctype.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/string.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_ch9.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_gadget.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/byteorder.h \
+   gadget_chips.h
+ether.o: ether.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/module.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kernel.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/delay.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/ioport.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/sched.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/slab.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/smp_lock.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/errno.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/init.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/timer.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/list.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/interrupt.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/uts.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/version.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/moduleparam.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/ctype.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/byteorder.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/io.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/irq.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/system.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/uaccess.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/unaligned.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_ch9.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_gadget.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/random.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/netdevice.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/etherdevice.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/ethtool.h \
+   gadget_chips.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/eth/rndis.h) \
+   rndis.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/tqueue.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/net2280.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/dummy/hcd.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/goku.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/lh7a40x.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/mq11xx.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/omap.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/n9604.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/pxa27x.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/pxa2xx.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/sh.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/sa1100.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/dualspeed.h)
+file_storage.o: file_storage.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/system.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/uaccess.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/bitops.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/blkdev.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/compiler.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/completion.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/dcache.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/fcntl.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/file.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/fs.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/init.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kernel.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/limits.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/list.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/module.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/pagemap.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/rwsem.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/sched.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/signal.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/slab.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/spinlock.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/string.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/uts.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/version.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/wait.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_ch9.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_gadget.h \
+   gadget_chips.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/file/storage/test.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/value.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/dualspeed.h)
+gadget_chips.h: \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/net2280.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/dummy/hcd.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/pxa2xx.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/goku.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/superh.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/sa1100.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/lh7a40x.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/mq11xx.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/omap.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/n9604.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/pxa27x.h)
+	@touch gadget_chips.h
+goku_udc.o: goku_udc.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kernel.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/module.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/pci.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/delay.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/ioport.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/sched.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/slab.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/smp_lock.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/errno.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/init.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/timer.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/list.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/interrupt.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/proc_fs.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_ch9.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_gadget.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/byteorder.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/io.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/irq.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/system.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/unaligned.h \
+   goku_udc.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/x86.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/mips.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/noncoherent/io.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/ppc.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/not/coherent/cache.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/proc/fs.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/embedded.h)
+net2280.o: net2280.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/module.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/pci.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kernel.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/delay.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/ioport.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/sched.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/slab.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/smp_lock.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/errno.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/init.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/timer.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/list.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/interrupt.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_ch9.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_gadget.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/byteorder.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/io.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/irq.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/system.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/unaligned.h \
+   net2280.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/x86.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/ppc.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/not/coherent/cache.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/mips.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/noncoherent/io.h)
+rndis.o: rndis.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/module.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/moduleparam.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kernel.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/errno.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/version.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/init.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/list.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/proc_fs.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/netdevice.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/io.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/byteorder.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/system.h \
+   rndis.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/debug/files.h) \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/uaccess.h
+rndis.h: \
+   ndis.h
+	@touch rndis.h
+usbstring.o: usbstring.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/errno.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kernel.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/list.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/string.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/init.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_ch9.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_gadget.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/byteorder.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/unaligned.h
+zero.o: zero.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kernel.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/module.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/delay.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/ioport.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/sched.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/slab.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/smp_lock.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/errno.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/init.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/timer.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/list.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/interrupt.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/uts.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/version.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/byteorder.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/io.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/irq.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/system.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/unaligned.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_ch9.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/usb_gadget.h \
+   gadget_chips.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/zero/hnptest.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/source/sink.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/loopback.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/usb/gadget/dualspeed.h)
+.PRECIOUS:	gadget_chips.h \
+	rndis.h \
+

@@ -1,0 +1,119 @@
+netsyms.o: netsyms.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/module.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/types.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/net.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/in.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/netdevice.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/inetdevice.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/fddidevice.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/trdevice.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/fcdevice.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/ioport.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/tty.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/neighbour.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/snmp.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/dst.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/checksum.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/etherdevice.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/route.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/hippi.h) \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/hippidevice.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/pkt_sched.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/scm.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/if_bridge.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/if_vlan.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/random.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/net/divert.h) \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/divert.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/net.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/inet.h) \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/ip.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/protocol.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/arp.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/atm/clip.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/atm/clip/module.h) \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/atmclip.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/ip.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/udp.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/tcp.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/icmp.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/inet_common.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/inet.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/mroute.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/igmp.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/ipv6.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/ipv6/module.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/khttpd.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/khttpd/module.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/ip/sctp/module.h) \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/in6.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/icmpv6.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/ipv6.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/ndisc.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/transp_v6.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/addrconf.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/rtnetlink.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/ipx/module.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/atalk/module.h) \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/sock.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/sysctl.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/filter.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/arpd.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/vlan/8021q.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/vlan/8021q/module.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/bridge.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/bridge/module.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/dlci/module.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/netlink/dev.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/netlink/dev/module.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/tr.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/fddi.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/kmod.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/net/hw/flowcontrol.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/net/fastroute.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/net/sched.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/net/estimator.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/net/cls/police.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/net/cls.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/netfilter.h) \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/netfilter.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/netfilter_ipv4.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/net/radio.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/net/pcmcia/radio.h) \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/iw_handler.h
+socket.o: socket.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/mm.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/smp_lock.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/socket.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/file.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/net.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/interrupt.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/netdevice.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/proc_fs.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/wanrouter.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/netlink.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/rtnetlink.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/init.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/poll.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/cache.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/module.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/highmem.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/kmod.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/net.h) \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kmod.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/uaccess.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/sock.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/net/scm.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/netfilter.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/smp.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/wan/router.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/bluez.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/netlink/dev.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/netfilter.h)
+sysctl_net.o: sysctl_net.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/mm.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/sysctl.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/inet.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/net.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/ipv6.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/tr.h)

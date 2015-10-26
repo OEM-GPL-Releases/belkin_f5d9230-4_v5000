@@ -1,0 +1,1 @@
+#define CONFIG_RAETH_ROUTER 1

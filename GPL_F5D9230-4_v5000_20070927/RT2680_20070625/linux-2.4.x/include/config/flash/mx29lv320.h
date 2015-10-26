@@ -1,0 +1,1 @@
+#define CONFIG_FLASH_MX29LV320 1

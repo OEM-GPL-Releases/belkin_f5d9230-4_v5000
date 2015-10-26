@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+ld1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='DHCP Client List';
+var menuSection	='LAN';
+var menuItem	='DHCP Client List';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function GURL(x){location=x}
+function makesure(p,l){if (confirm(p)) GURL(l);}
+function dhcprelease(x) 
+{ 
+	document.tF0.release.value = x;
+	document.tF0.submit(); 
+} 
+function statusLineMessage(message)
+{
+	top.statusLine.document.open();
+	top.statusLine.document.writeln('<body bgcolor=#330099><style type="text/css">');
+	top.statusLine.document.writeln('TD { ');
+	top.statusLine.document.writeln('color: #ffffff; font-family: Verdana,Arial,sans-serif;');
+	top.statusLine.document.writeln('font-size: 12px;  font-weight: bold;');
+	top.statusLine.document.writeln('}');
+	top.statusLine.document.writeln('</style><table width=100% height=100% cellspacing=0 cellpadding=0 border=0>');
+	top.statusLine.document.write('<tr><TD>Status : ' + message + '</td></tr></table>');
+	top.statusLine.document.close();
+}
+
+function statusLineBold(message)
+{
+	statusLineMessage('<font color=#ffffff>' + message + '</font>');
+}
+function statusLineYBold(message)
+{
+	statusLineMessage('<font color=#ffff00>' + message + '</font>');
+}
+function showRequest()
+{
+	statusLineYBold('Requesting information from the Gateway');
+}
+function showUpdate()
+{
+	statusLineYBold('Updating configuration database');
+}
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="lan_dhcp" action="logout.cgi" method="post">
+<input type="hidden" name="tmp">
+</form>
+	<TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+	<script language="javascript">dw(ld2);</script><BR><BR>
+	<table class="copy_1" border="0"><TBODY>
+ 	<TR>
+    	<TD width=5>&nbsp;</TD>
+    	<TD><TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="600" align="center" border="0"><TBODY>
+        	<TR>
+          		<TD><TABLE class="copy_1" height="90%" cellSpacing="0" cellPadding="10" width="100%" border="0"><TBODY>
+              		<TR>
+                		<TD vAlign="top">
+<!--This page shows ...-->	<DIV align="left"><SPAN><SCRIPT>dw(ld3);</SCRIPT></SPAN></DIV>
+                  			<TABLE class="copy_1" cellSpacing="1" cellPadding="5" width="70%" align="center" border="0"><TBODY>
+                    		<TR height="30">
+                      			<TD colSpan="3">&nbsp;</TD></TR>
+                    				<TR height="25">
+<!--IP-->              					<TH align="middle" width="20%" bgColor="#666666" height="30"><FONT color="#ffffff"><SCRIPT>dw(ld4);</SCRIPT></FONT></TH>
+<!--hostname-->        					<TH align="middle" width="20%" bgColor="#666666" height="30"><FONT color="#ffffff"><SCRIPT>dw(ld5);</SCRIPT></FONT></TH>
+<!--mac-->             					<TH align="middle" width="30%" bgColor="#666666" height="30"><FONT color="#ffffff"><SCRIPT>dw(ld6);</SCRIPT></FONT></TH>
+									</TR>
+									<%dhcp_client_table("showlease");%>
+                    				<TR>
+					                    <TD align=left width="20%" bgColor="#ffffff">&nbsp;</TD>
+                      					<TD align=left width="20%" bgColor="#ffffff">&nbsp;</TD>
+                      					<TD align=left width="20%" bgColor="#ffffff">
+                        					<FORM name="tF0" action="post.cgi" method="post">
+											<DIV align=right>
+                        						<SCRIPT>
+													dw('<input type="button" value="');
+													dw(Refresh);
+													dw('" style="{width:120px;}" class="submitBtn" onClick="GURL(\'lan_dhcp.htm\')" name="button">');
+												</SCRIPT>
+                        					</DIV>
+											</form>
+										</TD>
+									</TR>
+									</TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

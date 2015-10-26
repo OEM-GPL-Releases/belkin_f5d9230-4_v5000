@@ -1,0 +1,164 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wdy1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Connection Type';
+var menuSection	='WAN';
+var menuItem	='Connection Type';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+var timer = setTimeout('location.replace("wan_dynamic.htm")', 1000000); 
+
+function submitF()
+{
+	var f = document.forms[0];
+	var localname=f.HN.value.toLowerCase();
+
+	f.next_page.value='wan_mac.htm';
+	// allow '@' only
+	for(i=0;i<localname.length;i++)
+	{
+ 		var token=localname.charAt(i);
+ 		if(token=='`' || token=='~' || token=='!' || token=='?' || token=='#'
+ 		|| token=='$' || token=='%' || token=='^' || token=='&' || token=='*'
+ 		|| token=='(' || token==')' || token=='=' || token=='+' || token=='['
+ 		|| token==']' || token=='{' || token=='}' || token=='\\' || token=='|'
+ 		|| token==';' || token==':' || token=='\'' || token=='\"' || token=='<'
+ 		|| token=='>' || token=='/' )
+ 		{
+			alert(wdy6);
+			return false;
+ 		}	 
+	} 
+	alert(warn_msg2);
+	f.wan_hostname.value=f.HN.value;
+	return true;
+}
+
+function Init_Value()
+{
+	var f = document.forms[0];
+	var hostname = '<%nvram_get("wan_hostname");%>';
+ 	f.HN.value= hostname;
+}
+function Try_Submit()
+{
+	var f = document.forms[0];
+	
+	var localname=f.HN.value.toLowerCase();
+	// allow '@' only
+	for(i=0;i<localname.length;i++)
+	{
+ 		var token=localname.charAt(i);
+ 		if(token=='`' || token=='~' || token=='!' || token=='?' || token=='#'
+ 		|| token=='$' || token=='%' || token=='^' || token=='&' || token=='*'
+ 		|| token=='(' || token==')' || token=='=' || token=='+' || token=='['
+ 		|| token==']' || token=='{' || token=='}' || token=='\\' || token=='|'
+ 		|| token==';' || token==':' || token=='\'' || token=='\"' || token=='<'
+ 		|| token=='>' || token=='/' )
+ 		{
+			alert(wdy6);
+			return false;
+ 		}	 
+	}
+	alert(warn_msg2);
+	f.wan_hostname.value=f.HN.value;
+	f.submit();
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 onload="Init_Value();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM name="wan_conn"action="post.cgi"method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="redirect_timer" value="60000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="next_page" value="wan_dynamic.htm">
+<input type="hidden" name="data1" value="wan_proto wan_hostname wan_alias1_enabled wan_alias2_enabled wan_alias3_enabled wan_alias4_enabled wan_alias5_enabled wan_ipaddr1 wan_ipaddr2 wan_ipaddr3 wan_ipaddr4 wan_ipaddr5 wan_netmask1 wan_netmask2 wan_netmask3 wan_netmask4 wan_netmask5">
+<input type="hidden" name="wan_proto" value="dhcp">
+<input type="hidden" name="wan_hostname">
+<input type="hidden" name="wan_alias1_enabled" value='0'>
+<input type="hidden" name="wan_alias2_enabled" value='0'>
+<input type="hidden" name="wan_alias3_enabled" value='0'>
+<input type="hidden" name="wan_alias4_enabled" value='0'>
+<input type="hidden" name="wan_alias5_enabled" value='0'>
+
+<input type="hidden" name="wan_ipaddr1" value=''>
+<input type="hidden" name="wan_ipaddr2" value=''>
+<input type="hidden" name="wan_ipaddr3" value=''>
+<input type="hidden" name="wan_ipaddr4" value=''>
+<input type="hidden" name="wan_ipaddr5" value=''>
+
+<input type="hidden" name="wan_netmask1" value=''>
+<input type="hidden" name="wan_netmask2" value=''>
+<input type="hidden" name="wan_netmask3" value=''>
+<input type="hidden" name="wan_netmask4" value=''>
+<input type="hidden" name="wan_netmask5" value=''>
+<TD class="head_bold" height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wdy1);</SCRIPT><BR><BR>
+<TABLE class="copy_1" border="0"><TBODY>
+	<TR>
+    	<TD width="5">&nbsp;</TD>
+    	<TD>
+	    	<TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="600" align="center" border="0"><TBODY>
+        		<TR>
+          			<TD>
+						<SCRIPT>dw(wdy2);</SCRIPT>
+            			<A href="javascript:void(0);" onclick="window.open('glossary.htm#dynamic_ip','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');">
+							<B><FONT color="#0066FF"><SCRIPT>dw(sm1);</SCRIPT></FONT></B>
+						</A><BR><BR>
+					</TD>
+				</TR>
+			</TBODY></TABLE>
+      		<TABLE class="copy_1" cellSpacing="5" cellPadding="0" width="600" align="center" border="0"><TBODY>
+        		<TR>
+          			<TD width="88">&nbsp;</TD>
+			        <TD width="151"><B><SCRIPT>dw(wdy3);</SCRIPT>&gt;</B></TD>
+          			<TD width="226"><INPUT name="HN" maxLength="39" size="33"></TD>
+				</TR>
+        		<TR>
+          			<TD width="88">&nbsp;</TD>
+          			<TD colSpan="2"><SPAN><SCRIPT>dw(wdy4);</SCRIPT></SPAN></TD>
+				</TR>
+        		<TR>
+          			<TD width="88">&nbsp;</TD>
+          			<TD colSpan="2"><BR><BR><A onclick="return submitF();" href="javascript:document.forms[0].submit()">
+						<FONT color=#0066FF><B><SCRIPT>dw(wdy5);</SCRIPT></FONT></B></A>
+					</TD>
+				</TR>
+       	 		<TR>
+          			<TD width="88">&nbsp;</TD>
+          			<TD>&nbsp;</TD>
+          			<TD><BR><BR>
+            			<SCRIPT>
+							dw('<input type="button" value="');
+							dw(btn1);
+							dw('" style="{width:160px;}" class="submitBtn" onclick="Init_Value();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+							dw('<input type="button" value="');
+							dw(btn2);
+							dw('" style="{width:160px;}" class="submitBtn" onClick="return Try_Submit();">');
+						</SCRIPT>
+          			</TD>
+				</TR>
+			</TBODY></TABLE>
+		</FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

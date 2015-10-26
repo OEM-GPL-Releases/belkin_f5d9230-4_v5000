@@ -1,0 +1,216 @@
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=big5">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META http-equiv=Pragma content=no-cache>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+upc1+'</title>';
+dw(strHtml);
+<!--
+var wanStatus	='Down' ? 'Down' : 'Not';
+var helpItem 	='Parental Control';
+var menuSection	='Util';
+var menuItem	='Parental Control';
+var isRouter	='1' ? '1' : '0';
+var	isPS		='' ? '' : '0';
+var isAPmode
+if('eth1' =='' || '1'=='0')
+	isAPmode='1';
+else isAPmode='0';
+
+function testurl()
+{
+var val=document.tF0.ceb_url.value;
+if(val=='')
+{
+	alert(upc35);
+	return false;
+}
+else
+{
+	val=val.replace(/http:\/\//,'');
+	val="http:\/\/"+val;
+	window.open(val);
+}
+}
+function goView()
+{
+var URL='http://admin.cwfservice.net/site/index.jsp?partnerid='+'71'+'&customerid='+'BEL1MUOZ'+'&name='+'BEL1MUOZ';
+window.open(URL,'ViewReport','toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,width=695,height=600,resizable=1');
+}
+
+function modifypolicy()
+{
+var URL='http://admin.cwfservice.net/site/index.jsp?partnerid='+'71'+'&customerid='+'BEL1MUOZ'+'&name='+'BEL1MUOZ';
+window.open(URL);
+}
+function logoutF()
+{
+document.tF0.logout.value=1;
+document.tF0.submit();
+return true;
+}
+
+function changeAction(type)
+{
+if(type==1) document.tF0.Action.value="Subreport";
+if(type==2) document.tF0.Action.value="ApplyEnable";
+if(type==3) document.tF0.Action.value="Subservice";
+if(type==4) document.tF0.Action.value="ApplyEmail";
+if(type==5) document.tF0.Action.value="Renewservice";
+}
+
+function changeNAG()
+{
+if(document.tF0.ceb_subsc.checked) document.tF0.ceb_subsc.value='0';
+else document.tF0.ceb_subsc.value='2';
+document.tF0.Action.value="ApplyNAG";
+document.tF0.submit();
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+showHead(wanStatus,helpItem,isRouter,isPS);
+showMenu(menuSection,menuItem,isRouter,isPS,isAPmode)
+</SCRIPT>
+<FORM name=tF0 action=ceb.cgi method=get><INPUT type=hidden 
+value=util_parentalc.html name=webpage> <INPUT type=hidden name=Action>
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(upc1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD width=600><BR>
+      <DIV></DIV><SPAN>
+      <SCRIPT>dw(upc2);</SCRIPT>
+      <BR><BR>
+      <SCRIPT>
+			var ceb_expire='1123024318';
+			var expire_sec='558';
+			var expire_day=Math.floor(ceb_expire/(3600*24))-Math.floor(expire_sec/(3600*24));
+			var ceb_sub='0';
+						
+			if(ceb_sub!='0' && ceb_sub!='1')		// ceb_sub = 2
+			{
+				var strHtml='<b>'+upc3+'<font color=red>'+upc4+'</font>.</b>&nbsp;&nbsp;<br>'
+			}
+			else if(ceb_sub=='0')  //chose not to subscribe	// ceb_sub = 0
+			{
+				var strHtml='<b>'+upc3+' <font color=red>'+upc5+'</font>.</b>&nbsp;&nbsp;<br>'
+			}
+			else if(expire_day < 0)				// ceb_sub = 1 & expire_day < 0, expired
+			{	
+				var strHtml='<b>'+upc3+' <font color=red>'+upc8+'</font>.</b>&nbsp;&nbsp;<br>';
+			}
+			else									// ceb_sub =1, 
+			{
+				var strHtml='<b>'+upc3+' <font color=red>'+upc6+'</font>.<br>'+upc9+' <font color=red>'+expire_day+'</font> '+days+'. </b>&nbsp;&nbsp;<br>';
+			}
+			dw(strHtml);
+			
+			if(ceb_sub=='1' && (expire_sec-0) < (ceb_expire-0))
+			{
+				var strHtml='<input type=button value="'+upc10+'" style="{width:170px;}" class="submitBtn" onClick="javascript:location=\'util_parentalc_acctinfo.html\'">'
+				+'&nbsp;&nbsp;<input type=button value="'+Advanced+'" style="{width:120px;}" class="submitBtn" onClick="location=\'util_parentalc_advance.html\'">';
+				dw(strHtml);
+			}
+			dw('&nbsp;&nbsp;<input type=button style="{width:220px;}" class="submitBtn" value="');dw(upc11);document.writeln('" onClick=\'javascript:location="util_parentalc_refresh.html"\'><br></span>');
+	  </SCRIPT>
+      <BR>
+      <HR color=#666666 noShade SIZE=1>
+      <BR>
+      <DIV align=left><SPAN><B>
+      <SCRIPT>dw(upc12);</SCRIPT>
+      </B></SPAN><BR></DIV><SPAN>
+      <SCRIPT>
+var ceb_sub='1';
+var report='0';
+strHtml=upc13;
+if ((ceb_sub!=0 &&ceb_sub!=1) || report!=1) strHtml+=not;
+strHtml+=upc14+'</span> <br>';dw(strHtml);
+var ceb_expire='1123024318';
+var expire_sec='558';
+var expire_day=Math.floor(ceb_expire/(3600*24))-Math.floor(expire_sec/(3600*24));
+if(report!='1'&& expire_day>0 && ceb_sub=='1')
+{
+var strHtml='<span>'+upc15
++'<input type=button value="'+upc16+'" style="{width:150px;}" class="submitBtn" onClick="javascript:window.open(\'http://www.cerberian.com/71demoreports.htm\',\'ReportSample\',\'toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,width=695,height=600,resizable=1\')"><br>'
++upc17
++'<input type="submit" style="{width:150px;}" class="submitBtn" value="'+upc18+'" onClick="changeAction(1)"></span><br>';
+dw(strHtml);
+}else if(report=='1'&& expire_day>0 && ceb_sub=='1')
+{
+var strHtml='<span>'+upc19
++'<input type=button  style="{width:150px;}" class="submitBtn" value="'+upc20+'" onClick="goView()"><br>';
+dw(strHtml);
+}
+if(ceb_sub=='1' && expire_day>0)
+{
+var strHtml='<br><hr noshade size="1" color=#666666><br>'
++'<span>'+upc21+'</span><br><span>'+upc22+' </span>'
++'<table width="61%" border="0" cellspacing="0" cellpadding="3" class="copy_1"><tr><td width="29%">'
++'<input type="radio" name="ceb_enable" value="1" checked>'
++'<span><b>'+ON+'</b></span></td><td rowspan="2" width="71%"><b>&nbsp;'+upc23+' '+ON+'. </b> </td></tr>'
++'<tr><td width="29%" class="pageTitle"><input type="radio" name="ceb_enable" value="0"  >'
++'<span><b>'+OFF+'</b></span></td></tr></table><div align="right">'
++'<span>'+pwd+': <input type=password name="ceb_pass_pass" size=10 maxlength=32></span>' //modified by peng(LAN1612)
++'&nbsp;&nbsp;<input type="submit" style="{width:120px;}" class="submitBtn" value="'+Apply+'" onClick="return changeAction(2)">'
++'</div><br><hr noshade size="1" color=#666666><br>'
++'<span><b>'+upc24+'</b></span><br>'
++'<span>'+upc25+'</span>'
++'<table width="61%" border="0" cellspacing="0" cellpadding="3" class="copy_1">'
++'<tr><td width="29%"><input type="radio" name="ceb_email_enable" value="1" checked >'
++'<span><b>'+ON+'</b></span></td>'
++'<td rowspan="2" width="71%"&nbsp;<b>'+upc26+''+ON+'. </b> </td>'
++'</tr><tr><td width="29%"><input type="radio" name="ceb_email_enable" value="0"  >'
++'<span><b>'+OFF+'</b></span></td></tr></table><div align="right">'
++'<span>'+pwd+': <input type=password name="ceb_email_pass" size=10 maxlength=32></span>'//modified by peng(LAN1612)
++'&nbsp;&nbsp;<input type="submit" style="{width:120px;}" class="submitBtn" value="'+Apply+'" onClick="return changeAction(4)">'
++'</div>';
+dw(strHtml);
+strHtml='<br><hr noshade size="1" color=#666666><br>'
++'<span><b>'+upc27+' </b><br></span>'
++'<span>'+upc28
++'<div align="right">'
++'<input type=button  style="{width:150px;}" class="submitBtn" value="'+Modify+'" onClick = "return modifypolicy()"><br>'
++'</div></span>';
+dw(strHtml);
+}
+</SCRIPT>
+
+      <SCRIPT>
+var ceb_expire='1123024318';
+var expire_sec='558';
+var expire_day=Math.floor(ceb_expire/(3600*24))-Math.floor(expire_sec/(3600*24));
+var ceb_sub='1';
+if(ceb_sub!='1')
+{
+strHtml='<br><hr noshade size="1" color=#666666><br>'//<tr><td valign="top">'
++'<div align="left"><span><b>'+upc29+'</b></span>'
++'</div><span><br>'
++upc31
++'<br><br>'+upc30
++'&nbsp;<br>&nbsp;&nbsp;</span> <div align="center">'
++'<input type="submit" style="{width:150px;}" class="submitBtn" value="'+upc18+'" onClick="changeAction(3)"><br>'
++' </div><span><br></span></td></tr>';
+dw(strHtml);
+}
+else if(ceb_sub=='1' && expire_day<15)
+{
+strHtml='<br><hr noshade size="1" color=#666666><br>'//<tr><td valign="top">'
++'<div align="left"><span><b>'+upc32+'</b></span></div><span">'
++upc30+'<br><br> <b>'+upc33+'<div align="center">'
++'   <input type="submit" style="{width:150px;}" class="submitBtn" value="'+upc34+'" onClick="changeAction(5)"><br>'
++' </div><span><br></span></td></tr>';
+dw(strHtml);
+}
+</SCRIPT>
+      </FORM></SPAN></SPAN></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

@@ -1,0 +1,57 @@
+lk201.o: lk201.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/errno.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/sched.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/tty.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kernel.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/init.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/delay.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kbd_ll.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kbd_kern.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/vt_kern.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/keyboard.h \
+   lk201.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/magic/sysrq.h)
+tc.o: tc.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/string.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/init.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/ioport.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kernel.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/module.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/addrspace.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/errno.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/paccess.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/ptrace.h
+zs.o: zs.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/version.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/errno.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/signal.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/sched.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/timer.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/interrupt.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/tty.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/tty_flip.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/major.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/string.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/fcntl.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/mm.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/kernel.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/delay.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/init.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/ioport.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/serial/dec/console.h) \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/console.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/io.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/pgtable.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/irq.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/system.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/segment.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/bitops.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/uaccess.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/bootinfo.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/decstation.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/baget/mips.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/kgdb.h) \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/magic/sysrq.h) \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/sysrq.h \
+   zs.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/devfs/fs.h)

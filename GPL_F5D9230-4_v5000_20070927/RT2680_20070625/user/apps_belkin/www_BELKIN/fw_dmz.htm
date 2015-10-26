@@ -1,0 +1,349 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+fd1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='DMZ';
+var menuSection	='Fire';
+var menuItem	='DMZ';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function dmz_alias(dmz_str, token, index)
+{
+	count=token.indexOf('/');
+	token=token.substring(0,count);
+	if(token!='')
+	{  
+		 t1=dmz_str.indexOf(token);
+		 if(t1!=-1)
+		 {  
+			t2=dmz_str.indexOf('-',t1+1);
+			t3=dmz_str.indexOf(' ',t2+1);
+			eval('document.forward_form.private_ip_'+(index+2)).value=dmz_str.substring(t2+1,t3);
+			if(dmz_str.substring(t1-2,t1-1)=='1') eval('document.forward_form.enable_'+(index+2)).checked=true;           
+		 } 
+		 else	
+		 	eval('document.forward_form.private_ip_'+(index+2)).value='';
+	}
+}
+
+function Init_Value()
+{ 	
+	var f = document.forms[0];
+	var dmz_enabled = '<%nvram_get("dmz_enabled");%>';
+	var dmz_ip = '<%nvram_get("dmz_ip");%>';
+	var ip = dmz_ip.split(".");
+	
+	if (dmz_enabled ==1)
+		f.enable_1.checked = true;
+	else
+		f.enable_1.checked = false;
+	if (dmz_ip=="")
+		f.private_ip_1.value = "0";
+	else	
+		f.private_ip_1.value = ip[3];	
+	for(i=1;i<6;i++) {
+	 	var j=i+1;
+		dmz_enabled = eval("f.dmz_enabled"+i).value;
+		dmz_ip = eval("f.dmz_ip"+i).value;
+		ip = dmz_ip.split(".");
+		if(eval("f.wan_ipaddr"+i).value!="") {
+			if (dmz_enabled == 1)
+				eval("f.enable_"+j).checked = true;
+			else
+				eval("f.enable_"+j).checked = false;
+			if (dmz_ip=="")
+				eval("f.private_ip_"+j).value = "0";
+			else	
+				eval("f.private_ip_"+j).value = ip[3];	
+		}	
+	}
+}
+
+var dmz_str='';
+function dmz_store_alias(token, index)
+{
+ 	count=token.indexOf('/');
+ 	token=token.substring(0,count);
+ 	if(token!='')
+ 	{
+		if(isNValidIP(eval('document.forward_form.private_ip_'+(index+2)).value))return false;
+		if(eval('document.forward_form.enable_'+(index+2)).checked) {
+			if (eval('document.forward_form.private_ip_'+(index+2)).value==""){
+				alert(fd15);
+				return false;
+			}
+			 dmz_str+='1-';
+		}
+		else 
+			dmz_str+='0-';
+		dmz_str+=token+'-'+eval('document.forward_form.private_ip_'+(index+2)).value+' ';
+	}
+}
+function storeData()
+{
+	var f = document.forms[0];
+	var lan_ip = '<%nvram_get("lan_ipaddr");%>';
+	var lan_ipaddr = lan_ip.split(".");
+	
+	if(isNValidIP(f.private_ip_1.value))
+		return false;
+		
+	if(f.enable_1.checked) 
+	{
+	 	if (f.private_ip_1.value=="")
+		{
+			alert(fd15);
+			return false;
+ 		 }
+		 f.dmz_enabled.value = 1;
+	 } //token 1
+	 else
+	 	 f.dmz_enabled.value = 0;
+	 
+	 f.dmz_ip.value = lan_ipaddr[0] + "." + lan_ipaddr[1] + "." + lan_ipaddr[2] + "." + f.private_ip_1.value;
+	 f.dmz_dest_ip.value = lan_ipaddr[0] + "." + lan_ipaddr[1] + "." + lan_ipaddr[2] + "." + f.private_ip_1.value;
+	 for (i=1;i<6;i++) {
+	 	var j=i+1;
+		if(eval("f.wan_ipaddr"+i).value!="") {
+			if(eval("f.enable_"+j).checked)
+			{
+				if (eval("f.private_ip_"+j).value=="")
+				{
+					alert(fd15);
+					return false;
+				}
+				eval("f.dmz_enabled"+i).value = 1;
+			} //token 1
+			else
+				 eval("f.dmz_enabled"+i).value = 0;
+			eval("f.dmz_ip"+i).value = lan_ipaddr[0] + "." + lan_ipaddr[1] + "." + lan_ipaddr[2] + "." + eval("f.private_ip_"+j).value;
+		}
+	 }
+}
+
+function Try_Submit()
+{
+	if(storeData()==false)
+		return false;
+	document.forms[0].submit();
+}
+
+function isNValidIP(s) 
+{
+	if (isNaN(s)||s<=0||s>=255) 
+	{
+        alert(fcipm);
+		return true;
+	}	
+	else 
+		return false;
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 onload="Init_Value();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM name="fw_ping"action="post.cgi"method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="fw_dmz.htm">
+<input type="hidden" name="redirect_timer" value="30000">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="restart" value="firewall">
+<input type="hidden" name="data1" value="dmz_enabled dmz_enabled1 dmz_enabled2 dmz_enabled3 dmz_enabled4 dmz_enabled5 dmz_ip dmz_ip1 dmz_ip2 dmz_ip3 dmz_ip4 dmz_ip5 dmz_dest_ip">
+
+<input type="hidden" name="dmz_enabled" value='<%nvram_get("dmz_enabled");%>'>
+<input type="hidden" name="dmz_enabled1" value='<%nvram_get("dmz_enabled1");%>'>
+<input type="hidden" name="dmz_enabled2" value='<%nvram_get("dmz_enabled2");%>'>
+<input type="hidden" name="dmz_enabled3" value='<%nvram_get("dmz_enabled3");%>'>
+<input type="hidden" name="dmz_enabled4" value='<%nvram_get("dmz_enabled4");%>'>
+<input type="hidden" name="dmz_enabled5" value='<%nvram_get("dmz_enabled5");%>'>
+<input type="hidden" name="dmz_ip" value='<%nvram_get("dmz_ip");%>'>
+<input type="hidden" name="dmz_ip1" value='<%nvram_get("dmz_ip1");%>'>
+<input type="hidden" name="dmz_ip2" value='<%nvram_get("dmz_ip2");%>'>
+<input type="hidden" name="dmz_ip3" value='<%nvram_get("dmz_ip3");%>'>
+<input type="hidden" name="dmz_ip4" value='<%nvram_get("dmz_ip4");%>'>
+<input type="hidden" name="dmz_ip5" value='<%nvram_get("dmz_ip5");%>'>
+<input type="hidden" name="wan_ipaddr" value='<%nvram_get("wan_ipaddr");%>'>
+<input type="hidden" name="wan_ipaddr1" value='<%nvram_get("wan_ipaddr1");%>'>
+<input type="hidden" name="wan_ipaddr2" value='<%nvram_get("wan_ipaddr2");%>'>
+<input type="hidden" name="wan_ipaddr3" value='<%nvram_get("wan_ipaddr3");%>'>
+<input type="hidden" name="wan_ipaddr4" value='<%nvram_get("wan_ipaddr4");%>'>
+<input type="hidden" name="wan_ipaddr5" value='<%nvram_get("wan_ipaddr5");%>'>
+<input type="hidden" name="dmz_dest_ip" value='<%nvram_get("dmz_dest_ip");%>'>
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(fd1);</SCRIPT>
+<BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 height=412 cellSpacing=0 cellPadding=0 width="100%" 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top><B>DMZ </B>
+            <TABLE class=copy_1 cellSpacing=0 cellPadding=0 width="95%" 
+            align=center border=0>
+              <TBODY>
+              <TR>
+                <TD class=verdana12>
+                  <SCRIPT>dw(fd2);</SCRIPT>
+                  <FONT color=red>
+                  <SCRIPT>dw(fd3);</SCRIPT>
+                  </FONT>
+                  <SCRIPT>dw(fd4);</SCRIPT>
+                  <A 
+                  onclick="window.open('glossary.htm#dmz','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+                  href="javascript:void(0);"><B><FONT color=#0066FF>
+                  <SCRIPT>dw(sm1);</SCRIPT>
+                  </FONT></B></A></TD></TR></TBODY></TABLE><BR>
+            <TABLE class=copy_1 cellSpacing=10 cellPadding=0 width=485 
+            align=left border=0>
+              <TBODY>
+              <TR>
+                <TD width=20>&nbsp;</TD>
+                <TD colSpan=2 nowarp><B>
+                  <SCRIPT>dw(fd5);</SCRIPT>
+                  &gt;</B></TD></TR>
+              <TR>
+                <TD colSpan=3>
+                  <TABLE class=copy_1 cellSpacing=1 cellPadding=5 width=425 
+                  align=center border=0>
+                    <TBODY>
+                    <TR class=copy_1 bgColor=#666666>
+                      <TD noWrap align=middle>&nbsp;</TD>
+                      <TH noWrap><FONT color=#ffffff>
+                        <SCRIPT>dw(fd6);</SCRIPT>
+                        </FONT></TH>
+                      <TH noWrap><FONT color=#ffffff>
+                        <SCRIPT>dw(fd7);</SCRIPT>
+                        </FONT></TH>
+                      <TH noWrap><FONT color=#ffffff>
+                        <SCRIPT>dw(fd8);</SCRIPT>
+                        </FONT></TH></TR>
+<SCRIPT>
+	var strHtml;
+	var strTemp;
+	var dhcp_start='<%nvram_get("lan_ipaddr");%>';
+	aliasip_count=2;
+	t1=dhcp_start.indexOf('.');
+	t1=dhcp_start.indexOf('.',(t1+1));
+	t1=dhcp_start.indexOf('.',(t1+1));
+	strHtml='<tr align=center bgcolor="#CCCCCC"><td nowrap>1.</td><td nowrap>' 
+			+'<%nvram_get("wan_ipaddr");%>'
+			+'</td><td nowrap>' 
+			+dhcp_start.substring(0,t1+1)
+			+'<input type="text" name="private_ip_1" size="3" maxlength="3"></td>'
+			+'<td nowrap>' 
+			+'<input type="checkbox" name="enable_1" ></td></tr>';
+	dw(strHtml); //row 2				
+if(!('<%nvram_get("wan_ipaddr1");%>'==''))
+{ 
+strTemp='';
+count=strTemp.indexOf('/');
+strHtml='<tr align=center bgcolor="#CCCCCC"><td nowrap>'
++String(aliasip_count)
++'.</td><td nowrap>' 
++'<%nvram_get("wan_ipaddr1");%>'
++'</td><td nowrap>' 
++dhcp_start.substring(0,t1+1)
++'<input type="text" name="private_ip_2" size="3" maxlength="3"></td>'
++'<td nowrap>' 
++'<input type="checkbox" name="enable_2" ></td></tr>';						    
+dw(strHtml); 
+aliasip_count++;
+}//row 3				
+if(!('<%nvram_get("wan_ipaddr2");%>'==''))
+{ 
+strTemp='';
+count=strTemp.indexOf('/');
+strHtml='<tr align=center bgcolor="#CCCCCC"><td nowrap>'
++String(aliasip_count)
++'.</td><td nowrap>' 
++'<%nvram_get("wan_ipaddr2");%>'
++'</td><td nowrap>' 
++dhcp_start.substring(0,t1+1)
++'<input type="text" name="private_ip_3" size="3" maxlength="3"></td>'
++'<td nowrap>' 
++'<input type="checkbox" name="enable_3" ></td></tr>';						    
+dw(strHtml); 
+aliasip_count++;
+}//row 4				
+if(!('<%nvram_get("wan_ipaddr3");%>'==''))
+{ 
+strTemp='';
+count=strTemp.indexOf('/');
+strHtml='<tr align=center bgcolor="#CCCCCC"><td nowrap>'
++String(aliasip_count)
++'.</td><td nowrap>' 
++'<%nvram_get("wan_ipaddr3");%>'
++'</td><td nowrap>' 
++dhcp_start.substring(0,t1+1)
++'<input type="text" name="private_ip_4" size="3" maxlength="3"></td>'
++'<td nowrap>' 
++'<input type="checkbox" name="enable_4" ></td></tr>';
+dw(strHtml); 
+aliasip_count++;
+}				
+if(!('<%nvram_get("wan_ipaddr4");%>'==''))
+{ 
+strTemp='';
+count=strTemp.indexOf('/');
+strHtml='<tr align=center bgcolor="#CCCCCC"><td nowrap>'
++String(aliasip_count)
++'.</td><td nowrap>' 
++'<%nvram_get("wan_ipaddr4");%>'
++'</td><td nowrap>' 
++dhcp_start.substring(0,t1+1)
++'<input type="text" name="private_ip_5" size="3" maxlength="3"></td>'
++'<td nowrap>' 
++'<input type="checkbox" name="enable_5" ></td></tr>';
+dw(strHtml); 
+aliasip_count++;
+}//row 6				
+if(!('<%nvram_get("wan_ipaddr5");%>'==''))
+{ 
+strTemp='';
+count=strTemp.indexOf('/');
+strHtml='<tr align=center bgcolor="#CCCCCC"><td nowrap>'
++String(aliasip_count)
++'.</td><td nowrap>' 
++'<%nvram_get("wan_ipaddr5");%>'
++'</td><td nowrap>' 
++dhcp_start.substring(0,t1+1)
++'<input type="text" name="private_ip_6" size="3" maxlength="3"></td>'
++'<td nowrap>' 
++'<input type="checkbox" name="enable_6" ></td></tr>';
+document.writeln(strHtml); 
+aliasip_count++;
+} 	                                  
+</SCRIPT>
+                    </TBODY></TABLE></TD></TR>
+              <TR>
+                <TD width=20>&nbsp;</TD>
+                <TD class=formText align=middle width="90%" colSpan=2>&nbsp;
+                  <SCRIPT>strHtml='<input type="button" value="'+btn1+'" style="{width:160px;}" class="submitBtn" onclick="Init_Value();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;';
+dw(strHtml);
+strHtml='<input type="button" value="'+btn2+'" style="{width:160px;}" class="submitBtn" onClick="Try_Submit();">';
+dw(strHtml);</SCRIPT>
+                   </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></TD>
+    <SCRIPT language=JavaScript>showTail()</SCRIPT>
+  </TR></TBODY></TABLE></BODY></HTML>

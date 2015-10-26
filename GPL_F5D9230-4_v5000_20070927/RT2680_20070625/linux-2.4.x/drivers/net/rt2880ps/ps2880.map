@@ -1,0 +1,16 @@
+0000014c T cleanup_module
+0000008c T init_module
+00000000 r __module_kernel_version
+0000002c r __module_license
+00000018 R __module_parm_ps2880_major
+         U printk
+0000014c t ps2880_exit
+00000004 D ps2880_fops
+0000008c t ps2880_init
+00000010 T ps2880_ioctl
+00000000 D ps2880_major
+00000000 T ps2880_open
+00000008 T ps2880_release
+         U register_chrdev
+         U __this_module
+         U unregister_chrdev

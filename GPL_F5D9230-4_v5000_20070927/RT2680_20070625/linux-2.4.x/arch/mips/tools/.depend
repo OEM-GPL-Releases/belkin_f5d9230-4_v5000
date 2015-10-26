@@ -1,0 +1,7 @@
+offset.o: offset.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/types.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/sched.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/mm.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/ptrace.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/processor.h \
+   $(wildcard /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/config/mips64.h)

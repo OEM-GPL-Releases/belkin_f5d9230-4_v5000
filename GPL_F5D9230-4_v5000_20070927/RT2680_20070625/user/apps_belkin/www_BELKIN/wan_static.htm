@@ -1,0 +1,379 @@
+<HTML>
+<HEAD>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>//<!--
+strHtml='<title>'+ws1+'</title>';
+dw(strHtml);
+
+var helpItem 	='Connection Type';
+var menuSection	='WAN';
+var menuItem	='Connection Type';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function Init_Value()
+{
+	var f=document.wan_form;
+	var ipadder='<%nvram_get("wan_ipaddr");%>';
+	var netmask='<%nvram_get("wan_netmask");%>';
+	var gateway='<%nvram_get("wan_gateway");%>';
+//ip init
+   t1=ipadder.indexOf('.');
+   if(t1!=-1)f.IP1.value=ipadder.substring(0,t1);
+   t2=ipadder.indexOf('.',(t1+1));
+   if(t2!=-1)f.IP2.value=ipadder.substring((t1+1),t2);
+   t1=ipadder.indexOf('.',(t2+1));
+   if(t1!=-1)f.IP3.value=ipadder.substring((t2+1),t1);
+   f.IP4.value=ipadder.substring(t1+1);
+//mask init
+   t1=netmask.indexOf('.');
+   if(t1!=-1)f.NM1.value=netmask.substring(0,t1);
+   t2=netmask.indexOf('.',(t1+1));
+   if(t2!=-1)f.NM2.value=netmask.substring((t1+1),t2);
+   t1=netmask.indexOf('.',(t2+1));
+   if(t1!=-1)f.NM3.value=netmask.substring((t2+1),t1);
+   f.NM4.value=netmask.substring(t1+1); 	
+//gateway init
+   t1=gateway.indexOf('.');
+   if(t1!=-1)f.GIP1.value=gateway.substring(0,t1);
+   t2=gateway.indexOf('.',(t1+1));
+   if(t2!=-1)f.GIP2.value=gateway.substring((t1+1),t2);
+   t1=gateway.indexOf('.',(t2+1));
+   if(t1!=-1)f.GIP3.value=gateway.substring((t2+1),t1);
+   f.GIP4.value=gateway.substring(t1+1);	
+}
+function hex(val)
+{
+	var h = (val-0).toString(16);
+	if(h.length==1) h='0'+h;
+	return h.toUpperCase();
+}
+function validateGateway(wanIp,netmaskIp,gatewayIp) {
+	if(gatewayIp.length==0) return true;
+//	if(validateWanIp(gatewayIp) == false) return false;
+	var i1,i2,i3, wip, nip, gip;
+
+	i1=wanIp.indexOf('.');
+	i2=wanIp.indexOf('.',(i1+1));
+	i3=wanIp.indexOf('.',(i2+1));
+	wip = hex(wanIp.substring(0,i1)) + hex(wanIp.substring((i1+1),i2)) +hex(wanIp.substring((i2+1),i3))+hex(wanIp.substring((i3+1),wanIp.length));
+	wip = '0x'+wip;
+
+	i1=netmaskIp.indexOf('.');
+	i2=netmaskIp.indexOf('.',(i1+1));
+	i3=netmaskIp.indexOf('.',(i2+1));
+	nip = hex(netmaskIp.substring(0,i1)) + hex(netmaskIp.substring((i1+1),i2)) +hex(netmaskIp.substring((i2+1),i3)) +hex(netmaskIp.substring((i3+1),netmaskIp.length));
+	nip = '0x'+nip;
+
+	i1=gatewayIp.indexOf('.');
+	i2=gatewayIp.indexOf('.',(i1+1));
+	i3=gatewayIp.indexOf('.',(i2+1));
+	gip = hex(gatewayIp.substring(0,i1)) + hex(gatewayIp.substring((i1+1),i2)) +hex(gatewayIp.substring((i2+1),i3)) +hex(gatewayIp.substring((i3+1),gatewayIp.length));
+	gip = '0x'+gip;
+	if( ((wip & nip) != (gip & nip)) && netmaskIp!='255.255.255.255'){
+		alert('IP address '+wanIp+' is not in '+gatewayIp+'/'+netmaskIp+' network.');
+		return false;
+	}
+}
+function storeData()
+{
+	var f=document.wan_form;
+ 	f.wan_ipaddr.value=f.IP1.value+'.'+f.IP2.value+'.'+f.IP3.value+'.'+f.IP4.value;
+ 	f.wan_netmask.value=f.NM1.value+'.'+f.NM2.value+'.'+f.NM3.value+'.'+f.NM4.value;
+ 	f.wan_gateway.value=f.GIP1.value+'.'+f.GIP2.value+'.'+f.GIP3.value+'.'+f.GIP4.value;
+ 	
+	if (validateGateway(f.wan_ipaddr.value, f.wan_netmask.value,f.wan_gateway.value) == false) return false; 
+	alert(warn_msg2);
+
+	alert(ws8);        
+	return true;
+}
+
+function isBlank(s) 
+{
+	for(i=0;i<s.length;i++) 
+ 	{
+  		c=s.charAt(i);
+  		if((c!=' ')&&(c!='\n')&&(c!='\t'))return false;
+ 	}
+ 	return true;
+}
+
+function isNValidIP(s) 
+{
+	if((isBlank(s))||(isNaN(s))||(s<0||s>255)) 
+    	return true;
+ 	else
+    	return false;
+}
+
+function evaltF() 
+{
+	var f=document.wan_form;
+ 	if((isBlank(f.IP1.value))||(isNaN(f.IP1.value))||(f.IP1.value<=0||f.IP1.value>=255)) { alert(usysipm); return false; }
+ 	if((isBlank(f.IP2.value))||(isNaN(f.IP2.value))||(f.IP2.value<0||f.IP2.value>255)) { alert(usysipm); return false; }
+ 	if((isBlank(f.IP3.value))||(isNaN(f.IP3.value))||(f.IP3.value<0||f.IP3.value>255)) { alert(usysipm); return false; }
+ 	if((isBlank(f.IP4.value))||(isNaN(f.IP4.value))||(f.IP4.value<=0||f.IP4.value>=255)) { alert(usysipm); return false; }
+ 	if((isBlank(f.NM1.value))||(isNaN(f.NM1.value))||(f.NM1.value<=0||f.NM1.value>255)) { alert(usysipm); return false; }
+ 	if((isBlank(f.NM2.value))||(isNaN(f.NM2.value))||(f.NM2.value<0||f.NM2.value>255)) { alert(usysipm); return false; }
+ 	if((isBlank(f.NM3.value))||(isNaN(f.NM3.value))||(f.NM3.value<0||f.NM3.value>255)) { alert(usysipm); return false; }
+ 	if((isBlank(f.NM4.value))||(isNaN(f.NM4.value))||(f.NM4.value<0||f.NM4.value>255)) { alert(usysipm); return false; }
+/* check subnet mask */ 	
+	if( !isNValidIP(f.NM1.value) )
+	{
+		if( f.NM1.value != '128' && f.NM1.value != '192' && f.NM1.value != '224' && 
+		    f.NM1.value != '240' && f.NM1.value != '248' && f.NM1.value != '252' && 
+		    f.NM1.value != '254' && f.NM1.value != '255' )
+		{
+			alert(vjs28);
+			f.NM1.focus();
+			f.NM1.select();
+			return false;
+		}
+		if( f.NM4.value == '255')
+		{
+			f.NM4.focus();
+			f.NM4.select();
+			return false;
+		}
+	}
+	else
+	{
+		alert(vjs28);
+		f.NM1.focus();
+		f.NM1.select();
+		return false;	
+	}
+		
+	if( !isNValidIP(f.NM2.value) )
+	{
+		if( f.NM1.value != '255' )
+		{
+			if(f.NM2.value != '0')
+			{
+				alert(vjs28);
+				f.NM2.focus();
+				f.NM2.select();
+				return false;
+			}
+		}
+		else
+		if( f.NM2.value != '128' && f.NM2.value != '192' && f.NM2.value != '224' && 
+		    f.NM2.value != '240' && f.NM2.value != '248' && f.NM2.value != '252' && 
+		    f.NM2.value != '254' && f.NM2.value != '255' && f.NM2.value != '0' )
+		{
+			alert(vjs28);
+			f.NM2.focus();
+			f.NM2.select();
+			return false;
+		}
+	}	
+	else
+	{
+		alert(vjs28);
+		f.NM2.focus();
+		f.NM2.select();
+		return false;	
+	}
+	
+	if( !isNValidIP(f.NM3.value) )
+	{
+		if( f.NM2.value != '255' )
+		{
+			if(f.NM3.value != '0')
+			{
+				alert(vjs28);
+				f.NM3.focus();
+				f.NM3.select();
+				return false;
+			}
+		}
+		else
+		if( f.NM3.value != '128' && f.NM3.value != '192' && f.NM3.value != '224' && 
+		    f.NM3.value != '240' && f.NM3.value != '248' && f.NM3.value != '252' && 
+		    f.NM3.value != '254' && f.NM3.value != '255' && f.NM3.value != '0' )
+		{
+			alert(vjs28);
+			f.NM3.focus();
+			f.NM3.select();
+			return false;
+		}
+	}	
+	else
+	{
+		alert(vjs28);
+		f.NM3.focus();
+		f.NM3.select();
+		return false;	
+	}
+	
+	if( !isNValidIP(f.NM4.value) )
+	{
+		if( f.NM3.value != '255' )
+		{
+			if(f.NM4.value != '0')
+			{
+				alert(vjs28);
+				f.NM4.focus();
+				f.NM4.select();
+				return false;
+			}
+		}
+		else
+		if( f.NM4.value != '128' && f.NM4.value != '192' && f.NM4.value != '224' && 
+		    f.NM4.value != '240' && f.NM4.value != '248' && f.NM4.value != '252' && 
+		    f.NM4.value != '254' && f.NM4.value != '255' && f.NM4.value != '0' )
+		{
+			alert(vjs28);
+			f.NM4.focus();
+			f.NM4.select();
+			return false;
+		}
+	}	
+	else
+	{
+		alert(vjs28);
+		f.NM4.focus();
+		f.NM4.select();
+		return false;	
+	} 	
+/* check subnet mask end */
+ 	
+ 	if((isBlank(f.GIP1.value))||(isNaN(f.GIP1.value))||(f.GIP1.value<=0||f.GIP1.value>=255)) { alert(usysipm); return false; }
+ 	if((isBlank(f.GIP2.value))||(isNaN(f.GIP2.value))||(f.GIP2.value<0||f.GIP2.value>255)) { alert(usysipm); return false; }
+ 	if((isBlank(f.GIP3.value))||(isNaN(f.GIP3.value))||(f.GIP3.value<0||f.GIP3.value>255)) { alert(usysipm); return false; }
+ 	if((isBlank(f.GIP4.value))||(isNaN(f.GIP4.value))||(f.GIP4.value<=0||f.GIP4.value>=255)) { alert(usysipm); return false; }
+	if(f.NM1.value ==0) { alert(sm); return false;}
+ 	
+	if(storeData()==false)return false;
+ 	
+	f.submit();
+}
+function Try_Submit() 
+{
+	return evaltF();
+}
+function logoutF()
+{
+	document.wan_form.logout.value=1;
+	document.wan_form.submit();
+	return true;
+}
+function ShowHideTable()
+{
+ if(document.wan_form.checkbox2.checked)
+	location='wan_static_checked.htm';
+ else
+	location='wan_static.htm';
+}
+function wan_dns()
+{
+	var f = document.forms[0];
+	f.next_page.value="wan_dns.htm";
+ 	if(!evaltF())
+ 	{
+		f.next_page.value="wan_static.htm";
+		return false;
+ 	}
+ 	f.submit();
+ 	return false;
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 onload="Init_Value();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM id="wan_form" name="wan_form" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wan_dns.htm">
+<input type="hidden" name="redirect_timer" value="60000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="wan_proto wan_ipaddr wan_netmask wan_gateway wan_alias1_enabled wan_alias2_enabled wan_alias3_enabled wan_alias4_enabled wan_alias5_enabled">
+
+<input type="hidden" name="wan_proto" value="static">
+<input type="hidden" name="wan_ipaddr">
+<input type="hidden" name="wan_netmask">
+<input type="hidden" name="wan_gateway">
+<input type="hidden" name="wan_alias1_enabled" value="0">
+<input type="hidden" name="wan_alias2_enabled" value="0">
+<input type="hidden" name="wan_alias3_enabled" value="0">
+<input type="hidden" name="wan_alias4_enabled" value="0">
+<input type="hidden" name="wan_alias5_enabled" value="0">
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(ws1);</SCRIPT>
+<BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=550 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=3>
+            <SCRIPT>dw(ws2);</SCRIPT>
+            <A 
+            onclick="window.open('glossary.htm#static_ip','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><B><FONT color=#0066FF>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A><BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD><B>
+            <SCRIPT>dw(ws3);</SCRIPT>
+            &gt;<B><BR><BR></B></B></TD>
+          <TD><INPUT maxLength=3 size=4 name=IP1>. <INPUT 
+            maxLength=3 size=4 name=IP2>. <INPUT maxLength=3 size=4 name=IP3>. 
+            <INPUT maxLength=3 size=4 name=IP4> <BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD><B>
+            <SCRIPT>dw(ws4);</SCRIPT>
+            &gt;</B><BR><BR></TD>
+          <TD><INPUT maxLength=3 size=4 name=NM1>. <INPUT 
+            maxLength=3 size=4 name=NM2>. <INPUT maxLength=3 size=4 name=NM3>. 
+            <INPUT maxLength=3 size=4 name=NM4> <BR><BR></TD></TR>
+        <TR>
+          <TD width=35 height=18>&nbsp;</TD>
+          <TD><B>
+            <SCRIPT>dw(ws5);</SCRIPT>
+            &gt;</B><BR><BR></TD>
+          <TD height=18><INPUT maxLength=3 size=4 name=GIP1>. <INPUT 
+            maxLength=3 size=4 name=GIP2>. <INPUT maxLength=3 size=4 name=GIP3>. 
+            <INPUT maxLength=3 size=4 name=GIP4> <BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD colSpan=2><B>
+            <SCRIPT>dw(ws6);</SCRIPT>
+            &gt;</B> <INPUT onclick=ShowHideTable() type=checkbox 
+            name=checkbox2> <BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD colSpan=2><A onclick="return wan_dns();" 
+            href="http://172.31.31.253/"><B><FONT color=#0066FF>
+            <SCRIPT>dw(ws7);</SCRIPT>
+            </FONT></B></A><BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD align=middle colSpan=2>
+            <SCRIPT>dw('<input type="button" value="');dw(btn1);dw('" style="{width:160px;}" onclick="Init_Value();" class="submitBtn" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+ dw('<input type="button" value="');dw(btn2);dw('" style="{width:160px;}" class="submitBtn" onClick="return Try_Submit();">');</SCRIPT>
+          </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

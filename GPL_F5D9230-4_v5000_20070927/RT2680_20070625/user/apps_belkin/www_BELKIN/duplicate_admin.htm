@@ -1,0 +1,17 @@
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT>
+strHtml='<title>'+d1+'</title>';
+dw(strHtml);
+</SCRIPT>
+</HEAD>
+<BODY>
+<CENTER>
+<SCRIPT>
+strHtml='<h1>'+d2+'<br>'+d3+' '+'<%nvram_get("allowed_ipaddr");%>'+' '+d4;
+dw(strHtml);
+</SCRIPT>
+<BR></CENTER>
+<H1></H1></BODY></HTML>

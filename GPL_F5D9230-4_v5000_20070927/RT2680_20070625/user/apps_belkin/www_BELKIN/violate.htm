@@ -1,0 +1,81 @@
+<html>
+<head>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<script>assign_var();</script>
+<script language="JavaScript" type="text/javascript">
+<!--
+function disagree()
+{
+	var URL='http://www.cerberian.com/sitereview.jsp?url='+'<%nvram_get("parentalc_blocked_url");%>'+'&referrer=belkin';
+	window.location = URL;
+}
+
+function change()
+{
+	var sn = '<%nvram_get("device_sn");%>';
+	var URL='http://admin.cwfservice.net/site/index.jsp?partnerid='+'71'+'&customerid='+ sn +'&name='+ sn;
+	window.location = URL;
+}
+
+function overwrite()
+{
+	var f = document.forms[0];
+	f.parentalc_password.value = f.password.value;
+	f.submit();
+}
+//-->
+</script>
+<title>Wireless Broadband Router</title>
+</head>
+<body>
+<table>
+<tr>
+<td>
+<a href="http://www.belkin.com"><img src="http://filter.belkin.com/splashlogo.jpg" width="194" height="68" border="0"></a>
+<a href="http://filter.belkin.com/ad"><img src="http://filter.belkin.com/468x60_ani.gif" width="468" height="60" border="0"></a> 
+</td>
+</tr>
+<tr>
+<td>
+<table border=1 align=left cellspacing=2 cellpadding=6 vspace=2 hspace=2 bordercolor=#9babbd bgcolor=#F4F4FF >
+  <tr>
+    <th height=40 colspan=7 bgcolor=#F4F4FF >
+    <font face="Arial" color=black size="3"> &nbsp;&nbsp;
+    <b><script>dw(vp1);</script></b></font>
+    </th>
+  </tr>
+<form name="violation_form" method="post" action="parental_unblock.cgi">
+<input type="hidden" name="cur_ipaddr" value='<%nvram_get("lan_ipaddr");%>'>
+<input type="hidden" name="next_page" value="violate.htm">
+<input type="hidden" name="parentalc_blocked_url" value='<%nvram_get("parentalc_blocked_url");%>'>
+<input type="hidden" name="parental_mac" value='<%get_my_mac();%>'>
+<input type="hidden" name="parentalc_password">
+<tr>
+  <td>
+  <script>
+  var strHtml='<font size=3 color=red><%nvram_get("parentalc_blocked_url");%></font>'+vp2+'<font size=3 color=red><%nvram_get("parentalc_blocked_text");%></font>'+'&nbsp;';
+  document.writeln(strHtml);
+  </script>
+  <ul><li>
+      <script>dw(vp3);
+      dw('<input type=button value='+Disagree+' onClick="disagree()">');</script>
+        </li>
+        <li>
+      <script>dw(vp4);
+      dw('&nbsp;<input type=button value='+Change+' onClick="return change()">');</script></li>
+        <li>
+      <script>dw(vp5);</script> <input type=password name=password value="" size=10 maxlength=24> <script>dw('<input type=button value="'+Override+'" onClick="return overwrite()">');</script></li>
+      </ul>
+  </td>
+</tr>
+</form>
+</table>
+</td></tr>
+<tr><td>
+<a href="http://www.cerberian.com"><img align=right src="http://filter.belkin.com/cerberian.gif" width="138" height="43" border="0"></a>
+</td></tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<HTML>
+<HEAD>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+
+var loadedcolor='blue' ;
+var unloadedcolor='white';
+var bordercolor='black';
+var barheight=50;
+var barwidth=400;
+var waitTime=100;
+var blocksize=(barwidth-2)/waitTime/10;
+var loaded=0;
+var PBouter;
+var PBdone;
+var Pid=0;
+
+var progress_tr_node;
+var progress_tr_tr_node;
+
+function modify(level)
+{
+var progress_elm=document.getElementById("progress_tr");
+var progress_tr_elm=document.getElementById("progress_tr_tr");
+var insert_tr_elm=document.getElementById("PBouter");
+	if(level==1)
+	{
+		progress_tr_node=progress_elm.parentNode.removeChild(progress_elm);
+		progress_tr_tr_node=progress_tr_elm.parentNode.removeChild(progress_tr_elm);
+	}
+	if(level==2)
+	{
+		insert_tr_elm.parentNode.insertBefore(progress_tr_node,insert_tr_elm);
+		insert_tr_elm.parentNode.insertBefore(progress_tr_tr_node,insert_tr_elm);
+	}
+}
+
+function incrCount()
+{
+	window.status="Loading...";
+	loaded++;
+	if(loaded>=waitTime*10)
+	{
+		clearInterval(Pid);
+		window.status=' ';
+		loaded--;
+		window.location.replace("index.htm");
+	}
+	resizeEl(PBdone, blocksize*loaded);
+}
+
+function hidebar()
+{
+	clearInterval(Pid);
+	window.status='';
+}
+
+function progressBarInit()
+{
+	PBouter=document.getElementById('PBouter');
+	PBdone=document.getElementById('PBdone');
+	resizeEl(PBdone,0);
+	PBouter.style.visibility="visible";
+	Pid=setInterval('incrCount()',140);
+}
+
+function resizeEl(id,r){
+id.style.width=r+'px';
+}
+
+strHtml='<title>'+ufe1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Firmware Update';
+var menuSection	='Util';
+var menuItem	='Firmware Update';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+var barwin;
+
+function messageCheck() 
+{
+	if(document.webForm.file.value.length == 0) 
+		alert(ufe9);
+	else
+	{
+ 		if (confirm(ufe10))
+ 		{
+			alert(ufe11);
+			modify(2);
+			progressBarInit();
+			document.webForm.submit();
+			return true;
+ 		}
+	}
+	return false;
+}
+
+function checkfw()
+{
+	newwin=window.open("checkfw.htm","Firmware","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,width=395,height=200,resizable=0");
+	newwin.focus();
+}
+function closeDep()
+{
+	if (barwin && barwin.open && !barwin.closed) 
+	{
+		barwin.opener=null;
+		barwin.close();
+	}
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 onload="modify(1)" onunload="closeDep();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(ufe1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=3 cellPadding=0 width=600 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=2>
+	        <SCRIPT>
+		        if("<%nvram_get("havefwcheck");%>" == "true") {
+            dw('<P>');
+            dw(ufe2);
+            dw('</P>');
+						}
+					</SCRIPT>
+            <P>
+            <SCRIPT>
+				dw(ufe3);
+				var lan_ipaddr = '<%nvram_get("lan_ipaddr");%>';
+				dw("<A href=\"http://"+lan_ipaddr+"/util_save.htm\">");
+			</SCRIPT>
+  			<B>
+			<FONT color=#6464c3>
+            <SCRIPT>dw(ufe4);</SCRIPT>
+            </FONT></B></A>
+            <SCRIPT>dw(ufe5);</SCRIPT>
+            </P></TD></TR>
+        <SCRIPT>
+	        if("<%nvram_get("havefwcheck");%>" == "true") {
+		        dw('<TR>');
+		        dw('<TD clospan="2">&nbsp;<BR></B></TD></TR>');
+		        dw('<TR>');
+		        dw('<FORM action="check_firmware.cgi" method="get">');
+		        dw('<TD width=340><B>');
+		        dw(ufe6);
+		        dw('</B></TD>');
+		        dw('<td width="260"><input type="button" style="{width:160px;}" class="submitBtn" name="CheckFirmware" value="');
+		        dw(ufe7);
+		        dw('" onClick="checkfw()"></td>');
+		        dw('</FORM>');
+						dw('</TR>');
+					}
+				</SCRIPT>
+        <TR>
+          <TD clospan="2">&nbsp;<BR><BR></B></TD></TR>
+        <TR>
+          <TD width=340><B>
+            <SCRIPT>dw(ufe8);</SCRIPT>
+            </B></TD>
+          <TD width=260>
+		  	<form name="webForm" ENCTYPE="multipart/form-data" method="post" action="firmware_upload.cgi">
+			<INPUT type=file maxLength=31 size=25 name=file>
+			</form> 
+			</TD>
+			</TR>
+        <TR>
+          <TD width=340>&nbsp;</TD>
+          <TD><BR><BR>
+            <SCRIPT>dw('<input type="button" name="Submit" style="{width:120px;}" class="submitBtn" value="');dw(Update);dw('" onclick="messageCheck();"></td>');</SCRIPT>
+          </TD>
+        <TR>
+          <TD class=formText width=340>&nbsp;</TD>
+          <TD width=260>&nbsp;</TD></TR>
+        <TR>
+          <TD class=formText colSpan=2>
+            <DIV align=right><NOBR>
+			<!--
+			<A 
+            onmouseover="window.status='Clear'; return true;" 
+            onclick="document.webForm.reset(); return false;" 
+            onmouseout="window.status=''; return true;" 
+            href="http://172.31.31.253/"></A>
+			-->
+			</NOBR></DIV></TD></TR>
+        <TR>
+          <TD width=340>&nbsp;</TD>
+          <TD><BR><BR>
+            <SCRIPT>
+var txt='<div id="progress_tr"><font face="verdana,arial" size="1">'+fw1+'</font></div>';
+txt+='<div id="progress_tr_tr"><font face="verdana,arial" size="1">'+fw2+'</font></div>';
+txt+='<div>&nbsp;</div>';
+txt+='<div id="PBouter" onmouseup="hidebar()" style="position:relative; visibility:hidden; background-color:'+bordercolor+'; width:'+barwidth+'px; height:'+barheight+'px;">';
+txt+='<div style="position:absolute; top:1px; left:1px; width:'+(barwidth-2)+'px; height:'+(barheight-2)+'px; background-color:'+unloadedcolor+'; font-size:1px;"></div>';
+txt+='<div id="PBdone" style="position:absolute; top:1px; left:1px; width:0px; height:'+(barheight-2)+'px; background-color:'+loadedcolor+'; font-size:1px;"></div>';
+txt+='</div>';
+document.write(txt);
+</SCRIPT>
+          </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

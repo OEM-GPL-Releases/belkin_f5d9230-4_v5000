@@ -1,0 +1,11 @@
+inode.o: inode.c \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/module.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/types.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/string.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/fs.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/openprom_fs.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/locks.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/init.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/slab.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/linux/smp_lock.h \
+   /home/kyo/GPL/GPL_BELKIN_F5D9230-4_v5000/RT2680_20070625/linux-2.4.x/include/asm/uaccess.h

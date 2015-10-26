@@ -1,0 +1,269 @@
+<HTML>
+<head>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<link rel="stylesheet" href="styles.css" type="text/css">
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<script language="Javascript" src="language_<%nvram_get("lang_code");%>.js"></script>
+<script>assign_var();</script>
+<script>var isPS='' ? '' : '0';</script>
+<script>
+strHtml='<title>LAN > '+sm1+' </title>';
+dw(strHtml);
+</script>
+</head>
+<a name="IP"></a><font class="head_bold"><script>dw(ws3);</script></font><br>
+<font class="copy_1"><script>dw(g1);</script>
+<p><script>dw(g2);dw(g3);dw(g4);</script></font><p>
+
+<a name="subnet_mask"></a><font class="head_bold"><script>dw(ws4);</script></font><br>
+<font class="copy_1">
+<font class="plaintext_bold"><script>dw(AF);</script></font><script>dw(g5);</script>
+</font><p>
+
+<script>
+if('1'=='1')
+{
+	var strHtml='<a name="dns"></a><font class="head_bold">DNS</font><br>'+
+	'<font class="copy_1">'+g6+'</font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="DHCP"></a><font class="head_bold">DHCP</font><br>'+
+	'<font class="copy_1">'+g7+'</font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="local_domain_name"></a><font class="head_bold">'+ls20+'</font><br>'+
+	'<font class="copy_1">'+g8+'</font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="dynamic_ip"></a><font class="head_bold">'+g9+'</font><br>'+
+	'<font class="copy_1">'+g10+'</font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="static_ip"></a><font class="head_bold">'+fd6+'</font><br>'+
+	'<font class="copy_1">'+g11+'</font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="pppoe"></a><font class="head_bold">PPPoE</font><br>'+
+	'<font class="copy_1">'+g12+'</font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="pptp"></a><font class="head_bold">PPTP</font><br>'+
+	'<font class="copy_1">'+g13+'<br></font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="telstra_bigpond"></a><font class="head_bold">'+wc11+'</font><br>'+
+	'<font class="copy_1">'+g14+'<br></font><p>';
+	dw(strHtml);
+}
+</script>
+
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="mtu"></a><font class="head_bold">'+g15+'</font><br>'+
+	'<font class="copy_1">'+g16+'<br></font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="disconnect"></a><font class="head_bold">'+g17+'</font><br>'+
+	'<font class="copy_1">'+g18+'<br></font><p>';
+	dw(strHtml);
+}
+</script>
+
+<a name="mac"></a><font class="head_bold"><script>dw(ld6);</script></font><br>
+<font class="copy_1"><script>dw(g19);</script><br></font><p>
+
+<script>
+var wild_wireless = 1;
+if(wild_wireless == 1){
+dw('<a name="channel_ssid"></a><font class="head_bold">');
+dw(wlm3);
+dw('</font><br><font class="copy_1">');
+dw(g20);
+dw('<br></font><p><a name="bro_ssid"></a><font class="head_bold">');
+dw(wlc9);
+dw('</font><br><font class="copy_1">');
+dw(g21);
+dw('<br></font><p><a name="access_point"></a><font class="head_bold">');
+dw(wlm7);
+dw('</font><br><font class="copy_1">');
+dw(g22);
+dw('<br></font><p>');
+dw('<a name="wireless_mode"></a><font class="head_bold">');
+dw(g23);
+dw('</font><br><font class="copy_1">');
+dw(g24);
+dw('<br></font><p>');
+}
+</script>
+<a name="protected_mode"></a><font class="head_bold"><script>dw(wlc12);</script></font><br>
+<font class="copy_1"><script>dw(wlc13);</script><br></font><p>
+<a name="QoS"></a><font class="head_bold"><script>dw(wlq1);</script></font><br>
+<font class="copy_1"><script>dw(wlq2);</script><br></font><p>
+<a name="QoSswitch"></a><font class="head_bold"><script>dw(wlq3);</script></font><br>
+<font class="copy_1"><script>dw(wlq4);</script><br></font><p>
+<a name="ACK"></a><font class="head_bold"><script>dw(wlac1);</script></font><br>
+<font class="copy_1"><script>dw(wlac2);</script><br></font><p>
+<a name="wireless_mac_ctrl"></a><font class="head_bold"><script>dw(wmac1);</script></font><br><font class="copy_1"><script>dw(wmac2);</script><br></font><p>
+
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="virtual_server"></a><font class="head_bold">'+g25+'</font><br>'+
+	'<font class="copy_1">'+g26+'<br></font><p>';
+	dw(strHtml);
+}
+</script>
+
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="ip_filter"></a><font class="head_bold">'+g27+'</font><br>'+
+	'<font class="copy_1">'+g28+'<br></font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="dmz"></a><font class="head_bold">DMZ</font><br>'+
+	'<font class="copy_1">'+g31+'<br></font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="ddns"></a><font class="head_bold">'+g57+'</font><br>'+
+	'<font class="copy_1">'+g58+'<br></font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="block_icmp_ping"></a><font class="head_bold">'+g32+'</font><br>'+
+	'<font class="copy_1">'+g33+'<br></font><p>';
+	dw(strHtml);
+}
+</script>
+<a name="admin_password"></a><font class="head_bold"><script>dw(g34);</script></font><br>
+<font class="copy_1"><script>dw(g35);</script>
+<br></font><p>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="time_zone"></a><font class="head_bold">'+g36+'</font><br>'+
+	'<font class="copy_1">'+g37+'<br></font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="remote_mgmt"></a><font class="head_bold">'+g38+'</font><br>'+
+	'<font class="copy_1">'+ g39+ '<br></font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="nat"></a><font class="head_bold">'+g40+'</font><br>'+
+	'<font class="copy_1">'+ g41+'<br></font><p>';
+	dw(strHtml);
+}
+</script>
+<script>
+if('1'=='1')
+{
+	var strHtml=
+	'<a name="upnp"></a><font class="head_bold">UPnP</font><br>'+
+	'<font class="copy_1">'+g42+'<br></font><p>';
+	dw(strHtml);
+}
+</script>
+<a name="auto_update"></a><font class="head_bold"><script>dw(g43);</script></font><br>
+<font class="copy_1"><script>dw(g44);</script>
+<br></font><p>
+<a name="wireless_security"></a><font class="head_bold"><script>dw(g45);</script></font><br>
+<font class="copy_1"><script>dw(g46);</script>
+<br>
+</font><p>
+<script>
+if(isPS=='1')
+{
+	var strHtml=
+	'<a name="PrinterField"></a><font class="head_bold">'+g47+'</font><br>'+
+	'<font class="copy_1">'+g48+'<br></font><p>';
+	dw(strHtml);
+	var strHtml=
+	'<a name="PrinterServerName"></a><font class="head_bold">'+g49+'</font><br>'+
+	'<font class="copy_1">'+g50+'<br></font><p>';
+	dw(strHtml);	
+	var strHtml=
+	'<a name="LPRPrinting"></a><font class="head_bold">'+g51+'</font><br>'+
+	'<font class="copy_1">'+g52+'<br></font><p>';
+	dw(strHtml);	
+	var strHtml=
+	'<a name="RawTCPIPPrinting"></a><font class="head_bold">'+g53+'</font><br>'+
+	'<font class="copy_1">'+g54+'<br></font><p>';
+	dw(strHtml);	
+	var strHtml=
+	'<a name="FTPPrinting"></a><font class="head_bold">'+g55+'</font><br>'+
+	'<font class="copy_1">'+g56+'<br></font><p>';
+	dw(strHtml);	
+}
+</script>
+</HTML>

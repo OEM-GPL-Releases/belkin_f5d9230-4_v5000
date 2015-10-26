@@ -1,0 +1,96 @@
+<HTML><HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wm1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='';
+var menuSection	='WAN';
+var menuItem	='';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function logoutF()
+{
+document.tF0.logout.value=1;
+document.tF0.submit();
+return true;
+}
+var havepptp=<%nvram_get("havepptp");%>;
+var havebigpond=<%nvram_get("havebigpond");%>;
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="wan_main" action="post.cgi" method="post">
+<input type="hidden" name="tmp">
+</form>
+<TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(WAN);</SCRIPT>
+ &gt; <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=5 width=580 align=center 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=3>
+            <SCRIPT>dw(wm2);</SCRIPT>
+            <BR><BR>
+            <SCRIPT>dw(wm3);</SCRIPT>
+          </TD></TR>
+        <TR>
+          <TD width="2%">&nbsp;</TD>
+          <TD vAlign=top width="1%">-&nbsp;</TD>
+          <TD vAlign=top width="97%">
+            <SCRIPT>dw(wm4);</SCRIPT>
+          </TD></TR>
+        <TR>
+          <TD width="2%">&nbsp;</TD>
+          <TD vAlign=top width="1%">-&nbsp;</TD>
+          <TD vAlign=top width="97%">
+            <SCRIPT>dw(wm5);</SCRIPT>
+          </TD></TR>
+        <TR>
+          <TD width="2%">&nbsp;</TD>
+          <TD vAlign=top width="1%">-&nbsp;</TD>
+          <TD vAlign=top width="97%">
+            <SCRIPT>dw(wm6);</SCRIPT>
+          </TD></TR>
+        <SCRIPT language=javascript>
+if(havepptp==true)
+{
+dw('<tr><td width="2%">&nbsp;</td><td width="1%" valign="top">-</td>');
+dw('<td width="97%" valign="top">');
+dw(wm7);
+dw('</td></tr>');
+}
+if(havebigpond==true)
+{
+dw('<tr> <td width="2%">&nbsp;</td><td width="1%" valign="top">-</td>');
+dw('<td width="97%" valign="top">');dw(wm8);
+dw('<font color=ff0000> ');
+dw(wm9); dw('</font></td></tr>');
+}
+</SCRIPT>
+        </TBODY></TABLE>
+      <P align=left> </P>
+      <DIV></DIV></TD></TR></TBODY></TABLE></TD></TR></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

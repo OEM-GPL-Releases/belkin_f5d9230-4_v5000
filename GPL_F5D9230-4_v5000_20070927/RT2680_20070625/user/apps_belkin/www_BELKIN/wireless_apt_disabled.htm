@@ -1,0 +1,114 @@
+<HTML><HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<SCRIPT language="Javascript" src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language="JavaScript" src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wla1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Use as Access Point';
+var menuSection	='WLAN';
+var menuItem	='Use as Access Point';
+var isRouter	='<%nvram_get("wan_enabled");%>' ? '1' : '0';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function EnableDisable()
+{
+	var f = document.forms[0];
+	
+	if(f.wan_access[0].checked) 
+		location.href='wireless_apt_enabled.htm';
+}
+
+function Clear()
+{
+	var enabled = '<%nvram_get("wan_enabled");%>';
+	
+	if (enabled != '1')
+		location.href="wireless_apt_enabled.htm"
+}
+
+function Try_Submit()
+{
+	document.forms[0].submit();
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" marginheight="0" marginwidth="0">
+<SCRIPT language="JavaScript">
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM id="wan_form" name="wan_form" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wireless_apt_disabled.htm">
+<input type="hidden" name="redirect_timer" value="30000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="wan_enabled lan_dhcps_enabled lan_ipaddr lan_netmask">
+
+<input type="hidden" name="wan_enabled" value="1">
+<input type="hidden" name="lan_dhcps_enabled" value="1">
+<input type="hidden" name="lan_ipaddr" value="192.168.2.1"> 
+<input type="hidden" name="lan_netmask" value="255.255.255.0">
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wla1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=10 cellPadding=0 width=580 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=3 height=18><B>
+            <SCRIPT>dw(AF);</SCRIPT>
+            </B>
+            <SCRIPT>dw(wlad1);</SCRIPT>
+            <BR><A 
+            onclick="window.open('glossary.htm#access_point','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><B><FONT color=#0066FF>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A></TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=174><B>
+            <SCRIPT>dw(wlad2);</SCRIPT>
+            </B></TD>
+          <TD width=335>
+		  	<input type="radio" onclick="EnableDisable();" name="wan_access">
+            <SCRIPT>dw(Enable);</SCRIPT>
+             <input type="radio" name="wan_access" checked>
+            <SCRIPT>dw(Disable);</SCRIPT>
+             </TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=174>&nbsp;</TD>
+          <TD width=335>&nbsp;</TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD align=middle colSpan=2>
+            <SCRIPT>
+				dw('<input type="button" value="');dw(btn1);
+				dw('" style="{width:160px;}" class="submitBtn" onclick="Clear();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+				dw('<input type="button" style="{width:160px;}" value="');
+				dw(btn2);
+				dw('" onClick="return Try_Submit();" class="submitBtn">');</SCRIPT>
+          </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

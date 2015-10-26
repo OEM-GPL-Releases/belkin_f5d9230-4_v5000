@@ -1,0 +1,16 @@
+<HTML>
+<HEAD>
+<script language="javascript">
+	function start_redirect()
+	{
+		var ip = '<%nvram_get("lan_ipaddr");%>';
+		var url = "http://" + ip + "/";
+		document.location.href = url;
+	}
+	setTimeout('start_redirect()',30000);
+</script>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<br>
+&nbsp;&nbsp;&nbsp;Firmware Update Failure: You have attempted to install an incompatible firmware version. Your router will now reboot.
+</BODY></HTML>

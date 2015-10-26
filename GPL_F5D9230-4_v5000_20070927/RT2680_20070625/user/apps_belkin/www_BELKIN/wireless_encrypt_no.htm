@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language="JavaScript" src="validate.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wle1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Security';
+var menuSection	='WLAN';
+var menuItem	='Security';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function GURL(x){location=x}
+function logoutF()
+{
+document.tF.logout.value=1;
+document.tF.submit();
+return true;
+}
+
+function Init_Value(){}
+function Try_Submit(){document.forms[0].submit();}
+
+function ChangeSecMode(wl_sec_mode)
+{
+	if(wl_sec_mode.value == "0") GURL('wireless_encrypt_no.htm');
+	else if(wl_sec_mode.value == "psk") GURL('wireless_wpa_psk.htm');	
+	else if(wl_sec_mode.value == "128") GURL('wireless_encrypt_128.htm');	
+	else if(wl_sec_mode.value == "64") GURL('wireless_encrypt_64.htm');		
+	else if(wl_sec_mode.value == "wpa") GURL('wireless_wpa_radius.htm');	
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" onload="Init_Value();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="tF" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wireless_encrypt_no.htm">
+<input type="hidden" name="redirect_timer" value="5000">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="restart" value="wireless">
+<input type="hidden" name="data1" value="wl0_sec_mode">
+
+<input type="hidden" name="wl0_sec_mode" value="none">
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wle1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=650 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top height=410>
+            <TABLE class=copy_1 cellSpacing=10 cellPadding=0 width=600 
+            align=center border=0>
+              <TBODY>
+              <TR>
+                <TD width=166><B>
+                  <SCRIPT>dw(wle2);</SCRIPT>
+                  </B></TD>
+                <TD align=left colSpan=2>
+					<SELECT onchange="ChangeSecMode(this);" name="wl_sec_mode"> 
+                    <SCRIPT>
+						dw('<option value="0" selected >'+Disabled+'</option>');
+						dw('<option value="psk">'+wle3+'</option>');
+						dw('<option value="128">'+wle4+'</option>');
+						dw('<option value="64">'+wle5+'</option>');
+						dw('<option value="wpa">'+wle6+'</option>');
+					</SCRIPT>
+                  	</SELECT> 
+				</TD></TR>
+              <TR>
+                <TD colSpan=3>
+                  <SCRIPT>dw(wle7);</SCRIPT>
+                  <A class=plaintext_bold 
+                  onclick="window.open('glossary.htm#wireless_security','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+                  href="javascript:void(0);"><B><FONT color=#0066FF>
+                  <SCRIPT>dw(sm1);</SCRIPT>
+                  </FONT></B></A></TD></TR>
+              <TR>
+                <TD width=166>&nbsp;</TD>
+                <TD width=174>&nbsp;</TD>
+                <TD width=335>&nbsp;</TD></TR>
+              <TR>
+                <TD width=166>&nbsp;</TD>
+                <TD align=middle colSpan=2>
+                  <SCRIPT>dw('<input type="button" style="{width:160px;}" value="'+btn2+'" class="submitBtn" onclick="Try_Submit();">');</SCRIPT>
+                </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

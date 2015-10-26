@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+fmn1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='';
+var menuSection	='Fire';
+var menuItem	='';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function Init_Value()
+{
+	var f = document.forms[0];
+	var fw_enabled = '<%nvram_get("fw_spi_enabled");%>';
+	
+	if (fw_enabled == '1')
+		f.dos_enable[1].checked = true;
+	else
+		f.dos_enable[0].checked = true;
+}
+
+function Try_Submit()
+{
+	var f = document.forms[0];
+	if (f.dos_enable[1].checked == true)
+	{
+		f.fw_spi_enabled.value = 1;
+	}
+	else
+	{
+		f.fw_spi_enabled.value = 0;
+	}
+	f.submit();
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0" onLoad="Init_Value();">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM name="fw_main" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="fw_main.htm">
+<input type="hidden" name="redirect_timer" value="30000">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="restart" value="firewall">
+<input type="hidden" name="data1" value="fw_spi_enabled">
+
+<input type="hidden" name="fw_spi_enabled">
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(fmn1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=600 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=3>
+            <SCRIPT>dw(fmn2);</SCRIPT>
+            <BR><BR><BR></TD></TR>
+        <TR>
+          <TD width=20>&nbsp;</TD>
+          <TD noWrap colSpan=2><B>
+            <SCRIPT>dw(fmn3);</SCRIPT>
+            </B>&nbsp;&nbsp;&nbsp; <INPUT type=radio value=0 name=dos_enable>
+            <SCRIPT>dw(Disable);</SCRIPT>
+             <INPUT type=radio value=1 name=dos_enable>
+            <SCRIPT>dw(Enable);</SCRIPT>
+             </TD></TR>
+        <TR>
+          <TD width=20>&nbsp;</TD>
+          <TD align=middle colSpan=2><BR><BR><BR>
+            <SCRIPT>strHtml='<input type="button" value="'+btn1+'" style="{width:160px;}" class="submitBtn" onClick="window.location.reload();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;"> &nbsp;&nbsp;';
+					dw(strHtml);
+					strHtml='<input type="button" value="'+btn2+'" style="{width:160px;}" class="submitBtn" onClick="Try_Submit();">';
+					dw(strHtml);</SCRIPT>
+          </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

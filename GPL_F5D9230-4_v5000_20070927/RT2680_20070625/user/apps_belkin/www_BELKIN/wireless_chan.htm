@@ -1,0 +1,369 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+
+
+<LINK href="styles.css" type=text/css rel=stylesheet>
+
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wlc1+'</title>';
+dw(strHtml);
+<!--
+var cc='ppp0';
+var helpItem 	='Channel and SSID';
+var menuSection	='WLAN';
+var menuItem	='Channel and SSID';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+
+<!--
+function mark(val)
+{
+	if(val == "0")
+	{
+		document.forms[0].wl_channel.disabled = 1;
+		document.forms[0].wl_ssid.disabled = 1;
+		document.forms[0].wl_gmode_protection.disabled = 1;
+		//document.forms[0].wl_frameburst.disabled = 1;
+		//document.forms[0].wl_qos.disabled = 1;
+	}
+	else
+	{
+		document.forms[0].wl_channel.disabled = 0;
+		document.forms[0].wl_ssid.disabled = 0;
+		document.forms[0].wl_gmode_protection.disabled = 0;
+		document.forms[0].wl_gmode.disabled = 0;
+		//document.forms[0].wl_frameburst.disabled = 0;
+		//document.forms[0].wl_qos.disabled = 0;
+	}
+}
+
+function writeChannel()
+{
+	var strHtml='';	
+	var channels = <%nvram_get("channels");%>;
+	strHtml=
+		'<select name="wl_channel">'
+		+'  <option value="0" >Auto</option>';
+	
+	for( i = 1 ; i <= channels ; i++ )
+	{
+			strHtml += '  <option value="'+i+'" >'+i+'</option>';
+	}
+	strHtml	=	strHtml +'</select>';
+	document.writeln(strHtml);
+	/*var strHtml='';	
+	strHtml=
+	'<select name="wl_channel">'
+	+'  <option value="0" >Auto</option>'
+	+'  <option value="1" >1</option>'
+	+'  <option value="2" >2</option>'
+	+'  <option value="3" >3</option>'
+	+'  <option value="4" >4</option>'
+	+'  <option value="5" >5</option>'
+	+'  <option value="6" >6</option>'
+	+'  <option value="7" >7</option>'
+	+'  <option value="8" >8</option>'
+	+'  <option value="9" >9</option>'
+	+'  <option value="10" >10</option>'
+	+'  <option value="11" >11</option>'
+	+'</select>';
+	document.writeln(strHtml);*/
+}
+
+function isBlank(s) 
+{
+ for(var i = 0; i < s.length; i++) {
+ var c = s.charAt(i);
+ if((c !=' ') && (c!='\n') && (c !='\t')) return false;
+ }
+ return true;
+}
+function isSemicolon(s) 
+{
+ for(var i = 0; i < s.length; i++) {
+ var c = s.charAt(i);
+ if(c ==';') return false;
+ }
+ return true;
+}
+function Try_Submit() 
+{
+	var f=document.forms[0];
+ 
+ 	if(isBlank(f.wl_ssid.value)) 
+ 	{
+		alert(warn_msg1);	//Added by Richard 2004-4-29
+		return false;
+ 	}
+ 
+ 	if ( !isSemicolon(f.wl_ssid.value) )
+ 	{
+		alert("SSID can't input with \';\'");	//Added by Richard 2004-4-29
+		return false;
+ 	}
+ 	f.wl0_ssid.value = f.wl_ssid.value;
+	f.wl0_channel.value = f.wl_channel.value;
+	if(f.wl_channel.value=='0')
+		f.wl0_autoChannel.value='1';
+	else
+		f.wl0_autoChannel.value='0';
+ 	if(f.closed.checked==true)
+		f.wl0_ssid_bcast_enabled.value='0';
+ 	else
+		f.wl0_ssid_bcast_enabled.value='1';
+
+	if (f.wl_gmode.selectedIndex == 2)
+		f.wl0_enabled.value = 0;
+	else
+	{
+		f.wl0_enabled.value = 1;
+		f.wl0_mode.value = f.wl_gmode.value;
+	}
+	
+	//f.wl0_brust_mode.value = f.wl_frameburst.value;
+	f.wl0_ctsprotect.value = f.wl_gmode_protection.value;
+	//f.dot11_qos_enabled.value = f.wl_qos.value;
+ 	f.wl0_wmm.value = f.wl_qos.value;
+ 	f.submit();
+}
+
+function Init_Value()
+{
+	var f = document.forms[0];
+	var ssid = '<%nvram_get("wl0_ssid");%>';
+	var wl0_channel = '<%nvram_get("wl0_channel");%>';
+	var wl0_mode = '<%nvram_get("wl0_mode");%>';
+	var wl0_enabled = '<%nvram_get("wl0_enabled");%>';
+	var wl0_ssid_bcast = '<%nvram_get("wl0_ssid_bcast_enabled");%>';
+	var wl0_protection_mode = '<%nvram_get("wl0_ctsprotect");%>';
+	//var wl0_brust_mode = '<%nvram_get("wl0_brust_mode");%>';
+	//var wl0_qos_enabled ='<%nvram_get("dot11_qos_enabled");%>';
+	var wl0_qos_enabled ='<%nvram_get("wl0_wmm");%>';
+	if (wl0_enabled == '0')
+	{
+		f.wl_gmode.selectedIndex = 2;
+	}
+	else
+	{
+		if (wl0_mode=='0')
+			f.wl_gmode.selectedIndex = 1;
+		else
+			f.wl_gmode.selectedIndex = 0;
+	}
+	
+	f.wl_ssid.value = ssid;
+	
+	f.wl_channel.selectedIndex = parseInt(wl0_channel);
+	//Modified BY Mavis
+	if (wl0_ssid_bcast == "1")
+		f.closed.checked = false;
+	else
+		f.closed.checked = true;
+
+	/*switch(wl0_brust_mode)
+	{
+		case '0':
+			f.wl_frameburst.selectedIndex = 0;
+			break;
+		case '1':
+			f.wl_frameburst.selectedIndex = 2;
+			break;
+		case '2':
+			f.wl_frameburst.selectedIndex = 3;
+			break;
+		case '3':
+			f.wl_frameburst.selectedIndex = 1;
+			break;
+	}*/
+	
+	if(wl0_protection_mode=='0')
+		f.wl_gmode_protection.selectedIndex = 1;
+	else
+		f.wl_gmode_protection.selectedIndex = 0;
+	f.wl_qos.selectedIndex = wl0_qos_enabled;
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 onload="Init_Value();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="wlan_main" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wireless_chan.htm">
+<input type="hidden" name="redirect_timer" value="5000">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="restart" value="wireless">
+<input type="hidden" name="data1" value="wl0_ssid wl0_ssid_bcast_enabled wl0_enabled wl0_channel wl0_mode wl0_brust_mode wl0_ctsprotect wl0_autoChannel wl0_wmm">
+
+<input type="hidden" name="wl0_ssid">
+<input type="hidden" name="wl0_ssid_bcast_enabled">
+<input type="hidden" name="wl0_enabled">
+<input type="hidden" name="wl0_channel">
+<input type="hidden" name="wl0_mode">
+<input type="hidden" name="wl0_brust_mode">
+<input type="hidden" name="wl0_ctsprotect">
+<input type="hidden" name="wl0_autoChannel">
+<!--input type="hidden" name="dot11_qos_enabled"-->
+<input type="hidden" name="wl0_wmm">
+<TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wlc1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=5 cellPadding=0 width=585 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD width=71>&nbsp;</TD>
+          <TD colSpan=2>
+            <SCRIPT>dw(wlc2);</SCRIPT>
+            <A 
+            onclick="window.open('glossary.htm#channel_ssid','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><B><FONT color=#6464c3>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A></TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=174><B>
+            <SCRIPT>dw(wlc3);</SCRIPT>
+            &gt;</B></TD>
+          <TD width=335>
+            <SCRIPT>writeChannel();</SCRIPT>
+            &nbsp;&nbsp; <B>Current Channel &gt; </B>&nbsp;
+            <SCRIPT>
+				var channel='<%nvram_get("wl0_currentChannel");%>'; 
+				if('<%nvram_get("wl0_currentChannel");%>'!='0' && !isNaN(channel)) 
+					dw(channel);
+			</SCRIPT>
+          </TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=174><B>
+            <SCRIPT>dw(wlc4);</SCRIPT>
+            &gt;</B> </TD>
+          <TD class=plaintext_bold width=335>
+		  	<INPUT maxLength="32" size="32" name="wl_ssid"> 
+		  </TD>
+		  </TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=174><B>
+            <SCRIPT>dw(wlc5);</SCRIPT>
+            &gt;</B></TD>
+          <TD width="335">
+		  	<SELECT name="wl_gmode"> 
+              <OPTION value="4">802.11g Only</OPTION> 
+			  <OPTION value="0">802.11g&amp;802.11b</OPTION> 
+			  <OPTION value="3">Off</OPTION>
+			</SELECT>&nbsp;&nbsp;
+			<A onclick="window.open('glossary.htm#wireless_mode','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"> <B><FONT color=#6464c3>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A></TD></TR>
+        <TR>
+          <TD width=71>&nbsp;</TD>
+          <TD width=154><B>
+            <SCRIPT>dw(wlc9);</SCRIPT>
+            &gt;</B></TD>
+          <TD width=340>
+		  	<INPUT type="checkbox" name="closed"> 
+            &nbsp;&nbsp;<A 
+            onclick="window.open('glossary.htm#bro_ssid','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"> <B><FONT color=#6464c3>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A></TD></TR>
+        <TR vAlign=top>
+          <TD width=71>&nbsp;</TD>
+          <TD width=154><B>
+            <SCRIPT>dw(wlc12);</SCRIPT>
+            &gt;</B></TD>
+          <TD width=340>
+            <TABLE class=copy_1 cellSpacing=1 cellPadding=1 align=left 
+              border=0><TBODY>
+              <TR vAlign=top>
+                <TD>
+					<SELECT name="wl_gmode_protection"> 
+                    	<option value="2" >Off</option>
+						<option value="0">On</option>
+                  	</SELECT>&nbsp;&nbsp;&nbsp; </TD>
+                <TD>
+				<A onclick="window.open('glossary.htm#protected_mode','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" href="javascript:void(0);">
+				<B><FONT color=#6464c3>
+                  <SCRIPT>dw(sm1);</SCRIPT>
+                  </FONT></B></A></TD></TR></TBODY></TABLE></TD></TR>
+                  
+                  
+	<TR vAlign=top>
+          <TD width=71>&nbsp;</TD>
+          <TD width=154><B>802.11e QoS &gt;</B> </TD>
+          <TD class=plaintext_bold width=340>
+		  	<SELECT name="wl_qos"> 
+				<OPTION value="0">Off</OPTION> 
+				<OPTION value="1">On</OPTION>
+			</SELECT>&nbsp;&nbsp;
+			<A onclick="window.open('glossary.htm#QoS','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"> <B><FONT color=#6464c3>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A></TD></TR>
+                            
+        <!--TR>
+          <TD width=71>&nbsp;</TD>
+          <TD class=head_bold colSpan=2><BR><BR>&nbsp; QoS Configuration 
+            <BR><BR></TD></TR>
+        <TR>
+          <TD width=71>&nbsp;</TD>
+          <TD width=154><B>ACK Mode &gt;</B> </TD>
+          <TD class=plaintext_bold width=340>
+		  	<SELECT name="wl_frameburst"> 
+              <OPTION value="0">Immediate ACK</OPTION> 
+			  <OPTION value="3">Burst ACK</OPTION> 
+			  <OPTION value="1">No ACK</OPTION> 
+              <OPTION value="2">Auto</OPTION>
+			</SELECT>&nbsp;&nbsp;
+			<A onclick="window.open('glossary.htm#ACK','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"> <B><FONT color=#6464c3>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A></TD></TR>
+        <TR>
+          <TD width=71>&nbsp;</TD>
+          <TD width=154><B>802.11e QoS &gt;</B> </TD>
+          <TD class=plaintext_bold width=340>
+		  	<SELECT name="wl_qos"> 
+				<OPTION value="0">Off</OPTION> 
+				<OPTION value="1">On</OPTION>
+			</SELECT>&nbsp;&nbsp;
+			<A onclick="window.open('glossary.htm#QoS','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"> <B><FONT color=#6464c3>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A></TD></TR-->
+        <TR>
+          <TD width=71>&nbsp;</TD>
+          <TD width=154></TD>
+          <TD width=340></TD></TR><INPUT type=hidden value=nothing name=nothing> 
+        <TR>
+          <TD width=71>&nbsp;</TD>
+          <TD class=formText width=154>&nbsp;</TD>
+          <TD class=plaintext_bold width=340>&nbsp; </TD></TR>
+        <TR>
+          <TD width=71>&nbsp;</TD>
+          <TD align=middle colSpan=2>
+            <SCRIPT>dw('<input type="button" value="');dw(btn1);dw('" style="{width:160px;}" class="submitBtn" onClick="Init_Value();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+			dw('<input type="button" style="{width:160px;}" value="');dw(btn2);dw('"onClick="return Try_Submit();" class="submitBtn">');</SCRIPT>
+          </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

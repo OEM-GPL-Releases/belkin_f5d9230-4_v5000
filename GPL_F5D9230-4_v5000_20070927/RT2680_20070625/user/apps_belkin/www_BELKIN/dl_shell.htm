@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>DEBUG</title>
+<meta http-equiv="Content-Type" content="text/html; charset=<%nvram_get("charset");%>">
+<script language="javascript">
+function stop_ap(passForm)
+{
+	passForm.button_val.value=1;
+    passForm.submit();
+}
+function con_tx(passForm)
+{
+	passForm.button_val.value=2;
+    passForm.Data10.value="TXCONT";
+	passForm.submit();
+}
+function tx_test(passForm)
+{
+   passForm.button_val.value=3;
+    passForm.Data10.value="TXCARR";
+	passForm.submit();
+
+}
+
+function tansmit_frame(passForm)
+{
+    passForm.button_val.value=4;
+    passForm.Data10.value="TXFRAME";
+	passForm.submit();
+
+}
+function con_rx(passForm)
+{
+   passForm.button_val.value=5;
+    passForm.Data10.value="RXFRAME";
+	passForm.submit();
+
+}
+function start_ap(passForm)
+{
+    passForm.button_val.value=6;
+	passForm.submit();
+
+}
+function InitValue(passForm) 
+{
+  if('<%nvram_get("Data21");%>'=='')
+
+   passForm.da.value ="00:11:22:33:44:55";
+  else
+   passForm.da.value = '<%nvram_get("Data21");%>';
+
+  if('<%nvram_get("Data22");%>'=='')
+
+   passForm.sa.value = "00:11:22:33:44:56";
+  else
+   passForm.sa.value = '<%nvram_get("Data22");%>';
+
+   if('<%nvram_get("Data23");%>'=='')
+
+  passForm.ssid.value ="00:11:22:33:44:56";
+  else
+  passForm.ssid.value = '<%nvram_get("Data23");%>';
+
+   if('<%nvram_get("Data24");%>'=='')
+
+   passForm.channel.value ="6";
+  else
+  passForm.channel.value = '<%nvram_get("Data24");%>';
+ 
+   if('<%nvram_get("Data25");%>'=='')
+
+  passForm.power.value ="16";
+  else
+  passForm.power.value = '<%nvram_get("Data25");%>';
+
+   if('<%nvram_get("Data26");%>'=='')
+
+   passForm.length_packet.value ="1500";
+  else
+  passForm.length_packet.value = '<%nvram_get("Data26");%>';
+
+    if('<%nvram_get("Data27");%>'=='')
+
+	passForm.rate.value ="11";
+	else
+    passForm.rate.value = '<%nvram_get("Data27");%>';
+
+	if('<%nvram_get("Data28");%>'=='')
+
+	passForm.tx_count.value ="1000";
+	else
+   passForm.tx_count.value = '<%nvram_get("Data28");%>';
+
+}
+</script>
+</head>
+
+<body onLoad="InitValue(document.forms[0]);">
+<form method="post" action="marmot.cgi">
+<input type="hidden" name="button_val">
+<input type="hidden" name="Data10">
+Channel:
+<input name="channel" type="text"  size="10" style="font-size: 8pt">(1~14,default 6)
+<p> 
+
+  Power:
+    <input name="power" type="text" size="10"  style="font-size: 8pt">(0~31,default 16)
+  &nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+<p>  Rate:
+    <input name="rate" type="text" size="10"  style="font-size: 8pt">
+    (0:1Mbps~11:54Mbps,default 11)
+  &nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+<p> 
+ 
+Length:
+  <input name="length_packet" type="text" size="10"  style="font-size: 8pt">
+  (24~1500,default 1500)
+  &nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+<p> 
+ 
+DA:
+  <input name="da" type="text"  size="20" style="font-size: 8pt">
+  (default 00:11:22:33:44:55)
+  &nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+<p> 
+ 
+SA:
+  <input name="sa" type="text" size="20" style="font-size: 8pt">
+  (default 00:11:22:33:44:56)
+  &nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+<p> 
+ 
+SSID:
+  <input name="ssid" type="text"  size="20" style="font-size: 8pt">
+  (default 00:11:22:33:44:56)
+  </p>
+<p>
+Tx count:
+  <input name="tx_count" type="text"  size="20" style="font-size: 8pt">
+  (1~, default: 1000)
+
+</p>
+<table>
+
+<tr height="25" >
+<td width="55" ><input name="apply" type="button" value="Stop AP" style="font-size: 10pt" onClick="stop_ap(this.form);"></td>
+<td width="114" ><input name="apply" type="button" value="Continuous Tx" style="font-size: 10pt" onClick="con_tx(this.form);"></td>
+<td width="105" ><input name="apply" type="button" value="Tx carrier test" style="font-size: 10pt" onClick="tx_test(this.form);"></td>
+<td width="99" ><input name="apply" type="button" value="Transmit frame" style="font-size: 10pt" onClick="tansmit_frame(this.form);"></td>
+<td width="88" ><input name="apply" type="button" value="Continuous Rx" style="font-size: 10pt" onClick="con_rx(this.form);"></td>
+<td width="88" ><input name="apply" type="button" value="Start AP" style="font-size: 10pt" onClick="start_ap(this.form);"></td>
+</tr>
+
+
+
+</table>
+
+
+
+</form>
+<br>
+<hr>
+
+</body>
+</html>

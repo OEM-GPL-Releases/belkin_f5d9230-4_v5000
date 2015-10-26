@@ -1,0 +1,202 @@
+<HTML>
+<HEAD><TITLE>Wireless > Use as Access Point</TITLE>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<SCRIPT language="Javascript" src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language="JavaScript" src="validate.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wla1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Use as Access Point';
+var menuSection	='WLAN';
+var menuItem	='Use as Access Point';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function EnableDisable()
+{
+	location='wireless_apt_disabled.htm';
+}
+
+function Init_Value()
+{
+	var f=document.forms[0];
+
+	var ip = '<%nvram_get("lan_ipaddr");%>';
+	var nm = '<%nvram_get("lan_netmask");%>';
+	var isRouter = '<%nvram_get("wan_enabled");%>';
+	
+	if (isRouter == '1')
+	{
+		f.sip1.value = '192';
+		f.sip2.value = '168';
+		f.sip3.value = '2';
+		f.sip4.value = '254';
+		
+		f.subm1.value = '255';
+		f.subm2.value = '255';
+		f.subm3.value = '255';
+		f.subm4.value = '0';
+	}
+	else
+	{
+		t1=ip.indexOf('.');
+		t2=ip.indexOf('.',t1+1);
+		t3=ip.indexOf('.',t2+1);
+		t5=nm.indexOf('.');
+		t6=nm.indexOf('.',t5+1);
+		t7=nm.indexOf('.',t6+1);
+
+		f.sip1.value=ip.substring(0,t1);
+		f.sip2.value=ip.substring(t1+1,t2);
+		f.sip3.value=ip.substring(t2+1,t3);
+		f.sip4.value=ip.substring(t3+1);
+		f.subm1.value=nm.substring(0,t5);
+		f.subm2.value=nm.substring(t5+1,t6);
+		f.subm3.value=nm.substring(t6+1,t7);
+		f.subm4.value=nm.substring(t7+1);
+	}
+}
+
+function Clear()
+{
+	var enabled = '<%nvram_get("wan_enabled");%>';
+	
+	if (enabled == '1')
+		location.href="wireless_apt_disabled.htm"
+	else
+		Init_Value();
+}
+
+function isBlank(s) 
+{
+	for(i=0;i<s.length;i++) 
+	{
+		c=s.charAt(i);
+		if((c!=' ')&&(c!='\n')&&(c!='\t'))
+			return false;
+	}
+	return true;
+}
+
+function Try_Submit()
+{
+	var f=document.forms[0];
+	
+	if((isBlank(f.sip1.value))||(isNaN(f.sip1.value))||(f.sip1.value<0||f.sip1.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.sip2.value))||(isNaN(f.sip2.value))||(f.sip2.value<0||f.sip2.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.sip3.value))||(isNaN(f.sip3.value))||(f.sip3.value<0||f.sip3.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.sip4.value))||(isNaN(f.sip4.value))||(f.sip4.value<0||f.sip4.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.subm1.value))||(isNaN(f.subm1.value))||(f.subm1.value<0||f.subm1.value>255)) { alert(lssm); return false; }
+	if((isBlank(f.subm2.value))||(isNaN(f.subm2.value))||(f.subm2.value<0||f.subm2.value>255)) { alert(lssm); return false; }
+	if((isBlank(f.subm3.value))||(isNaN(f.subm3.value))||(f.subm3.value<0||f.subm3.value>255)) { alert(lssm); return false; }
+	if((isBlank(f.subm4.value))||(isNaN(f.subm4.value))||(f.subm4.value<0||f.subm4.value>255)) { alert(lssm); return false; }
+
+	if(f.subm1.value ==0) { alert(lssm); return false;}
+	if(f.sip1.value>239) { alert(lsipm4); return false; } 
+	if(f.sip4.value=='0' || f.sip4.value=='255') { alert(lsipm2);return false; }
+	
+	if(f.sip1.value=='127'|| f.sip1.value=='0' )
+	{
+		alert(lsipm3);
+		return false;
+	}
+
+
+	f.lan_ipaddr.value=f.sip1.value+'.'+f.sip2.value+'.'+f.sip3.value+'.'+f.sip4.value;
+	f.lan_netmask.value=f.subm1.value+'.'+f.subm2.value+'.'+f.subm3.value+'.'+f.subm4.value;  
+	alert(wlae3+"("+f.lan_ipaddr.value+").");
+	f.submit();
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" onload="Init_Value();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode);
+</SCRIPT>
+<FORM id="wan_form" name="wan_form" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wireless_apt_enabled.htm">
+<input type="hidden" name="redirect_timer" value="30000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="wan_enabled lan_ipaddr lan_netmask lan_dhcps_enabled">
+
+<input type="hidden" name="wan_enabled" value="0">
+<input type="hidden" name="lan_dhcps_enabled" value="0">
+<input type="hidden" name="lan_ipaddr" value="192.168.2.254"> 
+<input type="hidden" name="lan_netmask" value="255.255.255.0">
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wla1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=10 cellPadding=0 width=580 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <SCRIPT language=javascript>
+if('1'=='1')
+{          
+	var strHtml='<tr><td width="36">&nbsp;</td>'
+	+'<td width="174"><b>'+wlad2+' &gt;</b></td>'
+	+'<td width="335">'+'<input type="radio" name="wan_access" checked value="" >'
+	+Enable+'<input type="radio" name="wan_access" value="eth1" onClick="EnableDisable()">'+Disable
+	+'</td></tr>';
+	document.write(strHtml);     
+} </SCRIPT>
+
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=174><B>
+            <SCRIPT>dw(wlae1);</SCRIPT>
+            &gt;</B></TD>
+          <TD width=335>
+		  	<INPUT name="sip1" maxLength="3" size="3">. 
+			<INPUT name="sip2" maxLength="3" size="3">. 
+			<INPUT name="sip3" maxLength="3" size="3">. 
+            <INPUT name="sip4" maxLength="3" size="3"> 
+		  </TD>
+		</TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=174><B>
+            <SCRIPT>dw(wlae2);</SCRIPT>
+            &gt;</B></TD>
+          <TD width=335>
+		  	<INPUT maxLength=3 size=3 name=subm1>. <INPUT 
+            maxLength=3 size=3 name=subm2>. <INPUT maxLength=3 size=3 
+            name=subm3>. <INPUT maxLength=3 size=3 name=subm4> </TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=174>&nbsp;</TD>
+          <TD width=335>&nbsp;</TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD align=middle colSpan=2>
+            <SCRIPT>
+				dw('<input type="button" value="');
+				dw(btn1);
+				dw('" style="{width:160px;}" class="submitBtn" onclick="Clear();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+				dw('<input type="button" style="{width:160px;}" value="');
+				dw(btn2);
+				dw('" onClick="return Try_Submit();" class="submitBtn">');
+			</SCRIPT>
+          </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

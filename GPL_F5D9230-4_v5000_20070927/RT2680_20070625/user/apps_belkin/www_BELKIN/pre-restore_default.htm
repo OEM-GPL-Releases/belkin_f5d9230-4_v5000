@@ -1,0 +1,25 @@
+<html>
+<head>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<title>Restore Default</title>
+<script language="javascript">
+var CurTime=0; 
+function timebegin() 
+{
+  	if(CurTime < 100)
+  	{
+    	setTimeout("timebegin()",20);
+    	CurTime++;
+  	}  
+  	else
+    	window.location="restore_default.htm";   
+} 
+timebegin();
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+Utilities+ufy1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Restore Factory Default';
+var menuSection	='Util';
+var menuItem	='Restore Factory Default';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+
+function doConfirm()
+{
+	if(confirm(ufy3)) 
+	{
+ 		alert(ufy4);
+		document.gemtek_restore_default.submit();
+ 		return true;
+	} 
+	else 
+	{
+ 		alert(ufy5);
+ 		return false;
+	}
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<SCRIPT language="JavaScript">
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+	<TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+		<SCRIPT>dw(Utilities);dw(ufy1);</SCRIPT><BR><BR>
+			<TABLE class=copy_1 border=0>
+  			<TBODY>
+  			<TR>
+			    <TD width=5>&nbsp;</TD>
+    		<TD>
+      		<TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=600 align=left border=0>
+        	<TBODY>
+       	 		<TR>
+          			<TD>
+            			<DIV align=left><SPAN><SCRIPT>dw(ufy1);</SCRIPT></SPAN><BR><BR></DIV>
+				            <TABLE class=copy_1 cellSpacing=3 cellPadding=0 width="98%" align=center border=0>
+				            <TBODY>
+			              		<TR>
+					                <TD class=verdana12><SCRIPT>dw(ufy2);</SCRIPT></TD>
+								</TR>
+              					<TR>			
+									<form name="gemtek_restore_default" method="post" action="post.cgi">
+										<input type="hidden" name="command" value="device_data">
+										<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+										<input type="hidden" name="redirect_timer" value="1">
+										<input type="hidden" name="reboot" value="1">
+										<input type="hidden" name="next_page" value="restore_factory_default_success.htm">
+										<input type="hidden" name="data1" value="restore_defaults">
+										<input type="hidden" name="restore_defaults" value="1">
+					                <TD><BR><BR><DIV align="center"><SCRIPT>dw('<input type="button" style="{width:150px;}" class="submitBtn" name="Restore Defaults" value="');dw(ufy);dw('" onclick="return doConfirm();"></div>');</SCRIPT></DIV></TD>
+									</form>							
+				  				</TR>
+							</TBODY>
+							</TABLE>
+					</TD>
+				</TR>
+			</TBODY>
+			</TABLE>
+		</TD>
+	</TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

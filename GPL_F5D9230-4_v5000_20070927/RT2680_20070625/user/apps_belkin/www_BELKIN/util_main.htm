@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+Utilities+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='';
+var menuSection	='Util';
+var menuItem	='';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="util_main" action="logout.cgi" method="post">
+<input type="hidden" name="tmp">
+</form>
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(Utilities);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD><SPAN class=verdana12>
+      <SCRIPT>dw(um1);</SCRIPT>
+
+      <UL>
+<!--       <SCRIPT>
+	if('eth1' !='')
+	{
+		var strHtml='<li><a href="util_parentalc.htm"><b><font color=6464c3> '+um2
+		+'</font></b></a><br>'+um3+um4;
+		document.write(strHtml);
+	}
+</SCRIPT>-->
+
+        <LI><A href="util_reset.htm"><B><FONT 
+        color=#6464c3>
+        <SCRIPT>dw(um5);</SCRIPT>
+        </FONT></B></A><BR>
+        <SCRIPT>dw(um6);</SCRIPT>
+        <BR>&nbsp; 
+        <LI><A href="util_factory.htm"><B><FONT 
+        color=#6464c3>
+        <SCRIPT>dw(um7);</SCRIPT>
+        </FONT></B></A><BR>
+        <SCRIPT>dw(um8);</SCRIPT>
+        <BR>&nbsp; 
+        <LI><A href="util_save.htm"><B><FONT 
+color=#6464c3>
+        <SCRIPT>dw(um9);</SCRIPT>
+        </FONT></B></A><BR>
+        <SCRIPT>dw(um10);</SCRIPT>
+        <BR>&nbsp; 
+        <LI><A href="util_prev.htm"><B><FONT 
+color=#6464c3>
+        <SCRIPT>dw(um11);</SCRIPT>
+        </FONT></B></A><BR>
+        <SCRIPT>dw(um12);</SCRIPT>
+        <BR>&nbsp; 
+        <LI><A href="util_firmware.htm"><B><FONT 
+        color=#6464c3>
+        <SCRIPT>dw(um13);</SCRIPT>
+        </FONT></B></A><BR>
+        <SCRIPT>dw(um14);</SCRIPT>
+        <BR>&nbsp; 
+        <LI>
+        <SCRIPT>
+	var strHtml="";
+	if('1'=='1' )
+	{
+		strHtml='<a href="util_system.htm">';
+	}else{
+		strHtml='<a href="utilb_system.htm">';
+	}
+	document.write(strHtml);
+</SCRIPT>
+        <B><FONT color=#6464c3>
+        <SCRIPT>dw(um15);</SCRIPT>
+        </FONT></B></A><BR>
+        <SCRIPT>dw(um16); 
+	if('1'=='1' )
+	{
+		var strHtml=um17;
+		document.write(strHtml);
+	}                
+dw(um18);
+</SCRIPT>
+        </LI></UL></SPAN></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

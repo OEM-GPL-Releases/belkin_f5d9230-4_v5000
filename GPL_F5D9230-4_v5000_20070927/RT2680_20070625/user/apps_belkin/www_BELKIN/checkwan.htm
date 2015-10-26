@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<script language="javascript">
+	var wan_status = '<%check_wanstatus();%>';
+	if (wan_status == 'connected')
+		window.open('http://filter.belkin.com/setup.asp?SN=BEL1IES0&RP=21483&IP=59.104.234.30&FV=1.00.06');
+	else
+		alert(parentalc_alert);
+		
+	window.location.href = "util_parentalc.htm";	
+</script>
+</head>
+<body>
+</body>
+</html>

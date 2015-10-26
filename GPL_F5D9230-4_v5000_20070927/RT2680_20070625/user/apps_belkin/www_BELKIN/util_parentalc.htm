@@ -1,0 +1,312 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+upc1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Parental Control';
+var menuSection	='Util';
+var menuItem	='Parental Control';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';	
+<%autofw_check();%> 
+
+function testurl()
+{
+	var val=document.parentalc.ceb_url.value;
+	
+	if(val=='')
+	{
+		alert(upc35);
+		return false;
+	}
+	else
+	{
+		val=val.replace(/http:\/\//,'');
+		val="http:\/\/"+val;
+		window.open(val);
+	}
+}
+
+function goView()
+{
+	var sn = '<%nvram_get("device_sn");%>';
+	var URL='http://admin.cwfservice.net/site/index.jsp?partnerid='+'71'+'&customerid='+sn+'&name='+sn;
+	window.open(URL,'ViewReport','toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,width=695,height=600,resizable=1');
+}
+
+function modifypolicy()
+{
+	var sn = '<%nvram_get("device_sn");%>';
+	var URL='http://admin.cwfservice.net/site/index.jsp?partnerid='+'71'+'&customerid='+sn+'&name='+sn;
+	window.open(URL);
+}
+
+function changeAction(type)
+{
+	var f = document.forms[0];
+	
+	switch (type)
+	{
+		case 1:
+     		f.Action.value="Subreport";
+			break;
+		case 2:
+			if (f.ceb_enable[0].checked == true)
+				f.parentalc_enabled.value = 1;
+			else
+				f.parentalc_enabled.value = 0;
+			
+			f.parentalc_password.value = f.ceb_pass_pass.value;
+				
+			f.action = "parentalc_config.cgi";
+			f.data1.value ="parentalc_enabled";
+			f.Action.value="ApplyEnable";
+			break;
+		case 3:
+			f.action = "parentalc.cgi";
+			f.Action.value="Subservice";
+			break;
+		case 4:
+			if (f.ceb_email_enable[0].checked == true)
+				f.parentalc_email_notified.value = 1;
+			else
+				f.parentalc_email_notified.value = 0;
+			
+			f.parentalc_password.value = f.ceb_email_pass.value;
+				
+			f.action = "parentalc_config.cgi";
+			f.Action.value="ApplyEmail";
+			f.data1.value ="parentalc_email_notified";
+			break;
+		case 5:
+			f.Action.value="Renewservice";
+			break;
+	}
+	f.submit();
+	
+/*	Marked by Gamble, removed in future.
+	if(type==1) f.Action.value="Subreport";
+	if(type==2) f.Action.value="ApplyEnable";
+	if(type==3) 
+	{
+		f.action.value = "parentalc.cgi";
+		f.Action.value="Subservice";
+	}
+	
+	if(type==4) 
+	{
+		f.action.value = "parentalc_config.cgi";
+		f.Action.value="ApplyEmail";
+		f.data1.value ="";
+	}
+	
+	if(type==5) f.Action.value="Renewservice";
+*/
+}
+
+function changeNAG()
+{
+	if(document.parentalc.ceb_subsc.checked) 
+		document.parentalc.ceb_subsc.value='0';
+	else 
+		document.parentalc.ceb_subsc.value='2';
+	
+	document.parentalc.Action.value="ApplyNAG";
+	document.parentalc.submit();
+}
+
+function Init_Value()
+{
+	var f= document.forms[0];
+	var parentalc_enabled = '<%nvram_get("cwf_parentalc_enabled");%>';
+	var parentalc_email_notified = '<%nvram_get("cwf_email_notified");%>';
+/*
+	if (parentalc_enabled == '1')
+		f.ceb_enable[0].checked = true;
+	else
+		f.ceb_enable[1].checked = true;
+
+	if (parentalc_email_notified == '1')
+		f.ceb_email_enable[0].checked = true;
+	else
+		f.ceb_email_enable[1].checked = true;
+*/
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0" onLoad="Init_Value();">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="parentalc" action="parentalc.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="util_parentalc.htm">
+<input type="hidden" name="redirect_timer" value="1000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="">
+
+<input type="hidden" name="Action">
+<input type="hidden" name="parentalc_enabled">
+<input type="hidden" name="parentalc_email_notified">
+<input type="hidden" name="parentalc_password">
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(upc1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD width=600><BR>
+      <DIV></DIV><SPAN>
+      <SCRIPT>dw(upc2);</SCRIPT>
+      <BR><BR>
+<SCRIPT>
+	//  Parental Control Subscription 
+	var ceb_expire='<%nvram_get("cwf_expire_date");%>';
+	var expire_sec='<%asp_system_timesec();%>';
+	var expire_day=Math.floor(ceb_expire/(3600*24))-Math.floor(expire_sec/(3600*24));
+	var ceb_sub='<%nvram_get("cwf_registered");%>';
+
+</SCRIPT><SPAN>
+<SCRIPT>
+	// Reporting
+	var ceb_sub='<%nvram_get("cwf_registered");%>';
+	var report='';
+	var ceb_expire='<%nvram_get("cwf_expire_date");%>';
+	var expire_sec='<%asp_system_timesec();%>';
+	var expire_day=Math.floor(ceb_expire/(3600*24))-Math.floor(expire_sec/(3600*24));
+	var parentalc_enabled = '<%nvram_get("cwf_parentalc_enabled");%>';
+	var parentalc_text;
+	var parentalc_email_enabled = '<%nvram_get("cwf_email_notified");%>';
+	var parentalc_email_text;
+	
+	if (parentalc_enabled == '1')
+		parentalc_text = ON;
+	else
+		parentalc_text = OFF;
+	
+	if (parentalc_email_enabled =='1')
+		parentalc_email_text = ON;
+	else
+		parentalc_email_text = OFF;
+	
+	// Parental Control Enabled flag
+	if(ceb_sub=='1' && expire_day>0)
+	{
+		var parentalc_enabled = '<%nvram_get("cwf_parentalc_enabled");%>';
+		var parentalc_email_notified = '<%nvram_get("cwf_email_notified");%>';
+
+		var strHtml='<br><hr noshade size="1" color=#666666><br>'
+		+'<span>'+upc21+'</span><br><span>'+upc22+' </span>'
+		+'<table width="61%" border="0" cellspacing="0" cellpadding="3" class="copy_1"><tr><td width="29%">';
+		dw(strHtml);
+
+		if (parentalc_enabled == '1')
+			strHtml='<input type="radio" name="ceb_enable" value="1" checked>';
+		else
+			strHtml='<input type="radio" name="ceb_enable" value="1">';
+		dw(strHtml);
+		strHtml= '<span><b>'+ON+'</b></span></td><td rowspan="2" width="71%"><b>&nbsp;'+upc23+' '
+		+ parentalc_text
+		+'. </b> </td></tr>'
+		+'<tr><td width="29%" class="pageTitle">';
+		dw(strHtml);
+
+		if (parentalc_enabled == '0')
+			strHtml='<input type="radio" name="ceb_enable" value="0" checked>';
+		else
+			strHtml='<input type="radio" name="ceb_enable" value="0">';
+		dw(strHtml);	
+		
+		strHtml = '<span><b>'+OFF+'</b></span></td></tr></table><div align="right">'
+		+'<span>'+pwd+': <input type=password name="ceb_pass_pass" size=10 maxlength=32></span>' //modified by peng(LAN1612)
+		+'&nbsp;&nbsp;<input type="button" style="{width:120px;}" class="submitBtn" value="'+Apply+'" onClick="return changeAction(2)">'
+		+'</div><br><hr noshade size="1" color=#666666><br>'
+		+'<span><b>'+upc24+'</b></span><br>'
+		+'<span>'+upc25+'</span>'
+		+'<table width="61%" border="0" cellspacing="0" cellpadding="3" class="copy_1">';
+		dw(strHtml);	
+		
+		if (parentalc_email_notified=='1')
+			strHtml='<tr><td width="29%"><input type="radio" name="ceb_email_enable" value="1" checked>';
+		else
+			strHtml='<tr><td width="29%"><input type="radio" name="ceb_email_enable" value="1">';			
+		dw(strHtml);
+			
+		strHtml ='<span><b>'+ON+'</b></span></td>'
+		+'<td rowspan="2" width="71%"&nbsp;<b>'+upc26+''
+		+ parentalc_email_text
+		+'. </b> </td>';
+		dw(strHtml);
+		
+		if (parentalc_email_notified=='0')
+			strHtml='</tr><tr><td width="29%"><input type="radio" name="ceb_email_enable" value="0" checked>';
+		else
+			strHtml='</tr><tr><td width="29%"><input type="radio" name="ceb_email_enable" value="0">';	
+		dw(strHtml);
+		
+		strHtml = '<span><b>'+OFF+'</b></span></td></tr></table><div align="right">'
+		+'<span>'+pwd+': <input type=password name="ceb_email_pass" size=10 maxlength=32></span>'//modified by peng(LAN1612)
+		+'&nbsp;&nbsp;<input type="button" style="{width:120px;}" class="submitBtn" value="'+Apply+'" onClick="return changeAction(4)">'
+		+'</div>';
+		dw(strHtml);
+
+		strHtml='<br><hr noshade size="1" color=#666666><br>'
+		+'<span><b>'+upc27+' </b><br></span>'
+		+'<span>'+upc28
+		+'<div align="right">'
+		+'<input type=button  style="{width:150px;}" class="submitBtn" value="'+Modify+'" onClick = "return modifypolicy()"><br>'
+		+'</div></span>';
+		dw(strHtml);
+	}	
+</SCRIPT>
+
+<SCRIPT>
+	//	Parental Control Sign UP
+	var ceb_expire='<%nvram_get("cwf_expire_date");%>';
+	var expire_sec='<%asp_system_timesec();%>';
+	var expire_day=Math.floor(ceb_expire/(3600*24))-Math.floor(expire_sec/(3600*24));
+	var ceb_sub='<%nvram_get("cwf_registered");%>';
+	if(ceb_sub!='1')
+	{
+		strHtml='<br>'//<tr><td valign="top">'
+		+'<div align="left"><span><b>'
+		+upc29
+		+'</b></span>'
+		+'</div><span>'
+		+upc30
+		+'&nbsp;<br>&nbsp;&nbsp;</span> <div align="center">'
+		+'<input type="button" style="{width:150px;}" class="submitBtn" value="'+upc18+'" onClick="changeAction(3)"><br>'
+		+' </div><span><br></span></td></tr>';
+		dw(strHtml);
+	}
+	else if(ceb_sub=='1' && expire_day<15)
+	{
+		strHtml='<br><hr noshade size="1" color=#666666><br>'//<tr><td valign="top">'
+		+'<div align="left"><span><b>'
+		+upc32
+		+'</b></span></div><span">'
+		+upc30
+		+'<br><br> <b>'+upc33+'<div align="center">'
+		+'   <input type="button" style="{width:150px;}" class="submitBtn" value="'+upc34+'" onClick="changeAction(5)"><br>'
+		+' </div><span><br></span></td></tr>';
+		dw(strHtml);
+	}	
+</SCRIPT>
+</SPAN></SPAN></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</FORM></BODY></HTML>

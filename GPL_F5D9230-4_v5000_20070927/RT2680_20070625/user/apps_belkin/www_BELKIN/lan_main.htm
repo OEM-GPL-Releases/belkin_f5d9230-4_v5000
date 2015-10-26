@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+lm1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='';
+var menuSection	='LAN';
+var menuItem	='';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)	
+</SCRIPT>
+<form name="lan_main" action="post.cgi" method="post">
+<input type="hidden" name="tmp">
+</form>
+<TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(lm1);</SCRIPT>
+ &gt; <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 height=384 cellSpacing=0 cellPadding=0 width=600 
+      align=center border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top><SPAN><BR>
+            <SCRIPT>dw(lm2);</SCRIPT>
+            </SPAN>
+            <DIV></DIV>
+            <P align=left><SPAN>
+            <SCRIPT>dw(lm3);</SCRIPT>
+            </SPAN></P>
+            <P align=left><SPAN><B>
+            <SCRIPT>dw(lm4);</SCRIPT>
+            <BR>
+            <SCRIPT>dw(lm5);</SCRIPT>
+            <BR>
+            <SCRIPT>dw(lm6);</SCRIPT>
+            <BR>
+            <SCRIPT>dw(lm7);</SCRIPT>
+            <BR>
+            <SCRIPT>dw(lm8);</SCRIPT>
+            <BR>
+            <SCRIPT>dw(lm9);</SCRIPT>
+            </B></SPAN></P>
+            <P align=left>
+            <SCRIPT>dw(lm10);</SCRIPT>
+            </P>
+            <P align=left><SPAN>
+            <SCRIPT>dw(lm11);</SCRIPT>
+            </SPAN><BR></P></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

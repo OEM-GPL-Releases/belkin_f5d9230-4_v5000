@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+	<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+	<LINK href="styles.css" type=text/css rel=stylesheet>
+	<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+	<META HTTP-EQUIV="expires" CONTENT="0">
+	<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+	<SCRIPT>assign_var();</SCRIPT>
+	<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+ur1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Restart Router';
+var menuSection	='Util';
+var menuItem	='Restart Router';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function doConfirm()
+{
+	if(confirm(ur4)) 
+	{
+    	alert(ur5);
+		document.reboot_form.submit();
+	}	
+	return false;
+}
+
+function logoutF()
+{
+	document.RebootForm.logout.value=1;
+	document.RebootForm.submit();
+	return true;
+}
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(ur1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=3 cellPadding=0 width=580 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <SCRIPT>dw(ur2);</SCRIPT>
+            <BR><BR><BR></TD></TR>
+        <TR>
+          <TD align=middle>
+		    <form name="reboot_form" ENCTYPE="multipart/form-data" method="post" action="system_restart.cgi">
+            <SCRIPT>dw('<input type="button" style="{width:150px;}" class="submitBtn" onClick="return doConfirm()" value="');dw(ur3);dw('">');</SCRIPT>
+			</FORM>
+          </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

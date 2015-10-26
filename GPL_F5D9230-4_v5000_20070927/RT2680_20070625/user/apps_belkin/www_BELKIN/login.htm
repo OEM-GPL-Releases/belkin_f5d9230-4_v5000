@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+lo1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Login';
+var menuSection	='';
+var menuItem	='';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+
+function logoutF()
+{
+	document.tF.logout.value=1;
+	document.tF.submit();
+	return true;
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM name="tF" action="password.cgi" method="post">
+<INPUT type=hidden value='<%nvram_get("lang_code");%>' name="lang_code"> 
+<INPUT type=hidden value='<%nvram_get("charset");%>' name="charset"> 
+<INPUT type=hidden value=login name=page> 
+<INPUT type=hidden value=2 name=logout>
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(lo1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=5 cellPadding=0 width=480 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD width=69 height=41>&nbsp;</TD>
+          <TD colSpan=2 height=41>
+            <SCRIPT>dw(lo2);</SCRIPT>
+          </TD></TR>
+        <TR>
+          <TD width=69></TD>
+          <TD width=146>&nbsp;</TD>
+          <TD width=250>&nbsp;</TD></TR>
+        <TR>
+          <TD width=69>&nbsp;</TD>
+          <TD width=146><B>
+            <SCRIPT>dw(lo3);</SCRIPT>
+            </B></TD>
+          <TD width=250><INPUT type=password maxLength=12 size=9 name="login_password"> 
+        </TD></TR>
+        <TR>
+          <TD width=69>&nbsp;</TD>
+          <TD colSpan=2><B><FONT color=#6f4afd>
+            <SCRIPT>dw(lo4);</SCRIPT>
+            </FONT></B></TD></TR>
+        <TR>
+          <TD width=69>&nbsp;</TD>
+          <TD colSpan=2></TD></TR>
+        <TR>
+          <TD width=69>&nbsp;</TD>
+          <TD align=middle colSpan=2>
+            <SCRIPT>strHtml='<input type="reset" value="'+Clear+'" style="{width:120px;}" class="submitBtn" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;';
+dw(strHtml);
+strHtml='<input type="submit" value="'+Submit+'" style="{width:120px;}" class="submitBtn">';
+dw(strHtml);</SCRIPT>
+          </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

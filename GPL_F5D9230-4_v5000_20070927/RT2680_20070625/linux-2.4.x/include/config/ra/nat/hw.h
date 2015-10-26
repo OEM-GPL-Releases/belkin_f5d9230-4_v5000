@@ -1,0 +1,1 @@
+#undef  CONFIG_RA_NAT_HW

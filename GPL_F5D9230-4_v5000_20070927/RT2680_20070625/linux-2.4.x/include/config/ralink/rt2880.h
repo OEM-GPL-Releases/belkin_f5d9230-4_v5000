@@ -1,0 +1,1 @@
+#define CONFIG_RALINK_RT2880 1

@@ -1,0 +1,1 @@
+#define CONFIG_RALINK_DRIVER 1

@@ -1,0 +1,1 @@
+bpalogin -c /var/bpalogin.conf -d 2 -l stdout

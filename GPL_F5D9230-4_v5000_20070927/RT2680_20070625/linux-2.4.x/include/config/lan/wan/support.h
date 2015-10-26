@@ -1,0 +1,1 @@
+#define CONFIG_LAN_WAN_SUPPORT 1

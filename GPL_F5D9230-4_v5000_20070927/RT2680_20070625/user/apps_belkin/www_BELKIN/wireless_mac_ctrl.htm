@@ -1,0 +1,477 @@
+<HTML>
+<HEAD>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META http-equiv=Pragma content=no-cache>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wlmc1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='MAC Address Control';
+var menuSection	='WLAN';
+var menuItem	='MAC Address Control';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+var mymac='<%get_my_mac();%>';
+/*
+function storeData(type)
+{
+	var newmac='00:06:1b:da:2e:21'; 
+	//alert("newmac="+newmac);
+	count=1;
+	var temp_mac='';
+while(count<=50)
+{
+if(token[count] && token[count]!='')
+{
+var temp_token=token[count];
+//alert("temp_token="+temp_token);
+
+if(count!=type) temp_mac+=temp_token+'';
+//else if(document.mac_form.mac_mode_radio[1].checked==true && newmac.indexOf(temp_token)!=-1)
+//	temp_mac+=temp_token+'';
+else temp_mac+=temp_token;      
+temp_mac+=' ';      
+}
+count++;
+}
+   
+if(temp_mac.indexOf(newmac)==-1 && newmac!='') {
+ if(document.mac_form.mac_mode_radio[0].checked==true) temp_mac=temp_mac+newmac;
+}
+else if(document.mac_form.mac_mode_radio[1].checked==true) {
+	var i1=temp_mac.indexOf(newmac);
+	var firstpart=temp_mac.substring(0,i1);
+	var secpart=temp_mac.substring(i1+18,temp_mac.length);
+	var wholepart=firstpart+secpart;
+//	alert(wholepart);
+	temp_mac=wholepart;
+}
+document.mac_form.wl_maclist.value=temp_mac;
+
+if(document.mac_form.mac_mode_radio[0].checked==true) document.mac_form.wl_macmode.value='allow';
+else if(document.mac_form.mac_mode_radio[1].checked==true) document.mac_form.wl_macmode.value='deny';
+else document.mac_form.wl_macmode.value='disabled';	
+
+document.mac_form.submit();
+return true;
+}
+*/
+
+function isBlank(s) 
+{
+	for(var i = 0; i < s.length; i++) 
+	{
+		var c = s.charAt(i);
+		if((c !=' ') && (c!='\n') && (c !='\t')) 
+			return false;
+	}
+	return true;
+}
+
+function isHex(s) 
+{
+	var j,x = 0;
+	for(var i = 0; i < s.length; i++) 
+	{
+		var c = s.charAt(i);
+		j = parseInt(c,16);
+		if ((j > -1) && (j  < 16)) 
+		{
+			if(x==1) 
+				return false;
+			x=1;
+		}
+	}
+	return true;
+}
+
+function isNValid(s) 
+{
+	if( isBlank(s) || isHex(s)) 
+		return true;
+	else 
+		return false;
+}
+
+function Try_Add() 
+{
+	var f = document.forms[0];
+	var tmp;
+	var i,j;	
+	
+	if(!isBlank(f.macfilterAdd.value))
+	{
+		if(f.macfilterAdd.value.substring(0,6) == "01005e" ||
+		   f.macfilterAdd.value.substring(0,6)=="01005E")
+		{
+			alert("Can not input a multicast MAC!");
+			return false;
+		}
+		
+		for(var i = 0; i < 12; i++) 
+		{
+			var c = f.macfilterAdd.value.charAt(i);
+			j = parseInt(c,16);
+			if ((j < 0) || (j >15) || (isNaN(j) == true)) 
+			{
+				alert(fmcipm); 
+				return false; 
+			}	
+		}
+		tmp=f.macfilterAdd.value;
+   	    mac_str=tmp.substring(0,2)+':'+tmp.substring(2,4)+':'+tmp.substring(4,6)+':'+tmp.substring(6,8)+':'+tmp.substring(8,10)+':'+tmp.substring(10,12);
+
+		for(i=1;i<count;i++)
+		{
+		/*	if(token[i].indexOf(mac_str)!=-1)
+			{
+				alert(fmc12); 
+				return false;		  
+			}
+		*/
+			var a=token[i].toLowerCase();
+			var b=mac_str.toLowerCase();
+		//	alert("a=["+a+"]"+"b=["+b+"]");
+			if( a == b )
+			{
+				alert(fmc12); 
+				return false;		  
+			}
+		}    
+
+		if(count>50) 
+		{
+			alert("The maximum number of MAC address (50) has been reached. Cannot add anymore.");
+			return false;
+		}
+		
+		for (i=1;i<=50;i++)
+		{
+			if (eval('f.filter_mac_'+i+'.value') =='')
+			{
+				eval('f.filter_mac_'+i+'.value = mac_str;');
+				break;
+			}
+		}
+		
+		if (f.mac_mode_radio[0].checked) 
+		{
+			f.filter_mac_51.value = mymac;
+			f.acl_flag.value = 1;
+		}
+		else 
+		if(f.mac_mode_radio[1].checked)
+		{
+			f.filter_mac_51.value = "";
+			f.acl_flag.value = 2;
+		}
+		else
+		{
+			f.filter_mac_51.value = "";
+			f.acl_flag.value = 0;
+		}
+		return true;
+	}	 
+	alert(fmcipm);
+	return false;
+}
+
+function Try_Submit() 
+{
+	var f = document.forms[0];
+	
+		if (f.mac_mode_radio[0].checked) 
+		{
+			f.filter_mac_51.value = mymac;
+			f.acl_flag.value = 1;
+		}
+		else 
+		if(f.mac_mode_radio[1].checked)
+		{
+			f.filter_mac_51.value = "";
+			f.acl_flag.value = 2;
+		}
+		else
+		{
+			f.filter_mac_51.value = "";
+			f.acl_flag.value = 0;
+		}
+	
+	return true;
+}
+
+function Try_Del(x) 
+{ 
+	var f = document.forms[0];
+	
+	eval('f.filter_mac_'+x+'.value = "";');
+	
+	if (f.mac_mode_radio[0].checked)
+		f.acl_flag.value = 1;
+	else if(f.mac_mode_radio[1].checked)
+		f.acl_flag.value = 2;
+	else
+		f.acl_flag.value = 0;
+	
+	return true;
+}
+function macconnetstate(x) 
+{ 
+document.mac_form.stateindex.value = x;
+} 
+
+function Try_Logout()
+{
+	var f = document.forms[0];
+	f.action = "logout.cgi";
+	f.submit();
+}
+
+function Init_Value()
+{
+	var f = document.forms[0];
+	var mac_mode='<%nvram_get("acl_flag");%>';
+	
+	if(mac_mode=='1') 
+		f.mac_mode_radio[0].checked=true;
+	else if(mac_mode== '2') 
+		f.mac_mode_radio[1].checked=true;
+	else 
+		f.mac_mode_radio[2].checked=true;
+	
+	f.macfilterAdd.value ='';	
+		
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" onload="Init_Value();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM name="mac_form" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wireless_mac_ctrl.htm">
+<input type="hidden" name="redirect_timer" value="5000">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="restart" value="wireless">
+<input type="hidden" name="data1" value="acl_flag filter_mac_1 filter_mac_2 filter_mac_3 filter_mac_4 filter_mac_5 filter_mac_6 filter_mac_7 filter_mac_8 filter_mac_9 filter_mac_10 filter_mac_11 filter_mac_12 filter_mac_13 filter_mac_14 filter_mac_15 filter_mac_16 filter_mac_17 filter_mac_18 filter_mac_19 filter_mac_20 filter_mac_21 filter_mac_22 filter_mac_23 filter_mac_24 filter_mac_25 filter_mac_26 filter_mac_27 filter_mac_28 filter_mac_29 filter_mac_30 filter_mac_31 filter_mac_32 filter_mac_33 filter_mac_34 filter_mac_35 filter_mac_36 filter_mac_37 filter_mac_38 filter_mac_39 filter_mac_40 filter_mac_41 filter_mac_42 filter_mac_43 filter_mac_44 filter_mac_45 filter_mac_46 filter_mac_47 filter_mac_48 filter_mac_49 filter_mac_50 filter_mac_51">
+
+<input type="hidden" name="acl_flag">
+<input type="hidden" name="filter_mac_1" value='<%nvram_get("filter_mac_1");%>'>
+<input type="hidden" name="filter_mac_2" value='<%nvram_get("filter_mac_2");%>'>
+<input type="hidden" name="filter_mac_3" value='<%nvram_get("filter_mac_3");%>'>
+<input type="hidden" name="filter_mac_4" value='<%nvram_get("filter_mac_4");%>'>
+<input type="hidden" name="filter_mac_5" value='<%nvram_get("filter_mac_5");%>'>
+<input type="hidden" name="filter_mac_6" value='<%nvram_get("filter_mac_6");%>'>
+<input type="hidden" name="filter_mac_7" value='<%nvram_get("filter_mac_7");%>'>
+<input type="hidden" name="filter_mac_8" value='<%nvram_get("filter_mac_8");%>'>
+<input type="hidden" name="filter_mac_9" value='<%nvram_get("filter_mac_9");%>'>
+<input type="hidden" name="filter_mac_10" value='<%nvram_get("filter_mac_10");%>'>
+<input type="hidden" name="filter_mac_11" value='<%nvram_get("filter_mac_11");%>'>
+<input type="hidden" name="filter_mac_12" value='<%nvram_get("filter_mac_12");%>'>
+<input type="hidden" name="filter_mac_13" value='<%nvram_get("filter_mac_13");%>'>
+<input type="hidden" name="filter_mac_14" value='<%nvram_get("filter_mac_14");%>'>
+<input type="hidden" name="filter_mac_15" value='<%nvram_get("filter_mac_15");%>'>
+<input type="hidden" name="filter_mac_16" value='<%nvram_get("filter_mac_16");%>'>
+<input type="hidden" name="filter_mac_17" value='<%nvram_get("filter_mac_17");%>'>
+<input type="hidden" name="filter_mac_18" value='<%nvram_get("filter_mac_18");%>'>
+<input type="hidden" name="filter_mac_19" value='<%nvram_get("filter_mac_19");%>'>
+<input type="hidden" name="filter_mac_20" value='<%nvram_get("filter_mac_20");%>'>
+<input type="hidden" name="filter_mac_21" value='<%nvram_get("filter_mac_21");%>'>
+<input type="hidden" name="filter_mac_22" value='<%nvram_get("filter_mac_22");%>'>
+<input type="hidden" name="filter_mac_23" value='<%nvram_get("filter_mac_23");%>'>
+<input type="hidden" name="filter_mac_24" value='<%nvram_get("filter_mac_24");%>'>
+<input type="hidden" name="filter_mac_25" value='<%nvram_get("filter_mac_25");%>'>
+<input type="hidden" name="filter_mac_26" value='<%nvram_get("filter_mac_26");%>'>
+<input type="hidden" name="filter_mac_27" value='<%nvram_get("filter_mac_27");%>'>
+<input type="hidden" name="filter_mac_28" value='<%nvram_get("filter_mac_28");%>'>
+<input type="hidden" name="filter_mac_29" value='<%nvram_get("filter_mac_29");%>'>
+<input type="hidden" name="filter_mac_30" value='<%nvram_get("filter_mac_30");%>'>
+<input type="hidden" name="filter_mac_31" value='<%nvram_get("filter_mac_31");%>'>
+<input type="hidden" name="filter_mac_32" value='<%nvram_get("filter_mac_32");%>'>
+<input type="hidden" name="filter_mac_33" value='<%nvram_get("filter_mac_33");%>'>
+<input type="hidden" name="filter_mac_34" value='<%nvram_get("filter_mac_34");%>'>
+<input type="hidden" name="filter_mac_35" value='<%nvram_get("filter_mac_35");%>'>
+<input type="hidden" name="filter_mac_36" value='<%nvram_get("filter_mac_36");%>'>
+<input type="hidden" name="filter_mac_37" value='<%nvram_get("filter_mac_37");%>'>
+<input type="hidden" name="filter_mac_38" value='<%nvram_get("filter_mac_38");%>'>
+<input type="hidden" name="filter_mac_39" value='<%nvram_get("filter_mac_39");%>'>
+<input type="hidden" name="filter_mac_40" value='<%nvram_get("filter_mac_40");%>'>
+<input type="hidden" name="filter_mac_41" value='<%nvram_get("filter_mac_41");%>'>
+<input type="hidden" name="filter_mac_42" value='<%nvram_get("filter_mac_42");%>'>
+<input type="hidden" name="filter_mac_43" value='<%nvram_get("filter_mac_43");%>'>
+<input type="hidden" name="filter_mac_44" value='<%nvram_get("filter_mac_44");%>'>
+<input type="hidden" name="filter_mac_45" value='<%nvram_get("filter_mac_45");%>'>
+<input type="hidden" name="filter_mac_46" value='<%nvram_get("filter_mac_46");%>'>
+<input type="hidden" name="filter_mac_47" value='<%nvram_get("filter_mac_47");%>'>
+<input type="hidden" name="filter_mac_48" value='<%nvram_get("filter_mac_48");%>'>
+<input type="hidden" name="filter_mac_49" value='<%nvram_get("filter_mac_49");%>'>
+<input type="hidden" name="filter_mac_50" value='<%nvram_get("filter_mac_50");%>'>
+<input type="hidden" name="filter_mac_51" value='<%nvram_get("filter_mac_51");%>'>
+
+<TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wlmc1);</SCRIPT><BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=36>&nbsp;</TD>
+    <TD colSpan=2>
+      <SCRIPT>dw(wlmc2);</SCRIPT>&nbsp;
+	  <A onclick="window.open('glossary.htm#wireless_mac_ctrl','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" href="javascript:void(0);"> 
+	  <B><FONT color=#0066FF>
+      <SCRIPT>dw(sm1);</SCRIPT>
+      </FONT></B></A>
+	 </TD>
+  </TR>
+  <TR>
+    <TD width=36>&nbsp;</TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	<input type="radio" name="mac_mode_radio"><B>
+    <SCRIPT>dw(Allow);</SCRIPT>
+      </B> <INPUT type="radio" name="mac_mode_radio"><B>
+      <SCRIPT>dw(Deny);</SCRIPT>
+      </B> <INPUT type="radio" name="mac_mode_radio"><B>
+      <SCRIPT>dw(Disable);</SCRIPT>
+      </B> </TD>
+    <TD>&nbsp;</TD></TR></TBODY></TABLE><BR>
+<TABLE class=copy_1 cellSpacing=5 cellPadding=0 width=500 border=0>
+  <TBODY>
+  <TR>
+    <TD width=19>&nbsp;</TD>
+    <TD colSpan=2>
+      <TABLE class=copy_1 cellSpacing=1 cellPadding=1 width=350 align=center border=0>
+        <TBODY>
+        <TR bgColor=#666666>
+          <TH>&nbsp;</TH>
+          <TH width="30%"><FONT color=#ffffff>
+            <SCRIPT>dw(fmc7);</SCRIPT>
+            </FONT></TH>
+          <TH width="26%">&nbsp;</TH></TR>
+        <TR align=middle bgColor=#CCCCCC>
+          <TD>&nbsp;</TD>
+          <TD width="30%"><INPUT maxLength="12" size="12" name="macfilterAdd"></TD>
+          <TD width="26%">
+            <DIV align=center>
+            <SCRIPT>
+				strHtml='<input type="submit" name="hostAdd1" value="&lt;&lt; '+Add+'" style="{width:100px;}" class="submitBtn" onClick="return Try_Add();">';
+				dw(strHtml);
+			</SCRIPT>
+            </DIV></TD></TR>
+        <SCRIPT>
+var strHtml;
+var strTemp;
+count=1;
+var token= new Array(51);
+var token_checked=new Array(51);
+token[1]='<%nvram_get("filter_mac_1");%>';
+token[2]='<%nvram_get("filter_mac_2");%>';
+token[3]='<%nvram_get("filter_mac_3");%>';
+token[4]='<%nvram_get("filter_mac_4");%>';
+token[5]='<%nvram_get("filter_mac_5");%>';
+token[6]='<%nvram_get("filter_mac_6");%>';
+token[7]='<%nvram_get("filter_mac_7");%>';
+token[8]='<%nvram_get("filter_mac_8");%>';
+token[9]='<%nvram_get("filter_mac_9");%>';
+token[10]='<%nvram_get("filter_mac_10");%>';
+token[11]='<%nvram_get("filter_mac_11");%>';
+token[12]='<%nvram_get("filter_mac_12");%>';
+token[13]='<%nvram_get("filter_mac_13");%>';
+token[14]='<%nvram_get("filter_mac_14");%>';
+token[15]='<%nvram_get("filter_mac_15");%>';
+token[16]='<%nvram_get("filter_mac_16");%>';
+token[17]='<%nvram_get("filter_mac_17");%>';
+token[18]='<%nvram_get("filter_mac_18");%>';
+token[19]='<%nvram_get("filter_mac_19");%>';
+token[20]='<%nvram_get("filter_mac_20");%>';
+token[21]='<%nvram_get("filter_mac_21");%>';
+token[22]='<%nvram_get("filter_mac_22");%>';
+token[23]='<%nvram_get("filter_mac_23");%>';
+token[24]='<%nvram_get("filter_mac_24");%>';
+token[25]='<%nvram_get("filter_mac_25");%>';
+token[26]='<%nvram_get("filter_mac_26");%>';
+token[27]='<%nvram_get("filter_mac_27");%>';
+token[28]='<%nvram_get("filter_mac_28");%>';
+token[29]='<%nvram_get("filter_mac_29");%>';
+token[30]='<%nvram_get("filter_mac_30");%>';
+token[31]='<%nvram_get("filter_mac_31");%>';
+token[32]='<%nvram_get("filter_mac_32");%>';
+token[33]='<%nvram_get("filter_mac_33");%>';
+token[34]='<%nvram_get("filter_mac_34");%>';
+token[35]='<%nvram_get("filter_mac_35");%>';
+token[36]='<%nvram_get("filter_mac_36");%>';
+token[37]='<%nvram_get("filter_mac_37");%>';
+token[38]='<%nvram_get("filter_mac_38");%>';
+token[39]='<%nvram_get("filter_mac_39");%>';
+token[40]='<%nvram_get("filter_mac_40");%>';
+token[41]='<%nvram_get("filter_mac_41");%>';
+token[42]='<%nvram_get("filter_mac_42");%>';
+token[43]='<%nvram_get("filter_mac_43");%>';
+token[44]='<%nvram_get("filter_mac_44");%>';
+token[45]='<%nvram_get("filter_mac_45");%>';
+token[46]='<%nvram_get("filter_mac_46");%>';
+token[47]='<%nvram_get("filter_mac_47");%>';
+token[48]='<%nvram_get("filter_mac_48");%>';
+token[49]='<%nvram_get("filter_mac_49");%>';
+token[50]='<%nvram_get("filter_mac_50");%>';
+
+count=1;
+for(var i=1; i<=50; i++)
+{          
+	strTemp=token[i];
+
+	strHtml='<tr bgcolor=#CCCCCC align="center"><td align="center">'+String(count)+'.</td>';
+	
+	if (token[i]!='' && token[i].length == 17)
+		dw(strHtml);               
+                                   
+	strHtml='<td width="60%" align="center">'
+	+strTemp.substr(0,2)
+	+strTemp.substr(3,2)
+	+strTemp.substr(6,2)
+	+strTemp.substr(9,2)
+	+strTemp.substr(12,2)
+	+strTemp.substr(15,2)
+	+'</td><td width="26%" align="center">'
+	+'<input type="submit" name="relname" style="{width:100px;}" class="submitBtn" value="'+Del+'" onClick="Try_Del('
+	+String(i)
+	+');">'
+	+'</td></tr>';
+	
+	if (token[i]!='' && token[i].length == 17)
+	{
+		dw(strHtml); 
+		count++;
+	}
+} //while
+</SCRIPT>
+        </TBODY></TABLE></TD></TR>
+  <TR>
+    <TD width=19>&nbsp;</TD>
+    <TD colSpan=2>&nbsp;</TD></TR>
+  <TR>
+    <TD width=19>&nbsp;</TD>
+    <TD colSpan=2>
+      <DIV align=right>
+      	<SCRIPT>
+	  		strHtml='<input type="button" value="'+btn1+'" style="{width:160px;}" onClick="Init_Value();" class="submitBtn" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;';
+			dw(strHtml);
+			strHtml='<input type="submit" style="{width:160px;}" value="'+btn2+'" onClick="return Try_Submit();" class="submitBtn">';
+			dw(strHtml);
+		</SCRIPT>
+      </DIV></TD></TR></TBODY></TABLE></TD></TR></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</FORM></BODY></HTML>

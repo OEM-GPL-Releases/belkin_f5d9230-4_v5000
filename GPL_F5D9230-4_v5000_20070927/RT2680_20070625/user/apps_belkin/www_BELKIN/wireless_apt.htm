@@ -1,0 +1,22 @@
+<html>
+<head>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<title>Wireless</title>
+<script language="javascript">
+	var enabled = '<%nvram_get("wan_enabled");%>';
+	
+	if (enabled == '1')
+		location.href="wireless_apt_disabled.htm"
+	else
+		location.href="wireless_apt_enabled.htm";
+		
+</script>
+</head>
+<body>
+</body>
+</html>

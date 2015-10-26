@@ -1,0 +1,493 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="validate.js"></SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+ls1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='LAN Settings';
+var menuSection	='LAN';
+var menuItem	='LAN Settings';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function Init_Value()
+{
+	var f=document.forms[0];
+	var t1,t2;
+	var lan_ipadder='<%nvram_get("lan_ipaddr");%>';
+	var lan_netmask='<%nvram_get("lan_netmask");%>';
+	var lan_dhcps_start_ip='<%nvram_get("lan_dhcps_start_ip");%>';
+	var lan_dhcps_end_ip='<%nvram_get("lan_dhcps_end_ip");%>';
+	var dhcp_lease='<%nvram_get("lan_dhcps_lease_time");%>';
+	var wan_domain='<%nvram_get("lan_dhcps_domain_name");%>';
+	var lan_dhcps_enabled = '<%nvram_get("lan_dhcps_enabled");%>';
+	var lan_dhcps_leasetime = '<%nvram_get("lan_dhcps_lease_time");%>';
+	var i=0;
+	
+	t1=lan_ipadder.indexOf('.');
+	if(t1!=-1) f.IP1.value=lan_ipadder.substring(0,t1);
+	
+	t2=lan_ipadder.indexOf('.',(t1+1));
+	if(t2!=-1) f.IP2.value=lan_ipadder.substring((t1+1),t2);
+
+	t1=lan_ipadder.indexOf('.',(t2+1));
+	if(t1!=-1) f.IP3.value=lan_ipadder.substring((t2+1),t1);
+
+	f.IP4.value=lan_ipadder.substring(t1+1);
+
+	t1=lan_netmask.indexOf('.');
+	t2=lan_netmask.indexOf('.',(t1+1));
+	if(t2!=-1) f.sysmask2.value=lan_netmask.substring((t1+1),t2);
+	
+	t1=lan_netmask.indexOf('.',(t2+1));
+	if(t1!=-1) f.sysmask3.value=lan_netmask.substring((t2+1),t1);
+	f.sysmask4.value=lan_netmask.substring(t1+1); 
+
+	if(lan_dhcps_enabled=='1') 
+		f.DHCPEnabled[0].checked=true;
+	else 
+		f.DHCPEnabled[1].checked=true;
+
+	t1=lan_dhcps_start_ip.indexOf('.');
+	if(t1!=-1)f.DHCPStart1.value=lan_dhcps_start_ip.substring(0,t1);
+	t2=lan_dhcps_start_ip.indexOf('.',(t1+1));
+	if(t2!=-1)f.DHCPStart2.value=lan_dhcps_start_ip.substring((t1+1),t2);
+	t1=lan_dhcps_start_ip.indexOf('.',(t2+1));
+	if(t1!=-1)f.DHCPStart3.value=lan_dhcps_start_ip.substring((t2+1),t1);
+	f.DHCPStart4.value=lan_dhcps_start_ip.substring(t1+1);
+
+	t1=lan_dhcps_end_ip.indexOf('.');
+	if(t1!=-1)f.DHCPEnd1.value=lan_dhcps_end_ip.substring(0,t1);
+	t2=lan_dhcps_end_ip.indexOf('.',(t1+1));
+	if(t2!=-1)f.DHCPEnd2.value=lan_dhcps_end_ip.substring((t1+1),t2);	
+	t1=lan_dhcps_end_ip.indexOf('.',(t2+1));
+	if(t1!=-1)f.DHCPEnd3.value=lan_dhcps_end_ip.substring((t2+1),t1);
+	f.DHCPEnd4.value=lan_dhcps_end_ip.substring(t1+1);
+	
+	f.DHCPServerName.value=wan_domain;
+	
+	switch(lan_dhcps_leasetime)
+	{
+		case '30':
+			f.leaseTime.selectedIndex = 1;
+			break;
+		case '60':
+			f.leaseTime.selectedIndex = 2;
+			break;
+		case '120':
+			f.leaseTime.selectedIndex = 3;
+			break;
+		case '720':
+			f.leaseTime.selectedIndex = 4;
+			break;
+		case '1440':
+			f.leaseTime.selectedIndex = 5;
+			break;
+		case '2880':
+			f.leaseTime.selectedIndex = 6;
+			break;
+		case '10080':
+			f.leaseTime.selectedIndex = 7;
+			break;
+		case '20160':
+			f.leaseTime.selectedIndex = 8;
+			break;
+		default:
+			f.leaseTime.selectedIndex = 0;
+			break;
+	}
+	
+}
+
+function setDHCPAddress() 
+{
+	var f=document.lan_form;
+ 	f.DHCPStart1.value = f.IP1.value;
+ 	f.DHCPStart2.value = f.IP2.value;
+ 	f.DHCPStart3.value = f.IP3.value;
+ 	f.DHCPEnd1.value = f.IP1.value;
+ 	f.DHCPEnd2.value = f.IP2.value;
+ 	f.DHCPEnd3.value = f.IP3.value;
+}
+
+function storeData()
+{
+	var f=document.lan_form;
+	f.lan_ipaddr.value=f.IP1.value+'.'+f.IP2.value+'.'+f.IP3.value+'.'+f.IP4.value;
+	f.cur_ipaddr.value=f.IP1.value+'.'+f.IP2.value+'.'+f.IP3.value+'.'+f.IP4.value;
+	f.lan_netmask.value='255.'+f.sysmask2.value+'.'+f.sysmask3.value+'.'+f.sysmask4.value;
+	
+	if(f.DHCPEnabled[0].checked==true) 
+		f.lan_dhcps_enabled.value='1';
+	else 
+		f.lan_dhcps_enabled.value='0';
+
+	f.lan_dhcps_start_ip.value=f.DHCPStart1.value+'.' +f.DHCPStart2.value+'.'+f.DHCPStart3.value+'.'+ f.DHCPStart4.value;
+	f.lan_dhcps_end_ip.value=f.DHCPEnd1.value+'.'+f.DHCPEnd2.value+'.'+f.DHCPEnd3.value+'.'+f.DHCPEnd4.value;
+	f.lan_dhcps_domain_name.value=f.DHCPServerName.value;
+  	f.lan_dhcps_lease_time.value = f.leaseTime.value;
+	
+	if(f.IP4.value=='0' || f.IP4.value=='255')
+	{
+		alert(lsipm2);
+		return false;
+	}
+
+	if(f.IP1.value=='127'|| f.IP1.value=='0' )
+	{
+		alert(lsipm3);
+		return false;
+	}
+
+	var localname=f.DHCPServerName.value.toLowerCase();
+
+	for(i=0;i<localname.length;i++)
+	{
+		var token=localname.charAt(i);
+		if(token=='`' || token=='~' || token=='!' || token=='@' || token=='#'
+		|| token=='$' || token=='%' || token=='^' || token=='&' || token=='*'
+		|| token=='(' || token==')' || token=='=' || token=='+' || token=='['
+		|| token==']' || token=='{' || token=='}' || token=='\\' || token=='|'
+		|| token==';' || token==':' || token=='\'' || token=='\"' || token=='<'
+		|| token=='>' || token=='/' || token=='?' || token ==' ')
+		{
+ 			alert(lsldnm);
+ 			return false;
+		} 
+	}
+	return true;
+}
+function isBlank(s) 
+{
+	for(i=0;i<s.length;i++) 
+	{
+		c=s.charAt(i);
+		if((c!=' ')&&(c!='\n')&&(c!='\t'))return false;
+	}
+	return true;
+}
+
+function isNValidIP(s) {
+if((isBlank(s))||(isNaN(s))||(s<0||s>255)) return true;
+else return false;
+}
+function ipcheck() 
+{
+	var f=document.lan_form;
+	if(f.IP1.value<128)
+	{
+		f.sysmask2.value = 0;
+		f.sysmask3.value = 0;
+		f.sysmask4.value = 0;
+	}
+
+	if((f.IP1.value<192)&&(f.IP1.value>127))
+	{
+		f.sysmask2.value = 255;
+		f.sysmask3.value = 0;
+		f.sysmask4.value = 0;
+	}
+
+	if((f.IP1.value<240)&&(f.IP1.value>191))
+	{
+		f.sysmask2.value = 255;
+		f.sysmask3.value = 255;
+		f.sysmask4.value = 0;
+	}
+}
+function Try_Submit() 
+{
+	var f=document.lan_form;
+	var lan_ip = '<%nvram_get("lan_ipaddr");%>';
+	
+ 	if((isBlank(f.IP1.value))||(isNaN(f.IP1.value))||(f.IP1.value<0||f.IP1.value>255)) { alert(lsipm); return false; }
+ 	if((isBlank(f.IP2.value))||(isNaN(f.IP2.value))||(f.IP2.value<0||f.IP2.value>255)) { alert(lsipm); return false; }
+ 	if((isBlank(f.IP3.value))||(isNaN(f.IP3.value))||(f.IP3.value<0||f.IP3.value>255)) { alert(lsipm); return false; }
+ 	if((isBlank(f.IP4.value))||(isNaN(f.IP4.value))||(f.IP4.value<0||f.IP4.value>255)) { alert(lsipm); return false; }
+ 
+ 	if(f.IP1.value>239){ alert(lsipm4); return false; }  
+	
+	if(f.DHCPEnabled[0].checked==true) 
+ 	{
+		if((isBlank(f.DHCPStart4.value))||(isNaN(f.DHCPStart4.value))||(f.DHCPStart4.value<0||f.DHCPStart4.value>254)) { alert(lsipm); return false; }
+		if((isBlank(f.DHCPEnd4.value))||(isNaN(f.DHCPEnd4.value))||(f.DHCPEnd4.value<0||f.DHCPEnd4.value>254)) { alert(lsipm); return false; }
+		if((f.DHCPEnd4.value - f.DHCPStart4.value) < 0){ alert(lsendm); return false; }
+		if(((f.IP4.value-f.DHCPStart4.value) >= 0) && ((f.DHCPEnd4.value-f.IP4.value) >= 0)){ alert(lspoolm); return false; }
+ 	}
+ 
+ 	if(!storeData())
+		return false;
+ 
+ 	if(checklan()==false)
+		return false;
+ 
+ 	if(lan_ip!=f.lan_ipaddr.value)
+ 	{	
+		if (!confirm(lsipc)) return false; 
+		alert(lsipalert);
+ 	}
+ 	
+	alert(warn_msg2);
+ 	f.submit();
+}
+
+function block1(e) 
+{
+ 	if(document.lan_form.DHCPEnabled[0].checked == true) 
+		return true;
+ 	return false;
+}
+
+function checklan()
+{
+	var f=document.lan_form;
+	var token;
+	var startip;
+	var endip;
+	
+	if((f.IP1.value)!='192' || (f.IP2.value)!='168')
+	{
+		if((f.IP1.value)!='10')
+			if ((f.IP1.value)!='172' || (f.IP2.value) < 16 || (f.IP2.value) > 31)
+			{
+				alert(lsipm5);
+				return false;
+			}			
+	}
+
+	if((f.IP1.value)=='192' && (f.IP2.value)=='168')
+	{
+		if(validateLanNetmask(f.lan_netmask.value)==false) 
+			return false;
+	}
+
+	if((f.IP1.value)=='10')
+	{
+		if(validateLanClassANetmask(f.lan_netmask.value)==false) 
+		return false;
+	} 
+
+	if ((f.IP1.value=='172') && (f.IP2.value >=16) && (f.IP2.value <=31))
+	{
+		if(validateLanClassANetmask(f.lan_netmask.value)==false) 
+			return false;
+	}       
+
+	if(validateGateway(f.lan_ipaddr.value,f.lan_netmask.value,f.lan_dhcps_start_ip.value)==false)
+		return false;
+	if(validateStartEndIp(f.lan_ipaddr.value,f.lan_netmask.value,f.lan_dhcps_start_ip.value,f.lan_dhcps_end_ip.value)==false)
+		return false;
+
+	startip = f.lan_dhcps_start_ip.value.split(".");
+	endip = f.lan_dhcps_end_ip.value.split(".");
+	
+	f.lan_dhcps_start_ip.value = startip[3];
+	f.lan_dhcps_end_ip.value = endip[3];
+	return true;
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" onload="Init_Value(); setDHCPAddress();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM id="lan_form" name="lan_form" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="lan_settings.htm">
+<input type="hidden" name="redirect_timer" value="25000">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="restart" value="lan">
+<input type="hidden" name="data1" value="lan_ipaddr lan_netmask lan_dhcps_enabled lan_dhcps_start_ip lan_dhcps_end_ip lan_dhcps_domain_name lan_dhcps_lease_time">
+
+<input type="hidden" name="lan_ipaddr"> 
+<input type="hidden" name="lan_netmask">
+<input type="hidden" name="lan_dhcps_enabled">
+<input type="hidden" name="lan_dhcps_start_ip">
+<input type="hidden" name="lan_dhcps_end_ip">
+<input type="hidden" name="lan_dhcps_domain_name">
+<input type="hidden" name="lan_dhcps_lease_time">
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+	<SCRIPT language="javascript">dw(ls1);</SCRIPT><BR><BR>
+	<TABLE class="copy_1" border="0">
+  	<TBODY>
+  	<TR>
+    	<TD width=5>&nbsp;</TD>
+    	<TD>
+      		<TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="550" align="center" border="0">
+	        <TBODY>
+        	<TR>
+          <TD width=9 height=18>&nbsp;</TD>
+          <TD colSpan=2 height=18>
+            <SCRIPT>dw(ls2);</SCRIPT>
+          </TD></TR>
+        <TR>
+          <TD width=9 height=18>&nbsp;</TD>
+          <TD width=215 height=18>&nbsp;</TD>
+          <TD width=289 height=18>&nbsp;</TD></TR>
+        <TR>
+          <TD width=9 height=18>&nbsp;</TD>
+          <TD width=215 height=18><B>
+            <SCRIPT>dw(ls3);</SCRIPT>
+            &gt;</B> </TD>
+          	<TD width=289 height=18>
+		  	<INPUT onkeyup="setDHCPAddress();ipcheck();" maxLength="3" size="3" name="IP1">. 
+			<INPUT onkeyup="setDHCPAddress();ipcheck();" maxLength="3" size="3" name="IP2">. 
+            <INPUT onkeyup="setDHCPAddress();ipcheck();" maxLength="3" size="3" name="IP3">. 
+			<INPUT maxLength="3" size="3" name="IP4"> 
+			</TD></TR>
+        <TR>
+          <TD width=9>&nbsp;</TD>
+          <TD colSpan=2><A 
+            onclick="window.open('glossary.htm#IP','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><FONT color=#0066FF><B>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </B></FONT></A></TD></TR>
+        <TR>
+          <TD width=9>&nbsp;</TD>
+          <TD colSpan=2>
+            <HR color=#666666 noShade SIZE=1>
+          </TD></TR>
+        <TR>
+          <TD width=9>&nbsp;</TD>
+          <TD width=215><B>
+            <SCRIPT>dw(ls4);</SCRIPT>
+            &gt;</B></TD>
+          <TD width=289>
+		  	<INPUT disabled maxLength=3 size=3 value=255 name=sysmask12>. 
+			<INPUT maxLength=3 size=3 name=sysmask2>. 
+			<INPUT maxLength=3 size=3 name=sysmask3>. 
+			<INPUT maxLength=3 size=3 name=sysmask4> 
+		  </TD>
+		</TR>
+        <TR>
+          <TD width=9>&nbsp;</TD>
+          <TD colSpan=2><SPAN><A 
+            onclick="window.open('glossary.htm#subnet_mask','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><FONT color=#0066FF><B>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </B></FONT></A></SPAN></TD></TR>
+        <TR>
+          <TD width=9 height=18>&nbsp;</TD>
+          <TD colSpan=2 height=18>
+            <HR color=#666666 noShade SIZE=1>
+          </TD></TR>
+        <TR>
+          <TD width=9>&nbsp;</TD>
+          <TD width=215><B>
+            <SCRIPT>dw(ls5);</SCRIPT>
+            &gt;</B></TD>
+          <TD width=289><INPUT type=radio value=1 name=DHCPEnabled>
+            <SCRIPT>dw(On);</SCRIPT>
+             <INPUT type=radio value=0 name=DHCPEnabled>
+            <SCRIPT>dw(Off);</SCRIPT>
+             </TD></TR>
+        <TR>
+          <TD width=9 height=29>&nbsp;</TD>
+          <TD colSpan=2 height=18>
+            <SCRIPT>dw(ls6);</SCRIPT>
+            <A 
+            onclick="window.open('glossary.htm#DHCP','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><FONT color=#0066FF><B>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </B></FONT></A></TD></TR>
+        <TR>
+          <TD width=9 height=18>&nbsp;</TD>
+          <TD colSpan=2 height=18></TD></TR>
+        <TR>
+          <TD width=9 height=29>&nbsp;</TD>
+          <TD width=215 height=29><B>
+            <SCRIPT>dw(ls7);</SCRIPT>
+            &gt; </B></TD>
+          <TD width=289 height=29><INPUT disabled maxLength=3 size=3 
+            name=DHCPStart1>. <INPUT disabled maxLength=3 size=3 
+            name=DHCPStart2>. <INPUT disabled maxLength=3 size=3 
+            name=DHCPStart3>. <INPUT maxLength=3 size=3 name=DHCPStart4> </TD></TR>
+        <TR>
+          <TD width=9>&nbsp;</TD>
+          <TD width=215><B>
+            <SCRIPT>dw(ls8);</SCRIPT>
+            &gt;</B></TD>
+          <TD width=289><INPUT disabled maxLength=3 size=3 name=DHCPEnd1>. 
+            <INPUT disabled maxLength=3 size=3 name=DHCPEnd2>. <INPUT disabled 
+            maxLength=3 size=3 name=DHCPEnd3>. <INPUT maxLength=3 size=3 
+            name=DHCPEnd4> </TD></TR>
+        <TR>
+          <TD width=9 height=18>&nbsp;</TD>
+          <TD colSpan=2 height=18>
+            <HR color=#666666 noShade SIZE=1>
+          </TD></TR>
+        <TR>
+          <TD width=9>&nbsp;</TD>
+          <TD width=215><B>
+            <SCRIPT>dw(ls9);</SCRIPT>
+            &gt; </B></TD>
+          <TD width=289>
+		  	<SELECT name="leaseTime"> 
+              <SCRIPT>dw('<option value="525600">'+ls10+'</option>');
+				dw('<option value="30" >'+ls11+'</option>');
+				dw('<option value="60" >'+ls12+'</option>');
+				dw('<option value="120"  >'+ls13+'</option>');
+				dw('<option value="720" >'+ls14+'</option>');
+				dw('<option value="1440" >'+ls15+'</option>');
+				dw('<option value="2880"  >'+ls16+'</option>');
+				dw('<option value="10080"  >'+ls17+'</option>');	
+				dw('<option value="20160"  >'+ls18+'</option>');
+			  </SCRIPT>
+            </SELECT> 
+		  </TD></TR>
+        <TR>
+          <TD width=9 height=29>&nbsp;</TD>
+          <TD colSpan=2 height=18>
+            <SCRIPT>dw(ls19);</SCRIPT>
+          </TD></TR>
+        <TR>
+          <TD width=9>&nbsp;</TD>
+          <TD colSpan=2>
+            <HR color=#666666 noShade SIZE=1>
+          </TD></TR>
+        <TR>
+          <TD width=9>&nbsp;</TD>
+          <TD width=215><B>
+            <SCRIPT>dw(ls20);</SCRIPT>
+            &gt; </B><BR><FONT size=1>(
+            <SCRIPT>dw(Optional);</SCRIPT>
+            )</FONT> </TD>
+          <TD width=289><INPUT maxLength="60" size="21" name="DHCPServerName"> 
+</TD></TR>
+        <TR>
+          <TD width=9 height=29>&nbsp;</TD>
+          <TD colSpan=2 height=18>
+            <SCRIPT>dw(ls21);</SCRIPT>
+            <A 
+            onclick="window.open('glossary.htm#local_domain_name','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><FONT color=#0066FF><B>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </B></FONT></A></TD></TR>
+        <TR>
+          <TD width=9>&nbsp;</TD></TR>
+        <TR>
+          <TD width=9>&nbsp;</TD>
+          <TD width=215>&nbsp;</TD>
+          <TD width=339>
+            <SCRIPT>strHtml='<input type="button" value="'+btn1+'" style="{width:160px;}" class="submitBtn" onclick="document.lan_form.reset();Init_Value();setDHCPAddress();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;';
+dw(strHtml);
+strHtml='<input type="button" value="'+btn2+'" style="{width:160px;}" class="submitBtn" onClick="Try_Submit();">';
+dw(strHtml);</SCRIPT>
+          </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

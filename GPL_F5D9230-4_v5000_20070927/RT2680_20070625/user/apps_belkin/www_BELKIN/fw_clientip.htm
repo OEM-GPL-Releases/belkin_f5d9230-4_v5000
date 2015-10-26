@@ -1,0 +1,657 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+fc1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Client IP Filters';
+var menuSection	='Fire';
+var menuItem	='Client IP Filters';
+
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+ 
+function Try_Submit()
+{
+	var f = document.forms[0];
+	var i=1, j=1;
+	var lan_ip = '<%nvram_get("lan_ipaddr");%>';
+	var tmp = lan_ip.split(".");
+	var ip_prefix = tmp[0] + "." + tmp[1] + "." + tmp[2] + ".";
+	var startip;
+	var endip;
+	var tmpip;
+	var dayindex = new Array(1, 2, 4, 8, 16, 32, 64);
+	var tmpday=0;
+	
+	while(i<=6)
+	{
+ 		if(eval("f.ipRangeLow"+i+".value")!='')
+ 		{
+ 			if(eval("f.filterCheckbox"+i+".checked")==true) 
+				eval("f.ar_enabled"+j+".value= 1;");
+			else 
+				eval("f.ar_enabled"+j+".value= 0;");
+ 			
+			eval("tmpip = f.ipRangeLow"+i+".value");
+			startip = tmpip;
+			eval("tmpip = f.ipRangeHigh"+i+".value");
+			endip = tmpip;
+			eval("f.ar_ip_start"+j+"_1.value = startip");
+ 			eval("f.ar_ip_end"+j+"_1.value = endip");
+ 			eval("f.ar_port_start"+j+"_1.value = f.portRangeLow"+i+".value");
+ 			eval("f.ar_port_end"+j+"_1.value = f.portRangeHigh"+i+".value");
+ 
+ 			if(eval("f.protocol"+i+"[0].checked")) 
+				eval("f.ar_protocol"+j+"_1.value= 0;");
+ 			else if(eval("f.protocol"+i+"[1].checked"))
+				eval("f.ar_protocol"+j+"_1.value= 1;");
+ 			else	
+				eval("f.ar_protocol"+j+"_1.value= 2;");
+ 
+ 			if(eval("f.whenRadio"+i+"[0].checked")) {
+				eval("f.ar_time_day"+j+".value = 128");
+				eval("f.ar_time_type"+j+".value = 0");
+			}
+			else {
+				for(k=eval("f.startDay"+i+".selectedIndex");k<=eval("f.endDay"+i+".selectedIndex");k++) {
+					tmpday += parseInt(dayindex[k],10);
+				}
+				eval("f.ar_time_day"+j+".value = "+tmpday);
+				eval("f.ar_time_type"+j+".value = 1");
+			}
+			eval("f.ipfilter_startwday"+j+".value = f.startDay"+i+".value");
+			eval("f.ipfilter_endwday"+j+".value = f.endDay"+i+".value");
+			eval("f.ar_time_start"+j).value = eval("f.startTime"+i).value + ":00:00";
+			eval("f.ar_time_stop"+j).value = eval("f.endTime"+i).value + ":00:00";   
+ 		}
+	 	i++;
+		j++;
+	}//while
+	
+	if(!checkValid(f.ipRangeLow1.value,f.ipRangeHigh1.value,f.portRangeLow1.value,f.portRangeHigh1.value))return false;
+	if(!checkValid(f.ipRangeLow2.value,f.ipRangeHigh2.value,f.portRangeLow2.value,f.portRangeHigh2.value))return false;
+	if(!checkValid(f.ipRangeLow3.value,f.ipRangeHigh3.value,f.portRangeLow3.value,f.portRangeHigh3.value))return false;
+	if(!checkValid(f.ipRangeLow4.value,f.ipRangeHigh4.value,f.portRangeLow4.value,f.portRangeHigh4.value))return false;
+	if(!checkValid(f.ipRangeLow5.value,f.ipRangeHigh5.value,f.portRangeLow5.value,f.portRangeHigh5.value))return false;
+	if(!checkValid(f.ipRangeLow6.value,f.ipRangeHigh6.value,f.portRangeLow6.value,f.portRangeHigh6.value))return false;      
+	f.submit();
+//	return true;
+}  
+
+function isBlank(s) 
+{
+	for(i=0;i< s.length;i++) 
+	{
+  		c=s.charAt(i);
+  		if((c!=' ')&&(c!='\n')&&(c!='\t'))
+			return false;
+	}
+	return true;
+}
+
+function isNValidIP(s) 
+{
+ 	if((isBlank(s))||(isNaN(s))||(s<=0||s>=255)) 
+		return true;
+ 	else 
+		return false;
+}
+
+function isNValidPort(s) 
+{
+ 	if((isBlank(s))||(isNaN(s))) 
+		return true;
+ 	else 
+		return false;
+} 
+
+function isBlank1(s) 
+{
+	if(s == 8) 
+		return true;
+	return 
+		false;
+}
+
+function isBlank2(s) 
+{
+	if(s == 25) 
+		return true;
+	return 
+		false;
+}
+
+function checktime(startDay,endDay,startTime,endTime) 
+{
+	if(isBlank1(startDay)) return false;
+	if(isBlank1(endDay)) return false;
+	if(isBlank2(startTime)) return false;	
+	if(isBlank2(endTime)) return false;	
+	return true;
+}
+
+function checkValid(ipRangeLow,ipRangeHigh,portRangeLow,portRangeHigh) 
+{
+	if(!(isBlank(ipRangeLow)) || !(isBlank(ipRangeHigh)) || !(isBlank(portRangeLow)) || !(isBlank(portRangeHigh)))
+ 	{
+		if (isNValidIP(ipRangeLow) || isNValidIP(ipRangeHigh)){ alert(fcipm); return false; }
+ 		if (isNValidPort(portRangeLow) || isNValidPort(portRangeHigh)){ alert(fcsm); return false; }
+ 		if((portRangeLow > 65535) ||(portRangeLow < 1) || (portRangeHigh > 65535) || (portRangeHigh < 1)) { alert(fcpm); return false; }	 
+ 		if((ipRangeLow - ipRangeHigh) > 0) { alert(fcripm); return false; }	 
+ 		if((portRangeLow - portRangeHigh) > 0){ alert(fcrm); return false; }	 	
+ 	}
+ 	return true;
+}
+	
+function alwaysblock()
+{
+	var f = document.forms[0];
+	var i;
+
+	for (i=1; i<7; i++)
+	{
+ 		if(eval('f.whenRadio'+i+'[0].checked') == true)
+ 		{
+			eval('f.startDay'+i).disabled = true;
+			eval('f.endDay'+i).disabled = true;
+			eval('f.startTime'+i).disabled = true;
+			eval('f.endTime'+i).disabled = true;
+ 		}
+		else
+		{
+			eval('f.startDay'+i).disabled = false;
+			eval('f.endDay'+i).disabled = false;
+			eval('f.startTime'+i).disabled = false;
+			eval('f.endTime'+i).disabled = false;
+ 		}
+	}
+}
+function GetTimeSegment ( TimeString , SegmentNum )
+{
+	var	DMZ = TimeString;
+	var	Counter = 0;
+
+	TimeString = "";
+	if (DMZ=="")
+		return "0";
+	for ( iln = 0 ; iln < DMZ.length ; iln++ ) {
+      		ch = DMZ.charAt ( iln );
+		if ( ch != ':' ) { TimeString = TimeString + ch; }
+		else {
+			Counter = Counter + 1;
+
+			if ( Counter == SegmentNum ) { break; }
+			else { TimeString = ""; }
+		}
+	}
+	return TimeString;
+}
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" onload="alwaysblock();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="fw_clientip" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="fw_clientip.htm">
+<input type="hidden" name="redirect_timer" value="30000">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="restart" value="firewall">
+<input type="hidden" name="data1" value="
+ ar_enabled1 ar_enabled2 ar_enabled3 ar_enabled4 ar_enabled5 ar_enabled6 
+ ar_time_type1 ar_time_type2 ar_time_type3 ar_time_type4 ar_time_type5 ar_time_type6 
+ ar_time_start1 ar_time_start2 ar_time_start3 ar_time_start4 ar_time_start5 ar_time_start6 
+ ar_time_stop1 ar_time_stop2 ar_time_stop3 ar_time_stop4 ar_time_stop5 ar_time_stop6 
+ ar_time_day1 ar_time_day2 ar_time_day3 ar_time_day4 ar_time_day5 ar_time_day6 
+ ar_type1 ar_type2 ar_type3 ar_type4 ar_type5 ar_type6 
+ ar_ip_start1_1 ar_ip_start2_1 ar_ip_start3_1 ar_ip_start4_1 ar_ip_start5_1 ar_ip_start6_1 
+ ar_ip_end1_1 ar_ip_end2_1 ar_ip_end3_1 ar_ip_end4_1 ar_ip_end5_1 ar_ip_end6_1 
+ ar_port_start1_1 ar_port_start2_1 ar_port_start3_1 ar_port_start4_1 ar_port_start5_1 ar_port_start6_1 
+ ar_port_end1_1 ar_port_end2_1 ar_port_end3_1 ar_port_end4_1 ar_port_end5_1 ar_port_end6_1 
+ ar_protocol1_1 ar_protocol2_1 ar_protocol3_1 ar_protocol4_1 ar_protocol5_1 ar_protocol6_1 
+ ipfilter_startwday1 ipfilter_startwday2 ipfilter_startwday3 ipfilter_startwday4 ipfilter_startwday5 ipfilter_startwday6 
+ ipfilter_endwday1 ipfilter_endwday2 ipfilter_endwday3 ipfilter_endwday4 ipfilter_endwday5ipfilter_endwday6">
+ 
+<input type="hidden" name="ar_enabled1">
+<input type="hidden" name="ar_enabled2">
+<input type="hidden" name="ar_enabled3">
+<input type="hidden" name="ar_enabled4">
+<input type="hidden" name="ar_enabled5">
+<input type="hidden" name="ar_enabled6">
+
+<input type="hidden" name="ar_time_type1">
+<input type="hidden" name="ar_time_type2">
+<input type="hidden" name="ar_time_type3">
+<input type="hidden" name="ar_time_type4">
+<input type="hidden" name="ar_time_type5">
+<input type="hidden" name="ar_time_type6">
+
+<input type="hidden" name="ar_time_start1">
+<input type="hidden" name="ar_time_start2">
+<input type="hidden" name="ar_time_start3">
+<input type="hidden" name="ar_time_start4">
+<input type="hidden" name="ar_time_start5">
+<input type="hidden" name="ar_time_start6">
+
+<input type="hidden" name="ar_time_stop1">
+<input type="hidden" name="ar_time_stop2">
+<input type="hidden" name="ar_time_stop3">
+<input type="hidden" name="ar_time_stop4">
+<input type="hidden" name="ar_time_stop5">
+<input type="hidden" name="ar_time_stop6">
+
+<input type="hidden" name="ar_time_day1">
+<input type="hidden" name="ar_time_day2">
+<input type="hidden" name="ar_time_day3">
+<input type="hidden" name="ar_time_day4">
+<input type="hidden" name="ar_time_day5">
+<input type="hidden" name="ar_time_day6">
+
+<input type="hidden" name="ar_type1" value="0">
+<input type="hidden" name="ar_type2" value="0">
+<input type="hidden" name="ar_type3" value="0">
+<input type="hidden" name="ar_type4" value="0">
+<input type="hidden" name="ar_type5" value="0">
+<input type="hidden" name="ar_type6" value="0">
+
+<input type="hidden" name="ar_ip_start1_1">
+<input type="hidden" name="ar_ip_start2_1">
+<input type="hidden" name="ar_ip_start3_1">
+<input type="hidden" name="ar_ip_start4_1">
+<input type="hidden" name="ar_ip_start5_1">
+<input type="hidden" name="ar_ip_start6_1">
+
+<input type="hidden" name="ar_ip_end1_1">
+<input type="hidden" name="ar_ip_end2_1">
+<input type="hidden" name="ar_ip_end3_1">
+<input type="hidden" name="ar_ip_end4_1">
+<input type="hidden" name="ar_ip_end5_1">
+<input type="hidden" name="ar_ip_end6_1">
+
+<input type="hidden" name="ar_port_start1_1">
+<input type="hidden" name="ar_port_start2_1">
+<input type="hidden" name="ar_port_start3_1">
+<input type="hidden" name="ar_port_start4_1">
+<input type="hidden" name="ar_port_start5_1">
+<input type="hidden" name="ar_port_start6_1">
+
+<input type="hidden" name="ar_port_end1_1">
+<input type="hidden" name="ar_port_end2_1">
+<input type="hidden" name="ar_port_end3_1"> 
+<input type="hidden" name="ar_port_end4_1">
+<input type="hidden" name="ar_port_end5_1">
+<input type="hidden" name="ar_port_end6_1">
+
+<input type="hidden" name="ar_protocol1_1">
+<input type="hidden" name="ar_protocol2_1">
+<input type="hidden" name="ar_protocol3_1">
+<input type="hidden" name="ar_protocol4_1">
+<input type="hidden" name="ar_protocol5_1">
+<input type="hidden" name="ar_protocol6_1">
+
+<input type="hidden" name="ipfilter_startwday1">
+<input type="hidden" name="ipfilter_startwday2">
+<input type="hidden" name="ipfilter_startwday3">
+<input type="hidden" name="ipfilter_startwday4">
+<input type="hidden" name="ipfilter_startwday5">
+<input type="hidden" name="ipfilter_startwday6">
+
+<input type="hidden" name="ipfilter_endwday1">
+<input type="hidden" name="ipfilter_endwday2">
+<input type="hidden" name="ipfilter_endwday3">
+<input type="hidden" name="ipfilter_endwday4">
+<input type="hidden" name="ipfilter_endwday5">
+<input type="hidden" name="ipfilter_endwday6">
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(fc1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=2 cellPadding=0 width=620 border=0>
+        <TBODY>
+        <TR vAlign=top height=30>
+          <TD noWrap align=left bgColor=#ffffff colSpan=7>
+            <SCRIPT>dw(fc2a);dw('<br>');dw(fc2b);</SCRIPT>
+            <A 
+            onclick="window.open('glossary.htm#ip_filter','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><FONT color=#0066FF><B>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </B></FONT></A><BR><BR></TD>
+          <TD noWrap bgColor=#ffffff>&nbsp;</TD></TR>
+        <TR align=middle bgColor=#666666>
+          <TH noWrap align=middle height=17><FONT color=#ffffff>
+            <SCRIPT>dw(IP);</SCRIPT>
+            </FONT></TH>
+          <TH noWrap align=middle height=17><FONT color=#ffffff>
+            <SCRIPT>dw(Port);</SCRIPT>
+            </FONT></TH>
+          <TH noWrap align=middle height=17><FONT color=#ffffff>
+            <SCRIPT>dw(Type);</SCRIPT>
+            </FONT></TH>
+          <TH noWrap align=middle height=17><FONT color=#ffffff>
+            <SCRIPT>dw(BT);</SCRIPT>
+            </FONT></TH>
+          <TH noWrap align=middle height=17><FONT color=#ffffff>
+            <SCRIPT>dw(Day);</SCRIPT>
+            </FONT></TH>
+          <TH noWrap align=middle height=17><FONT color=#ffffff>
+            <SCRIPT>dw(Tm);</SCRIPT>
+            </FONT></TH>
+          <TH noWrap align=middle height=17><FONT color=#ffffff>
+            <SCRIPT>dw(Enable);</SCRIPT>
+            </FONT></TH></TR>
+        <SCRIPT>
+var strHtml;
+count=1;
+var i =1;
+var blockflag = 0;
+
+var	IPStart = new Array(7);
+var IPEnd = new Array(7);
+var PortStart = new Array(7);
+var PortEnd = new Array(7);
+var Type = new Array(7);
+var DayStart = new Array(7);
+var DayEnd = new Array(7);
+var HourStart = new Array(7);
+var HourEnd = new Array(7);
+var MinStart = new Array(7);
+var MinEnd = new Array(7);
+var BlockAll = new Array(7); 
+var Enabled = new Array(7);
+
+var tmp_ipstart = new Array(4);
+var tmp_ipend = new Array(4);
+
+IPStart[1] = '<%nvram_get("ar_ip_start1_1");%>'; 
+IPStart[2] = '<%nvram_get("ar_ip_start2_1");%>'; 
+IPStart[3] = '<%nvram_get("ar_ip_start3_1");%>'; 
+IPStart[4] = '<%nvram_get("ar_ip_start4_1");%>'; 
+IPStart[5] = '<%nvram_get("ar_ip_start5_1");%>'; 
+IPStart[6] = '<%nvram_get("ar_ip_start6_1");%>'; 
+
+IPEnd[1] = '<%nvram_get("ar_ip_end1_1");%>';
+IPEnd[2] = '<%nvram_get("ar_ip_end2_1");%>';
+IPEnd[3] = '<%nvram_get("ar_ip_end3_1");%>';
+IPEnd[4] = '<%nvram_get("ar_ip_end4_1");%>';
+IPEnd[5] = '<%nvram_get("ar_ip_end5_1");%>';
+IPEnd[6] = '<%nvram_get("ar_ip_end6_1");%>';
+
+PortStart[1] = '<%nvram_get("ar_port_start1_1");%>';
+PortStart[2] = '<%nvram_get("ar_port_start2_1");%>';
+PortStart[3] = '<%nvram_get("ar_port_start3_1");%>';
+PortStart[4] = '<%nvram_get("ar_port_start4_1");%>';
+PortStart[5] = '<%nvram_get("ar_port_start5_1");%>';
+PortStart[6] = '<%nvram_get("ar_port_start6_1");%>';
+
+PortEnd[1] = '<%nvram_get("ar_port_end1_1");%>';
+PortEnd[2] = '<%nvram_get("ar_port_end2_1");%>';
+PortEnd[3] = '<%nvram_get("ar_port_end3_1");%>';
+PortEnd[4] = '<%nvram_get("ar_port_end4_1");%>';
+PortEnd[5] = '<%nvram_get("ar_port_end5_1");%>';
+PortEnd[6] = '<%nvram_get("ar_port_end6_1");%>';
+
+Type[1] = '<%nvram_get("ar_protocol1_1");%>' ;
+Type[2] = '<%nvram_get("ar_protocol2_1");%>' ;
+Type[3] = '<%nvram_get("ar_protocol3_1");%>' ;
+Type[4] = '<%nvram_get("ar_protocol4_1");%>' ;
+Type[5] = '<%nvram_get("ar_protocol5_1");%>' ;
+Type[6] = '<%nvram_get("ar_protocol6_1");%>' ;
+
+DayStart[1] = '<%nvram_get("ipfilter_startwday1");%>';
+DayStart[2] = '<%nvram_get("ipfilter_startwday2");%>';
+DayStart[3] = '<%nvram_get("ipfilter_startwday3");%>';
+DayStart[4] = '<%nvram_get("ipfilter_startwday4");%>';
+DayStart[5] = '<%nvram_get("ipfilter_startwday5");%>';
+DayStart[6] = '<%nvram_get("ipfilter_startwday6");%>';
+
+DayEnd[1] = '<%nvram_get("ipfilter_endwday1");%>';
+DayEnd[2] = '<%nvram_get("ipfilter_endwday2");%>';
+DayEnd[3] = '<%nvram_get("ipfilter_endwday3");%>';
+DayEnd[4] = '<%nvram_get("ipfilter_endwday4");%>';
+DayEnd[5] = '<%nvram_get("ipfilter_endwday5");%>';
+DayEnd[6] = '<%nvram_get("ipfilter_endwday6");%>';
+
+HourStart[1] = GetTimeSegment('<%nvram_get("ar_time_start1");%>',1);
+HourStart[2] = GetTimeSegment('<%nvram_get("ar_time_start2");%>',1);
+HourStart[3] = GetTimeSegment('<%nvram_get("ar_time_start3");%>',1);
+HourStart[4] = GetTimeSegment('<%nvram_get("ar_time_start4");%>',1);
+HourStart[5] = GetTimeSegment('<%nvram_get("ar_time_start5");%>',1);
+HourStart[6] = GetTimeSegment('<%nvram_get("ar_time_start6");%>',1);
+
+HourEnd[1] = GetTimeSegment('<%nvram_get("ar_time_stop1");%>',1);
+HourEnd[2] = GetTimeSegment('<%nvram_get("ar_time_stop2");%>',1);
+HourEnd[3] = GetTimeSegment('<%nvram_get("ar_time_stop3");%>',1);
+HourEnd[4] = GetTimeSegment('<%nvram_get("ar_time_stop4");%>',1);
+HourEnd[5] = GetTimeSegment('<%nvram_get("ar_time_stop5");%>',1);
+HourEnd[6] = GetTimeSegment('<%nvram_get("ar_time_stop6");%>',1);
+
+BlockAll[1] = '<%nvram_get("ar_time_day1");%>';
+BlockAll[2] = '<%nvram_get("ar_time_day2");%>';
+BlockAll[3] = '<%nvram_get("ar_time_day3");%>';
+BlockAll[4] = '<%nvram_get("ar_time_day4");%>';
+BlockAll[5] = '<%nvram_get("ar_time_day5");%>';
+BlockAll[6] = '<%nvram_get("ar_time_day6");%>';
+
+Enabled[1] = '<%nvram_get("ar_enabled1");%>';
+Enabled[2] = '<%nvram_get("ar_enabled2");%>';
+Enabled[3] = '<%nvram_get("ar_enabled3");%>';
+Enabled[4] = '<%nvram_get("ar_enabled4");%>';
+Enabled[5] = '<%nvram_get("ar_enabled5");%>';
+Enabled[6] = '<%nvram_get("ar_enabled6");%>';
+
+var lanIP_prefix='<%nvram_get("lan_ipaddr");%>';
+j9=lanIP_prefix.indexOf('.');
+j9=lanIP_prefix.indexOf('.',(j9+1));
+j9=lanIP_prefix.indexOf('.',(j9+1));
+
+while(count<=6)
+{
+tmp_ipstart = IPStart[count];
+tmp_end = IPEnd[count];
+strHtml=
+'<tr bgcolor="#CCCCCC" align=center><td nowrap align=center>'
++lanIP_prefix.substring(0,j9)
++'.<input type="text" name="ipRangeLow'
++count
++'" size="3" maxlength="3" value="'
++tmp_ipstart	
++'">'
++'~<input type="text" name="ipRangeHigh'
++	count
++'" size="3" maxlength="3" value="'
++tmp_end
++'"></td><td nowrap align=center>'
++'<input type="text" name="portRangeLow'
++	count
++'" size="5" maxlength="5" value="'
++PortStart[count]
++'">'
++'~<input type="text" name="portRangeHigh'
++	count
++'" size="5" maxlength="5" value="'
++PortEnd[count]
++'">'
++'</td><td nowrap align=left>'
++'<input type="radio" value="0" ';
+	dw(strHtml);
+
+if(Type[count]=='0')
+	dw('checked');
+
+strHtml=' name="protocol'
++	count
++'">TCP<br>'+'<input type="radio" ';
+dw(strHtml);
+
+if(Type[count]=='1')
+	dw('checked');
+
+strHtml=' value="1" name="protocol'
++	count
++'">UDP<br>'
++'<input type="radio" ';
+	dw(strHtml);
+
+if(Type[count]=='2')
+	dw('checked');
+
+strHtml=
+' value="2" name="protocol'
++ count
++'">'+BOTH+'</td><td nowrap align=left>'
++'<input type="radio" name="whenRadio'
++count+'" value="0"  onClick="alwaysblock();"  ';
+dw(strHtml);
+if( BlockAll[count] =='128')
+	dw('checked '); 
+
+strHtml=
+'  >'+Always+'<br>'+'<input type="radio" name="whenRadio'+count+'" value="1" onClick="alwaysblock();" ';
+dw(strHtml);
+if( BlockAll[count]!='128')
+	dw('checked ');
+strHtml=' >'+Block+'</td><td nowrap align=center>'+'<select name="startDay'+count+'" size="1" style="color: #000000" >'
++'<OPTION VALUE=1 ';
+dw(strHtml);
+if(DayStart[count]=='1')
+	dw('selected ');
+dw(SUN);
+dw('<OPTION VALUE=2 ');
+if(DayStart[count]=='2')
+	dw('selected ');
+dw(MON);
+dw('<OPTION VALUE=4 ');
+if(DayStart[count]=='4')dw('selected ');
+dw(TUE);
+dw('<OPTION VALUE=8 ');
+if(DayStart[count]=='8')dw('selected ');
+dw(WED);
+dw('<OPTION VALUE=16 ');
+if(DayStart[count]=='16')dw('selected ');
+dw(THU);
+dw('<OPTION VALUE=32 ');
+if(DayStart[count]=='32')dw('selected ');
+dw(FRI);
+dw('<OPTION VALUE=64 ');
+if(DayStart[count]=='64')dw('selected ');
+dw(SAT);
+	
+strHtml=
+'</select><br>'
++'<select name="endDay'
++	count
++'" size="1" style="color: #000000">'
++'<OPTION VALUE=1 ';
+	dw(strHtml);
+
+if(DayEnd[count]=='1')
+	dw('selected ');
+dw(SUN);
+
+dw('<OPTION VALUE=2 ');
+if(DayEnd[count]=='2')
+	dw('selected ');
+dw(MON);
+
+dw('<OPTION VALUE=4 ');
+if(DayEnd[count]=='4')
+	dw('selected ');
+dw(TUE);
+
+dw('<OPTION VALUE=8 ');
+if(DayEnd[count]=='8')
+	dw('selected ');
+dw(WED);
+
+dw('<OPTION VALUE=16 ');
+if(DayEnd[count]=='16')
+	dw('selected ');
+dw(THU);
+
+dw('<OPTION VALUE=32 ');
+if(DayEnd[count]=='32')
+	dw('selected ');
+dw(FRI);
+
+dw('<OPTION VALUE=64 ');
+if(DayEnd[count]=='64')
+	dw('selected ');
+dw(SAT);
+
+strHtml='</select></td><td valign="middle" align="center">'+'<select name="startTime'+count+'" size="1" style="color: #000000">'
+dw(strHtml);
+	
+for(i=0; i<24; i++)
+{
+	ccount=i;
+	ccount=ccount+'';
+	ampm=(i>=12)?PM:AM;
+	clock=i;
+	if(i==0 && PM!=AM) 
+		clock=12;
+	if(i>12 && PM!=AM) 
+		clock=clock-12;
+	select=(HourStart[count]==ccount)?' selected':'';
+	strHtml='<OPTION VALUE='+i+select+'>'+ clock+ampm;
+	dw(strHtml);
+}
+strHtml='</select><br>'+'<select name="endTime'+count+'" size="1" style="color: #000000">';
+dw(strHtml);
+for(i=0; i<24; i++)
+{
+	ccount=i;
+	ccount=ccount+'';
+	ampm=(i>=12)?PM:AM;
+	clock=i;
+	if(i==0 && PM!=AM) clock=12;
+	if(i>12 && PM!=AM) clock=clock-12;
+	select=(HourEnd[count]==ccount)?' selected':'';
+	strHtml='<OPTION VALUE='+i+select+'>'+ clock+ampm;
+	dw(strHtml);
+}
+strHtml='</select></td>'+'<td nowrap align=center>'+'<input type="checkbox" name="filterCheckbox'+count+'" value="1" ';
+dw(strHtml);
+if(Enabled[count]=='1')
+	dw('checked');
+strHtml=' ></td>'+'<td nowrap align=center bgcolor="#FFFFFF">&nbsp;</td></tr>'
+dw(strHtml);
+count++;
+}        
+</SCRIPT>
+
+        <TR align=left>
+          <TD class=plaintext_bold noWrap>&nbsp;</TD>
+          <TD class=plaintext_bold noWrap>&nbsp;</TD>
+          <TD class=plaintext_bold noWrap>&nbsp;</TD>
+          <TD class=plaintext_bold noWrap colSpan=4><BR><BR>
+            <SCRIPT>strHtml='<input type="reset"  value="'+btn1+'" style="{width:160px;}" class="submitBtn" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;';
+dw(strHtml);
+strHtml='<input type="button" value="'+btn2+'" style="{width:160px;}" class="submitBtn" onClick="Try_Submit();">';
+dw(strHtml);
+</SCRIPT>
+          </TD>
+          <TD class=plaintext_bold noWrap align=middle 
+          bgColor=#ffffff>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</FORM></BODY></HTML>

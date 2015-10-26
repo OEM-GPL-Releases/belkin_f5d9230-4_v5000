@@ -1,0 +1,166 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META http-equiv=Pragma content=no-cache>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT language=JavaScript>
+strHtml='<title>'+upa1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Parental Control';
+var menuSection	='Util';
+var menuItem	='Parental Control';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+function checkpasswd()
+{
+	var f = document.forms[0];
+	
+	if(f.new_passwd.value!=f.renew_passwd.value)
+	{
+ 		alert('New Password and re-new Password is different.');
+ 		return false;
+	}
+	f.Action.value="ChangePassword";
+	f.parentalc_password.value = f.new_passwd.value;
+	f.data1.value="parentalc_password";
+	f.submit();
+} 
+
+//added by peng (LAN1494)
+function check_email(address, warning)
+{
+	if(address.value.length == 0)
+	{
+		alert(upa14);
+		return false;
+	}
+	 if ((address.value!="")&&((address.value.indexOf ('@') == -1)
+    || (address.value.indexOf ('.') == -1)))
+    {
+    	alert(warning + ' ' + "E-mail address is  invalid!");
+    	return false;
+    }
+ }
+ //end by peng
+
+function checkemail()
+{
+	var f = document.forms[0];
+	
+	if(check_email(f.new_emailaddr, "New") == false) //modified by peng (LAN1494)
+	{
+		return false;
+	}
+	if(check_email(f.renew_emailaddr, "Re-new") == false) //modified by peng (LAN1494)
+	{
+		return false;
+	}
+ 	 if(f.new_emailaddr.value!=f.renew_emailaddr.value)	
+	{
+		alert('New E-mail address and re-new E-mail address is different.');
+		return false;
+	}
+	f.parentalc_email.value = f.new_emailaddr.value;
+    f.Action.value="ChangeEmail";
+	f.data1.value="parentalc_email";
+	f.submit();
+}
+
+function Init_Value()
+{
+	var f=document.forms[0];
+	var email = '<%nvram_get("parentalc_email");%>';
+	
+	f.old_emailaddr.value = email;
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0" onLoad="Init_Value();">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode);</SCRIPT>
+<form name="parentalc" action="parentalc_config.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="util_parentalc_acctinfo.htm">
+<input type="hidden" name="redirect_timer" value="1000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="">
+
+<input type="hidden" name="Action">
+<input type="hidden" name="parentalc_email">
+<input type="hidden" name="parentalc_password">
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(upa1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD width=600><SPAN class=verdana12>
+      <SCRIPT>dw(upa2);</SCRIPT>
+      </SPAN><BR><BR>
+      <HR color=#666666 noShade SIZE=1>
+      <BR>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=3 width="80%" align=center 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD class=verdana12 colSpan=3><B>
+            <SCRIPT>dw(upa3);</SCRIPT>
+            &nbsp;</B></TD></TR>
+        <TR>
+          <TD class=verdana12 width="30%"><B><INPUT maxLength=50 
+            name="old_emailaddr"></B></TD><!--modified by peng(LAN1496)-->
+          <TD class=verdana12 width="50%">
+            <SCRIPT>dw(upa4);</SCRIPT>
+          </TD>
+          <TD class=verdana12 width="20%" rowSpan=3>
+            <SCRIPT>dw('<div align="center"><input type="submit" style="{width:120px;}" class="submitBtn" value="');dw(Change);dw('" onClick="return checkemail()"></div></td>');</SCRIPT>
+          </TD>
+        <TR>
+          <TD class=verdana12 width="30%"><INPUT maxLength=50 
+            name=new_emailaddr></TD><!--modified by peng(LAN1496)-->
+          <TD class=verdana12 width="50%">
+            <SCRIPT>dw(upa5);</SCRIPT>
+          </TD></TR>
+        <TR>
+          <TD class=verdana12 width="30%"><B><INPUT maxLength=50 
+            name=renew_emailaddr></B></TD><!--modified by peng(LAN1496)-->
+          <TD class=verdana12 width="50%">
+            <SCRIPT>dw(upa6);</SCRIPT>
+          </TD></TR></TBODY></TABLE><BR>
+      <HR color=#666666 noShade SIZE=1>
+      <BR>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=3 width="80%" align=center 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD class=verdana12 colSpan=3><B>
+            <SCRIPT>dw(upa7);</SCRIPT>
+            &nbsp;</B></TD></TR>
+        <TR>
+          <TD class=verdana12 width="30%"><INPUT type=password maxLength=32 
+            name=new_passwd> <!--modified by peng(LAN1495)--></TD>
+          <TD class=verdana12 width="50%">
+            <SCRIPT>dw(upa8);</SCRIPT>
+          </TD></TR>
+        <TR>
+          <TD class=verdana12 width="30%"><B><INPUT type=password maxLength=32 
+            name=renew_passwd></B></TD><!--modified by peng(LAN1495)-->
+          <TD class=verdana12 width="50%">
+            <SCRIPT>dw(upa9);</SCRIPT>
+          </TD>
+          <TD class=verdana12 width="20%" rowSpan=3>
+            <DIV align=center>
+            <SCRIPT>dw('<input type="button"  style="{width:120px;}" class="submitBtn" name="change_passwd" value="');dw(Change);dw('" onClick="return checkpasswd()" ></div></td>');</SCRIPT>
+            </DIV></TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

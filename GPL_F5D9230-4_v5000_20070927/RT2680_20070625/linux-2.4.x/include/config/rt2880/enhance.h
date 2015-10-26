@@ -1,0 +1,1 @@
+#undef  CONFIG_RT2880_ENHANCE

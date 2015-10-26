@@ -1,0 +1,120 @@
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+fs1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Security Log';
+var menuSection	='Fire';
+var menuItem	='Security Log';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function GURL(x){location=x}
+
+function Try_SaveLog()
+{
+	//window.open('fw_security_save.htm','SaveLog').focus();
+	var f = document.forms[0];
+	
+	f.action = '/syslog_save.cgi';
+	f.submit();
+}
+
+function Try_CleanLog()
+{
+	var f = document.forms[0];
+	
+	f.action = '/syslog_clean.cgi';
+	f.submit();
+}
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode);
+</SCRIPT>
+<FORM name="wan_conn"action="syslog_clean.cgi"method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="redirect_timer" value="30000">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="restart" value="firewall">
+<input type="hidden" name="next_page" value="fw_security.htm">
+
+<TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(fs1);</SCRIPT><BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=600 align=left border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <SCRIPT>dw(fs2);</SCRIPT>
+          </TD>
+		</TR>
+        <TR>
+          <TD vAlign=top height=452><BR>
+		  	<!--The original width is 80%-->
+            <TABLE cellSpacing=1 cellPadding=5 width="95%" align=center border=0>
+              <TBODY>
+              <TR align=left>
+                <TD width="35%" bgColor=#666666 colSpan=3><B>
+					<FONT face="Arial, Helvetica, sans-serif" color=#ffffc0 size=2>
+                  	<SCRIPT>dw(fs3);</SCRIPT>
+                  	</FONT></B>
+				</TD>
+			  </TR>
+              <TR align=left height=20>
+                <TD width="80%" bgColor=#CCCCCC colSpan=3>
+					<FONT face="Arial, Helvetica, sans-serif" size=2>
+                 	<TABLE>
+						<FONT color=blue>System log:</FONT>
+						<BR>
+						<%DhcpcLogShow();%>
+						<BR>
+						<FONT color=blue>Firewall log:</FONT>
+						<BR>
+						<%SecurityLogShow();%>
+						<BR>
+                    </TABLE>
+					</FONT>
+				</TD>
+			  </TR>
+              <TR><BR><BR>
+                <TD align=middle width="33%">
+                  <SCRIPT>
+				  	strHtml='<input type="button" style="{width:120px;}" class="submitBtn" value="'+Save+'" name="securitysave1" onclick="Try_SaveLog();">';
+					dw(strHtml);
+				  </SCRIPT>
+                </TD>
+                <TD align=middle width="33%">
+                  <SCRIPT>
+				  	strHtml='<input type="button" name="securityclear" style="{width:120px;}" class="submitBtn" value="'+Clear+'" onclick="Try_CleanLog();">';
+					dw(strHtml);
+				   </SCRIPT>
+                </TD>
+                <TD align=middle width="34%">
+                  <SCRIPT>
+				  	strHtml='<input type="button" style="{width:120px;}" class="submitBtn"  value="'+Refresh+'" onclick="GURL(\'fw_security.htm\')"></td>';
+					dw(strHtml);
+				  </SCRIPT>
+                </TD>
+				</TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</form></BODY></HTML>

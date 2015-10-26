@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META http-equiv=Pragma content=no-cache>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+upad1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Parental Control';
+var menuSection	='Util';
+var menuItem	='Parental Control';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+
+function Init_Value()
+{
+	var f = document.forms[0];
+	var timeout_action = '<%nvram_get("parentalc_timeout_action");%>';
+	var timeout_timer = '<%nvram_get("parentalc_timeout_timer");%>';
+	
+	if (timeout_action =='0')
+		f.ceb_unavail_block[0].checked = true;
+	else
+		f.ceb_unavail_block[1].checked = true;
+		
+	f.ceb_timeout.value = timeout_timer;	
+}
+
+function Try_Submit()
+{
+	var f = document.forms[0];
+	var ns = f.ceb_timeout.value;
+	
+	for (i=0;i<ns.length;i++)
+    {
+    	c=ns.charAt(i);
+        if ((c<'0')||(c>'9'))
+		{
+			alert(parentalc_timeout);
+			return false;
+		}	
+	}
+	
+	if(eval(f.ceb_timeout.value)<1 || eval(f.ceb_timeout.value)>60)
+ 	{
+		alert('Timeout Range : 1-60');
+		return false;
+ 	}
+	
+	f.parentalc_timeout_timer.value =  f.ceb_timeout.value;
+	
+	if (f.ceb_unavail_block[0].checked == true)
+		f.parentalc_timeout_action.value = 0;
+	else
+		f.parentalc_timeout_action.value = 1;
+	
+	f.parentalc_password.value = f.ceb_pass.value;
+	f.submit();	
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0" onLoad="Init_Value();">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode);
+</SCRIPT>
+<FORM name="parentalc"action="parental_tproxy.cgi"method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="util_parentalc_advance.htm">
+<input type="hidden" name="redirect_timer" value="30000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="parentalc_timeout_action parentalc_timeout_timer">
+
+<input type="hidden" name="parentalc_timeout_timer">
+<input type="hidden" name="parentalc_timeout_action">
+<input type="hidden" name="parentalc_password">
+<input type="hidden" name="Action" value="Advanced">
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(upad1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD width=600><SPAN>
+      <SCRIPT>dw(upad2);</SCRIPT>
+      </SPAN><BR><BR><BR>
+      <HR color=#666666 noShade SIZE=1>
+      <BR><SPAN><B>
+      <SCRIPT>dw(Timeout);</SCRIPT>
+      </B></SPAN><BR><SPAN>
+      <SCRIPT>dw(upad3);</SCRIPT>
+      <INPUT maxLength=20 size=10 name="ceb_timeout">
+      <SCRIPT>dw(upad4);</SCRIPT>
+       </SPAN><BR><BR>
+      <HR color=#666666 noShade SIZE=1>
+      <BR><SPAN><B>
+      <SCRIPT>dw(upad5);</SCRIPT>
+      </B></SPAN><BR><SPAN>
+      <SCRIPT>dw(upad6);</SCRIPT>
+      </SPAN>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=3 width="61%" border=0>
+        <TBODY>
+        <TR>
+          <TD width="29%"><INPUT type=radio value=0 name=ceb_unavail_block> 
+            <B><SPAN>
+            <SCRIPT>dw(upad7);</SCRIPT>
+            </SPAN></B></TD></TR>
+        <TR>
+          <TD width="29%"><INPUT type=radio value=1 
+            name=ceb_unavail_block> <B><SPAN>
+            <SCRIPT>dw(upad8);</SCRIPT>
+            </SPAN></B></TD></TR></TBODY></TABLE><BR><BR>
+      <DIV align=center><SPAN><B>
+      <SCRIPT>dw(pwd);</SCRIPT>
+      : </B><INPUT type=password name=ceb_pass></SPAN>
+      <SCRIPT>dw('<input type="button" style="{width:120px;}" class="submitBtn" value="');dw(Apply);dw('" onClick="return Try_Submit();">');</SCRIPT>
+       </FORM></DIV></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

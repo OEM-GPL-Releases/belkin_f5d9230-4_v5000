@@ -1,0 +1,235 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="validate.js"></SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wmc1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='MAC Address';
+var menuSection	='WAN';
+var menuItem	='MAC Address';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+var x=new Array(
+"aa",
+"bb",
+"cc",
+"dd",
+"ee",
+"11"
+);
+function initData()
+{
+	var f=document.wan_form;
+	var oldmac='<%nvram_get("wan_mac");%>';
+	var newmac='<%get_my_mac();%>';
+	x[0]=newmac.substring(0,2);
+	x[1]=newmac.substring(3,5);
+	x[2]=newmac.substring(6,8);
+	x[3]=newmac.substring(9,11);
+	x[4]=newmac.substring(12,14);
+	x[5]=newmac.substring(15,17);
+	
+	f.MACaddr1.value=oldmac.substring(0,2);
+	f.MACaddr2.value=oldmac.substring(3,5);
+	f.MACaddr3.value=oldmac.substring(6,8);
+	f.MACaddr4.value=oldmac.substring(9,11);
+	f.MACaddr5.value=oldmac.substring(12,14);
+	f.MACaddr6.value=oldmac.substring(15,17);
+}
+function storeData()
+{
+	var f=document.wan_form;
+	f.wan_mac.value=f.MACaddr1.value+':'+f.MACaddr2.value+':'+f.MACaddr3.value+':'+f.MACaddr4.value+':'+f.MACaddr5.value+':'+f.MACaddr6.value;
+	return true;
+}
+function isBlank(s) {
+for(var i = 0; i < s.length; i++) {
+var c = s.charAt(i);
+if((c !=' ') && (c!='\n') && (c !='\t')) return false;
+}
+return true;
+}
+function isHex(s) 
+{
+var j,x = 0;
+
+	for(var i = 0; i < s.length; i++) 
+	{
+var c = s.charAt(i);
+j = parseInt(c,16);
+if ((j == 0) || (j == 1)|| (j == 2)|| (j == 3)|| (j == 4)|| (j == 5)|| (j == 6)
+|| (j == 7)|| (j == 8)|| (j == 9)|| (j == 10)|| (j == 11)|| (j == 12)|| (j == 13)|| (j == 14)|| (j == 15)) 
+{
+			if(x==1) 
+			{
+				return false;
+			}
+x=1;
+}
+}
+return true;
+}
+
+function isNValid(s) 
+{
+	if( isBlank(s) || isHex(s)) 
+		return true;
+	else 
+		return false;
+}
+
+function evaltF() 
+{
+	var f=document.wan_form;
+	var mac_str;
+	
+	if(!(isBlank(f.MACaddr1.value))||!(isBlank(f.MACaddr2.value))||!(isBlank(f.MACaddr3.value))||
+ 	   !(isBlank(f.MACaddr4.value))||!(isBlank(f.MACaddr5.value))||!(isBlank(f.MACaddr6.value)))
+	{
+		if (isNValid(f.MACaddr1.value)||isNValid(f.MACaddr2.value)||isNValid(f.MACaddr3.value)
+	      ||isNValid(f.MACaddr4.value) ||isNValid(f.MACaddr5.value)||isNValid(f.MACaddr6.value))
+		{
+			alert(fmcipm); 
+			return false;
+		} 
+		mac_str = f.MACaddr1.value + ':' + f.MACaddr2.value + ':' + f.MACaddr3.value + ':' + 
+		          f.MACaddr4.value + ':' + f.MACaddr5.value + ':' + f.MACaddr6.value;
+ 		
+		if (mac_str.toLowerCase() == 'ff:ff:ff:ff:ff:ff' || mac_str == '00:00:00:00:00:00')
+		{
+			alert('Incorrect MAC address');
+			return false;
+		}
+		
+		mac_str = f.MACaddr1.value + ':' + f.MACaddr2.value + ':' + f.MACaddr3.value;
+		
+		if (mac_str.toLowerCase() == '01:00:5e')
+		{
+			alert('Incorrect MAC address');
+			return false;
+		}
+	}
+	
+	if(storeData()==false)
+		return false;
+	alert(warn_msg2);
+	f.submit();
+}
+
+function Try_Submit() 
+{
+	return evaltF();
+}
+
+function clear_macclone_flag()
+{
+//	var f = document.forms[0];
+//	f.mac_clone_enabled.value = 0; 
+}
+
+function copyto() 
+{
+	var f=document.wan_form;
+	f.MACaddr1.value = x[0];
+	f.MACaddr2.value = x[1];
+	f.MACaddr3.value = x[2];
+	f.MACaddr4.value = x[3];
+	f.MACaddr5.value = x[4];
+	f.MACaddr6.value = x[5];
+	
+	f.mac_clone_enabled.value = 1; 
+}
+
+function logoutF()
+{
+	document.wan_form.logout.value=1;
+	document.wan_form.submit();
+	return true;
+} 
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" onload="initData();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM id="wan_form" name="wan_form" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wan_mac.htm">
+<input type="hidden" name="redirect_timer" value="60000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="wan_mac mac_clone_enabled">
+
+<input type="hidden" name="mac_clone_enabled" value="1">
+<input type="hidden" name="wan_mac">
+
+
+<INPUT type=hidden value=eth1 name=wan_access> 
+<INPUT type=hidden value=dhcp name=wan_proto> 
+<INPUT type=hidden name=et1macaddr> 
+<INPUT type=hidden name=et1macaddr_copy>
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wmc1);</SCRIPT>
+<BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=600 align=left border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=3>
+            <SCRIPT>dw(wmc2);</SCRIPT>
+            <A onclick="window.open('glossary.htm#mac','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" href="javascript:void(0);"><B>
+			<FONT color=#0066FF>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A><BR><BR></TD></TR>
+        <TR>
+          <TD width=30>&nbsp;</TD>
+          <TD width=300><B>
+            <SCRIPT>dw(wmc3);</SCRIPT>
+            &gt; </B><BR><BR></TD>
+          <TD noWrap align=left width=270>
+		  <INPUT maxLength=2 size=2 name=MACaddr1>- 
+		  <INPUT maxLength=2 size=2 name=MACaddr2>- 
+		  <INPUT maxLength=2 size=2 name=MACaddr3>- 
+		  <INPUT maxLength=2 size=2 name=MACaddr4>- 
+		  <INPUT maxLength=2 size=2 name=MACaddr5>- 
+		  <INPUT maxLength=2 size=2 name=MACaddr6><BR><BR>
+		  </TD></TR>
+        <TR>
+          <TD width=30>&nbsp;</TD>
+          <TD width=300><B>
+            <SCRIPT>dw(wmc4);</SCRIPT>
+            &gt;</B><BR><BR></TD>
+          <TD align=left width=220>
+            <SCRIPT>dw('<input type="button" style="{width:80px;}" class="submitBtn" name="Clone" value="');dw(wmc5);dw('" onClick="copyto();"><br><br></td>');</SCRIPT>
+          </TD>
+        <TR>
+          <TD width=3>&nbsp;</TD>
+          <TD align=middle colSpan=2><BR><BR>
+            <SCRIPT>
+				dw('<input type="button" value="');
+				dw(btn1);
+				dw('" style="{width:160px;}" class="submitBtn" onclick="initData();clear_macclone_flag();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+				dw('<input type="button" style="{width:160px;}" value="');
+				dw(btn2);
+				dw('" onClick="return Try_Submit();" class="submitBtn">');
+			</SCRIPT>
+          </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

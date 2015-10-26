@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+
+<SCRIPT>
+strHtml='<title>'+rss1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Restore Previous Settings';
+var menuSection	='Util';
+var menuItem	='Restore Previous Settings';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+
+var timeoutId;
+var i = 90;
+
+function countDown()
+{
+	i--;
+	document.forms[0].timeRemain.value=i;
+	if (i<1)
+	{
+		clearInterval(timeoutId);
+		document.location.href='http://<%nvram_get("lan_ipaddr");%>/';
+	}
+}
+
+function timecheck()
+{
+   document.forms[0].timeRemain.value=i;
+   timeoutId = setInterval(countDown,1000); 
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 onload=timecheck() marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form>
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(Utilities);dw(rss1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=5 cellPadding=0 width=485 align=center 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD width=69 height=41>&nbsp;</TD>
+          <TD class=verdana12 colSpan=2 height=41>
+            <SCRIPT>dw(rss2);</SCRIPT>
+          </TD></TR>
+        <TR>
+          <TD width=69 height=41>&nbsp;</TD>
+          <TD class=verdana12 colSpan=2 height=41>
+            <SCRIPT>dw(rs3);</SCRIPT>
+
+            	<input name="timeRemain" size="1" disabled>
+
+            <SCRIPT>dw(rs4);</SCRIPT>
+             </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></form>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+<iframe src="pre-reboot.htm" scrolling="no" height="0" width="0">
+</iframe>
+</BODY></HTML>

@@ -1,0 +1,408 @@
+<HTML><HEAD><TITLE>Help</TITLE>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+h1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Help';
+var menuSection	='';
+var menuItem	='Help';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+
+function logoutF()
+{
+document.tF0.logout.value=1;
+document.tF0.submit();
+return true;
+}
+//-->
+</SCRIPT>
+<META content="MSHTML 6.00.2800.1400" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<FORM name=tF0 action=help.html method=post>
+<INPUT type=hidden value=2 name=logout> 
+<INPUT type=hidden value=help name=page>
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode);
+</SCRIPT>
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(h1);</SCRIPT><a name="htop"></a>
+<BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 height="100%" cellSpacing=0 cellPadding=0 width="100%" 
+      align=left border=0>
+        <TBODY>
+        <TR></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left><SPAN class=pageTitle>
+            <SCRIPT>dw(h2);</SCRIPT>
+            </SPAN></DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h3);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h4);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h5);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <SCRIPT>
+var dial_up_printer = 1;
+if(dial_up_printer == 1)
+{ 
+dw('<tr><td width="10">&nbsp;</td><td valign="top"><div align="left">');
+dw(h6);
+dw('</div></td></tr>');
+}   
+</SCRIPT>
+
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h7);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h8);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h9);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h10);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h11);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h12);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h13);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h14);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h15);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h16);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h17);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h18);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h19);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h20);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h21);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h22);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h23);</SCRIPT>
+            </DIV></TD>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h24);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h25);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h26);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h27);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h28);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h29);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h30);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h31);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h32);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD vAlign=top>
+            <DIV align=left>
+            <SCRIPT>dw(h33);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD></TR>
+        <SCRIPT>
+var wild_wireless = 1;
+if(wild_wireless == 1)
+{
+dw('<tr><td width="10">&nbsp;</td><td valign="top"><div align="left">');
+dw(h34);
+dw('</div></td></tr><tr><td>&nbsp;</td></tr>');
+}   
+</SCRIPT>
+
+        <TR>
+          <TD width=10>&nbsp;</TD>
+          <TD><A href="#htop"><FONT color=#0000ff>
+            <SCRIPT>dw(htop);</SCRIPT>
+            </FONT></A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</FORM></BODY></HTML>

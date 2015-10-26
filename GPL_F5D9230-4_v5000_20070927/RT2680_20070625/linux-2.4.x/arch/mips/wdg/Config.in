@@ -1,0 +1,9 @@
+mainmenu_option next_comment
+comment 'Ralink WatchDog Module (EXPERIMENTAL)'
+dep_tristate 'Ralink WatchDog' CONFIG_RALINK_WATCHDOG
+
+if [ "$CONFIG_RALINK_WATCHDOG" != "n" ]; then
+int  ' WatchDog Timer (10ms)' CONFIG_RALINK_WDG_TIMER 100 
+int  ' Refresh Interval (10ms)' CONFIG_RALINK_WDG_REFRESH_INTERVAL 50 
+fi
+endmenu

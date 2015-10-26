@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="validate.js"></SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wlm1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='';
+var menuSection	='WLAN';
+var menuItem	='';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="wireless_main" action="post.cgi" method="post">
+<input type="hidden" name="tmp">
+</form>
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wlm1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 height=410 cellSpacing=0 cellPadding=0 width=580 
+      align=left border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD width=20>&nbsp;</TD>
+          <TD><SPAN>
+            <SCRIPT>dw(wlm2);</SCRIPT>
+            </SPAN></TD></TR>
+        <TR vAlign=top>
+          <TD width=20>&nbsp;</TD>
+          <TD><SPAN class=verdana12>
+            <UL>
+              <LI><A href="wireless_chan.htm"><B>
+              <SCRIPT>dw(wlm3);</SCRIPT>
+              </B></A><BR>
+              <SCRIPT>dw(wlm4);</SCRIPT>
+              <BR>&nbsp; 
+              <LI><A href="wireless_encrypt.htm"><B>
+              <SCRIPT>dw(wlm5);</SCRIPT>
+              </B></A><BR>
+              <SCRIPT>dw(wlm6);</SCRIPT>
+              <BR>&nbsp;
+              <SCRIPT language=javascript>
+if('<%nvram_get("wan_enabled");%>'=='1' )
+	dw('<li><a href="wireless_apt.htm"><b>'+wlm7+'</b></a><br>'+wlm8+'<br>&nbsp');
+else 
+	dw('<li><a href="wireless_apt.htm"><b>'+wlm9+'</b></a><br>'+wlm10+'<br>&nbsp');
+</SCRIPT>
+
+              <SCRIPT language=javascript>
+	dw('<li><a href="wireless_mac_ctrl.htm"><b>'+wlm11+'</b></a><br>'+wlm12+'<br>&nbsp');
+</SCRIPT>
+               </SPAN></LI></UL></TD>
+          <TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

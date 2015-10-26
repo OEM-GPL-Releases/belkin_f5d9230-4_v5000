@@ -1,0 +1,1 @@
+#define CONFIG_RT2860V2_LLTD 1

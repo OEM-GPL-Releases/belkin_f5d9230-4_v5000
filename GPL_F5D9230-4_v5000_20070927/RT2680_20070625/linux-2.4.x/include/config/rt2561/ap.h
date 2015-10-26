@@ -1,0 +1,1 @@
+#undef  CONFIG_RT2561_AP

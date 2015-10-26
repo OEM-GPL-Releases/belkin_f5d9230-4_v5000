@@ -1,0 +1,41 @@
+<html>
+<head>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<title>Wireless Security</title>
+<script>
+	var wl_security = '<%nvram_get("wl0_sec_mode");%>';
+	var wl_key_length = '<%nvram_get("wl0_keylength");%>';
+
+	if ( wl_security == 'psk' )
+		window.location.href ="wireless_wpa_psk.htm";
+	else if ( wl_security == 'wparadius' )
+		window.location.href ="wireless_wpa_radius.htm";
+	else if ( wl_security == 'wpa2radius' )
+		window.location.href ="wireless_wpa_radius.htm";
+	else if ( wl_security == 'wpawpa2radius' )
+		window.location.href ="wireless_wpa_radius.htm";
+	else if ( wl_security == 'radius' )
+		window.location.href ="wireless_radius.htm";
+	else if ( wl_security == 'wep' ) {
+		if( wl_key_length == '104' )
+			window.location.href ="wireless_encrypt_128.htm";
+		else
+			window.location.href ="wireless_encrypt_64.htm";
+	}
+	else if ( wl_security == 'none' )
+		window.location.href ="wireless_encrypt_no.htm";
+	else if ( wl_security == 'WPA1WPA2' )
+	    window.location.href ="wireless_wpa_psk.htm";		
+	else if ( wl_security == 'WPA2' )
+	    window.location.href ="wireless_wpa_psk.htm";			
+	else
+		window.location.href ="wireless_encrypt_no.htm";
+</script>
+</head>
+
+<body>
+</body>
+</html>

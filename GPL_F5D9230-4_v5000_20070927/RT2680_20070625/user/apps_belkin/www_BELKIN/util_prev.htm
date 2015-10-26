@@ -1,0 +1,79 @@
+<HTML><HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+uprev1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Restore Previous Settings';
+var menuSection	='Util';
+var menuItem	='Restore Previous Settings';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+function Try_Submit() 
+{	
+	if(document.forms[0].file.value.length == 0) 
+	{
+		alert(uprev3);
+		return false;
+	} 
+	else 
+	{
+		if (confirm(uprev4))	
+		{
+			alert(uprev5);
+			document.forms[0].submit();
+//			return true;
+		}
+	}
+	return false;
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(uprev1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=3 cellPadding=0 width=600 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD class=verdana12>
+            <DIV align=center>
+            <SCRIPT>dw(uprev2);</SCRIPT>
+            </DIV></TD></TR>
+        <TR>
+          <TD align="middle"><BR><BR>
+		  	<form name="upload_cfg" enctype="multipart/form-data" action="UploadCfgFile.cgi" method="post">
+		  	<input type="file" maxLength="31" size="25" name="file">
+		  </TD></TR>
+        <TR>
+          <TD><BR><BR>
+            <DIV align=center>
+            <SCRIPT>
+				dw('<input type="button" style="{width:120px;}" class="submitBtn" value="');
+				dw(Restore);
+				dw('" onclick="Try_Submit();"></div></td>');</SCRIPT>
+            </DIV>
+			</form>
+			</TD></TR></TBODY></TABLE></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

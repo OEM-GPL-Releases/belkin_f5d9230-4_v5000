@@ -1,0 +1,8 @@
+./configure
+make clean
+export PATH=$PATH:/opt/x86-uclibc/toolchain_i386/bin
+./configure --host=i386-linux
+echo "romfs:" >> Makefile
+echo "	cp ./threadutil/.libs/libthreadutil.so.2 \$(ROMFSDIR)/lib" >> Makefile
+echo "	cp ./upnp/.libs/libupnp.so.2 \$(ROMFSDIR)/lib" >> Makefile
+echo "	cp ./ixml/.libs/libixml.so.2 \$(ROMFSDIR)/lib" >> Makefile

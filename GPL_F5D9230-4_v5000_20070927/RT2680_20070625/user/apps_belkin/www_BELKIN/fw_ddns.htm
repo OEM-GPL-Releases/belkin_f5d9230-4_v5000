@@ -1,0 +1,181 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+fd9+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='DDNS';
+var menuSection	='Fire';
+var menuItem	='DDNS';
+
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+	
+var ipm="The form is not completed!";
+
+function storeData()
+{
+      if(isBlank(document.forward_form.dyndns_username.value) 
+	   && isBlank(document.forward_form.dyndns_password.value)
+	   && isBlank(document.forward_form.dyndns_hostname.value)  )
+	{}
+	else if(isBlank(document.forward_form.dyndns_username.value) 
+	   || isBlank(document.forward_form.dyndns_password.value)
+	   || isBlank(document.forward_form.dyndns_hostname.value)  )
+	 {
+	 	alert(ipm);
+	 	return false;
+	 }
+}
+
+function Try_Submit()
+{
+	var f = document.forms[0];
+	
+	if(isBlank(f.dyndns_username.value) && 
+	   isBlank(f.dyndns_password.value) &&
+	   isBlank(f.dyndns_hostname.value))
+	{
+		return true;
+	}
+	else if(isBlank(f.dyndns_username.value) ||
+	        isBlank(f.dyndns_password.value) ||
+	        isBlank(f.dyndns_hostname.value))
+	 {
+	 	alert(ipm);
+	 	return false;
+	 }
+	 f.dyn_ddns_username.value = f.dyndns_username.value;
+	 f.dyn_ddns_password.value = f.dyndns_password.value;
+	 f.dyn_ddns_domain.value = f.dyndns_hostname.value;
+	 if(f.auto_update.checked==false)
+	 	f.dyn_ddns_auto_check.value=0;
+	 else f.dyn_ddns_auto_check.value=1;
+	 
+	 f.submit();
+}
+
+function isBlank(s)
+{
+	for (var i = 0; i < s.length; i++)
+	{
+		var c = s.charAt(i);
+		if ((c !=' ') && (c!='\n') && (c !='\t'))
+			return false;
+	}
+	return true;
+}
+
+function Init_Value()
+{
+	var f = document.forms[0];
+	f.dyndns_username.value = '<%nvram_get("dyn_ddns_username");%>';
+   	f.dyndns_password.value = '<%nvram_get("dyn_ddns_password");%>';
+   	f.dyndns_hostname.value = '<%nvram_get("dyn_ddns_domain");%>';
+   	if('<%nvram_get("dyn_ddns_auto_check");%>' == "0")
+   		f.auto_update.checked=false;
+   	else f.auto_update.checked=true;
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 onload=Init_Value(); marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="ddns" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="fw_ddns.htm">
+<input type="hidden" name="redirect_timer" value="30000">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="restart" value="firewall">
+<input type="hidden" name="data1" value="ddns_enabled tzo_ddns_enabled dyn_ddns_enabled dyn_ddns_username dyn_ddns_password dyn_ddns_domain dyn_ddns_auto_check">
+
+<input type="hidden" name="ddns_enabled" value="1">
+<input type="hidden" name="tzo_ddns_enabled" value="0">
+<input type="hidden" name="dyn_ddns_enabled" value="1">
+<input type="hidden" name="dyn_ddns_username">
+<input type="hidden" name="dyn_ddns_password">
+<input type="hidden" name="dyn_ddns_domain">
+<input type="hidden" name="dyn_ddns_auto_check">
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(fd9);</SCRIPT>
+<BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 height=412 cellSpacing=0 cellPadding=0 width="100%" 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top>
+            <TABLE class=copy_1 cellSpacing=10 cellPadding=0 align=left 
+border=0>
+              <TBODY>
+              <TR>
+                <TD class=copy_1 width=40><B>DDNS</B></TD>
+                <TD class=copy_1 align=middle colSpan=2>&nbsp;</TD>
+              <TR>
+                <TD colSpan=3 height=21>
+                  <TABLE class=copy_1 height=25 cellSpacing=0 cellPadding=0 
+                  width=860 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width=11>&nbsp;</TD>
+                      <TD width=758><script>dw(fd10);</script> (<A 
+                        href="http://www.dyndns.org/"><B><FONT 
+                        color=#0066FF>http://www.dyndns.org</FONT></B></A>). <script>dw(fd11);</script><A 
+                        onclick="window.open('glossary.htm#ddns','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+                        href="javascript:void(0);"> <B><FONT color=#0066FF>
+                        <SCRIPT>dw(sm1);</SCRIPT>
+                        </FONT></B></A><BR><BR></TD></TR></TBODY></TABLE></TD>
+              <TR>
+                <TD>&nbsp;</TD>
+                <TD class=copy_1 align=left width=113><B><script>dw(fd12);</script> 
+</B></TD>
+                <TD class=copy_1 align=left width=712><B>
+					<INPUT maxLength="40" size="16" name="dyndns_username"> </B></TD>
+              <TR>
+                <TD>&nbsp;</TD>
+                <TD class=copy_1 align=left><B><script>dw(fd13);</script></B></TD>
+                <TD class=copy_1 align=left><B>
+					<INPUT type="password" maxLength="32" size="16" name="dyndns_password"> </B></TD>
+              <TR>
+                <TD>&nbsp;</TD>
+                <TD class=copy_1 align=left><B><script>dw(fd14);</script></B></TD>
+                <TD class=copy_1 align=left><B>
+					<INPUT maxLength="40" size="16" name="dyndns_hostname"></B>
+				</TD>
+              <TR>
+                <TD colspan="2">&nbsp;</TD>
+                <TD class=copy_1 align=left><B>
+                			<INPUT type=checkbox name="auto_update" checked><script>dw(fd16);</script></B></TD>
+                
+              <TR>
+                <TD height=37>&nbsp;</TD>
+                <TD class=formText align=middle>&nbsp;</TD>
+                <TD class=formText align=left>
+                <SCRIPT>
+				  	strHtml='<input type="button" value="'+btn1+'" style="{width:160px;}" class="submitBtn" onclick="Init_Value();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;';
+					dw(strHtml);
+					strHtml='<input type="button" value="'+btn3+'" style="{width:175px;}" class="submitBtn" onClick="Try_Submit();">';
+					dw(strHtml);
+				</SCRIPT>
+                </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></TD>
+    <SCRIPT language=JavaScript>showTail()</SCRIPT>
+  </TR></TBODY></TABLE></BODY></HTML>

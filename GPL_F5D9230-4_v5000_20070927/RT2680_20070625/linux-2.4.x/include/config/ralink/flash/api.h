@@ -1,0 +1,1 @@
+#define CONFIG_RALINK_FLASH_API 1

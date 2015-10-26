@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+rs1+'</title>';
+dw(strHtml);
+
+<!--
+var helpItem 	='Restart Router';
+var menuSection	='Util';
+var menuItem	='Restart Router';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+
+var timeoutId;
+var i = 60;
+//setTimeout('document.location.href="index.htm";',60000);
+function countDown()
+{
+	i--;
+	document.tF.timeRemain.value=i;
+	if (i<1)
+	{
+		clearInterval(timeoutId);
+		document.location.href="home.htm";
+	}
+}
+
+function timecheck()
+{
+   document.tF.timeRemain.value=i;
+   timeoutId = setInterval(countDown,1000); 
+}
+
+function logoutF()
+{
+	document.tF.logout.value=1;
+	document.tF.submit();
+	return true;
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 onload=timecheck() marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM name=tF action=home.htm method=post>
+<INPUT type=hidden value=login name=page> 
+<INPUT type=hidden value=2 name=logout>
+<TD class=head_bold height="100%" width="99%" valign="top">
+	<BR>&nbsp;&nbsp;
+		<SCRIPT>dw(Utilities);dw(rs1);</SCRIPT>
+ 	<BR><BR>
+	<TABLE class=copy_1 border=0>
+  		<TBODY>
+  			<TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=5 cellPadding=0 width=485 align=center 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD width=69 height=41>&nbsp;</TD>
+          <TD class=verdana12 colSpan=2 height=41>
+            <SCRIPT>dw(rs2);</SCRIPT>
+          </TD></TR>
+        <TR>
+          <TD width=69 height=41>&nbsp;</TD>
+          <TD class=verdana12 colSpan=2 height=41>
+            <SCRIPT>dw(rs3);</SCRIPT>
+            <INPUT disabled size=2 name=timeRemain>
+            <SCRIPT>dw(rs4);</SCRIPT>
+             </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+<iframe src="pre-reboot.htm" width="0" height="0" scrolling="no" frameborder="0">
+</iframe>
+</BODY>
+</HTML>

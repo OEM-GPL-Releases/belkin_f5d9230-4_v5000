@@ -1,0 +1,313 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT language=JavaScript>
+<!--
+function MakeArrayday(size) {
+this.length = size;
+for(var i = 1; i <= size; i++) this[i] = "";
+return this;
+}
+function MakeArraymonth(size) {
+this.length = size;
+for(var i = 1; i <= size; i++) this[i] = "";
+return this;
+}
+//-->
+</SCRIPT>
+<SCRIPT>
+strHtml='<title>'+usys1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='System Settings';
+var menuSection	='Util';
+var menuItem	='System Settings';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+	
+
+function Init_Value()
+{
+	var f=document.forms[0];
+	var nat_enabled = '<%nvram_get("wan_enabled");%>';
+	var login_timeout = '<%nvram_get("login_timeout");%>';
+	var i;
+	
+	f.timeout.value = login_timeout;
+	f.userOldPswd.value ="";
+	f.userNewPswd.value ="";
+	f.userConPswd.value ="";
+	      
+ 	if( nat_enabled == '1') 
+		f.wan_access[0].checked=true;
+ 	else 
+		f.wan_access[1].checked=true; 
+}
+
+function storeData()
+{
+	var f=document.forms[0];
+	var ori_mode = '<%nvram_get("wan_enabled");%>';
+	var cur_ipaddr = '<%nvram_get("lan_ipaddr");%>';
+
+	if (f.wan_access[0].checked==true)
+		cur_ipaddr = '192.168.2.1';
+	
+	if (!(isBlank(f.userOldPswd.value) && isBlank(f.userNewPswd.value) && isBlank(f.userConPswd.value)))
+		f.login_password.value = f.userNewPswd.value;
+	
+	f.login_timeout.value=f.timeout.value;
+	
+	if (f.wan_access[0].checked==true)
+	{
+		var alertmess=usys86+'(192.168.2.1).';
+		f.wan_enabled.value = '1';
+		f.lan_dhcps_enabled.value = '1';
+		f.lan_ipaddr.value = cur_ipaddr;
+		f.lan_netmask.value = '255.255.255.0';
+		f.next_page.value = 'util_system.htm';
+	}
+	else
+	{
+		var alertmess=usys86+'(192.168.2.254).'; 
+		f.wan_enabled.value = '0';
+		f.lan_dhcps_enabled.value = '0';
+		f.lan_ipaddr.value = cur_ipaddr;
+		f.lan_netmask.value = '255.255.255.0';
+		f.next_page.value = 'utilb_system.htm';
+	}
+	if (ori_mode=='1' && f.wan_access[1].checked==true)
+		alert(alertmess);
+	else if (ori_mode=='0' && f.wan_access[0].checked==true)	
+		alert(alertmess);
+		
+	alert(warn_msg2);
+	
+	return true;
+}
+
+function isBlank(s) 
+{
+	for(i=0;i<s.length;i++) 
+ 	{
+		c=s.charAt(i);
+		if((c!=' ')&&(c!='\n')&&(c!='\t'))
+			return false;
+	}
+ 	return true;
+}
+
+function isNValidIP(s) 
+{
+ 	if((isBlank(s))||(isNaN(s))||(s<0||s>255)) 
+		return true;
+ 	else 
+		return false;
+}
+
+function Try_Submit() 
+{
+	var f=document.forms[0];
+	var tmp,i,c;
+	
+ 	//if(!(isBlank(f.userOldPswd.value) && isBlank(f.userNewPswd.value) && isBlank(f.userConPswd.value))) 
+	//{
+ 		if(f.userOldPswd.value!=f.http_passwd.value)
+ 		{
+			alert(usys82);
+			return false;
+ 		}
+ 
+ 		if(f.userConPswd.value!=f.userNewPswd.value) 
+ 		{
+			alert(usys83);
+			return false;
+ 		}
+		
+		if (f.userNewPswd.value.length > 0) {
+			if (f.userNewPswd.value.length < 3 || f.userNewPswd.value.length > 12) 
+			{ 
+				alert(usys85); 
+				return false;
+			}
+		}
+ 	//}
+ 
+	ns = f.timeout.value;
+
+	for (i=0;i<ns.length;i++)
+    {
+    	c=ns.charAt(i);
+        if ((c<'0')||(c>'9'))
+		{
+			 alert(usys84);
+			 return false;
+		}	
+	}
+ 	 if(eval(f.timeout.value)<1 || eval(f.timeout.value)>99)
+ 	{
+		alert(usys84);
+		return false;
+ 	}
+
+ 	if(storeData()==false)
+		return false;
+	
+	f.submit();
+}
+
+function alertAdminPswd()
+{
+	var f = document.forms[0];
+	
+ 	if(f.checkremote.checked == true) 
+		alert(usys87);
+}
+
+function EnableDisableIPTextbox()
+{
+	var f=document.forms[0];
+ 	if(f.checkremote.checked == true)
+ 	{
+		f.IP1.disabled = true;
+		f.IP2.disabled = true;
+		f.IP3.disabled = true;
+		f.IP4.disabled = true;
+ 	}
+ 	else
+ 	{
+		f.IP1.disabled = false;
+		f.IP2.disabled = false;
+		f.IP3.disabled = false;
+		f.IP4.disabled = false;
+ 	}
+}
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 onload=Init_Value(); marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="system" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="utilb_system.htm">
+<input type="hidden" name="redirect_timer" value="60000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="wan_enabled login_password login_timeout lan_dhcps_enabled lan_ipaddr lan_netmask">
+
+<input type="hidden" name="http_passwd" value='<%nvram_get("login_password");%>'>
+<input type="hidden" name="wan_enabled">
+<input type="hidden" name="login_password" value='<%nvram_get("login_password");%>'>
+<input type="hidden" name="login_timeout">
+<input type="hidden" name="lan_dhcps_enabled">
+<input type="hidden" name="lan_ipaddr"> 
+<input type="hidden" name="lan_netmask">
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(usys1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=5 cellPadding=0 width=600 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=2 height=11><B>
+            <SCRIPT>dw(usys2);</SCRIPT>
+            </B></TD></TR>
+        <TR>
+          <TD colSpan=2 height=19>
+            <SCRIPT>dw(usys3);</SCRIPT>
+            <A 
+            onclick="window.open('glossary.htm#admin_password','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><B><FONT color=#0066FF>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A></TD></TR>
+        <TR>
+          <TD noWrap width=240 height=19>- <B><SPAN>
+            <SCRIPT>dw(usys4);</SCRIPT>
+            </SPAN>&gt;</B></TD>
+          <TD class=plaintext_bold width=360 height=19>
+		  	<INPUT type="password" name="userOldPswd" maxLength="12" size="15"></TD></TR>
+        <TR>
+          <TD width=240>- <B><SPAN>
+            <SCRIPT>dw(usys5);</SCRIPT>
+            </SPAN>&gt;</B></TD>
+          <TD class=plaintext_bold width=360>
+		  	<INPUT type="password" name="userNewPswd" maxLength="12" size="15"></TD></TR>
+        <TR>
+          <TD width=202><NOBR>- <B><SPAN>
+            <SCRIPT>dw(usys6);</SCRIPT>
+            </SPAN>&gt;</B></NOBR></TD>
+          <TD class=plaintext_bold width=276>
+		  	<INPUT type="password" name="userConPswd" maxLength="12" size="15" ></TD></TR>
+        <TR>
+          <TD width=202><SPAN>- </SPAN><B><SPAN>
+            <SCRIPT>dw(usys7);</SCRIPT>
+            </SPAN><SPAN>&gt; </SPAN></B></TD>
+          <TD class=plaintext_bold width=276>
+		  	<INPUT name="timeout" maxLength="2" size="4"> 
+			<SPAN class=plaintext><SCRIPT>dw(usys8);</SCRIPT></SPAN>
+		  </TD></TR>
+        <TR>
+          <TD colSpan=2>
+            <HR color=#666666 noShade SIZE=1>
+          </TD></TR>
+        <TR>
+          <TD colSpan=2 height=26><B>
+            <SCRIPT>dw(AF );</SCRIPT>
+            </B>
+            <SCRIPT>dw(usys74);</SCRIPT>
+            <A href="javascript:void(0);" onclick="window.open('glossary.htm#nat','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');">
+		     <B><FONT color=#0066FF>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A></TD></TR>
+        <TR>
+          <TD width=240>- <B><SPAN>
+            <SCRIPT>dw(usys75);</SCRIPT>
+            &gt;</SPAN></B></TD>
+          <TD class=plaintext_bold width=360>
+		  	<INPUT type="radio" name="wan_access">
+            <SCRIPT>dw(Enable);</SCRIPT>
+            <INPUT type="radio" name="wan_access">
+            <SCRIPT>dw(Disable);</SCRIPT>
+             </TD></TR>
+        <TR>
+          <TD colSpan=2>
+            <HR color=#666666 noShade SIZE=1>
+          </TD></TR>
+        <TR>
+          <TD width=202>&nbsp;</TD>
+          <TD width=276>&nbsp;</TD></TR>
+        <TR>
+          <TD width=202>&nbsp;</TD>
+          <TD align=middle width=316>
+            <SCRIPT>
+				dw('<input type="button" value="');
+				dw(btn1);
+				dw('" style="{width:150px;}" class="submitBtn" onclick="f.reset();Init_Value();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+				dw('<input type="button" style="{width:150px;}" value="');
+				dw(btn2);
+				dw('" onClick="return Try_Submit();" class="submitBtn">');
+			</SCRIPT>
+          </TD>
+		</TR></TBODY></TABLE></TD></TR></TBODY></TABLE></form></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

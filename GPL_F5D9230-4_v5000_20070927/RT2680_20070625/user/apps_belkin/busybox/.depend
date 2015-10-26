@@ -1,0 +1,1045 @@
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/rpm.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/rpm.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/unzip.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/unzip.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/gunzip.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/gunzip.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/gunzip/uncompress.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/bunzip2.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/bunzip2.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/uncompress.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/uncompress.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/tar.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/tar.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/tar/create.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/tar/from.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/tar/gzip.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/tar/compress.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/tar/bzip2.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/tar/long/options.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/ar.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/ar.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/gzip.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/gzip.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/gunzip.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/dpkg_deb.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/dpkg_deb.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/deb/tar/gz.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/deb/tar/bz2.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/open_transformer.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/open_transformer.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/filter_accept_list.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/filter_accept_list.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/init_handle.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/init_handle.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/header_skip.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/header_skip.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/header_list.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/header_list.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/seek_by_char.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/seek_by_char.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/decompress_uncompress.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/decompress_uncompress.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/config.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/config.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/decompress_bunzip2.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/decompress_bunzip2.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/get_header_cpio.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/get_header_cpio.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/data_align.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/data_align.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/get_header_tar_bz2.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/get_header_tar_bz2.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/data_extract_all.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/data_extract_all.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/seek_by_jump.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/seek_by_jump.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/unarchive/tape.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/archive_xread_all.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/archive_xread_all.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/filter_accept_reject_list.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/filter_accept_reject_list.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/find_list_entry.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/find_list_entry.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/header_verbose_list.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/header_verbose_list.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/data_extract_to_buffer.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/data_extract_to_buffer.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/check_header_gzip.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/check_header_gzip.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/decompress_unzip.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/decompress_unzip.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/config.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/config.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/archive_xread_all_eof.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/archive_xread_all_eof.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/get_header_ar.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/get_header_ar.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ar/long/filenames.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/data_skip.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/data_skip.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/data_extract_to_stdout.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/data_extract_to_stdout.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/filter_accept_list_reassign.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/filter_accept_list_reassign.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/deb/tar/gz.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/deb/tar/bz2.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/get_header_tar_gz.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/get_header_tar_gz.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/get_header_tar.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/get_header_tar.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/tar/gnu/extensions.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/tar/oldgnu/compatability.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/unpack_ar_archive.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/unpack_ar_archive.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/filter_accept_all.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/libunarchive/filter_accept_all.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/dpkg.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/dpkg.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/deb/tar/gz.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/deb/tar/bz2.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/rpm2cpio.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/rpm2cpio.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/cpio.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/archival/cpio.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/applets/applets.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/applets/applets.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/usage.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/usage.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/applets.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/applets.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/applets.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/applets.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/suid.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/suid/config.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/grp_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/grp_.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/suid/config/quiet.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/file.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/applets/busybox.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/applets/busybox.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/locale/support.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/installer.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/init.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/autowidth.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/modutils/modprobe.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/modutils/modprobe.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/2/6/modules.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/modutils/insmod.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/modutils/insmod.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/2/4/modules.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/2/6/modules.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/insmod/loadinkmem.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/insmod/version/checking.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/use/list.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/list/archtype.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/use/single.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/use/plt/entries.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/use/got/entries.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/use/plt/list.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/got/entry/size.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/plt/entry/size.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/check/tainted/module.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/insmod/ksymoops/symbols.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/insmod/load/map.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/insmod/load/map/full.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/modutils/lsmod.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/modutils/lsmod.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/check/tainted/module.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/query/module/interface.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/modutils/rmmod.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/modutils/rmmod.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/2/6/modules.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/query/module/interface.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libpwdgrp/pwd_grp.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libpwdgrp/pwd_grp.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/grp_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/grp_.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/shadow_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/shadow_.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/delline.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/delline.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/adduser.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/adduser.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/shadowpasswds.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/addgroup.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/delgroup.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/delgroup.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/deluser.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/shadowpasswds.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/getty.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/getty.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/syslogd.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/u/w/tmp.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/vlock.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/vlock.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/shadowpasswds.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/passwd.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/passwd.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/shadowpasswds.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/su.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/su.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/u/w/tmp.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/selinux.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/sulogin.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/sulogin.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/shadowpasswds.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/deluser.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/deluser.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/shadowpasswds.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/login.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/login.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/selinux.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/u/w/tmp.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/securetty.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/wheel/group.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/addgroup.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/loginutils/addgroup.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/grp_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/grp_.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/shadowpasswds.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/adduser.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/test.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/test.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/test/64.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/usleep.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/usleep.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/uname.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/uname.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/md5_sha1_sum.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/md5_sha1_sum.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/md5/sha1/sum/check.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/md5sum.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/sha1sum.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/od.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/od.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/dump.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/dump.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/uuencode.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/uuencode.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/length.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/length.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/cal.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/cal.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/locale/support.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/tty.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/tty.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/chroot.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/chroot.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/mkdir.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/mkdir.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/fold.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/fold.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/sync.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/sync.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/sleep.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/sleep.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/fancy/sleep.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/date.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/date.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/date/isofmt.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/cmp.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/cmp.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/cp.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/cp.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/dos2unix.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/dos2unix.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/mkfifo.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/mkfifo.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/env.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/env.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/rm.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/rm.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/tr.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/tr.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/install.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/install.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/id.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/id.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/selinux.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/echo.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/echo.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/fancy/echo.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/ls.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/ls.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/selinux.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ls/timestamps.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ls/sortfiles.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ls/followlinks.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/human/readable.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ls/filetypes.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ls/color.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/autowidth.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ls/recursive.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/locale/support.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ls/username.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/chgrp.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/chgrp.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/head.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/head.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/fancy/head.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/libcoreutils/cp_mv_stat.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/libcoreutils/cp_mv_stat.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/libcoreutils/getopt_mk_fifo_nod.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/libcoreutils/getopt_mk_fifo_nod.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/libcoreutils/xgetoptfile_sort_uniq.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/libcoreutils/xgetoptfile_sort_uniq.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/chown.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/chown.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/false.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/false.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/basename.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/basename.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/mknod.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/mknod.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/realpath.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/realpath.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/stty.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/stty.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/uniq.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/uniq.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/cat.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/cat.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/ln.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/ln.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/watch.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/watch.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/uudecode.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/uudecode.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/mv.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/mv.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/rmdir.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/rmdir.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/yes.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/yes.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/logname.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/logname.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/whoami.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/whoami.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/hostid.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/hostid.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/chmod.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/chmod.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/pwd.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/pwd.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/tee.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/tee.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/tee/use/block/io.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/dd.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/dd.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/df.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/df.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/human/readable.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/cut.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/cut.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/expr.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/expr.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/dirname.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/dirname.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/true.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/true.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/touch.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/touch.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/printf.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/printf.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/seq.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/seq.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/sort.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/sort.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/who.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/who.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/wc.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/wc.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/locale/support.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/du.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/du.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/human/readable.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/du/defalt/blocksize/1k.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/tail.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/coreutils/tail.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/fancy/tail.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/debianutils/which.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/debianutils/which.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/debianutils/mktemp.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/debianutils/mktemp.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/debianutils/readlink.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/debianutils/readlink.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/debianutils/pipe_progress.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/debianutils/pipe_progress.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/debianutils/start_stop_daemon.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/debianutils/start_stop_daemon.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/debianutils/run_parts.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/debianutils/run_parts.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/shell/hush.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/shell/hush.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/command/editing.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sh/standalone/shell.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sh/extra/quiet.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/shell/msh.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/shell/msh.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/command/editing.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sh/extra/quiet.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sh/standalone/shell.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/shell/lash.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/shell/lash.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/locale/support.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/lash/pipe/n/redirects.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/lash/job/control.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/command/editing.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sh/standalone/shell.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sh/extra/quiet.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/shell/cmdedit.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/shell/cmdedit.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/../shell/cmdedit.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/../shell/cmdedit.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/locale/support.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/command/tab/completion.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/command/editing.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/command/username/completion.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/getusername/and/homedir.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/command/history.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/nonprintable/inverse/put.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/ash.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/command/savehistory.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/shell/ash.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/shell/ash.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/ash/job/control.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/ash/alias.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/ash/optimize/for/size.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/ash/math/support.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/ash/cmdcmd.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/ash/getopts.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sh/extra/quiet.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/ash/mail.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/ash/math/support/64.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/ash/random/support.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/locale/support.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/command/savehistory.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/command/editing.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sh/standalone/shell.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/command/tab/completion.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/mt.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/mt.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/strings.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/strings.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/makedevs.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/makedevs.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/rx.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/rx.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/last.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/last.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/devfsd.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/devfsd.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/devfsd/modload.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/devfsd/verbose.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/debug.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/devfsd/fg/np.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/file.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/modules/devfs.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/dc.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/dc.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/crond.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/crond.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/crond/call/sendmail.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/watchdog.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/watchdog.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/hdparm.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/hdparm.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/hdparm/get/identity.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/hdparm/hdio/getset/dma.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/hdparm/hdio/unregister/hwif.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/hdparm/hdio/scan/hwif.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/hdparm/hdio/tristate/hwif.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/hdparm/hdio/drive/reset.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/time.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/time.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/crontab.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/crontab.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/adjtimex.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/miscutils/adjtimex.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/openvt.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/openvt.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/setkeycodes.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/setkeycodes.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/clear.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/clear.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/dumpkmap.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/dumpkmap.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/reset.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/reset.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/loadfont.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/loadfont.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/loadkmap.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/loadkmap.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/deallocvt.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/deallocvt.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/chvt.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/console-tools/chvt.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/findutils/xargs.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/findutils/xargs.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/xargs/support/confirmation.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/xargs/support/quotes.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/xargs/support/termopt.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/xargs/support/zero/term.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/findutils/find.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/findutils/find.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/find/type.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/find/perm.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/find/mtime.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/find/xdev.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/find/newer.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/find/inum.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/findutils/grep.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/findutils/grep.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/grep/context.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/grep/egrep/alias.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/nameif.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/nameif.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ifupdown.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ifupdown.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ifupdown/mapping.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ifupdown/ip.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ifupdown/ipx.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ifupdown/ipv6.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ifupdown/ipv4.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ftpgetput.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ftpgetput.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/ftpget.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/ftpput.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/iptunnel.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/iptunnel.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/wget.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/wget.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/wget/statusbar.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/wget/authentication.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/wget/ip6/literal.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/traceroute.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/traceroute.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/inet_common.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/inet_common.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/traceroute/verbose.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/traceroute.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/traceroute/so/debug.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/nc.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/nc.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ip.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ip.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ip/address.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ip/route.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ip/link.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ip/tunnel.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ping6.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ping6.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/fancy/ping6.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/fancy/ping.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/ipaddress.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/ipaddress.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/iptunnel.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/iptunnel.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/iproute.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/iproute.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/libnetlink.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/libnetlink.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/iplink.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/iplink.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/ip_parse_common_args.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/ip_parse_common_args.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/utils.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/utils.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/ll_addr.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/libiproute/ll_addr.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/inetd.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/inetd.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/inetd/support/biltin/echo.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/inetd/support/biltin/discard.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/inetd/support/biltin/time.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/inetd/support/biltin/daytime.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/inetd/support/biltin/chargen.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/arping.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/arping.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/httpd.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/httpd.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/lfs.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/httpd/usage/from/inetd/only.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/httpd/basic/auth.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/httpd/cgi.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/httpd/config/with/mime/types.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/httpd/encode/url/str.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/httpd/set/remote/port/to/env.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/httpd/auth/md5.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/httpd/reload/config/sighup.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/httpd/setuid.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/iproute.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/iproute.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ipcalc.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ipcalc.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ipcalc/fancy.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/telnet.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/telnet.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/telnet/ttype.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/telnet/autologin.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/autowidth.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ifconfig.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ifconfig.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/inet_common.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/inet_common.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ifconfig/slip.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ipv6.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ifconfig/broadcast/plus.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ifconfig/hw.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ifconfig/memstart/ioaddr/irq.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ifconfig/status.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ipaddr.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ipaddr.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/telnetd.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/telnetd.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/login.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/telnetd/inetd.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/devpts.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/vconfig.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/vconfig.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/iplink.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/iplink.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/tftp.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/tftp.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/tftp/blocksize.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/tftp/debug.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/tftp/get.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/tftp/put.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/route.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/route.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/inet_common.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/inet_common.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ipv6.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/netstat.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/netstat.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/inet_common.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/inet_common.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/route.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ipv6.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ping.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/ping.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/fancy/ping.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/hostname.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/hostname.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/nslookup.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/networking/nslookup.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/renice.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/renice.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/kill.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/kill.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/killall.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/sysctl.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/sysctl.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/uptime.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/uptime.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/ps.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/ps.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/selinux.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/top.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/top.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/use/termios.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/selinux.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/pidof.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/pidof.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/free.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/procps/free.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/sysklogd/klogd.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/sysklogd/klogd.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/sysklogd/logger.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/sysklogd/logger.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/syslogd.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/sysklogd/logread.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/sysklogd/logread.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/logread/reduced/locking.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/sysklogd/syslogd.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/sysklogd/syslogd.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/rotate/logfile.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/remote/log.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ipc/syslog.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ipc/syslog/buffer/size.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/pivot_root.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/pivot_root.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/nfsmount.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/nfsmount.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/freeramdisk.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/freeramdisk.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/fbset.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/fbset.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/fbset/fancy.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/fbset/readmode.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/fdformat.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/fdformat.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/getopt.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/getopt.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/hwclock.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/hwclock.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/hwclock/longoptions.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/fsck_minix.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/fsck_minix.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/minix2.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/hexdump.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/hexdump.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/dump.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/dump.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/fdflush.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/fdflush.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/losetup.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/losetup.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/rdate.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/rdate.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/fdisk.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/fdisk.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sun/label.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sgi/label.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/aix/label.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/osf/label.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/fdisk/writable.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/fdisk/advanced.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/weird/partition/types.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/fdisk/blksize.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/more.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/more.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/use/termios.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/mkswap.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/mkswap.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/dmesg.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/dmesg.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/mount.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/mount.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/nfsmount.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/mount/loop.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/mtab/support.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/mkfs_minix.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/mkfs_minix.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/minix2.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/umount.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/umount.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/mount/force.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/mount/loop.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/mtab/support.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/swaponoff.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/util-linux/swaponoff.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/editors/sed.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/editors/sed.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/editors/awk.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/editors/awk.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/awk/math.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/editors/patch.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/editors/patch.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/editors/vi.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/editors/vi.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/locale/support.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/vi/optimize/cursor.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/vi/use/signals.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/vi/crashme.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/vi/dot/cmd.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/vi/yankmark.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/vi/readonly.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/vi/search.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/vi/colon.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/vi/win/resize.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/vi/setopts.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/vi/set.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/fgets_str.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/fgets_str.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/read_package_field.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/read_package_field.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/find_pid_by_name.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/find_pid_by_name.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/selinux.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/safe_read.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/safe_read.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/change_identity.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/change_identity.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/kernel_version.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/kernel_version.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/human_readable.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/human_readable.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/loop.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/loop.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/module_syscalls.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/module_syscalls.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/qmodule.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/qmodule.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/process_escape_sequence.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/process_escape_sequence.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/bb_asprintf.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/bb_asprintf.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/perror_nomsg_and_die.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/perror_nomsg_and_die.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/make_directory.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/make_directory.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/safe_write.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/safe_write.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/vperror_msg.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/vperror_msg.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/create_icmp6_socket.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/create_icmp6_socket.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ipv6.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/obscure.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/obscure.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/ask_confirmation.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/ask_confirmation.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/perror_nomsg.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/perror_nomsg.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/skip_whitespace.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/skip_whitespace.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/find_root_device.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/find_root_device.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/devfs.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/parse_number.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/parse_number.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/correct_password.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/correct_password.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/shadowpasswds.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/perror_msg.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/perror_msg.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/wfopen_input.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/wfopen_input.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/full_write.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/full_write.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/print_file.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/print_file.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/last_char_is.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/last_char_is.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xregcomp.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xregcomp.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/error_msg_and_die.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/error_msg_and_die.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/restricted_shell.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/restricted_shell.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xconnect.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xconnect.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/my_getpwuid.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/my_getpwuid.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/llist_add_to.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/llist_add_to.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/unarchive.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xgetcwd.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xgetcwd.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/my_getpwnam.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/my_getpwnam.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/grp_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/grp_.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/concat_path_file.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/concat_path_file.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xgetularg.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xgetularg.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/setup_environment.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/setup_environment.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/get_line_from_file.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/get_line_from_file.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/pwd2spwd.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/pwd2spwd.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/shadow_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/shadow_.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/speed_table.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/speed_table.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/procps.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/procps.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/selinux.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/device_open.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/device_open.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xgethostbyname.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xgethostbyname.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/warn_ignoring_args.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/warn_ignoring_args.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/get_console.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/get_console.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/fclose_nonstdin.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/fclose_nonstdin.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xreadlink.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xreadlink.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xgethostbyname2.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xgethostbyname2.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ipv6.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/mtab.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/mtab.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/vherror_msg.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/vherror_msg.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/vdprintf.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/vdprintf.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/simplify_path.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/simplify_path.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/my_getgrgid.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/my_getgrgid.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/grp_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/grp_.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/get_terminal_width_height.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/get_terminal_width_height.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/autowidth.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/mtab_file.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/mtab_file.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/mtab/support.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/mtab/filename.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/pw_encrypt.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/pw_encrypt.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/sha1/passwords.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/copy_file.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/copy_file.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/preserve/hardlinks.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/inode_hash.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/inode_hash.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/clean/up.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/messages.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/messages.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/wfopen.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/wfopen.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/find_mount_point.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/find_mount_point.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/my_getgrnam.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/my_getgrnam.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/pwd_.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/grp_.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/grp_.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/chomp.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/chomp.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/error_msg.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/error_msg.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/default_error_retval.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/default_error_retval.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/remove_file.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/remove_file.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/isdirectory.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/isdirectory.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/trim.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/trim.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/full_read.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/full_read.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/recursive_action.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/recursive_action.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/syscalls.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/syscalls.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/getopt_ulflags.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/getopt_ulflags.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/dump.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/dump.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/dump.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/dump.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/safe_strncpy.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/safe_strncpy.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xgetlarg.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xgetlarg.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/run_shell.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/run_shell.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/selinux.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/copyfd.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/copyfd.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/inet_common.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/inet_common.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/inet_common.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/inet_common.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ipv6.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/safe_strtol.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/safe_strtol.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/run_parts.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/run_parts.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/concat_subpath_file.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/concat_subpath_file.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/printf.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/printf.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/my_getug.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/my_getug.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/verror_msg.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/verror_msg.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/perror_msg_and_die.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/perror_msg_and_die.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xfuncs.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/xfuncs.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/login.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/login.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/vfork_daemon_rexec.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/vfork_daemon_rexec.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/interface.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/interface.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/inet_common.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/inet_common.h) \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/ipv6.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/hash_fd.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/hash_fd.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/sha1sum.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/md5sum.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/create_icmp_socket.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/create_icmp_socket.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/herror_msg.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/herror_msg.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/fflush_stdout_and_exit.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/fflush_stdout_and_exit.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/herror_msg_and_die.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/herror_msg_and_die.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/parse_mode.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/libbb/parse_mode.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/init/halt.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/init/halt.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/init.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/init/init.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/init/init.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/syslogd.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/init/coredumps.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/extra/quiet.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/use/inittab.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/initrd.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/init/poweroff.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/init/poweroff.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/init.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/init/mesg.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/init/mesg.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/libbb.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/init/reboot.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/init/reboot.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/init.h)
+/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/init/init_shared.o: /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/init/init_shared.c \
+ /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h $(dep_/home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/include/busybox.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/feature/initrd.h) \
+   $(wildcard /home/kyo/BELKIN/RT288x_SDK_1_3_FINAL_20070530_source/user/apps_belkin/busybox/config/init.h)

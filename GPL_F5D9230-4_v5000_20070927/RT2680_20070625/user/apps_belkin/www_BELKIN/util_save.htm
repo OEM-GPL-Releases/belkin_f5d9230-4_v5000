@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+usave1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Save/Backup Settings';
+var menuSection	='Util';
+var menuItem	='Save/Backup Settings';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function Backup()
+{
+	self.backupCfg.ValidateForm();
+	setTimeout('InitValue(document.forms[0])', 3000);
+}
+
+function config()
+{
+	document.forms[0].submit();
+} 
+
+function InitValue(passForm) 
+{
+	self.backupCfg.location.href = "SaveCfg.htm";
+}
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" marginheight="0" marginwidth="0" onLoad="InitValue(document.forms[0]);">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="SaveCfg" action="SaveCfgFile.cgi" method="post">
+<input type="hidden" name="tmp">
+<TD class="head_bold" height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(usave1);</SCRIPT><BR><BR>
+<TABLE class="copy_1" border="0">
+<TBODY>
+	<TR>
+    	<TD width=5>&nbsp;</TD>
+    	<TD>
+      	<TABLE class="copy_1" cellSpacing="3" cellPadding="0" width="600" align="left" border="0">
+        <TBODY>
+        <TR>
+        	<TD class="verdana12">
+            	<SCRIPT>dw(usave2);</SCRIPT>
+          	</TD>
+		</TR>
+        <TR>
+          	<TD><BR><BR>
+            	<DIV align=center>
+				    <iframe width="1" height="1" id="backupCfg" name="backupCfg" frameborder="0" marginheight="0" scrolling="no"> 
+					</iframe> 			  
+            	<SCRIPT>
+					dw('<input style="{width:120px;}" class="submitBtn" onClick="Backup();" type=button value="');
+					dw(Save);
+					dw('"></div>');
+				</SCRIPT>
+            	</DIV>
+		  </TD>
+		</TR>
+	</TBODY>
+</TABLE></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</form>
+</BODY></HTML>

@@ -1,0 +1,5 @@
+ra_nat.h: \
+   foe_fdb.h
+	@touch ra_nat.h
+.PRECIOUS:	ra_nat.h \
+

@@ -1,0 +1,332 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wt1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Connection Type';
+var menuSection	='WAN';
+var menuItem	='Connection Type';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+var TelstraServers = new Array("61.9.192.13","61.9.128.13","61.9.208.13","61.9.224.13","61.9.128.13","61.9.240.13");
+var StateArray =new Array('NSW','VIC','QLD','SA','TAS','WA');
+function isBlank(s) 
+{
+ 	for(var i = 0; i<s.length; i++) 
+ 	{
+ 		var c = s.charAt(i);
+ 		if((c !=' ') && (c!='\n') && (c !='\t')) return false;
+ 	}
+ 	return true;
+}
+
+function isNValidIP(s) 
+{
+ 	if((isBlank(s))||(isNaN(s))||(s<0||s>255)) return true;
+ 	else return false;
+}
+
+function Try_Submit() 
+{
+	var f=document.forms[0];
+	
+	if(isBlank(f.bpa_username.value))
+	{ 
+		alert(wpe12); 
+		f.bpa_username.focus();
+		f.bpa_username.select();
+		return false; 
+	}
+	
+	if(isBlank(f.bpa_passwd.value))
+	{ 
+		alert(wpp15); 
+		f.bpa_passwd.focus();
+		f.bpa_passwd.select();
+		return false; 
+	}
+	
+	if(isBlank(f.bpa_passwd_2.value))
+	{ 
+		alert(wpp14); 
+		f.bpa_passwd_2.focus();
+		f.bpa_passwd_2.select();
+		return false; 
+	}
+	
+	if(f.bpa_passwd.value!=f.bpa_passwd_2.value) 
+	{ 
+	 	alert(pm);
+	 	f.bpa_passwd.focus();
+		f.bpa_passwd.select(); 
+	 	return false; 
+	}
+	
+	var server_ip = f.bpa_server_display.value.split(".");
+	if(server_ip[0]=='0' || server_ip[0]=='255') {
+		alert("Invalid value for the first IP octet!");
+		f.bpa_server_display.focus();
+		return false;
+	}
+	if(server_ip[3]=='0' || server_ip[3]=='255') {
+		alert("Invalid value for the last IP octet!");
+		f.bpa_server_display.focus();
+		return false;
+	}
+	
+	if(isBlank(f.bpa_server_display.value) || (!validateIp(f.bpa_server_display.value)) )
+	{
+	 	alert(wt6);
+	 	if(!f.bpa_server_display.disabled)
+	 	{
+	 		f.bpa_server_display.focus();
+			f.bpa_server_display.select();
+		} 
+	 	return false; 
+	}
+	f.telstra_bigpond_user_name.value = f.bpa_username.value;
+	f.telstra_bigpond_password.value = f.bpa_passwd.value;
+	f.telstra_bigpond_ip.value=f.bpa_server_display.value;
+	
+	if(f.bpa_manual_enable_display.checked) 
+	{	
+		f.bigpond_serverip_manual.value='1';
+		f.bigpond_state.value='0';
+	}
+	else
+	{
+		f.bigpond_serverip_manual.value='0';
+		f.bigpond_state.value = f.bpa_state_display.value;
+	}
+	alert(warn_msg2);	
+  
+	f.submit();  //submit	
+}
+
+function Init_Value() 
+{
+	var f=document.forms[0]; 
+	var manual = '<%nvram_get("bigpond_serverip_manual");%>';
+	var serverip = '<%nvram_get("telstra_bigpond_ip");%>';
+	var username = '<%nvram_get("telstra_bigpond_user_name");%>';
+	var password = '<%nvram_get("telstra_bigpond_password");%>';
+	var state = '<%nvram_get("bigpond_state");%>';
+	 
+	f.bpa_username.value = username;
+	f.bpa_passwd.value = password;
+	f.bpa_passwd_2.value = password;
+ 	if( manual == '1')
+ 	{
+		f.bpa_manual_enable_display.checked=true;
+		f.bpa_state_display[0].selected=true;;
+ 	}
+ 	else
+ 	{
+		state = state - 0;
+		f.bpa_manual_enable_display.checked=false;
+		f.bpa_state_display[state].selected=true;
+ 	}
+	f.bpa_server_display.value = serverip;
+ 	toggleAutoDLS();
+}
+
+function toggleAutoDLS() 
+{
+	var f=document.forms[0];
+ 	if(f.bpa_manual_enable_display.checked) 
+ 	{
+		f.bpa_server_display.disabled = false;  
+		f.bpa_state_display.disabled = true; 
+ 	} 
+ 	else 
+ 	{
+		f.bpa_state_display.disabled = false;
+		f.bpa_server_display.disabled = true;
+ 	}
+}
+
+function validateIp(val)
+{
+ ip = '(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)';
+ ipdot = ip + '\\.';
+ ipport = ':'+ '\\d{1,5}';
+ isIPaddress = new RegExp('^'+ipdot+ipdot+ipdot+ip+'$');
+ isIPPort = new RegExp('^'+ipdot+ipdot+ipdot+ip+ipport+'$');
+	
+ if ( (val.length==0) || ((!isIPaddress.test(val)) && (!isIPPort.test(val))) ) return false;
+ t1=val.indexOf(':');
+ if(t1 == (val.length-1)) return false;
+ if( (t1!=-1) && (t1!= val.length) )
+ {
+ var port= val.substring(t1+1,val.length);
+ if( port >= 65536) return false;
+ }
+ return true;
+}
+
+function setServerState()
+{
+ if(document.wan_form.bpa_manual_enable_display.checked == false) 
+ {
+	var i;
+	for(i=0; i<6; i++)
+	{
+		if(document.wan_form.bpa_server_display.value == TelstraServers[i]) break;
+	}
+	if(i<6)
+	{
+		document.wan_form.bpa_state_display[i+1].selected=true;
+	}
+	else
+	{	
+		document.wan_form.bpa_state_display[0].selected=true;
+	}
+ }	
+} 
+
+function setServerIP()
+{
+ if(document.wan_form.bpa_manual_enable_display.checked == false) 
+ {
+	document.wan_form.bpa_server_display.value = TelstraServers[document.wan_form.bpa_state_display.value-1];
+ }	
+}
+function disconnect()
+{
+	document.wan_form.action.value="telstradisconnect"
+	document.wan_form.submit();
+} 
+//-->  
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 onload=Init_Value() marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM id="wan_form" name="wan_form" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wan_telstra.htm">
+<input type="hidden" name="redirect_timer" value="60000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="wan_proto telstra_bigpond_ip telstra_bigpond_user_name telstra_bigpond_password bigpond_serverip_manual bigpond_state wan_alias1_enabled wan_alias2_enabled wan_alias3_enabled wan_alias4_enabled wan_alias5_enabled wan_ipaddr1 wan_ipaddr2 wan_ipaddr3 wan_ipaddr4 wan_ipaddr5 wan_netmask1 wan_netmask2 wan_netmask3 wan_netmask4 wan_netmask5">
+
+<input type="hidden" name="wan_proto" value="hbeat">
+<input type="hidden" name="telstra_bigpond_user_name">
+<input type="hidden" name="telstra_bigpond_password">
+<input type="hidden" name="bigpond_serverip_manual">
+<input type="hidden" name="telstra_bigpond_ip">
+<input type="hidden" name="bigpond_state">
+<input type="hidden" name="wan_alias1_enabled" value='0'>
+<input type="hidden" name="wan_alias2_enabled" value='0'>
+<input type="hidden" name="wan_alias3_enabled" value='0'>
+<input type="hidden" name="wan_alias4_enabled" value='0'>
+<input type="hidden" name="wan_alias5_enabled" value='0'>
+
+<input type="hidden" name="wan_ipaddr1" value=''>
+<input type="hidden" name="wan_ipaddr2" value=''>
+<input type="hidden" name="wan_ipaddr3" value=''>
+<input type="hidden" name="wan_ipaddr4" value=''>
+<input type="hidden" name="wan_ipaddr5" value=''>
+
+<input type="hidden" name="wan_netmask1" value=''>
+<input type="hidden" name="wan_netmask2" value=''>
+<input type="hidden" name="wan_netmask3" value=''>
+<input type="hidden" name="wan_netmask4" value=''>
+<input type="hidden" name="wan_netmask5" value=''>
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wt1);</SCRIPT>
+<BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=600 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=3>
+            <SCRIPT>dw(wt2);</SCRIPT>
+            <A class=plaintext_bold 
+            onclick="window.open('glossary.htm#telstra_bigpond','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><B><FONT color=#0066FF>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A><BR><BR></TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=240><B>
+            <SCRIPT>dw(wt3);</SCRIPT>
+            &gt;</B></TD>
+          <TD><SELECT onchange=setServerIP(); name=bpa_state_display> 
+              <OPTION value=0 selected>--
+			  <OPTION value=1>NSW
+			  <OPTION value=2>VIC
+			  <OPTION value=3>QLD
+			  <OPTION value=4>SA
+			  <OPTION value=5>TAS
+			  <OPTION value=6>WA</OPTION>
+			  </SELECT> </TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=240><B>
+            <SCRIPT>dw(wpe3);</SCRIPT>
+            &gt;</B> </TD>
+          <TD><INPUT maxLength=60 size=25 name=bpa_username> </TD></TR>
+        <TR>
+          <TD width=36 height=18>&nbsp;</TD>
+          <TD width=240 height=18><B>
+            <SCRIPT>dw(pwd);</SCRIPT>
+            &gt;</B></TD>
+          <TD><INPUT type=password maxLength=60 size=25 name=bpa_passwd> 
+</TD></TR>
+        <TR>
+          <TD width=36 height=18>&nbsp;</TD>
+          <TD width=240 height=18><B>
+            <SCRIPT>dw(wpe4);</SCRIPT>
+            &gt;</B></TD>
+          <TD><INPUT type=password maxLength=60 size=25 name=bpa_passwd_2> 
+        </TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=240><B>
+            <SCRIPT>dw(wt4);</SCRIPT>
+            &gt;</B></TD>
+          <TD><INPUT onclick=toggleAutoDLS(); type=checkbox value=1 
+            name=bpa_manual_enable_display> </TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=240><B>
+            <SCRIPT>dw(wt5);</SCRIPT>
+            &gt;</B></TD>
+          <TD><INPUT maxLength=21 size=25 name=bpa_server_display>
+            <SCRIPT>dw('<input type="button" value="');dw(Logout);dw('" onClick="disconnect()">');</SCRIPT>
+             </TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=240>&nbsp;</TD>
+          <TD>&nbsp; </TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD align=middle colSpan=2><BR><BR>
+            <SCRIPT>
+				dw('<input type="button" value="');dw(btn1);dw('" style="{width:160px;}" class="submitBtn" onclick="Init_Value()" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+				dw('<input type="button" value="');dw(btn2);dw('" style="{width:160px;}" class="submitBtn" onClick="return Try_Submit();">');
+			</SCRIPT>
+          </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

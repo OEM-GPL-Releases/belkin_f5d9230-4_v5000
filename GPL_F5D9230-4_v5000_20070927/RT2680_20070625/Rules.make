@@ -1,0 +1,9 @@
+export PROJECT=RALINK
+export WL_DOMAIN=FCC
+export COUNTRY=US
+export DEVMODE=RT
+export MODEL=BELKIN
+export VENDOR=WL
+export FUNC=FCC
+export INCLUDE_SSL=N
+export BAND=bg

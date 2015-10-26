@@ -1,0 +1,340 @@
+<HTML><HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="validate.js"></SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wle1+'</title>';
+dw(strHtml);
+var helpItem 	='Security';
+var menuSection	='WLAN';
+var menuItem	='Security';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function GURL(x){location=x}
+
+function Init_Value()
+{
+	var f=document.forms[0];
+	var RadiusServerIP='<%nvram_get("wl0_authRadiusIp");%>';
+	var encryption='<%nvram_get("wl0_wpaenc");%>';
+	var sec_mode='<%nvram_get("wl0_sec_mode");%>';
+	
+	if (sec_mode=="wpa2radius")
+		f.wl_auth.selectedIndex = 1;
+	else if (sec_mode=="wpawpa2radius")
+		f.wl_auth.selectedIndex = 2;
+	else
+		f.wl_auth.selectedIndex = 0;
+	
+   	t1=RadiusServerIP.indexOf('.');
+   	if(t1!=-1)f.IP1.value=RadiusServerIP.substring(0,t1);
+   	t2=RadiusServerIP.indexOf('.',(t1+1));
+   	if(t2!=-1)f.IP2.value=RadiusServerIP.substring((t1+1),t2);
+   	t1=RadiusServerIP.indexOf('.',(t2+1));
+   	if(t1!=-1)f.IP3.value=RadiusServerIP.substring((t2+1),t1);
+   	f.IP4.value=RadiusServerIP.substring(t1+1);		
+	
+	f.wl_radius_port.value= '<%nvram_get("wl0_authRadiusPort");%>';
+	f.wl_radius_key.value= '<%nvram_get("wl0_authRadiusPasswd");%>';
+	f.wl_radius_key_interval.value = '<%nvram_get("wl0_key_renew");%>';
+	ChangeEncMode();
+}
+
+function isSemicolon(s) 
+{
+ for(var i = 0; i < s.length; i++) {
+ var c = s.charAt(i);
+ if(c ==';') return false;
+ }
+ return true;
+}
+
+function isBlank(s) {
+	for(var i = 0; i < s.length; i++) {
+		var c = s.charAt(i);
+		if((c !=' ') && (c!='\n') && (c !='\t')) return false;
+	}
+	return true;
+}
+
+function ChangeSecMode(wl_sec_mode)
+{
+	if(wl_sec_mode.value == "0") GURL('wireless_encrypt_no.htm');
+	else if(wl_sec_mode.value == "psk") GURL('wireless_wpa_psk.htm');	
+	else if(wl_sec_mode.value == "128") GURL('wireless_encrypt_128.htm');	
+	else if(wl_sec_mode.value == "64") GURL('wireless_encrypt_64.htm');
+	else if(wl_sec_mode.value == "wpa") GURL('wireless_wpa_radius.htm');	
+}
+
+function ChangeEncMode()
+{
+	var i ,f ;
+	
+	f = document.forms[0];
+	
+	for( i = 0 ; i < f.wl_wep.options.length ; i++ )
+		  f.wl_wep.options[i]=null;
+  if( f.wl_auth.options[f.wl_auth.selectedIndex].value == 'wparadius' )
+		  f.wl_wep.options[0] = new Option("TKIP",1);		  
+  else if( f.wl_auth.options[f.wl_auth.selectedIndex].value == 'wpa2radius' )
+		  f.wl_wep.options[0] = new Option("AES",0);		  
+  else if( f.wl_auth.options[f.wl_auth.selectedIndex].value == 'wpawpa2radius' )
+  {	
+	//	  f.wl_wep.options[0] = new Option("AES",0);		  
+	//	  f.wl_wep.options[1] = new Option("TKIP",1);		  
+		  f.wl_wep.options[0] = new Option("TKIP+AES",2);		  
+	}	  
+}
+function Try_Submit()
+{
+	var f=document.forms[0];
+	if(f.IP1.value=='0' || f.IP1.value=='255') {
+		alert("Invalid value for the first IP octet!");
+		return false;
+	}
+	if(f.IP4.value=='0' || f.IP4.value=='255') {
+		alert("Invalid value for the last IP octet!");
+		return false;
+	}
+		
+	if (!CheckQuote(f.wl_radius_key))	
+		return false;
+	if (!IPCheck(f.IP1))
+		return false;
+	if (!IPCheck(f.IP2))
+		return false;
+	if (!IPCheck(f.IP3))
+		return false;
+	if (!IPCheck(f.IP4))
+		return false;						
+	if (!PortCheck(f.wl_radius_port))		
+		return false;
+	if (!CheckEmpty(f.wl_radius_key, "Please enter radius key"))
+		return false;
+	if (!checkNum(f.wl_radius_key_interval))
+		return false;
+ 	if ( !isSemicolon(f.wl_radius_key.value) )
+ 	{
+		alert("Radius Key can't input with \';\'");
+		return false;
+ 	}
+		
+	f.wl0_authRadiusIp.value = f.IP1.value+"."+f.IP2.value+"."+f.IP3.value+"."+f.IP4.value;
+	f.wl0_authRadiusPort.value = f.wl_radius_port.value;
+	f.wl0_authRadiusPasswd.value = f.wl_radius_key.value;
+	f.wl0_key_renew.value = f.wl_radius_key_interval.value;
+	f.wl0_wpaenc.value = f.wl_wep.value;
+	f.wl0_sec_mode.value = f.wl_auth.value;
+	//f.wl0_wpaenc.value = '2';
+	//f.wl0_sec_mode.value = 'wpawpa2radius';
+	f.submit();
+}
+function CheckQuote(obj)
+{
+	if (obj.value.match(/\'|\"/g))
+	{
+		alert("Invalid character ' or \"\"");
+		obj.focus();
+		return 0;
+	}
+	return 1;
+}
+function IPCheck ( I )
+{
+	if ( isNaN( I.value ))
+	{
+		alert("Invalid value for IP address !");
+		I.focus();
+		return false;
+	}	
+
+	d = I.value;
+	data = d.match(/[^0-9]/g);
+	if (data || !d) {
+		alert("Please input number!");
+		I.focus();
+		return false;
+	}
+
+	if ( !(d<256 && d>=0)) 
+	{
+		alert("IP is out of range in [0-255] !");
+		I.focus();	
+		return false;
+	}
+	return true;
+}
+function PortCheck(I)
+{
+	d =parseInt(I.value, 10);
+	if ( !( d<65536 && d>=0)|| isNaN(d) )		
+	{
+		alert('Port is out of range [0 - 65535]');
+		I.focus();
+		I.value = I.defaultValue;
+		return 0;
+	}
+	return 1;
+}
+
+function CheckEmpty(obj, str)
+{
+	if (obj.value == "")
+	{
+		if (str != "")
+		{		
+			alert(str);
+			obj.focus();
+		}
+		return 0;	
+	}
+	return 1;
+}
+
+function checkNum(I)
+{
+	txt = I.value;
+	for(i=0;i<txt.length;i++)
+	{
+		c=txt.charAt(i);
+		if("0123456789".indexOf(c,0)<0)
+		{
+			alert("Please input with integer value!");
+			I.focus;
+			return 0;
+		}
+	}
+	return 1;
+}
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" onload="Init_Value();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="tF" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wireless_wpa_radius.htm">
+<input type="hidden" name="redirect_timer" value="5000">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="restart" value="wireless">
+<input type="hidden" name="data1" value="wl0_sec_mode wl0_wpaenc wl0_authRadiusIp wl0_authRadiusPort wl0_authRadiusPasswd wl0_key_renew">
+
+<input type="hidden" name="wl0_sec_mode">
+<input type="hidden" name="wl0_wpaenc">
+<input type="hidden" name="wl0_authRadiusIp">
+<input type="hidden" name="wl0_authRadiusPort">
+<input type="hidden" name="wl0_authRadiusPasswd">
+<input type="hidden" name="wl0_key_renew">
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wle1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=791 align=left border=0>
+        <TBODY>
+        <TR>
+          <TD width="791" height=410 vAlign=top>
+            <TABLE class=copy_1 cellSpacing=10 cellPadding=0 width=763 
+            align=center border=0>
+              <TBODY>
+              <TR>
+                <TD><B>
+                  <SCRIPT>dw(wle2);</SCRIPT>
+                  </B></TD>
+                <TD align=left colSpan=2><SELECT onchange=ChangeSecMode(this) 
+                  name=wl_sec_mode> 
+                    <SCRIPT>dw('<option value="0">'+Disabled+'</option>');
+														dw('<option value="psk">'+wle3+'</option>');
+														dw('<option value="128">'+wle4+'</option>');
+														dw('<option value="64">'+wle5+'</option>');
+														dw('<option value="wpa" selected>'+wle6+'</option>');
+</SCRIPT>
+                  </SELECT> </TD></TR>
+              <TR>
+                <TD colspan="2"><B>
+                  <SCRIPT>dw(wle16);</SCRIPT><br>
+                  </B>
+                  <script>dw(wle17);</script>
+				  <A class=plaintext_bold 
+                  onclick="window.open('glossary.htm#wireless_security','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+                  href="javascript:void(0);"><B><FONT color=#0066FF>
+                  <SCRIPT>dw(sm1);</SCRIPT>
+                  </FONT></B></A>
+                </TD>
+              </TR>
+              <TR>
+                <TD><B>
+                  <SCRIPT>dw(ww13);</SCRIPT>
+                  </B></TD>
+                <TD align=left colSpan=2>
+					<SELECT name="wl_auth" onchange="ChangeEncMode();"> 
+						<OPTION value="wparadius">WPA-RADIUS</OPTION>
+						<OPTION value="wpa2radius">WPA2-RADIUS</OPTION> 
+						<OPTION value="wpawpa2radius">WPA-RADIUS + WPA2-RADIUS</OPTION> 
+					</SELECT>
+					<!--WPA-RADIUS + WPA2-RADIUS-->
+                   </TD></TR>
+              <TR>
+                <TD><B>
+                  <SCRIPT>dw(ww3);</SCRIPT>
+                  </B></TD>
+                <TD align=left colSpan=2>
+					<SELECT name="wl_wep"> 
+						<OPTION value="0">AES</OPTION>
+						<OPTION value="1">TKIP</OPTION> 					
+						<OPTION value="2">TKIP+AES</option>
+					</SELECT>
+                  <!--SCRIPT>dw(wwp1);</SCRIPT-->
+                   </TD></TR>
+              <TR id=plaintext_psk name="plaintext_psk">
+                <TD><B>
+                  <SCRIPT>dw(ww4);</SCRIPT>
+                  </B></TD>
+                <TD align=left colSpan=2><INPUT maxLength=3 size=4 name=IP1>. <INPUT 
+            maxLength=3 size=4 name=IP2>. <INPUT maxLength=3 size=4 name=IP3>. 
+            <INPUT maxLength=3 size=4 name=IP4></TD></TR>
+              <TR id=obscure_psk name="obscure_psk">
+                <TD><B>
+                  <SCRIPT>dw(ww5);</SCRIPT>
+                  </B></TD>
+                <TD align=left colSpan=2><INPUT type=text maxLength=5 size=5 name=wl_radius_port> </TD></TR>
+              <TR id=obscure_psk name="obscure_psk">
+                <TD><B>
+                  <SCRIPT>dw(ww6);</SCRIPT>
+                  </B></TD>
+                <TD align=left colSpan=2><INPUT type=text maxLength=128 size=40 name=wl_radius_key> </TD></TR>
+              <TR id=obscure_psk name="obscure_psk">
+                <TD><B>
+                  <SCRIPT>dw(ww7);</SCRIPT>
+                  </B></TD>
+                <TD align=left colSpan=2><INPUT type=text maxLength=5 size=10 name=wl_radius_key_interval> (<SCRIPT>dw(seconds);</SCRIPT>)</TD></TR>
+              <TR>
+                <TD width=139>&nbsp;</TD>
+                <TD width=583>&nbsp;</TD>
+                <TD width=1>&nbsp;</TD></TR>
+              <TR>
+                <TD width=139>&nbsp;</TD>
+                <TD align=middle colSpan=2>
+                  <SCRIPT>
+				  	dw('<input type="button" value="'+btn1+'" style="{width:160px;}" class="submitBtn" onclick="document.tF.reset();Init_Value();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+					dw('<input type="button" value="'+btn2+'" style="{width:160px;}" class="submitBtn" onClick="return Try_Submit();">');</SCRIPT>
+                </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

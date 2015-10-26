@@ -1,0 +1,268 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT language=JavaScript src="validate.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+
+<SCRIPT>
+strHtml='<title>'+wds1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='DNS';
+var menuSection	='WAN';
+var menuItem	='DNS';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function AutoFromISP()
+{
+	var f=document.wan_dnspage;
+	if(f.auto_from_isp.checked)
+	{
+		f.DIP11.disabled=true;
+		f.DIP12.disabled=true;
+		f.DIP13.disabled=true;
+		f.DIP14.disabled=true;
+		f.DIP21.disabled=true;
+		f.DIP22.disabled=true;
+		f.DIP23.disabled=true;
+		f.DIP24.disabled=true;
+	}
+	else
+	{
+		f.DIP11.disabled=false;
+		f.DIP12.disabled=false;
+		f.DIP13.disabled=false;
+		f.DIP14.disabled=false;
+		f.DIP21.disabled=false;
+		f.DIP22.disabled=false;
+		f.DIP23.disabled=false;
+		f.DIP24.disabled=false;
+		if('<%nvram_get("wan_proto");%>'=='static') 
+			f.auto_from_isp.disabled=true;
+	}
+}
+
+function initData()
+{
+	var f=document.wan_dnspage;
+	var wan_proto = '<%nvram_get("wan_proto");%>'
+	var dns1='<%nvram_get("wan_dns1");%>';
+	var dns2='<%nvram_get("wan_dns2");%>';
+	var staticdns_enabled = '<%nvram_get("wan_staticdns_enabled");%>';
+	var static_dns1 = '<%nvram_get("wan_staticdns1");%>';
+	var static_dns2 = '<%nvram_get("wan_staticdns2");%>';
+	
+	if (wan_proto == 'static' || staticdns_enabled == '1')
+		f.auto_from_isp.checked = false;
+	else
+		f.auto_from_isp.checked = true;
+	if (staticdns_enabled == '1')
+	{
+		if(static_dns1!='')
+		{
+ 			t1=static_dns1.indexOf('.');
+ 			if(t1!=-1)f.DIP11.value=static_dns1.substring(0,t1);
+ 			t2=static_dns1.indexOf('.',(t1+1));
+	 		if(t2!=-1)f.DIP12.value=static_dns1.substring((t1+1),t2);
+			t1=static_dns1.indexOf('.',(t2+1));
+			if(t1!=-1)f.DIP13.value=static_dns1.substring((t2+1),t1);
+			f.DIP14.value=static_dns1.substring(t1+1);
+		}
+		if(static_dns2!='')
+		{
+ 			t1=static_dns2.indexOf('.');
+ 			if(t1!=-1)f.DIP21.value=static_dns2.substring(0,t1);
+	 		t2=static_dns2.indexOf('.',(t1+1));
+ 			if(t2!=-1)f.DIP22.value=static_dns2.substring((t1+1),t2);
+ 			t1=static_dns2.indexOf('.',(t2+1));
+ 			if(t1!=-1)f.DIP23.value=static_dns2.substring((t2+1),t1);
+ 			f.DIP24.value=static_dns2.substring(t1+1);
+		}
+	}
+	else
+	{
+		if(dns1!='')
+		{
+ 			t1=dns1.indexOf('.');
+ 			if(t1!=-1)f.DIP11.value=dns1.substring(0,t1);
+ 			t2=dns1.indexOf('.',(t1+1));
+	 		if(t2!=-1)f.DIP12.value=dns1.substring((t1+1),t2);
+			t1=dns1.indexOf('.',(t2+1));
+			if(t1!=-1)f.DIP13.value=dns1.substring((t2+1),t1);
+			f.DIP14.value=dns1.substring(t1+1);
+		}
+		if(dns2!='')
+		{
+ 			t1=dns2.indexOf('.');
+ 			if(t1!=-1)f.DIP21.value=dns2.substring(0,t1);
+	 		t2=dns2.indexOf('.',(t1+1));
+ 			if(t2!=-1)f.DIP22.value=dns2.substring((t1+1),t2);
+ 			t1=dns2.indexOf('.',(t2+1));
+ 			if(t1!=-1)f.DIP23.value=dns2.substring((t2+1),t1);
+ 			f.DIP24.value=dns2.substring(t1+1);
+		}
+	}
+	AutoFromISP();
+}
+
+function storeData()
+{
+	var f=document.wan_dnspage;
+	if(f.auto_from_isp.checked == false)
+	{
+		f.wan_dns1.value='0.0.0.0';
+		f.wan_dns2.value='0.0.0.0';
+		
+		if(!IPCheck(f.DIP11)) return false;
+		if(!IPCheck1(f.DIP12)) return false;
+		if(!IPCheck1(f.DIP13)) return false;
+		if(!IPCheck(f.DIP14)) return false;
+		if(f.DIP11.value >= 224)
+		{
+			 alert(lsipm4);
+			 return false;
+		}
+		f.wan_staticdns1.value = f.DIP11.value+'.'+f.DIP12.value+'.'+f.DIP13.value+'.'+f.DIP14.value;
+		
+		if((f.DIP21.value == '0' && f.DIP22.value == '0' && f.DIP23.value == '0' && f.DIP24.value == '0') ||
+		   (f.DIP21.value == '' && f.DIP22.value == '' && f.DIP23.value == '' && f.DIP24.value == ''))
+		{
+			f.wan_staticdns2.value = "0.0.0.0";
+		}
+		else
+		{
+			if(!IPCheck(f.DIP21)) return false;
+			if(!IPCheck1(f.DIP22)) return false;
+			if(!IPCheck1(f.DIP23)) return false;
+			if(!IPCheck(f.DIP24)) return false;
+			f.wan_staticdns2.value = f.DIP21.value+'.'+f.DIP22.value+'.'+f.DIP23.value+'.'+f.DIP24.value;
+		}
+		if(f.DIP21.value >= 224)
+		{
+			 alert(lsipm4);
+			 return false;
+		}
+		f.wan_staticdns_enabled.value = '1';
+	}
+	else
+	{
+		f.wan_staticdns1.value = '0.0.0.0';
+		f.wan_staticdns2.value = '0.0.0.0';
+		f.wan_staticdns_enabled.value = '0';
+		f.data1.value = "wan_staticdns1 wan_staticdns2 wan_staticdns_enabled";
+	}
+	return true;
+}
+
+function Try_Submit() 
+{
+	if(storeData()==false)
+		return false;
+	alert(warn_msg2);
+	document.forms[0].submit();
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 onload=initData(); marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM name="wan_dnspage" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wan_dns.htm">
+<input type="hidden" name="redirect_timer" value="60000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="wan_dns1 wan_dns2 wan_staticdns_enabled wan_staticdns1 wan_staticdns2">
+<input type="hidden" name="wan_dns1">
+<input type="hidden" name="wan_dns2">
+<input type="hidden" name="wan_staticdns_enabled">
+<input type="hidden" name="wan_staticdns1">
+<input type="hidden" name="wan_staticdns2">
+
+<INPUT type="hidden" value="eth1" name="wan_access"> 
+<INPUT type="hidden" value="dhcp" name="wan_proto"> 
+<INPUT type="hidden" value="1" name="pppoe_autodns"> 
+<INPUT type="hidden" value="1" name="dhcp_autodns"> 
+<INPUT type="hidden" value="1" name="m_autodns"> 
+<INPUT type="hidden" value="2" name="m_wan_dns"> 
+<INPUT type="hidden" name="m_wan_dns0"> 
+<INPUT type="hidden" name="m_wan_dns1"> 
+<INPUT type="hidden" value="2" name="pppoe_dns"> 
+<INPUT type="hidden" name="pppoe_dns0"> 
+<INPUT type="hidden" name="pppoe_dns1"> 
+<INPUT type="hidden" value="2" name="dhcp_dns"> 
+<INPUT type="hidden" name="dhcp_dns0"> 
+<INPUT type="hidden" name="dhcp_dns1">
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wds1);</SCRIPT>
+<BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=550 align=left 
+      border=0>
+        <TBODY>
+        <TR align=left>
+          <TD align=left colSpan=3>
+            <SCRIPT>dw(wds2);</SCRIPT>
+            <BR><BR></TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD noWrap width=500 colSpan=2>
+		  	<INPUT type="checkbox" name="auto_from_isp" onclick="AutoFromISP()"> <B>
+            <SCRIPT>dw(wds3);</SCRIPT>
+            </B><BR><BR></TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=185><B>
+            <SCRIPT>dw(wds4);</SCRIPT>
+            &gt;</B><BR><BR></TD>
+          <TD width=335>
+		  	<INPUT disabled maxLength="3" size="4" name="DIP11">. 
+			<INPUT disabled maxLength="3" size="4" name="DIP12">. 
+			<INPUT disabled maxLength="3" size="4" name="DIP13">. 
+			<INPUT disabled maxLength="3" size="4" name="DIP14"> 
+            <BR><BR></TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD vAlign=bottom width=185 nowarp="1"><B>
+            <SCRIPT>dw(wds5);</SCRIPT>
+            &gt;</B><BR><BR></TD>
+          <TD width=335>
+		  	<INPUT disabled maxLength="3" size="4" name="DIP21">. 
+			<INPUT disabled maxLength="3" size="4" name="DIP22">. 
+			<INPUT disabled maxLength="3" size="4" name="DIP23">. 
+			<INPUT disabled maxLength="3" size="4" name="DIP24"> 
+            <BR><BR></TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD colSpan=2>
+            <SCRIPT>dw(wds6);</SCRIPT>
+            <A onclick="window.open('glossary.htm#dns','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" href="javascript:void(0);">
+			<B><FONT color=#0066FF>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A><BR><BR></TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD align=middle colSpan=2>
+            <SCRIPT>
+				dw('<input type="button" value="');dw(btn1);dw('" style="{width:160px;}" class="submitBtn" onclick="initData();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+				dw('<input type="button" style="{width:160px;}" value="');dw(btn2);dw('" onClick="return Try_Submit();" class="submitBtn">');
+			</SCRIPT>
+          </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

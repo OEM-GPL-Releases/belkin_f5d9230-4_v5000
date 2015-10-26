@@ -1,0 +1,109 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=<%nvram_get("charset");%>">
+<title>Check Firmware Successfully</title>
+<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+</head>
+<body text="#000000" bgColor="#eeeeee" leftMargin="0" topMargin="0" marginheight="0" marginwidth="0">
+<form name="checkfw" action="post.cgi" method="post">
+  <table cellSpacing="0" cellPadding="0" width="100%" border="0" valign="top">
+    <tr>
+      <td vAlign="top">
+      <div align="left"><span class="pageTitle"></span><br><br></div>
+      <table cellSpacing="1" cellPadding="0" width="320" align="left" border="0" valign="top">
+        <tr><td width="9">&nbsp;</td><td class="verdana12" colSpan="2" width="320"></td></tr>
+        <tr>
+          <td width="9">&nbsp;</td>
+          <td class="verdana12" colSpan="2" width="320">
+          <font color="#0033ff" size="+1"><u><b>
+		  Update Available</b></u></font><br>&nbsp;<b>
+		  An updated version of firmware is available for your Router</b><br><br><b>
+		  Model:</b><br>
+		  <script language="javascript">
+<!--ModelName-->		
+				var model=' <%nvram_get("remote_dev_model");%>';
+				document.write(model);
+		  </script>
+		  <br><br><b>
+		  
+		  Firmware Version Information:</b><br>&nbsp;
+		  Belkin Wireless Router Version : 
+  		  <script language="javascript">
+<!--Firmware Version-->		
+				var tmp= '<%nvram_get("remote_fw_version");%>';
+				document.write(tmp);
+		  </script>
+		  <br>&nbsp;
+		  Release Date : 
+		  <script language="javascript">
+<!--Released Date-->		
+				var tmp = '<%nvram_get("remote_fw_date");%>';
+				document.write(tmp);
+		  </script>
+		  <br>&nbsp;
+		  Image location :
+		  <script language="javascript">
+<!--Image URL-->		  	
+				var tmp='<%nvram_get("remote_fw_url");%>';
+				document.write(tmp);
+		  </script>
+		  <br><br><br>&nbsp;
+		  If you wish to update the firmware in your Belkin Router, click 'Download NOW'
+          below to get the file. Save the file to a folder on your computer where
+          you can find it later. Browse to the file from the 'Firmware Update' page.
+		  Select the file, then click 'Update'.<br><br>&nbsp;
+		  <script language="javascript">
+<!--Instruction Doc-->		  
+//			 var tmp= "<a href="+'<%nvram_get("remote_insdos_url");%>'+" target='_blank'>";
+//			 document.write(tmp);
+		  </script>
+		  <a href="<%nvram_get("remote_insdos_url");%>" target='_blank'>
+		  Click here for full instructions</a><br>
+		  <i>NOTE: You will need Adobe Acrobat Reader to view this document.</i>
+		  Click here to get <a href='http://www.adobe.com' target='_blank'>Adobe Acrobat Reader</a>
+		</td>
+		<tr><td width="9" height="41">&nbsp;</td></tr>
+			<td width="9" height="41">&nbsp;</td>
+          	<td class="verdana12" colSpan="2" height="41" width="320">&nbsp;<b>
+			<script language="javascript">
+<!--Image URL-->		 	
+//				var tmp="<a href="+'<%nvram_get("remote_fw_url");%>'+">Download Firmware NOW</a></b>";
+//				document.write(tmp);
+			</script>
+			<a href="<%nvram_get("remote_fw_url");%>">Download Firmware NOW</a></b>
+			</td>
+        </tr>
+			<td width="9" height="41">&nbsp;</td>
+          	<td class="verdana12" colSpan="2" height="41" width="320">&nbsp;<b>
+			<script language="javascript">
+<!--Manual URL-->			
+//				var tmp = "<a href="+'<%nvram_get("remote_manual_url");%>'+">Download New Manual NOW</a></b>";
+//				document.write(tmp);
+			</script>
+			<a href="<%nvram_get("remote_manual_url");%>" target='_blank'>Download New Manual NOW</a></b>
+			</td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+  </table>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+</form>
+</body>
+</html>

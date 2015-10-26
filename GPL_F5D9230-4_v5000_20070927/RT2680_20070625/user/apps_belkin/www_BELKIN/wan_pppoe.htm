@@ -1,0 +1,317 @@
+<HTML><HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="validate.js"></SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wpe1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Connection Type';
+var menuSection	='WAN';
+var menuItem	='Connection Type';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function Init_Value()
+{
+	var f=document.wan_form;
+	var username='<%nvram_get("pppoe_username");%>';
+	var passwd='<%nvram_get("pppoe_passwd");%>';
+	var servicename='<%nvram_get("pppoe_service_name");%>';
+	var mtu='<%nvram_get("pppoe_mtu");%>';
+	var idletime='<%nvram_get("pppoe_idle_time");%>';
+    
+	f.UN.value=username;
+	f.PW.value=passwd;
+	f.PWV.value=passwd;
+	f.SN.value=servicename;
+	f.mtu.value=mtu;
+
+	if(idletime == '' || idletime == '0') {
+		f.idletimeadmin.checked=false;
+		f.idle.value=0;
+	}
+	else {
+		f.idletimeadmin.checked=true; 
+		f.idle.value=parseInt(idletime)/60;
+	}
+}
+function storeData()
+{
+	var f=document.wan_form;
+	f.pppoe_username.value=f.UN.value;
+	f.pppoe_passwd.value=f.PW.value;
+
+	if(f.idletimeadmin.checked==false) {
+		f.pppoe_demand.value='0';
+		f.pppoe_idle_time.value='0';
+	}
+	else {
+		f.pppoe_demand.value='1';
+		f.pppoe_idle_time.value=f.idle.value*60;
+	}
+	
+	f.pppoe_mtu.value=f.mtu.value;
+	f.pppoe_service_name.value=f.SN.value;
+	return true;
+}
+
+function init() 
+{
+	toggleAutoDLS();
+}
+function isBlank(s) {
+for(i=0;i<s.length;i++) {
+ c=s.charAt(i);
+ if((c!=' ')&&(c!='\n')&&(c!='\t'))return false;}
+return true;
+}
+
+function checkVaild(value)
+{
+var localname=value.toLowerCase();
+for(i=0;i<localname.length;i++)
+{
+ var token=localname.charAt(i);
+ if(token=='<' || token=='>' || token=='&')
+ {
+	alert(wpe10);
+	return false;
+ }
+}
+return true;
+}
+function checkVaild1(value)
+{
+	// allow '@' only
+	var localname=value.toLowerCase();
+	for(i=0;i<localname.length;i++)
+	{
+		var token=localname.charAt(i);
+	 
+	  	if(token=='`' || token=='~' || token=='!' || token=='?' || token=='#'
+	 	|| token=='$' || token=='%' || token=='^' || token=='&' || token=='*'
+	 	|| token=='(' || token==')' || token=='=' || token=='+' || token=='['
+	 	|| token==']' || token=='{' || token=='}' || token=='\\' || token=='|'
+	 	|| token==';' || token==':' || token=='\'' || token=='\"' || token=='<'
+	 	|| token=='>' || token=='/' )
+	 	{
+			alert(wdy6);
+			return false;
+	 	}	 
+	}
+	return true;
+}
+function isInteger(val)
+{
+ for(i=0; i<val.length; i++)
+ {
+	if(val.charAt(i)<'0' || val.charAt(i)>'9') 
+		return false;
+ }
+ return true;
+}
+function evaltF() 
+{
+	var f=document.wan_form;
+	if(!checkVaild1(f.UN.value))return false;
+	if(!checkVaild(f.PW.value))return false;
+	if(!checkVaild(f.PWV.value))return false;
+	if(!checkVaild1(f.SN.value))return false;
+	if(isBlank(f.UN.value)){ alert(pm); return false; }
+	if(f.PWV.value!=f.PW.value) { alert(pm); return false; }
+
+	if(f.idletimeadmin.checked==true)
+	{ 
+ 		if((isBlank(f.idle.value))||(isNaN(f.idle.value))|| 
+		   !isInteger(f.idle.value) || (f.idle.value<1||f.idle.value>99))
+		{
+			alert(idlerangerro); 
+			return false;
+		}
+	}
+	
+	if(validatePPPoEMTU(f.mtu.value)==false)return false;
+	//f.connectflag.value=3;
+	if(storeData()==false)return false;
+	
+	alert(warn_msg2);
+	f.submit();
+}
+
+function connect(){
+var f=document.wan_form;
+if(isBlank(f.UN.value)) return false;
+if(f.PWV.value!=f.PW.value) { alert(pm); return false; }
+if(isBlank(f.mtu.value) || (f.mtu.value > 1492) || (f.mtu.value < 576))
+{ alert(wpe11); return false; }
+f.connectflag.value=1;
+f.submit();
+return true;
+}
+
+function disconnect() {
+var f=document.wan_form;
+if(isBlank(f.UN.value)){ alert(wpe12); return false; }
+if(f.PWV.value!=f.PW.value) { alert(pm); return false; }
+if(isBlank(f.mtu.value) || (f.mtu.value > 1492) || (f.mtu.value < 576))
+{ alert(wpe11); return false; }
+f.connectflag.value=2;
+f.submit();
+return true;
+}
+function submitF() {return evaltF();}
+function logoutF()
+{
+document.wan_form.logout.value=1;
+document.wan_form.submit();
+return true;
+} 
+
+function toggleAutoDLS() 
+{
+	if(document.wan_form.idletimeadmin.checked) 
+		document.wan_form.idle.disabled = false;  
+	else 
+		document.wan_form.idle.disabled = true;
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" onload="Init_Value();init();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM id="wan_form" name="wan_form" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wan_pppoe.htm">
+<input type="hidden" name="redirect_timer" value="60000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="wan_proto pppoe_username pppoe_passwd pppoe_service_name pppoe_mtu pppoe_idle_time pppoe_demand wan_alias1_enabled wan_alias2_enabled wan_alias3_enabled wan_alias4_enabled wan_alias5_enabled wan_ipaddr1 wan_ipaddr2 wan_ipaddr3 wan_ipaddr4 wan_ipaddr5 wan_netmask1 wan_netmask2 wan_netmask3 wan_netmask4 wan_netmask5">
+
+<input type="hidden" name="wan_proto" value="pppoe">
+<input type="hidden" name="pppoe_username">
+<input type="hidden" name="pppoe_passwd">
+<input type="hidden" name="pppoe_service_name">
+<input type="hidden" name="pppoe_mtu">
+<input type="hidden" name="pppoe_idle_time">
+<input type="hidden" name="pppoe_demand">
+<input type="hidden" name="wan_alias1_enabled" value='0'>
+<input type="hidden" name="wan_alias2_enabled" value='0'>
+<input type="hidden" name="wan_alias3_enabled" value='0'>
+<input type="hidden" name="wan_alias4_enabled" value='0'>
+<input type="hidden" name="wan_alias5_enabled" value='0'>
+
+<input type="hidden" name="wan_ipaddr1" value=''>
+<input type="hidden" name="wan_ipaddr2" value=''>
+<input type="hidden" name="wan_ipaddr3" value=''>
+<input type="hidden" name="wan_ipaddr4" value=''>
+<input type="hidden" name="wan_ipaddr5" value=''>
+
+<input type="hidden" name="wan_netmask1" value=''>
+<input type="hidden" name="wan_netmask2" value=''>
+<input type="hidden" name="wan_netmask3" value=''>
+<input type="hidden" name="wan_netmask4" value=''>
+<input type="hidden" name="wan_netmask5" value=''>
+
+<TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wpe1);</SCRIPT>
+<BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=550 align=left 
+      border=0>
+        <TBODY>
+        <TR align=left>
+          <TD align=left colSpan=3>
+            <SCRIPT>dw(wpe2);</SCRIPT>
+            <A 
+            onclick="window.open('glossary.htm#pppoe','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><B><FONT color=#0066FF>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A><BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD width=175><B>
+            <SCRIPT>dw(wpe3);</SCRIPT>
+            &gt;</B><BR><BR></TD>
+          <TD align=left width=326><INPUT maxLength=63 size=25 
+          name=UN><BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD width=175><B>
+            <SCRIPT>dw(pwd);</SCRIPT>
+            &gt;</B><BR><BR></TD>
+          <TD class=plaintext_bold width=226><INPUT type=password maxLength=60 
+            size=25 name=PW><BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD width=175><B>
+            <SCRIPT>dw(wpe4);</SCRIPT>
+            &gt;</B><BR><BR></TD>
+          <TD class=plaintext_bold width=226 height=18><INPUT type=password 
+            maxLength=60 size=25 name=PWV><BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD noWrap width=175><B>
+            <SCRIPT>dw(wpe5);</SCRIPT>
+            &gt;</B><BR><BR></TD>
+          <TD class=plaintext_bold width=226><INPUT maxLength=39 size=25 
+            name=SN><BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD width=175><B>
+            <SCRIPT>dw(wpe6);</SCRIPT>
+            &gt;</B><BR><BR></TD>
+          <TD width=326><INPUT maxLength=4 size=5 value=1454 
+          name=mtu><BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD colSpan=2>
+            <SCRIPT>dw(wpe7);</SCRIPT>
+            <A 
+            onclick="window.open('glossary.htm#mtu','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><B><FONT color=#0066FF>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A><BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD colSpan=2><INPUT onclick=toggleAutoDLS(); type=checkbox 
+            name="idletimeadmin">
+            <SCRIPT>dw(wpe8);</SCRIPT>
+             <INPUT maxLength=2 size=10 name=idle>
+            <SCRIPT>dw(wpe9);</SCRIPT>
+            <BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD colSpan=2><A 
+            onclick="window.open('glossary.htm#disconnect','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><B><FONT color=#0066FF>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A><BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD align=middle colSpan=2>
+            <SCRIPT>
+				dw('<input type="button" value="');
+				dw(btn1);
+				dw('" style="{width:160px;}" class="submitBtn" onclick="Init_Value();init()" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+				dw('<input type="button" style="{width:160px;}" value="');
+				dw(btn2);
+				dw('" onClick="return submitF();" class="submitBtn"></td>');</SCRIPT>
+          </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

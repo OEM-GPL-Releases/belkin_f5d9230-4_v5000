@@ -1,0 +1,315 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language="JavaScript" src="validate.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wle1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Security';
+var menuSection	='WLAN';
+var menuItem	='Security';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function isBlank(s) {
+ for(var i = 0; i < s.length; i++) {
+ var c = s.charAt(i);
+ if((c !=' ') && (c!='\n') && (c !='\t')) return false;
+ }
+ return true;
+}
+function isHex(s) {
+var j,x = 0;
+for(var i = 0; i < s.length; i++) {
+var c = s.charAt(i);
+j = parseInt(c,16);
+if ((j == 0) || (j == 1)|| (j == 2)|| (j == 3)|| (j == 4)|| (j == 5)|| (j == 6)
+|| (j == 7)|| (j == 8)|| (j == 9)|| (j == 10)|| (j == 11)|| (j == 12)|| (j == 13)|| (j == 14)|| (j == 15)) 
+{
+	if(x==1) return false;
+	x=1;
+}
+}
+return true;
+}
+function isNValid(s) {
+if( isBlank(s) || isHex(s)) return true;
+else return false;
+}
+function submitF() {
+if (isBlank(document.tF.wep_str.value)){ alert(errm); return false; }
+document.tF.submit();
+return true;
+}
+function submitF1() {
+if (isBlank(document.tF.wep_str.value)){ alert(errm); return false; }
+document.tF.submit();
+return true;
+}
+function GURL(x){location=x}
+function logoutF()
+{
+document.tF.logout.value=1;
+document.tF.submit();
+return true;
+}
+
+function ChangeSecMode(wl_sec_mode)
+{
+	if(wl_sec_mode.value == "0") GURL('wireless_encrypt_no.htm');
+	else if(wl_sec_mode.value == "64") GURL('wireless_encrypt_64.htm');
+	else if(wl_sec_mode.value == "128") GURL('wireless_encrypt_128.htm');	
+	else if(wl_sec_mode.value == "psk") GURL('wireless_wpa_psk.htm');	
+	else if(wl_sec_mode.value == "wpa") GURL('wireless_wpa_radius.htm');	
+}
+function Init_Value()
+{
+	var f=document.forms[0];
+	
+	var key1='<%nvram_get("wl0_key1");%>';
+		
+	if (key1.length == 26) 
+	{
+ 		f.e1.value=key1.substring(0,2);
+		f.e2.value=key1.substring(2,4);
+	 	f.e3.value=key1.substring(4,6);
+		f.e4.value=key1.substring(6,8);
+ 		f.e5.value=key1.substring(8,10);
+ 		f.e6.value=key1.substring(10,12);
+ 		f.e7.value=key1.substring(12,14);
+ 		f.e8.value=key1.substring(14,16);
+ 		f.e9.value=key1.substring(16,18);
+ 		f.e10.value=key1.substring(18,20);
+ 		f.e11.value=key1.substring(20,22);
+ 		f.e12.value=key1.substring(22,24);
+ 		f.e13.value=key1.substring(24,26);
+	}
+	f.wep128pp.value="";
+	//wep128_manual();
+}
+function Try_Submit()
+{
+	var f=document.forms[0];
+
+	/*if(f.wl_wep128_manual_box.checked==true)
+	{
+ 		if (isBlank(f.wep128pp.value))
+		{ 
+			alert(errm); 
+			return false; 
+		}
+		f.passphrase_key.value = f.wep128pp.value;
+		f.action = "wep_passphrase.cgi";
+	}
+	else 
+	{*/
+		if(isNValid(f.e1.value)||isNValid(f.e2.value)||isNValid(f.e3.value)
+ 		 ||isNValid(f.e4.value) ||isNValid(f.e5.value))
+		{
+			alert(fmcipm); 
+			return false; 
+		}
+	
+		if (isNValid(f.e6.value)||isNValid(f.e7.value)||isNValid(f.e8.value)
+ 		  ||isNValid(f.e9.value) ||isNValid(f.e10.value))
+		{
+			alert(fmcipm); 
+			return false; 
+		}
+
+		if (isNValid(f.e11.value)||isNValid(f.e12.value)||isNValid(f.e13.value))
+		{
+			alert(fmcipm); 
+			return false; 
+		}
+		
+		f.wl0_key1.value=f.e1.value+f.e2.value+f.e3.value+f.e4.value+f.e5.value;
+		f.wl0_key1.value+=f.e6.value+f.e7.value+f.e8.value+f.e9.value+f.e10.value;
+		f.wl0_key1.value+=f.e11.value+f.e12.value+f.e13.value;
+
+		if(f.wl0_key1.value.length!=0 && f.wl0_key1.value.length!=26)
+		{
+			alert(keym);
+			return false;
+		}
+	//}
+	f.submit();
+}
+
+function wep128_manual()
+{
+	var f = document.forms[0];
+	
+	if (f.wl_wep128_manual_box.checked==true) 
+	{
+		for(var i=1;i<=13;i++) 
+			eval('f.e'+i+'.disabled=true');
+		f.wep128pp.disabled=false; 
+	}
+	else 
+	{
+		for(var i=1;i<=13;i++) 
+			eval('f.e'+i+'.disabled=false');
+		f.wep128pp.disabled=true;
+	}
+}
+
+function genwep()
+{
+	var f = document.forms[0];
+	var f1 = document.forms[1];
+	if (f.wep128pp.value == "")
+	{
+		alert(errm);
+		return false;
+	}
+	else
+	{
+		f1.wl0_txkey.value = "1";
+		f1.wl0_keylength.value = "104";
+		f1.passphrase_key.value = f.wep128pp.value;
+		f1.submit();
+		return true;
+	}
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" onload="Init_Value();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="tF" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wireless_encrypt_128.htm">
+<input type="hidden" name="redirect_timer" value="5000">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="restart" value="wireless">
+<input type="hidden" name="data1" value="wl0_sec_mode wl0_keylength wl0_key1 wl0_key2 wl0_key3 wl0_key4 wl0_txkey passphrase_key">
+
+<input type="hidden" name="wl0_sec_mode" value="wep">
+<input type="hidden" name="wl0_keylength" value="104">
+<input type="hidden" name="wl0_txkey" value="1">
+<input type="hidden" name="wl0_key1">
+<input type="hidden" name="wl0_key2">
+<input type="hidden" name="wl0_key3">
+<input type="hidden" name="wl0_key4">
+<input type="hidden" name="passphrase_key">
+
+<TD 
+class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wle1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=650 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top height=410>
+            <TABLE class=copy_1 cellSpacing=10 cellPadding=0 width=600 
+            align=center border=0>
+              <TBODY>
+              <TR>
+                <TD align=left width=166><B>
+                  <SCRIPT>dw(wle2);</SCRIPT>
+                  </B></TD>
+                <TD><SELECT onchange=ChangeSecMode(this) name=wl_sec_mode> 
+                    <SCRIPT>dw('<option value="0">'+Disabled+'</option>');
+dw('<option value="psk">'+wle3+'</option>');
+dw('<option value="128" selected>'+wle4+'</option>');
+dw('<option value="64">'+wle5+'</option>');
+dw('<option value="wpa">'+wle6+'</option>');
+</SCRIPT>
+                  </SELECT> </TD>
+                <TD><A class=plaintext_bold 
+                  onclick="window.open('glossary.htm#wireless_security','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+                  href="javascript:void(0);"><B><FONT color=#0066FF>
+                  <SCRIPT>dw(sm1);</SCRIPT>
+                  </FONT></B></A></TD></TR>
+              <TR>
+                <TD>&nbsp;</TD>
+                <TD>&nbsp;</TD>
+                <TD>&nbsp;</TD></TR>
+              <TR>
+                <TD width=166>&nbsp;</TD>
+                <TD align=left colSpan=2>
+				  <INPUT maxLength=2 size=4 name=e1>
+                  <INPUT maxLength=2 size=4 name=e2>
+				  <INPUT maxLength=2 size=4 name=e3>
+				  <INPUT maxLength=2 size=4 name=e4>
+				  <INPUT maxLength=2 size=4 name=e5>
+				  <BR>
+				  <INPUT maxLength=2 size=4 name=e6>
+				  <INPUT maxLength=2 size=4 name=e7>
+				  <INPUT maxLength=2 size=4 name=e8>
+				  <INPUT maxLength=2 size=4 name=e9>
+				  <INPUT maxLength=2 size=4 name=e10>
+				  <BR>
+				  <INPUT maxLength=2 size=4 name=e11>
+				  <INPUT maxLength=2 size=4 name=e12>
+				  <INPUT maxLength=2 size=4 name=e13> 
+				  <B>
+                  <SCRIPT>dw(wle8);</SCRIPT>
+                  </B></TD></TR>
+              <TR>
+                <TD width=166>&nbsp;</TD>
+                <TD>&nbsp;</TD>
+                <TD>&nbsp;</TD></TR>
+              <TR>
+                <TD width=166>&nbsp;</TD>
+                <TD>&nbsp;</TD>
+                <TD>&nbsp;</TD></TR>
+              <TR>
+                <TD vAlign=top align=right width=166><script>dw(wle9);</script></TD>
+                <TD align=left colSpan=2>
+                  <SCRIPT>dw(wle10);</SCRIPT>
+                </TD></TR>
+              <TR>
+                <TD align=left width=166><B>
+                  <SCRIPT>dw(PP);</SCRIPT>
+                  </B></TD>
+                <TD align=left colSpan=2><INPUT maxLength=30 size=30 
+                  name=wep128pp> 
+				<script>dw('<input type="button" style="{width:80px;}" class="submitBtn" name="wep128a_btn" size="15" value="'+generate+'" onClick="genwep()" >');</script>
+				  </TD></TR>
+              <TR>
+                <TD width=166>&nbsp;</TD>
+                <TD width=174>&nbsp;</TD>
+                <TD width=335>&nbsp; </TD></TR>
+              <TR>
+                <TD width=166>&nbsp;</TD>
+                <TD align=middle colSpan=2>
+                  <SCRIPT>
+				  	dw('<input type="button" value="'+btn1+'" style="{width:160px;}" class="submitBtn" onclick="document.tF.reset();Init_Value();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+					dw('<input type="button" style="{width:160px;}" value="'+btn2+'" class="submitBtn" onclick="return Try_Submit();">');
+				  </SCRIPT>
+                </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT>showTail()</SCRIPT>
+
+<form name="passphrase" method="post" action="wep_passphrase.cgi">
+	<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+	<input type="hidden" name="next_page" value="wireless_encrypt_128.htm">
+	<input type="hidden" name="reboot" value="0">
+	<input type="hidden" name="passphrase" value="true">
+	<input type="hidden" name="wl0_keylength">
+	<input type="hidden" name="passphrase_key">
+	<input type="hidden" name="wl0_txkey">
+</form>
+</BODY></HTML>

@@ -1,0 +1,1 @@
+#define CONFIG_WAN_AT_P4 1

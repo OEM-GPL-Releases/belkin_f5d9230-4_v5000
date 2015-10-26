@@ -1,0 +1,1 @@
+#define CONFIG_UART_RT2880 1

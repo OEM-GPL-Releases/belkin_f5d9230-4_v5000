@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Administration</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Pragma" content="no-cache"> 
+<link href="template.css" rel="stylesheet" type="text/css">
+<Script Language="JavaScript">
+
+function ValidateForm()
+{
+	setTimeout('self.parent.InitValue()', 5000);
+	document.forms[0].submit();
+}
+</Script>
+</head>
+
+<body>
+<form name="form_contents" method=POST action="SaveCfgFile.cgi">
+	<input type="hidden" name="tmp">
+</form>
+</body>
+</html>

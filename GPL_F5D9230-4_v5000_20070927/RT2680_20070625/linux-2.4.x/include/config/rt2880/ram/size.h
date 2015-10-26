@@ -1,0 +1,1 @@
+#define CONFIG_RT2880_RAM_SIZE (16)

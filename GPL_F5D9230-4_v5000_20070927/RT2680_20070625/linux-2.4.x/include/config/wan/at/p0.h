@@ -1,0 +1,1 @@
+#undef  CONFIG_WAN_AT_P0

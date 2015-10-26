@@ -1,0 +1,608 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wpp1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Connection Type';
+var menuSection	='WAN';
+var menuItem	='Connection Type';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function initData()
+{
+	var f=document.wan_form;
+	var pptp_username ='<%nvram_get("pptp_username");%>';
+	var pptp_password ='<%nvram_get("pptp_password");%>';
+	var pptp_hostname ='<%nvram_get("wan_hostname");%>';
+	var ipadder ='<%nvram_get("pptp_local_ipaddr");%>';
+	var netmask ='<%nvram_get("pptp_local_netmask");%>';
+	var serverip ='<%nvram_get("pptp_server_ipaddr");%>';
+	var connection_id ='<%nvram_get("pptp_conn_id");%>';
+	var pptp_demand='<%nvram_get("pptp_demand");%>';
+	var disconnect_idle_time='<%nvram_get("pptp_idle_time");%>';
+	
+	f.pptp_conn_idtext.value = connection_id;
+	
+	t1=ipadder.indexOf('.');
+	if(t1!=-1)f.pptpmyip1.value=ipadder.substring(0,t1);
+	t2=ipadder.indexOf('.',(t1+1));	
+	if(t2!=-1)f.pptpmyip2.value=ipadder.substring((t1+1),t2);
+	t1=ipadder.indexOf('.',(t2+1));
+	if(t1!=-1)f.pptpmyip3.value=ipadder.substring((t2+1),t1);
+	f.pptpmyip4.value=ipadder.substring(t1+1);
+
+	t1=netmask.indexOf('.');
+	if(t1!=-1)f.pptpsubnet1.value=netmask.substring(0,t1);
+	t2=netmask.indexOf('.',(t1+1));
+	if(t2!=-1)f.pptpsubnet2.value=netmask.substring((t1+1),t2);
+	t1=netmask.indexOf('.',(t2+1));
+	if(t1!=-1)f.pptpsubnet3.value=netmask.substring((t2+1),t1);
+	f.pptpsubnet4.value=netmask.substring(t1+1); 
+
+	t1=serverip.indexOf('.');
+	if(t1!=-1)f.Pptpserviceip1.value=serverip.substring(0,t1);
+	t2=serverip.indexOf('.',(t1+1));
+	if(t2!=-1)f.Pptpserviceip2.value=serverip.substring((t1+1),t2);
+	t1=serverip.indexOf('.',(t2+1));
+	if(t1!=-1)f.Pptpserviceip3.value=serverip.substring((t2+1),t1);
+	f.Pptpserviceip4.value=serverip.substring(t1+1);
+   	
+	f.pptp_usernametext.value = pptp_username;
+	f.pptp_passwordtext.value = pptp_password;
+	f.pptp_passwordtext_2.value = pptp_password;
+	f.m_wan_hostname.value = pptp_hostname;
+		
+	if( pptp_demand =='0')
+		f.pptp_idle_disconnect_box.checked=false;
+	else
+		f.pptp_idle_disconnect_box.checked=true;
+	
+	if( disconnect_idle_time =='0')
+		f.idle_interval.value='';
+	else
+		f.idle_interval.value=parseInt(disconnect_idle_time)/60;
+}
+
+function toggleAutoDLS()
+{
+	if(document.wan_form.pptp_idle_disconnect_box.checked) 	
+		document.wan_form.idle_interval.disabled = false;
+	else 
+		document.wan_form.idle_interval.disabled = true;
+}
+
+function Init_Value()
+{
+	initData();
+	toggleAutoDLS();
+}
+
+function isBlank(s) 
+{
+for(var i = 0; i < s.length; i++) 
+{
+var c = s.charAt(i);
+if((c !=' ') && (c!='\n') && (c !='\t')) return false;
+}
+return true;
+}
+
+function isNValidIP(s) 
+{
+	if((isBlank(s))||(isNaN(s))||(s<0||s>255)) 
+		return true;
+	else 
+		return false;
+}
+function isInteger(val)
+{
+ for(i=0; i<val.length; i++)
+ {
+	if(val.charAt(i)<'0' || val.charAt(i)>'9') 
+		return false;
+ }
+ return true;
+}
+function checkVaild(value)
+{
+	// allow '@' only
+	var localname=value.toLowerCase();
+	for(i=0;i<localname.length;i++)
+	{
+		var token=localname.charAt(i);
+	 
+	  	if(token=='`' || token=='~' || token=='!' || token=='?' || token=='#'
+	 	|| token=='$' || token=='%' || token=='^' || token=='&' || token=='*'
+	 	|| token=='(' || token==')' || token=='=' || token=='+' || token=='['
+	 	|| token==']' || token=='{' || token=='}' || token=='\\' || token=='|'
+	 	|| token==';' || token==':' || token=='\'' || token=='\"' || token=='<'
+	 	|| token=='>' || token=='/' )
+	 	{
+			alert(vm1);
+			return false;
+	 	}	 
+	}
+	return true;
+}
+function evaltF() 
+{
+	var f=document.forms[0];
+	
+	if(isBlank(f.pptp_usernametext.value))
+	{
+		f.pptp_usernametext.focus();
+		f.pptp_usernametext.select();
+		alert(wpp13);
+		return false; 
+	}
+	if(!checkVaild(f.pptp_usernametext.value))
+	{
+		f.pptp_usernametext.focus();
+		return false;
+	}
+	if(isBlank(f.pptp_passwordtext.value))
+	{
+		f.pptp_passwordtext.focus();
+		f.pptp_passwordtext.select();
+		alert(pm);
+		return false;
+	}
+	if(!checkVaild(f.pptp_passwordtext.value))
+	{
+		f.pptp_passwordtext.focus();
+		return false;
+	}
+	if(isBlank(f.pptp_passwordtext_2.value))
+	{
+		f.pptp_passwordtext_2.focus();
+		f.pptp_passwordtext_2.select();
+		alert(wpp14); 
+		return false;
+	}
+
+	if(f.pptp_passwordtext.value!=f.pptp_passwordtext_2.value)
+	{ 
+		f.pptp_passwordtext.focus();
+		f.pptp_passwordtext.select();
+		alert(pm);
+		return false;
+	}
+
+	if(!checkVaild(f.m_wan_hostname.value)) 
+	{
+		f.m_wan_hostname.focus();
+		return false;
+	}	
+	
+	if(isNValidIP(f.Pptpserviceip1.value) || f.Pptpserviceip1.value==255 || f.Pptpserviceip1.value==0 )
+	{
+		f.Pptpserviceip1.focus();
+		f.Pptpserviceip1.select();
+		alert(usysipm);
+		return false;
+	}
+
+	if(isNValidIP(f.Pptpserviceip2.value))
+	{
+		f.Pptpserviceip2.focus();
+		f.Pptpserviceip2.select();
+		alert(usysipm);
+		return false;
+	}
+
+	if(isNValidIP(f.Pptpserviceip3.value))
+	{
+		f.Pptpserviceip3.focus();
+		f.Pptpserviceip3.select();
+		alert(usysipm);
+		return false;
+	}
+
+	if(isNValidIP(f.Pptpserviceip4.value) || f.Pptpserviceip4.value==255 || f.Pptpserviceip4.value==0 )
+	{
+		f.Pptpserviceip4.focus();
+		f.Pptpserviceip4.select();
+		alert(usysipm);
+		return false;
+	}
+
+	if(isNValidIP(f.pptpmyip1.value) || f.pptpmyip1.value == 0 || f.pptpmyip1.value == 255)
+	{
+		f.pptpmyip1.focus();
+		f.pptpmyip1.select();
+		alert(usysipm);
+		return false;
+	}
+	
+	if(isNValidIP(f.pptpmyip2.value))
+	{
+		f.pptpmyip2.focus();
+		f.pptpmyip2.select();
+		alert(usysipm);
+		return false;
+	}
+	
+	if(isNValidIP(f.pptpmyip3.value))
+	{
+		f.pptpmyip3.focus();
+		f.pptpmyip3.select();
+		alert(usysipm);
+		return false;
+	}
+
+	if(isNValidIP(f.pptpmyip4.value) || f.pptpmyip4.value == 0 || f.pptpmyip4.value == 255)
+	{
+		f.pptpmyip4.focus();
+		f.pptpmyip4.select();
+		alert(usysipm);
+		return false;
+	}
+	
+	/*  Check Subnet Mask  */
+	if( !isNValidIP(f.pptpsubnet1.value) )
+	{
+		if( f.pptpsubnet1.value != '128' && f.pptpsubnet1.value != '192' && f.pptpsubnet1.value != '224' && 
+		    f.pptpsubnet1.value != '240' && f.pptpsubnet1.value != '248' && f.pptpsubnet1.value != '252' && 
+		    f.pptpsubnet1.value != '254' && f.pptpsubnet1.value != '255' )
+		{
+			alert(vjs28);
+			f.pptpsubnet1.focus();
+			f.pptpsubnet1.select();
+			return false;
+		}
+		if( f.pptpsubnet4.value == '255')
+		{
+			f.pptpsubnet4.focus();
+			f.pptpsubnet4.select();
+			return false;
+		}
+	}
+	else
+	{
+		alert(vjs28);
+		f.pptpsubnet1.focus();
+		f.pptpsubnet1.select();
+		return false;	
+	}
+		
+	if( !isNValidIP(f.pptpsubnet2.value) )
+	{
+		if( f.pptpsubnet1.value != '255' )
+		{
+			if(f.pptpsubnet2.value != '0')
+			{
+				alert(vjs28);
+				f.pptpsubnet2.focus();
+				f.pptpsubnet2.select();
+				return false;
+			}
+		}
+		else
+		if( f.pptpsubnet2.value != '128' && f.pptpsubnet2.value != '192' && f.pptpsubnet2.value != '224' && 
+		    f.pptpsubnet2.value != '240' && f.pptpsubnet2.value != '248' && f.pptpsubnet2.value != '252' && 
+		    f.pptpsubnet2.value != '254' && f.pptpsubnet2.value != '255' && f.pptpsubnet2.value != '0' )
+		{
+			alert(vjs28);
+			f.pptpsubnet2.focus();
+			f.pptpsubnet2.select();
+			return false;
+		}
+	}	
+	else
+	{
+		alert(vjs28);
+		f.pptpsubnet2.focus();
+		f.pptpsubnet2.select();
+		return false;	
+	}
+	
+	if( !isNValidIP(f.pptpsubnet3.value) )
+	{
+		if( f.pptpsubnet2.value != '255' )
+		{
+			if(f.pptpsubnet3.value != '0')
+			{
+				alert(vjs28);
+				f.pptpsubnet3.focus();
+				f.pptpsubnet3.select();
+				return false;
+			}
+		}
+		else
+		if( f.pptpsubnet3.value != '128' && f.pptpsubnet3.value != '192' && f.pptpsubnet3.value != '224' && 
+		    f.pptpsubnet3.value != '240' && f.pptpsubnet3.value != '248' && f.pptpsubnet3.value != '252' && 
+		    f.pptpsubnet3.value != '254' && f.pptpsubnet3.value != '255' && f.pptpsubnet3.value != '0' )
+		{
+			alert(vjs28);
+			f.pptpsubnet3.focus();
+			f.pptpsubnet3.select();
+			return false;
+		}
+	}	
+	else
+	{
+		alert(vjs28);
+		f.pptpsubnet3.focus();
+		f.pptpsubnet3.select();
+		return false;	
+	}
+	
+	if( !isNValidIP(f.pptpsubnet4.value) )
+	{
+		if( f.pptpsubnet3.value != '255' )
+		{
+			if(f.pptpsubnet4.value != '0')
+			{
+				alert(vjs28);
+				f.pptpsubnet4.focus();
+				f.pptpsubnet4.select();
+				return false;
+			}
+		}
+		else
+		if( f.pptpsubnet4.value != '128' && f.pptpsubnet4.value != '192' && f.pptpsubnet4.value != '224' && 
+		    f.pptpsubnet4.value != '240' && f.pptpsubnet4.value != '248' && f.pptpsubnet4.value != '252' && 
+		    f.pptpsubnet4.value != '254' && f.pptpsubnet4.value != '255' && f.pptpsubnet4.value != '0' )
+		{
+			alert(vjs28);
+			f.pptpsubnet4.focus();
+			f.pptpsubnet4.select();
+			return false;
+		}
+	}	
+	else
+	{
+		alert(vjs28);
+		f.pptpsubnet4.focus();
+		f.pptpsubnet4.select();
+		return false;	
+	}
+	
+	if(f.pptp_idle_disconnect_box.checked==true)
+	{
+		if((isBlank(f.idle_interval.value))||(isNaN(f.idle_interval.value))|| 
+		   (!isInteger(f.idle_interval.value)) || (f.idle_interval.value<1 || f.idle_interval.value>99))
+		{
+			alert(idlerangerro);
+			f.idle_interval.focus();
+			f.idle_interval.select();
+			return false;
+		}
+	}
+	
+	f.pptp_username.value = f.pptp_usernametext.value;
+	f.pptp_password.value = f.pptp_passwordtext.value;
+	f.pptp_server_ipaddr.value=f.Pptpserviceip1.value+'.'+f.Pptpserviceip2.value+'.'+f.Pptpserviceip3.value+'.'+f.Pptpserviceip4.value;
+	f.pptp_local_ipaddr.value=f.pptpmyip1.value+'.'+f.pptpmyip2.value+'.'+f.pptpmyip3.value+'.'+f.pptpmyip4.value;
+	f.pptp_local_netmask.value=f.pptpsubnet1.value+'.'+f.pptpsubnet2.value+'.'+f.pptpsubnet3.value+'.'+f.pptpsubnet4.value;
+	f.wan_hostname.value = f.m_wan_hostname.value;
+	
+	if(f.pptp_idle_disconnect_box.checked==false)
+  {
+		f.pptp_idle_time.value=0;
+    f.pptp_demand.value = 0;
+  }
+	else
+  {
+		f.pptp_idle_time.value=parseInt(f.idle_interval.value)*60;
+    f.pptp_demand.value = 1;
+  }
+	
+	f.pptp_conn_id.value=f.pptp_conn_idtext.value;
+	return true;
+}
+
+function connect() 
+{
+if(evaltF())
+{
+document.wan_form.submit();
+return true;
+}
+return false;
+}
+function disconnect() 
+{
+if( evaltF())
+{
+document.wan_form.submit();
+return true;
+}
+return false;
+}
+
+function Try_Submit() 
+{
+	if(evaltF())
+	{
+		alert(warn_msg2);
+		document.forms[0].submit();
+	}
+	else
+		return false;
+}
+
+function nextF()
+{
+	var f = document.forms[0];
+	if(evaltF())
+	{
+		f.next_page.value="wan_dns.htm";
+		f.submit();
+	}
+	return false;	
+}  
+-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" onload="Init_Value();" marginheight="0" marginwidth="0">
+<SCRIPT language="JavaScript">
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM id="wan_form" name="wan_form" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wan_pptp.htm">
+<input type="hidden" name="redirect_timer" value="60000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="wan_proto pptp_username pptp_password pptp_server_ipaddr pptp_local_ipaddr pptp_local_netmask pptp_idle_time wan_hostname pptp_conn_id wan_alias1_enabled wan_alias2_enabled wan_alias3_enabled wan_alias4_enabled wan_alias5_enabled wan_ipaddr1 wan_ipaddr2 wan_ipaddr3 wan_ipaddr4 wan_ipaddr5 wan_netmask1 wan_netmask2 wan_netmask3 wan_netmask4 wan_netmask5 pptp_demand">
+
+<input type="hidden" name="wan_proto" value="pptp">
+<input type="hidden" name="wan_hostname">
+<input type="hidden" name="pptp_username">
+<input type="hidden" name="pptp_password">
+<input type="hidden" name="pptp_server_ipaddr">
+<input type="hidden" name="pptp_local_ipaddr">
+<input type="hidden" name="pptp_local_netmask">
+<input type="hidden" name="pptp_idle_time">
+<input type="hidden" name="pptp_conn_id">
+<input type="hidden" name="pptp_demand">
+<input type="hidden" name="wan_alias1_enabled" value='0'>
+<input type="hidden" name="wan_alias2_enabled" value='0'>
+<input type="hidden" name="wan_alias3_enabled" value='0'>
+<input type="hidden" name="wan_alias4_enabled" value='0'>
+<input type="hidden" name="wan_alias5_enabled" value='0'>
+
+<input type="hidden" name="wan_ipaddr1" value=''>
+<input type="hidden" name="wan_ipaddr2" value=''>
+<input type="hidden" name="wan_ipaddr3" value=''>
+<input type="hidden" name="wan_ipaddr4" value=''>
+<input type="hidden" name="wan_ipaddr5" value=''>
+
+<input type="hidden" name="wan_netmask1" value=''>
+<input type="hidden" name="wan_netmask2" value=''>
+<input type="hidden" name="wan_netmask3" value=''>
+<input type="hidden" name="wan_netmask4" value=''>
+<input type="hidden" name="wan_netmask5" value=''>
+
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wpp1);</SCRIPT>
+<BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=5 cellPadding=0 width=600 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD width=36>
+          <TD><A 
+            onclick="window.open('glossary.htm#pptp','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><B><FONT color=#0066FF>
+            <SCRIPT>dw(sm1);</SCRIPT>
+            </FONT></B></A><BR><BR></TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=174><B>
+            <SCRIPT>dw(wpp2);</SCRIPT>
+            &gt;</B></TD>
+          <TD class=plaintext_bold width=235>
+		  	<INPUT maxLength="63" size="25" name="pptp_usernametext">
+		  </TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=174><B>
+            <SCRIPT>dw(wpp3);</SCRIPT>
+            &gt;</B></TD>
+          <TD class=plaintext_bold width=235>
+		  	<INPUT type="password" maxLength="60" size="25" name="pptp_passwordtext"> 
+		  </TD></TR>
+        <TR>
+          <TD width=36 height=18>&nbsp;</TD>
+          <TD width=174 height=18><B>
+            <SCRIPT>dw(wpp4);</SCRIPT>
+            &gt;</B></TD>
+          <TD class=plaintext_bold width=235 height=18>
+		  	<INPUT type="password" maxLength="60" size="25" name="pptp_passwordtext_2">
+		  </TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=174><B>
+            <SCRIPT>dw(wpp5);</SCRIPT>
+            &gt;</B></TD>
+          <TD class=plaintext_bold width=235><INPUT maxLength=63 size=25 
+            name=m_wan_hostname></TD><!--modified by henry 20040402 --></TR>
+        <TR>
+          <TD width=36 height=27>&nbsp;</TD>
+          <TD width=174 height=27><B>
+            <SCRIPT>dw(wpp6);</SCRIPT>
+            &gt;</B></TD>
+          <TD class=plaintext_bold height=27><INPUT maxLength=3 
+            size=3 name=Pptpserviceip1>. <INPUT maxLength=3 size=3 
+            name=Pptpserviceip2>. <INPUT maxLength=3 size=3 
+            name=Pptpserviceip3>. <INPUT maxLength=3 size=3 name=Pptpserviceip4> 
+          </TD></TR>
+        <TR>
+          <TD width=36 height=27>&nbsp;</TD>
+          <TD width=174 height=27><B>
+            <SCRIPT>dw(wpp7);</SCRIPT>
+            &gt;</B></TD>
+          <TD class=plaintext_bold height=27><INPUT maxLength=3 
+            size=3 name=pptpmyip1>. <INPUT maxLength=3 size=3 name=pptpmyip2>. 
+            <INPUT maxLength=3 size=3 name=pptpmyip3>. <INPUT maxLength=3 size=3 
+            name=pptpmyip4> </TD></TR>
+        <TR>
+          <TD width=36 height=27>&nbsp;</TD>
+          <TD width=174 height=27><B>
+            <SCRIPT>dw(wpp8);</SCRIPT>
+            &gt;</B></TD>
+          <TD class=plaintext_bold height=27><INPUT maxLength=3 
+            size=3 name=pptpsubnet1>. <INPUT maxLength=3 size=3 
+            name=pptpsubnet2>. <INPUT maxLength=3 size=3 name=pptpsubnet3>. 
+            <INPUT maxLength=3 size=3 name=pptpsubnet4> </TD></TR>
+        <TR>
+          <TD width=36 height=27>&nbsp;</TD>
+          <TD width=174 height=27><B>
+            <SCRIPT>dw(wpp9);</SCRIPT>
+            &gt;</B></TD>
+          <TD class=plaintext_bold width=235 height=27><INPUT maxLength=23 
+            size=25 name=pptp_conn_idtext></FONT> </TD></TR>
+        <TR>
+          <TD width=5>&nbsp;</TD>
+          <TD class=formText colSpan=2><INPUT onclick=toggleAutoDLS(); 
+            type=checkbox name=pptp_idle_disconnect_box><B>
+            <SCRIPT>dw(wpp10);</SCRIPT>
+             <INPUT maxLength="2" size="10" name="idle_interval">
+            <SCRIPT>dw(wpp11);</SCRIPT>
+            </B><A class=plaintext_bold 
+            onclick="window.open('glossary.htm#disconnect','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');" 
+            href="javascript:void(0);"><B><FONT color=#0066FF>
+            <SCRIPT>dw(sm1);</SCRIPT>
+             </FONT></B></A></TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD class=formText width=409 colSpan=2>
+            <DIV align=center><A onclick="return nextF();" 
+            href="http://172.31.31.253/"><B><FONT color=#0066FF>
+            <SCRIPT>dw(wpp12);</SCRIPT>
+            </FONT></B></A></DIV>&nbsp;</TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD class=plaintext_bold>
+            <DIV align=right></DIV></TD>
+          <TD align=middle><BR><BR>
+            <SCRIPT>
+				dw('<input type="button" value="');
+				dw(btn1);
+				dw('" style="{width:160px;}" class="submitBtn" onclick="Init_Value();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+				dw('<input type="button" value="');
+				dw(btn2);
+				dw('" style="{width:160px;}" class="submitBtn" onClick="return Try_Submit();"></td>');</SCRIPT>
+          </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

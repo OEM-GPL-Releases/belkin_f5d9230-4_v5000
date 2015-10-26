@@ -1,0 +1,410 @@
+<HTML>
+<HEAD>
+<META http-equiv=content-type content=text/html;charset=iso-8859-1>
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+
+
+<LINK href="styles.css" type=text/css rel=stylesheet>
+
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>Wireless > WIFI Settings</title>';
+dw(strHtml);
+<!--
+var cc='ppp0';
+var helpItem 	='WIFI Settings';
+var menuSection	='WLAN';
+var menuItem	='WIFI Settings';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+<!--
+function CheckingFrag ()
+{
+	if ( document.forms[0].wl_frag.value == "" ) {
+  		alert("Please specify Fragmentation Length");
+		document.forms[0].wl_frag.focus();
+  		return false;
+	}
+	
+	if ( isNaN(document.forms[0].wl_frag.value) || document.forms[0].wl_frag.value < 256 || document.forms[0].wl_frag.value > 2346)  {
+		alert("Invalid Fragmentation Length");
+		document.forms[0].wl_frag.focus();		
+		return false;
+	}
+
+	return true;
+}
+
+function CheckingRTSThreshold ()
+{
+	if ( document.forms[0].wl_rts.value == "" ) {
+  		alert("Please specify RTS Threshold");
+  		document.forms[0].wl_rts.focus();
+  		return false;
+	}
+
+	if ( isNaN(document.forms[0].wl_rts.value) || document.forms[0].wl_rts.value < 256 || document.forms[0].wl_rts.value > 2346) {
+		alert("Invalid RTS Threshold");
+		document.forms[0].wl_rts.focus();
+		return false;
+	}
+
+	return true;
+}
+
+function CheckingDTIM ()
+{
+	if ( document.forms[0].wl_dtim.value == "" ) {
+		alert("Please specify DTIM Interval");
+		document.forms[0].wl_dtim.focus();
+		return false;
+	}
+
+	if (isNaN(document.forms[0].wl_dtim.value) || document.forms[0].wl_dtim.value < 1 || document.forms[0].wl_dtim.value > 255) {
+		alert("Invalid DTIM Interval");
+		document.forms[0].wl_dtim.focus();
+		return false;
+	}
+
+	return true;
+}
+
+function CheckingBeaconInterval ()
+{
+	if ( document.forms[0].wl_bcn.value == "" ) {
+  		alert("Please specify Beacon Interval");
+  		document.forms[0].wl_bcn.focus();
+  		return false;
+	}
+
+	if (isNaN(document.forms[0].wl_bcn.value) || document.forms[0].wl_bcn.value < 20 || document.forms[0].wl_bcn.value > 1000)  {
+  		alert("Invalid Beacon Interval");
+  		document.forms[0].wl_bcn.focus();
+  		return false;
+	}
+
+	return true;
+}
+function Try_Submit() 
+{
+	var passForm=document.forms[0];
+	if ( !CheckingBeaconInterval() ) { return false; }
+	if ( !CheckingDTIM() ) { return false; }
+	if ( !CheckingFrag() ) { return false; }
+	if ( !CheckingRTSThreshold() ) { return false; }	
+	if (passForm.wl_frameburst[0].checked == true)
+		passForm.wl0_burst_mode.value=1;
+	else
+		passForm.wl0_burst_mode.value=0;
+		
+	if (passForm.ap_isolation[0].checked == true)
+		passForm.wl0_apisolation.value=1;
+	else
+		passForm.wl0_apisolation.value=0;
+	passForm.wl0_authtype.value=passForm.authen_type.value;
+	passForm.wl0_basicRate.value=passForm.wl_basicrate.value;
+	passForm.wl0_txPower.value=passForm.wl_TransmitPower.value;
+	passForm.wl0_ctsprotect.value=passForm.CTS_Pro_Mode.value;
+	passForm.wl0_datarate.value=passForm.wl_datarate.value;
+	passForm.wl0_beaconPeriod.value=passForm.wl_bcn.value;
+	passForm.wl0_dtimPeriod.value=passForm.wl_dtim.value;
+	passForm.wl0_fragThPeriod.value=passForm.wl_frag.value;
+	passForm.wl0_rtsThPeriod.value=passForm.wl_rts.value;
+	if (passForm.wl_wmm[0].checked == true)
+		passForm.wl0_wmm.value=1;
+	else
+		passForm.wl0_wmm.value=0;
+	
+	passForm.submit();
+ 	//return true;
+}
+
+function Init_Value()
+{
+	var passForm = document.forms[0];
+	var rate;
+	
+	if ('<%nvram_get("wl0_burst_mode");%>' == '1')
+		passForm.wl_frameburst[0].checked=true;
+	else
+		passForm.wl_frameburst[1].checked=true;
+	
+	if ('<%nvram_get("wl0_apisolation");%>' == '1')
+		passForm.ap_isolation[0].checked=true;
+	else
+		passForm.ap_isolation[1].checked=true;
+		
+	var auth_type='<%nvram_get("wl0_authtype");%>';
+	if (auth_type=='OPEN')
+	    passForm.authen_type.selectedIndex=1;
+	else if(auth_type=='SHARED')
+	    passForm.authen_type.selectedIndex=2; 
+	else 
+	    passForm.authen_type.selectedIndex=0; 
+		
+	var basic_rate='<%nvram_get("wl0_basicRate");%>';
+	if(basic_rate=='15')
+	    passForm.wl_basicrate.selectedIndex=0; 
+    else if(basic_rate=='3') 
+	    passForm.wl_basicrate.selectedIndex=1; 
+	else 
+	    passForm.wl_basicrate.selectedIndex=2; 
+		
+	rate = '<%nvram_get("wl0_datarate");%>';
+	if (rate == '0')
+		passForm.wl_datarate.selectedIndex=0;
+	else if (rate == '5')
+		passForm.wl_datarate.selectedIndex=1;
+	else if (rate == '6')
+		passForm.wl_datarate.selectedIndex=2;
+	else if (rate == '7')
+		passForm.wl_datarate.selectedIndex=3;
+	else if (rate == '8')
+		passForm.wl_datarate.selectedIndex=4;
+	else if (rate == '9')
+		passForm.wl_datarate.selectedIndex=5;
+	else if (rate == '10')
+		passForm.wl_datarate.selectedIndex=6;
+	else if (rate == '11')
+		passForm.wl_datarate.selectedIndex=7;
+	else if (rate == '12')
+		passForm.wl_datarate.selectedIndex=8;
+	else
+		passForm.wl_datarate.selectedIndex=0;
+		
+	var wl_power='<%nvram_get("wl0_txPower");%>';
+	if(wl_power=='100')
+	    passForm.wl_TransmitPower.selectedIndex=0; 
+    else if(wl_power=='50') 
+	    passForm.wl_TransmitPower.selectedIndex=1; 
+	else if(wl_power=='25') 
+	    passForm.wl_TransmitPower.selectedIndex=2; 
+	else if(wl_power=='8') 
+	    passForm.wl_TransmitPower.selectedIndex=3; 
+	else 
+	    passForm.wl_TransmitPower.selectedIndex=4; 
+	
+	var wl_cts_pro='<%nvram_get("wl0_ctsprotect");%>';
+	if(wl_cts_pro=='0')
+	    passForm.CTS_Pro_Mode.selectedIndex=0; 
+    else 
+	    passForm.CTS_Pro_Mode.selectedIndex=1; 
+	    
+	if ('<%nvram_get("wl0_wmm");%>' == '1')
+		passForm.wl_wmm[0].checked=true;
+	else
+		passForm.wl_wmm[1].checked=true;
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 onload="Init_Value();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="wlan_main" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wireless_wifi.htm">
+<input type="hidden" name="redirect_timer" value="5000">
+<input type="hidden" name="restart" value="wireless">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="data1" value="wl0_burst_mode wl0_apisolation wl0_authtype wl0_basicRate 
+ wl0_datarate wl0_txPower wl0_ctsprotect wl0_rtsThPeriod wl0_beaconPeriod wl0_fragThPeriod wl0_dtimPeriod wl0_wmm">
+<input type="hidden" name="wl0_burst_mode">
+<input type="hidden" name="wl0_apisolation">
+<input type="hidden" name="wl0_authtype">
+<input type="hidden" name="wl0_basicRate">
+<input type="hidden" name="wl0_datarate">
+<input type="hidden" name="wl0_txPower">
+<input type="hidden" name="wl0_ctsprotect">
+<input type="hidden" name="wl0_rtsThPeriod">
+<input type="hidden" name="wl0_beaconPeriod">
+<input type="hidden" name="wl0_fragThPeriod">
+<input type="hidden" name="wl0_dtimPeriod">
+<input type="hidden" name="wl0_wmm">
+<TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw("Wireless > WIFI Settings");</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=5 cellPadding=0 width=626 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD width=71>&nbsp;</TD>
+          <TD colSpan=2>&nbsp;</TD></TR>
+        <TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=200><B>
+            Frame Burst Mode
+            &gt;</B></TD>
+          <TD width=390>
+            <input name="wl_frameburst" type="radio" value="1">
+						  <b>Enabled</b>
+					      <input name="wl_frameburst" type="radio" value="0">&nbsp;<b>Disabled</b> (Default: Enabled)
+					</TD></TR>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD><B>
+            AP Isolation
+            &gt;</B> </TD>
+          <TD class=plaintext_bold>
+		  		  <input name="ap_isolation" type="radio" value="1">
+						  <b>Enabled</b>
+					      <input name="ap_isolation" type="radio" value="0">&nbsp;<b>Disabled</b> (Default: Disabled) 
+		      </TD>
+		    </TR>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD><B>
+            Authentication Type
+            &gt;</B> </TD>
+          <TD class=plaintext_bold>
+		  		  <select name="authen_type" style="font-size: 8pt">
+						  <option value="WEPAUTO">Auto</option>
+						  <option value="OPEN" >Open System</option>
+						  <option value="SHARED" >Shared Key</option>
+						</select> &nbsp;(Default: Auto)
+		      </TD>
+		    </TR>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD><B>
+            Basic Rate
+            &gt;</B> </TD>
+          <TD class=plaintext_bold>
+		  		  <select name="wl_basicrate" style="font-size: 8pt">
+                          <option value="15">Default</option>
+                          <option value="3">1 ~ 2 Mbps&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                          <option value="351">All</option>
+                        </select> 
+					     &nbsp;(Default: Default)
+		      </TD>
+		    </TR>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD><B>
+            Transmission Rate
+            &gt;</B> </TD>
+          <TD class=plaintext_bold>
+		  		  <SELECT name="wl_datarate" > 
+						<OPTION value=0>Auto</OPTION>
+						<OPTION value=5>6 Mbps</OPTION> 
+                        <OPTION value=6>9 Mbps</OPTION> 
+						<OPTION value=7>12 Mbps</OPTION> 
+						<OPTION value=8>18 Mbps</OPTION> 
+						<OPTION value=9>24 Mbps</OPTION> 
+						<OPTION value=10>36 Mbps</OPTION> 
+						<OPTION value=11>48 Mbps</OPTION> 
+						<OPTION value=12>54 Mbps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</OPTION> </SELECT> &nbsp;(Default: Auto)
+		      </TD>
+		    </TR>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD><B>
+            Transmission Power
+            &gt;</B> </TD>
+          <TD class=plaintext_bold>
+		  		  <select name="wl_TransmitPower">
+                          <option value=100>Full</option>
+                          <option value=50>Half</option>
+                          <option value=25>Quarter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                          <option value=8>Eighth</option>
+                          <option value=1>Min</option>
+						  </select> 
+						  &nbsp;(Default: Full)
+		      </TD>
+		    </TR>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD><B>
+            CTS Protection Mode
+            &gt;</B> </TD>
+          <TD class=plaintext_bold>
+		  		  <SELECT size=1 name="CTS_Pro_Mode" style="font-family: Arial; font-size: 8pt"> 
+                       <option value="0">Auto</option>
+                       <option value="2">Disabled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                     </SELECT> &nbsp;(Default: Auto)
+		      </TD>
+		    </TR>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD><B>
+            Beacon Interval
+            &gt;</B> </TD>
+          <TD class=plaintext_bold>
+		  		  <input name="wl_bcn" size="5" maxlength="4" style="font-size: 8pt" value="<%nvram_get("wl0_beaconPeriod");%>">
+		  		  &nbsp;(Default: 100, Milliseconds, Range: 20~1000 )
+		      </TD>
+		    </TR>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD><B>
+            DTIM Interval
+            &gt;</B> </TD>
+          <TD class=plaintext_bold>
+		  		  <input name="wl_dtim" size="5" maxlength="4" style="font-size: 8pt" value="<%nvram_get("wl0_dtimPeriod");%>">						  
+						  &nbsp;(Default: 1, Range: 1 - 255)
+		      </TD>
+		    </TR>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD><B>
+            Fragmentation Threshold
+            &gt;</B> </TD>
+          <TD class=plaintext_bold>
+		  		  <input name="wl_frag" size="5" maxlength="4" style="font-size: 8pt" value="<%nvram_get("wl0_fragThPeriod");%>">
+						  &nbsp;(Default: 2346, Range: 256 - 2346)
+		      </TD>
+		    </TR>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD><B>
+            RTS Threshold
+            &gt;</B> </TD>
+          <TD class=plaintext_bold>
+		  		  <input name="wl_rts" size="5" maxlength="4" style="font-size: 8pt" value="<%nvram_get("wl0_rtsThPeriod");%>">
+						&nbsp;(Default: 2346, Range: 256 - 2346)
+		      </TD>
+		    </TR>
+	
+	<TR>
+          <TD width=36>&nbsp;</TD>
+          <TD width=200><B>
+            WMM QoS
+            &gt;</B></TD>
+          <TD width=390>
+            <input name="wl_wmm" type="radio" value="1">
+						  <b>Enabled</b>
+					      <input name="wl_wmm" type="radio" value="0">&nbsp;<b>Disabled</b> (Default: Disabled)
+					</TD></TR>
+        <TR>
+	
+        <TR>
+          <TD width=71>&nbsp;</TD>
+          <TD width=154></TD>
+          <TD width=340></TD></TR><INPUT type=hidden value=nothing name=nothing> 
+        <TR>
+          <TD width=71>&nbsp;</TD>
+          <TD class=formText width=154>&nbsp;</TD>
+          <TD class=plaintext_bold width=340>&nbsp; </TD></TR>
+        <TR>
+          <TD width=71>&nbsp;</TD>
+          <TD align=middle colSpan=2>
+            <SCRIPT>dw('<input type="reset" value="');dw(btn1);dw('" style="{width:160px;}" class="submitBtn" onClick="Init_Value();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+			dw('<input type="button" style="{width:160px;}" value="');dw(btn2);dw('"onClick="return Try_Submit();" class="submitBtn">');</SCRIPT>
+          </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

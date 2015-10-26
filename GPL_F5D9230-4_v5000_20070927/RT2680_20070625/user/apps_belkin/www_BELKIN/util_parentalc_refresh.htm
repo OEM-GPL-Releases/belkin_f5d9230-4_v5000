@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+
+<SCRIPT>
+strHtml='<title>'+upr1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Parental Control';
+var menuSection	='Util';
+var menuItem	='Parental Control';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM name="tF0" action="parentalc.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="util_parentalc_refresh.htm">
+<input type="hidden" name="redirect_timer" value="1000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="">
+<input type="hidden" name="Action" value="Refresh">
+ <TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(upr1);</SCRIPT>
+ <BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD width=600><SPAN class=verdana12>
+      <SCRIPT>dw(upr2);</SCRIPT>
+      <BR><BR>
+      <SCRIPT>dw('<div align=center><input type=submit  style="{width:120px;}" class="submitBtn" name=TAction value="');dw(Refresh);dw('"></div></span><br><br><br><hr noshade size="1">');</SCRIPT>
+      </SPAN></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</FORM></BODY></HTML>

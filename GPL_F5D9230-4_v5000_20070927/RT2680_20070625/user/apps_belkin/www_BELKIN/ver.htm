@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<title>Ver</title>
+</head>
+<script language="javascript">
+	function Try_Submit()
+	{
+	}
+	
+	function Init_Value()
+	{
+	}
+</script>
+</head>
+<body bgcolor="#ffffff" text="#000000" onLoad="Init_Value();">
+<form name="adv" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="ver.htm">
+<input type="hidden" name="redirect_timer" value="25000">
+<input type="hidden" name="reboot" value="1" >
+<input type="hidden" name="data1" value="wl0_country wl0_channel check_fw_hdr">
+<table cellSpacing=1 cellPadding=2 border=0>
+<b>Ralink</b>
+<tr>
+<td bgColor=#aaddff>
+Country Region (0:1-11, 1:1-13, 2:10-11, 3:10-13, 4:14, 5:1-14, 6:3-9) &nbsp; : &nbsp;	
+<input type="input" name="wl0_country" value='<%nvram_get("wl0_country");%>'>
+</td>
+</tr>
+<tr>
+<td bgColor=#aaddff>
+Channel &nbsp; : &nbsp;<input type="input" name="wl0_channel" value='<%nvram_get("wl0_channel");%>'>
+</td>
+</tr>
+<tr>
+<td bgColor=#aaddff>
+Check Firmware Header &nbsp; : &nbsp;<input type="input" name="check_fw_hdr" value='<%nvram_get("check_fw_hdr");%>'>
+</td>
+</tr>
+<tr>
+	<td colspan=2 align=center>
+	<input type="submit" value="Apply"> 
+	</td>
+</tr>
+</table>	
+</form>
+Customer Firmware Version : <%nvram_get("fw_version");%><br>
+My Firmware Verion : <%nvram_get("my_fw_version");%>
+</body>
+</html>

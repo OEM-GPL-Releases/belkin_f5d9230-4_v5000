@@ -1,0 +1,596 @@
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+
+<SCRIPT>//<!--
+strHtml='<title>'+ws1+'</title>';
+dw(strHtml);
+
+var helpItem 	='Connection Type';
+var menuSection	='WAN';
+var menuItem	='Connection Type';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+
+function Init_Value()
+{
+	var f=document.wan_form;
+	var ipadder='<%nvram_get("wan_ipaddr");%>';
+	var netmask='<%nvram_get("wan_netmask");%>';
+	var gateway='<%nvram_get("wan_gateway");%>';
+	
+	t1=ipadder.indexOf('.');
+	if(t1!=-1)f.IP1.value=ipadder.substring(0,t1);
+	t2=ipadder.indexOf('.',(t1+1));
+	if(t2!=-1)f.IP2.value=ipadder.substring((t1+1),t2);
+	t1=ipadder.indexOf('.',(t2+1));
+	if(t1!=-1)f.IP3.value=ipadder.substring((t2+1),t1);
+	f.IP4.value=ipadder.substring(t1+1);
+
+	t1=netmask.indexOf('.');
+	if(t1!=-1)f.NM1.value=netmask.substring(0,t1);
+	t2=netmask.indexOf('.',(t1+1));
+	if(t2!=-1)f.NM2.value=netmask.substring((t1+1),t2);
+	t1=netmask.indexOf('.',(t2+1));
+	if(t1!=-1)f.NM3.value=netmask.substring((t2+1),t1);
+	f.NM4.value=netmask.substring(t1+1); 	
+
+	t1=gateway.indexOf('.');
+	if(t1!=-1)f.GIP1.value=gateway.substring(0,t1);
+	t2=gateway.indexOf('.',(t1+1));
+	if(t2!=-1)f.GIP2.value=gateway.substring((t1+1),t2);
+	t1=gateway.indexOf('.',(t2+1));
+	if(t1!=-1)f.GIP3.value=gateway.substring((t2+1),t1);
+	f.GIP4.value=gateway.substring(t1+1);	
+}
+
+function hex(val)
+{
+	var h = (val-0).toString(16);
+	if(h.length==1) 
+		h='0'+h;
+	return h.toUpperCase();
+}
+
+function validateGateway(wanIp,netmaskIp,gatewayIp) 
+{
+	if(gatewayIp.length==0) return true;
+	var i1,i2,i3, wip, nip, gip;
+
+	i1=wanIp.indexOf('.');
+	i2=wanIp.indexOf('.',(i1+1));
+	i3=wanIp.indexOf('.',(i2+1));
+
+	wip = hex(wanIp.substring(0,i1)) + hex(wanIp.substring((i1+1),i2)) +hex(wanIp.substring((i2+1),i3))+hex(wanIp.substring((i3+1),wanIp.length));
+	wip = '0x'+wip;
+
+	i1=netmaskIp.indexOf('.');
+	i2=netmaskIp.indexOf('.',(i1+1));
+	i3=netmaskIp.indexOf('.',(i2+1));
+
+	nip = hex(netmaskIp.substring(0,i1)) + hex(netmaskIp.substring((i1+1),i2)) +hex(netmaskIp.substring((i2+1),i3)) +hex(netmaskIp.substring((i3+1),netmaskIp.length));
+	nip = '0x'+nip;
+
+	i1=gatewayIp.indexOf('.');
+	i2=gatewayIp.indexOf('.',(i1+1));
+	i3=gatewayIp.indexOf('.',(i2+1));
+
+	gip = hex(gatewayIp.substring(0,i1)) + hex(gatewayIp.substring((i1+1),i2)) +hex(gatewayIp.substring((i2+1),i3)) +hex(gatewayIp.substring((i3+1),gatewayIp.length));
+	gip = '0x'+gip;
+
+	if((wip & nip) != (gip & nip))
+	{
+		alert('IP address '+wanIp+' is not in '+gatewayIp+'/'+netmaskIp+' network.');
+		return false;
+	}
+}
+
+function storeData()
+{
+	var f=document.forms[0];
+	f.wan_ipaddr.value=f.IP1.value+'.'+f.IP2.value+'.'+f.IP3.value+'.'+f.IP4.value;
+ 	f.wan_netmask.value=f.NM1.value+'.'+f.NM2.value+'.'+f.NM3.value+'.'+f.NM4.value;
+ 	f.wan_gateway.value=f.GIP1.value+'.'+f.GIP2.value+'.'+f.GIP3.value+'.'+f.GIP4.value;
+ 	
+	if (validateGateway(f.wan_ipaddr.value, f.wan_netmask.value,f.wan_gateway.value) == false) 
+		return false; 
+
+	alert(warn_msg2);
+	alert(ws8);
+	return true;
+}
+
+function aliasadd()
+{
+	var f=document.forms[0];
+	var aliasip, aliasnm, gateway;
+	var i;
+
+	var alias_enabled = new Array(5);
+	
+	alias_enabled[0] = '<%nvram_get("wan_alias1_enabled");%>';
+	alias_enabled[1] = '<%nvram_get("wan_alias2_enabled");%>';
+	alias_enabled[2] = '<%nvram_get("wan_alias3_enabled");%>';
+	alias_enabled[3] = '<%nvram_get("wan_alias4_enabled");%>';
+	alias_enabled[4] = '<%nvram_get("wan_alias5_enabled");%>';
+	
+	if(f.ANM1.value!=f.NM1.value && f.ANM2.value!=f.NM2.value && f.ANM3.value!=f.NM3.value && f.ANM4.value!=f.NM4.value) {
+		alert(wsc1+" "+ws4+" "+wlb10);
+		return false;
+	}		
+	
+	if((isBlank(f.AIP1.value))||(isNaN(f.AIP1.value))||(f.AIP1.value<0||f.AIP1.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.AIP2.value))||(isNaN(f.AIP2.value))||(f.AIP2.value<0||f.AIP2.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.AIP3.value))||(isNaN(f.AIP3.value))||(f.AIP3.value<0||f.AIP3.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.AIP4.value))||(isNaN(f.AIP4.value))||(f.AIP4.value<=0||f.AIP4.value>=255)) { alert(usysipm); return false; }
+	if((isBlank(f.ANM1.value))||(isNaN(f.ANM1.value))||(f.ANM1.value<0||f.ANM1.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.ANM2.value))||(isNaN(f.ANM2.value))||(f.ANM2.value<0||f.ANM2.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.ANM3.value))||(isNaN(f.ANM3.value))||(f.ANM3.value<0||f.ANM3.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.ANM4.value))||(isNaN(f.ANM4.value))||(f.ANM4.value<0||f.ANM4.value>255)) { alert(usysipm); return false; }
+	
+	if(f.ANM1.value ==0) { alert(sm); return false;}
+	aliasip=f.AIP1.value+'.'+f.AIP2.value+'.'+f.AIP3.value+'.'+f.AIP4.value;
+	aliasnm=f.ANM1.value+'.'+f.ANM2.value+'.'+f.ANM3.value+'.'+f.ANM4.value;
+	gateway=f.GIP1.value+'.'+f.GIP2.value+'.'+f.GIP3.value+'.'+f.GIP4.value;
+	
+	if (validateGateway(aliasip, aliasnm, gateway) == false) return false; 
+		
+	for (i=1; i<6; i++)
+	{
+		if (i==5 && alias_enabled[4]=='1')
+		{
+			alert(im);
+			return false; 
+		}
+		if (alias_enabled[i-1]=='0')
+		{	
+			eval('f.wan_alias'+i+'_enabled.value = 1;');
+			eval('f.wan_ipaddr'+i+'.value = aliasip;');
+			eval('f.wan_netmask'+i+'.value = aliasnm;');
+			break;
+		}
+	}
+
+	if(storeData()==false)
+		return;
+	f.submit();                      
+}
+
+function aliasdel(type)
+{
+	var f=document.forms[0];
+	eval('f.wan_alias'+type+'_enabled.value=0;');
+	eval('f.wan_ipaddr'+type+'.value = "";');
+	eval('f.wan_netmask'+type+'.value = "";');
+	if(storeData()==false)return;
+	f.submit();
+}
+
+function isBlank(s) 
+{
+	for(i=0;i<s.length;i++) 
+	{
+		c=s.charAt(i);
+		if((c!=' ')&&(c!='\n')&&(c!='\t'))return false;
+	}
+	return true;
+}
+
+function isNValidIP(s) 
+{
+	if((isBlank(s))||(isNaN(s))||(s<0||s>255)) 
+		return true;
+	else 
+		return false;
+}
+
+function evaltF() 
+{
+	var f=document.forms[0];
+	if((isBlank(f.IP1.value))||(isNaN(f.IP1.value))||(f.IP1.value<=0||f.IP1.value>=255)) { alert(usysipm); return false; }
+	if((isBlank(f.IP2.value))||(isNaN(f.IP2.value))||(f.IP2.value<0||f.IP2.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.IP3.value))||(isNaN(f.IP3.value))||(f.IP3.value<0||f.IP3.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.IP4.value))||(isNaN(f.IP4.value))||(f.IP4.value<=0||f.IP4.value>=255)) { alert(usysipm); return false; }
+	if((isBlank(f.NM1.value))||(isNaN(f.NM1.value))||(f.NM1.value<0||f.NM1.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.NM2.value))||(isNaN(f.NM2.value))||(f.NM2.value<0||f.NM2.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.NM3.value))||(isNaN(f.NM3.value))||(f.NM3.value<0||f.NM3.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.NM4.value))||(isNaN(f.NM4.value))||(f.NM4.value<0||f.NM4.value>255)) { alert(usysipm); return false; }
+	
+	/* check subnet mask */ 	
+	if( !isNValidIP(f.NM1.value) )
+	{
+		if( f.NM1.value != '128' && f.NM1.value != '192' && f.NM1.value != '224' && 
+		    f.NM1.value != '240' && f.NM1.value != '248' && f.NM1.value != '252' && 
+		    f.NM1.value != '254' && f.NM1.value != '255' )
+		{
+			alert(vjs28);
+			f.NM1.focus();
+			f.NM1.select();
+			return false;
+		}
+		if( f.NM4.value == '255')
+		{
+			f.NM4.focus();
+			f.NM4.select();
+			return false;
+		}
+	}
+	else
+	{
+		alert(vjs28);
+		f.NM1.focus();
+		f.NM1.select();
+		return false;	
+	}
+		
+	if( !isNValidIP(f.NM2.value) )
+	{
+		if( f.NM1.value != '255' )
+		{
+			if(f.NM2.value != '0')
+			{
+				alert(vjs28);
+				f.NM2.focus();
+				f.NM2.select();
+				return false;
+			}
+		}
+		else
+		if( f.NM2.value != '128' && f.NM2.value != '192' && f.NM2.value != '224' && 
+		    f.NM2.value != '240' && f.NM2.value != '248' && f.NM2.value != '252' && 
+		    f.NM2.value != '254' && f.NM2.value != '255' && f.NM2.value != '0' )
+		{
+			alert(vjs28);
+			f.NM2.focus();
+			f.NM2.select();
+			return false;
+		}
+	}	
+	else
+	{
+		alert(vjs28);
+		f.NM2.focus();
+		f.NM2.select();
+		return false;	
+	}
+	
+	if( !isNValidIP(f.NM3.value) )
+	{
+		if( f.NM2.value != '255' )
+		{
+			if(f.NM3.value != '0')
+			{
+				alert(vjs28);
+				f.NM3.focus();
+				f.NM3.select();
+				return false;
+			}
+		}
+		else
+		if( f.NM3.value != '128' && f.NM3.value != '192' && f.NM3.value != '224' && 
+		    f.NM3.value != '240' && f.NM3.value != '248' && f.NM3.value != '252' && 
+		    f.NM3.value != '254' && f.NM3.value != '255' && f.NM3.value != '0' )
+		{
+			alert(vjs28);
+			f.NM3.focus();
+			f.NM3.select();
+			return false;
+		}
+	}	
+	else
+	{
+		alert(vjs28);
+		f.NM3.focus();
+		f.NM3.select();
+		return false;	
+	}
+	
+	if( !isNValidIP(f.NM4.value) )
+	{
+		if( f.NM3.value != '255' )
+		{
+			if(f.NM4.value != '0')
+			{
+				alert(vjs28);
+				f.NM4.focus();
+				f.NM4.select();
+				return false;
+			}
+		}
+		else
+		if( f.NM4.value != '128' && f.NM4.value != '192' && f.NM4.value != '224' && 
+		    f.NM4.value != '240' && f.NM4.value != '248' && f.NM4.value != '252' && 
+		    f.NM4.value != '254' && f.NM4.value != '255' && f.NM4.value != '0' )
+		{
+			alert(vjs28);
+			f.NM4.focus();
+			f.NM4.select();
+			return false;
+		}
+	}	
+	else
+	{
+		alert(vjs28);
+		f.NM4.focus();
+		f.NM4.select();
+		return false;	
+	} 	
+/* check subnet mask end */
+	
+	if((isBlank(f.GIP1.value))||(isNaN(f.GIP1.value))||(f.GIP1.value<=0||f.GIP1.value>=255)) { alert(usysipm); return false; }
+	if((isBlank(f.GIP2.value))||(isNaN(f.GIP2.value))||(f.GIP2.value<0||f.GIP2.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.GIP3.value))||(isNaN(f.GIP3.value))||(f.GIP3.value<0||f.GIP3.value>255)) { alert(usysipm); return false; }
+	if((isBlank(f.GIP4.value))||(isNaN(f.GIP4.value))||(f.GIP4.value<=0||f.GIP4.value>=255)) { alert(usysipm); return false; }
+	if(f.NM1.value ==0) {alert(sm); return false;}
+	if(storeData()==false)return false;
+	
+	f.submit();
+}
+
+function Try_Submit() 
+{
+	return evaltF();
+}
+
+function ShowHideTable()
+{
+	if(document.wan_form.checkbox2.checked) {
+		location='wan_static_checked.htm';
+	}
+	else {
+		location='wan_static.htm';
+	}
+}
+
+function wan_dns()
+{
+	var f = document.forms[0];
+	f.next_page.value="wan_dns.htm";
+	if(!evaltF())
+	{
+		f.next_page.value="wan_static_checked.htm";
+		return false;
+	}
+	f.submit();
+	return false;
+}
+
+function Reset()
+{
+	var f = document.forms[0];
+	aliasip_enabled[0] = '<%nvram_get("wan_alias1_enabled");%>';
+	aliasip_enabled[1] = '<%nvram_get("wan_alias2_enabled");%>';
+	aliasip_enabled[2] = '<%nvram_get("wan_alias3_enabled");%>';
+	aliasip_enabled[3] = '<%nvram_get("wan_alias4_enabled");%>';
+	aliasip_enabled[4] = '<%nvram_get("wan_alias5_enabled");%>';
+	if( aliasip_enabled[0]=='1' || aliasip_enabled[1]=='1' || aliasip_enabled[2]=='1' || aliasip_enabled[3]=='1' || aliasip_enabled[4]=='1') 
+		Init_Value();	
+ 	else 
+		location.href = 'wan_static.htm';
+}
+
+function cancel()
+{
+	var aliasip_enabled = new Array(5);
+	var alias_enabled = 0;
+	aliasip_enabled[0] = '<%nvram_get("wan_alias1_enabled");%>';
+	aliasip_enabled[1] = '<%nvram_get("wan_alias2_enabled");%>';
+	aliasip_enabled[2] = '<%nvram_get("wan_alias3_enabled");%>';
+	aliasip_enabled[3] = '<%nvram_get("wan_alias4_enabled");%>';
+	aliasip_enabled[4] = '<%nvram_get("wan_alias5_enabled");%>';
+	for(i=0;i<5;i++) {
+		if(aliasip_enabled[i]=='1') {
+			alias_enabled=1;
+			break;
+		}
+	}
+	if(alias_enabled==1)
+		window.location.reload();
+	else
+		window.location.href='wan_static.htm';
+}
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" onload="Init_Value();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode);
+</SCRIPT>
+<FORM id="wan_form" name="wan_form" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wan_dns.htm">
+<input type="hidden" name="redirect_timer" value="60000">
+<input type="hidden" name="reboot" value="1">
+<input type="hidden" name="data1" value="bigpond_enabled wan_ipaddr wan_netmask wan_gateway wan_alias1_enabled wan_alias2_enabled wan_alias3_enabled wan_alias4_enabled wan_alias5_enabled wan_ipaddr1 wan_ipaddr2 wan_ipaddr3 wan_ipaddr4 wan_ipaddr5 wan_netmask1 wan_netmask2 wan_netmask3 wan_netmask4 wan_netmask5 wan_proto">
+
+<input type="hidden" name="wan_proto" value="static">
+<input type="hidden" name="wan_ipaddr">
+<input type="hidden" name="wan_netmask">
+<input type="hidden" name="wan_gateway">
+
+<input type="hidden" name="wan_alias1_enabled" value='<%nvram_get("wan_alias1_enabled");%>'>
+<input type="hidden" name="wan_alias2_enabled" value='<%nvram_get("wan_alias2_enabled");%>'>
+<input type="hidden" name="wan_alias3_enabled" value='<%nvram_get("wan_alias3_enabled");%>'>
+<input type="hidden" name="wan_alias4_enabled" value='<%nvram_get("wan_alias4_enabled");%>'>
+<input type="hidden" name="wan_alias5_enabled" value='<%nvram_get("wan_alias5_enabled");%>'>
+
+<input type="hidden" name="wan_ipaddr1" value='<%nvram_get("wan_ipaddr1");%>'>
+<input type="hidden" name="wan_ipaddr2" value='<%nvram_get("wan_ipaddr2");%>'>
+<input type="hidden" name="wan_ipaddr3" value='<%nvram_get("wan_ipaddr3");%>'>
+<input type="hidden" name="wan_ipaddr4" value='<%nvram_get("wan_ipaddr4");%>'>
+<input type="hidden" name="wan_ipaddr5" value='<%nvram_get("wan_ipaddr5");%>'>
+
+<input type="hidden" name="wan_netmask1" value='<%nvram_get("wan_netmask1");%>'>
+<input type="hidden" name="wan_netmask2" value='<%nvram_get("wan_netmask2");%>'>
+<input type="hidden" name="wan_netmask3" value='<%nvram_get("wan_netmask3");%>'>
+<input type="hidden" name="wan_netmask4" value='<%nvram_get("wan_netmask4");%>'>
+<input type="hidden" name="wan_netmask5" value='<%nvram_get("wan_netmask5");%>'>
+
+<TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(ws1);</SCRIPT>
+<BR><BR>
+<TABLE class="copy_1" border="0"><TBODY>
+	<TR>
+    	<TD width=5>&nbsp;</TD>
+    	<TD>
+      		<TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="550" align="left" border="0"><TBODY>
+	        <TR>
+          		<TD colSpan="3">
+            		<SCRIPT>dw(ws2);</SCRIPT>
+            		<A href="javascript:void(0);" onclick="window.open('glossary.htm#static_ip','help','toolbar=0,status=0,menubar=0,scrollbars=1,resizable=1,width=530,height=400,left=150,top=150');">
+						<B><FONT color="#0066FF"><SCRIPT>dw(sm1);</SCRIPT></FONT></B><BR><BR>
+					</A>
+				</TD>
+			</TR>
+        	<TR>
+          		<TD width="35">&nbsp;</TD>
+          		<TD width="202"><B><SCRIPT>dw(ws3);</SCRIPT>&gt;</B><BR><BR></td>
+          		<TD>
+					<INPUT maxLength="3" size="4" name="IP1">. 
+					<INPUT maxLength="3" size="4" name="IP2">. 
+					<INPUT maxLength="3" size="4" name="IP3">. 
+            		<INPUT maxLength="3" size="4" name="IP4"><BR><BR>
+				</td>
+			</TR>
+        	<TR>
+          		<TD width="35">&nbsp;</TD>
+          		<TD><B><SCRIPT>dw(ws4);</SCRIPT>&gt;</B><BR><BR></td>
+         		<TD>
+					<INPUT maxLength="3" size="4" name="NM1">. 
+					<INPUT maxLength="3" size="4" name="NM2">. 
+					<INPUT maxLength="3" size="4" name="NM3">. 
+	            	<INPUT maxLength="3" size="4" name="NM4"><BR><BR>
+				</td>
+			</TR>
+        	<TR>
+          		<TD width="35" height="18">&nbsp;</TD>
+          		<TD width="202" height="18"><B><SCRIPT>dw(ws5);</SCRIPT>&gt;</B><BR><BR></td>
+          		<TD>
+					<INPUT maxLength="3" size="4" name="GIP1">. 
+					<INPUT maxLength="3" size="4" name="GIP2">. 
+					<INPUT maxLength="3" size="4" name="GIP3">. 
+            		<INPUT maxLength="3" size="4" name="GIP4"> <BR><BR>
+				</td>
+			</TR>
+        	<TR>
+          		<TD width="35">&nbsp;</TD>
+          		<TD colSpan="2"><B><SCRIPT>dw(ws6);</SCRIPT>&gt;</B>
+					<INPUT onclick="ShowHideTable();" type="checkbox" CHECKED value="checkbox" name="checkbox2"><BR><BR>
+				</td>
+			</tr>
+        	<TR>
+          		<TD width="35">&nbsp;</TD>
+          		<TD colSpan="2"><BR>
+            		<TABLE class="copy_1" width="90%" align="center" border="0"><TBODY>
+		            	<TR bgColor="#666666" height="25">
+                			<TH align="middle" width="33%"><FONT color="#ffffff"><SCRIPT>dw(wsc1);</SCRIPT></FONT></TH>
+                			<TH align="middle" width="33%"><FONT color="#ffffff"><SCRIPT>dw(ws4);</SCRIPT></FONT></th>
+		                	<TH align="middle" width="20%">&nbsp;</TH>
+						</TR>
+              			<TR align="middle" bgColor="#CCCCCC">
+	                		<TD>
+								<FONT face="Arial, Helvetica, sans-serif" size="2"><NOBR>
+								<INPUT maxLength="3" size="3" name="AIP1">. 
+								<INPUT maxLength="3" size="3" name="AIP2">. 
+								<INPUT maxLength="3" size="3" name="AIP3">. 
+								<INPUT maxLength="3" size="3" name="AIP4"> 
+                				</NOBR></FONT>
+							</TD>
+                			<TD>
+								<FONT face="Arial, Helvetica, sans-serif" size="2"><NOBR>
+					  			<INPUT maxLength="3" size="3" name="ANM1">. 
+								<INPUT maxLength="3" size="3" name="ANM2">. 
+				  				<INPUT maxLength="3" size="3" name="ANM3">. 
+				  				<INPUT maxLength="3" size="3" name="ANM4"> 
+                				</NOBR></FONT>
+							</TD>
+                			<TD>
+								<FONT face="Arial, Helvetica, sans-serif" size="2">
+                  					<SCRIPT>
+										dw('<input type="button" style="{width:60px;}" name="aliasAdd" value="&lt;&lt;');
+										dw(Add);
+										dw('" onClick="return aliasadd();" class="submitBtn">');
+									</SCRIPT>
+                  				</FONT>
+							</TD>
+						</TR>
+<script language="javascript">
+var strHtml;
+var strTemp;
+var aliasip_enabled = new Array(5);
+var aliasip_addr = new Array(5);
+var aliasnm_addr = new Array(5);
+var k=0;
+
+aliasip_enabled[0] = '<%nvram_get("wan_alias1_enabled");%>';
+aliasip_enabled[1] = '<%nvram_get("wan_alias2_enabled");%>';
+aliasip_enabled[2] = '<%nvram_get("wan_alias3_enabled");%>';
+aliasip_enabled[3] = '<%nvram_get("wan_alias4_enabled");%>';
+aliasip_enabled[4] = '<%nvram_get("wan_alias5_enabled");%>';
+
+aliasip_addr[0] = '<%nvram_get("wan_ipaddr1");%>';
+aliasip_addr[1] = '<%nvram_get("wan_ipaddr2");%>';
+aliasip_addr[2] = '<%nvram_get("wan_ipaddr3");%>';
+aliasip_addr[3] = '<%nvram_get("wan_ipaddr4");%>';
+aliasip_addr[4] = '<%nvram_get("wan_ipaddr5");%>';
+
+aliasnm_addr[0] = '<%nvram_get("wan_netmask1");%>';
+aliasnm_addr[1] = '<%nvram_get("wan_netmask2");%>';
+aliasnm_addr[2] = '<%nvram_get("wan_netmask3");%>';
+aliasnm_addr[3] = '<%nvram_get("wan_netmask4");%>';
+aliasnm_addr[4] = '<%nvram_get("wan_netmask5");%>';
+
+for(i=0; i<5; i++)
+{
+	if(aliasip_enabled[i]=='1')
+	{ 
+ 		strTemp='';
+ 		strHtml='<tr align="center" bgcolor="#CCCCCC">'
+ 		+'<td><font face="Arial, Helvetica, sans-serif" size="2">' 
+ 		+ aliasip_addr[i]
+ 		+'</font></td>'
+ 		+'<td><font face="Arial, Helvetica, sans-serif" size="2">' 
+ 		+ aliasnm_addr[i]
+ 		+'</font></td>'
+ 		+'<td>'
+ 		+'<input type="button"name="delete" value="'+Del+'"  style="{width:60px;}" class="submitBtn" onClick="aliasdel('
+		+ (i+1)
+		+');">'
+ 		+'</td></tr>';
+ 		document.writeln(strHtml);
+	}
+}
+</script>
+        </TBODY></TABLE>
+        <TR>
+        	<TD>&nbsp;</TD>
+          	<TD colSpan="2"><BR><BR><A onclick=" return wan_dns();" href="wan_dns.htm"><B><FONT color="#0066FF">
+            	<SCRIPT>dw(ws7);</SCRIPT></FONT></B></A><BR><BR>
+			</TD>
+		</TR>
+        <TR>
+          	<TD width="35">&nbsp;</TD>
+          	<TD align="middle" colSpan="2">
+            <SCRIPT>
+				dw('<input type="button" value="');
+				dw(btn1);
+				dw('" style="{width:120px;}" class="submitBtn" onclick="cancel();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+				dw('<input type="button" style="{width:120px;}" value="');
+				dw(btn2);
+				dw('" onClick="return Try_Submit();"  class="submitBtn">');
+			</SCRIPT>
+          </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

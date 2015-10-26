@@ -1,0 +1,198 @@
+<HTML>
+<HEAD>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wc1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Connection Type';
+var menuSection	='WAN';
+var menuItem	='Connection Type';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+<%autofw_check();%>
+	
+var wanpage='wan_mains';
+var timer = setTimeout('location.replace("wan_conn.htm")', 1000000); 
+var havepptp=<%nvram_get("havepptp");%>;
+var havebigpond=<%nvram_get("havebigpond");%>;
+
+function changeWanPage(type)
+{
+	var f = document.forms[0];
+	var aliasip_enabled = new Array(5);
+	
+	aliasip_enabled[0] = '<%nvram_get("wan_alias1_enabled");%>';
+	aliasip_enabled[1] = '<%nvram_get("wan_alias2_enabled");%>';
+	aliasip_enabled[2] = '<%nvram_get("wan_alias3_enabled");%>';
+	aliasip_enabled[3] = '<%nvram_get("wan_alias4_enabled");%>';
+	aliasip_enabled[4] = '<%nvram_get("wan_alias5_enabled");%>';
+	
+	if(f.WT[0].checked==true)
+	{
+		window.location.href ='wan_dynamic.htm';
+		f.wan_proto.value ='dhcp'; 
+	}
+	
+	if(f.WT[1].checked==true)
+	{
+		if(aliasip_enabled[0]=='1' || aliasip_enabled[1]=='1' || aliasip_enabled[2]=='1' || aliasip_enabled[3]=='1' || aliasip_enabled[4]=='1')
+			window.location.href='wan_static_checked.htm';
+		else
+			window.location.href='wan_static.htm';
+		f.wan_proto.value ='static'; 
+	}
+
+	if(f.WT[2].checked==true)
+	{
+		if('<%nvram_get("lang_code");%>' == 'jp') 
+		{
+			window.location.href='wan_multipppoe.htm';
+			f.wan_proto.value ='multipppoe'; 
+		}
+		else 
+		{
+			window.location.href='wan_pppoe.htm';
+			f.wan_proto.value ='pppoe'; 
+		}
+	}
+	if(havepptp==true)
+	{
+		if(f.WT[3].checked==true)
+		{
+			window.location.href='wan_pptp.htm';
+			f.wan_proto.value ='pptp'; 
+		}
+	}
+	if(havebigpond==true)
+	{	
+		if(f.WT[4].checked==true)
+		{
+			window.location.href='wan_telstra.htm';
+			f.wan_proto.value ='hbeat'; 
+		}
+	}
+}
+
+function Init_Value()
+{
+	var f = document.forms[0];
+	var wan_proto = '<%nvram_get("wan_proto");%>';	
+	switch (wan_proto)
+	{
+		case 'static':				// STATIC
+			f.WT[1].checked = true;
+			break;
+		case 'pppoe':				// PPPoE
+				f.WT[2].checked = true;
+			break;
+		case 'pptp':				// PPTP
+			f.WT[3].checked = true;
+			break;
+		case 'dhcp':				// DHCP or BigPond
+			f.WT[0].checked = true;
+			break;
+		case 'hbeat':			// BigPond
+			f.WT[4].checked = true;
+			break;
+	}
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" marginheight="0" marginwidth="0" onLoad="Init_Value();">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<FORM name="wan_conn"action="save.cgi"method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="next_page">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="redirect_timer" value="10">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="data1" value="">
+<input type="hidden" name="wan_proto">
+
+<TD class="head_bold" height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wc1);</SCRIPT><BR><BR>
+<TABLE class="copy_1" border="0"><TBODY>
+  <TR>
+    <TD width="5">&nbsp;</TD>
+    <TD>
+    	<TABLE class="copy_1" cellSpacing="5" cellPadding="0" width="485" align="center" border="0"><TBODY>
+        <TR>
+        	<TD width="35">&nbsp;</TD>
+          	<TD colSpan="2"><SCRIPT>dw(wc2);</SCRIPT></TD>	<!--Connection type-->
+		</TR>
+        <TR>
+          	<TD width="35"><INPUT type="radio" value="1" name="WT"></TD>
+          	<TD colSpan="2"><B><SCRIPT>dw(wc3);</SCRIPT></B></TD>	<!--Dynamic-->
+		</TR>
+        <TR>
+        	<TD width="35" height="40">&nbsp;</TD>
+          	<TD colSpan="2" height="40"><SPAN><SCRIPT>dw(wc4);</SCRIPT></SPAN></TD>	<!--A dynamic type ...-->
+		</TR>
+        <TR>
+          	<TD width="35"><INPUT type="radio" value="2" name="WT"></TD>
+          	<TD colSpan=2><B><SCRIPT>dw(wc5);</SCRIPT></B></TD>	<!--Static-->
+		</TR>
+        <TR>
+          	<TD width="35">&nbsp;</TD>
+          	<TD colSpan="2"><SCRIPT>dw(wc6);</SCRIPT></TD> <!-- A static IP Address-->
+		</TR>
+        <TR>
+        	<TD width="35"><INPUT type="radio" value="3" name="WT"></TD>
+          	<TD colSpan="2"><B><SCRIPT>dw(wc7);</SCRIPT></B></TD> <!--PPPoE-->
+		</TR>
+        <TR>
+          	<TD width="35">&nbsp;</TD>
+          	<TD colSpan="2"><SPAN><SCRIPT>dw(wc8);</SCRIPT></SPAN></TD> <!--If you use DSL...-->
+		</TR>
+        <SCRIPT language="javascript">
+		// PPTP Connection
+		if(havepptp==true)
+		{
+			document.writeln('<tr><td width="35">');
+			document.writeln('<input type="radio" name="WT" value="4">');
+			document.write('</td><td colspan="2"><b>');dw(wc9);dw('</b></td></tr>');
+			document.writeln('<tr><td width="35">&nbsp;</td><td colspan="2">');
+			dw(wc10);
+			document.writeln('</td></tr>');
+		}
+		
+		// Bigpond Connection
+		if(havebigpond==true)
+		{
+			dw('<tr><td width="35">');
+			dw(' <input type="radio" name="WT" value="5">');		
+			dw('</td><td colspan="2"><b>');dw(wc11);dw('</b></td></tr>');
+			dw('<tr> <td width="35">&nbsp;</td>');
+			dw('<td colspan="2">');
+			dw(wc12);
+			dw('</td> </tr>');
+		}
+		</SCRIPT>
+        <TR>
+        	<TD width="35">&nbsp;</TD>
+          	<TD width="312">&nbsp;</TD>
+          	<TD width="124"><BR><BR>
+            <SCRIPT>
+				dw('<input type="button" value="');
+				dw(Next);
+				dw(' &gt;"  style="{width:120px;}" class="submitBtn" onClick="return changeWanPage(99)"></td>');
+			</SCRIPT>
+          	</TD>
+		</TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</FORM>
+</BODY>
+</HTML>

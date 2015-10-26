@@ -1,0 +1,819 @@
+<HTML>
+<HEAD>
+<META http-equiv=Content-Type content="text/html; charset=<%nvram_get("charset");%>">
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+	var helpItem 	='indexa';
+	var menuSection	='';
+	var menuItem	='indexa';
+	var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+strHtml='<title>'+i1+'</title>';
+dw(strHtml);
+<!--
+var bssid = '';
+//-->
+function setLang( langcode , tmpcharset )
+{
+	 document.forms[0].tmp_lang_code.value=langcode;
+	 document.forms[0].tmp_charset.value=tmpcharset;
+	 document.forms[0].submit();
+}
+
+function funClock() 
+{
+	var f = document.forms[0];
+	//if (!document.layers && !document.all) 
+	//	return;
+	var runTime = new Date();
+	var hours = f.hour.value;
+	var minutes = f.min.value;
+	var seconds = f.sec.value;
+
+	var dn = "AM";
+
+	if (hours >= 12) 
+	{
+		dn = "PM";
+		hours = hours - 12;
+	}
+
+	if (seconds == 0)
+	{
+		minutes++;
+		f.min.value++;
+		if(minutes ==60)
+		{
+			hours++;
+			f.hour.value++;
+			minutes = 0;
+			f.min.value = 0;
+		}
+	}
+	if (hours == 0) hours = 12;
+	if (hours == 12 && minutes==0 && seconds == 0) setTimeout('document.location.href="util_system.htm";',0);
+	var temp_min=String(minutes);
+	if (minutes <= 9 && temp_min.length==1) minutes = "0" + minutes;
+	if (seconds <= 9) seconds = "0" + seconds;
+	movingtime = hours + ":" + minutes + ":" + seconds + " " + dn + "</font>";
+	if (document.layers) {
+		document.layers.clock.document.write(movingtime);
+		document.layers.clock.document.close();
+	}
+	else if (document.all) 
+		clock.innerHTML = movingtime;
+	else {
+		document.getElementById('clock').innerHTML = movingtime;
+	}
+	f.sec.value++;
+	if(f.sec.value>59) f.sec.value = 0;
+		setTimeout("funClock()", 1000)
+}
+window.onload = funClock;
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+	showHead(wanStatus,helpItem);
+	showMenu(menuSection,menuItem,isAPmode)
+</SCRIPT>
+<form name="tF0" action="setlang.cgi" method="post">
+<input type=hidden name="tmp_lang_code" value="<%nvram_get('tmp_lang_code');%>">
+<input type=hidden name="tmp_charset" value="<%nvram_get('tmp_charset');%>">
+
+<INPUT type=hidden value=1974 name=year> 
+<INPUT type=hidden value=9 name=mon> 
+<INPUT type=hidden value=3 name=day> 
+<INPUT type=hidden value=0 name=hour> 
+<INPUT type=hidden value=0 name=min> 
+<INPUT type=hidden value=0 name=sec>
+
+</form>
+<TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+	<SCRIPT>dw(i2);</SCRIPT><BR><BR>
+	<TABLE class="copy_1" border="0">
+  	<TBODY>
+  	<TR>
+    	<TD width=5>&nbsp;</TD>
+    	<TD>
+      		<TABLE class="plaintext" cellSpacing="20" cellPadding="0" width="600" align="left" border="0">
+        	<TBODY>
+			  <TR>
+          		<TD colSpan=2>
+            		<DIV class=redBold>
+            		<DIV class=copy_1 align=center>
+            		<SCRIPT>
+            			if('<%nvram_get("login");%>' == '0')
+            				dw(i27);
+            		</SCRIPT>
+            		</DIV></DIV>
+				</TD>
+			  </TR>
+        	<TR>
+          		<TD colSpan="2">
+            		<DIV class=redBold><DIV class=copy_1 align=left>
+            		</DIV></DIV>
+				</TD>
+			</TR>
+        	<TR>
+<!--system start -->        	
+        	<TD vAlign="top">
+        	<TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="277" border="0"><TBODY>
+              	<TR bgColor=#666666><TD colSpan=2><FONT color=#ffffff><B><SCRIPT>dw(i35);</SCRIPT></B></FONT></TD></TR>
+              	<TR>
+                	<TD bgColor="#CCCCCC" height="18">
+                  	<TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="100%" border="0">
+                    	<TBODY>
+                    	<TR>
+                      		<TD width="5%" height="18">&nbsp;</TD>
+<!--SYSTEM date/time-->       	<TD width="95%" height="18"><B><SCRIPT>dw(i35);</SCRIPT></B></TD>
+			</TR>
+			</TBODY></TABLE></TD>
+		<TD width="50%" bgColor="#CCCCCC" height="18">
+		<SCRIPT type=text/javascript>
+			var f= document.forms[0];
+			
+//var date_str='1970/01/01 , 05:47:21';
+var date_str = '<%system_time();%>';
+t1=date_str.indexOf('/');
+t2=date_str.indexOf('/',t1+1);
+t3=date_str.indexOf(',',t2+1);
+t4=date_str.indexOf(':',t3+1);
+t5=date_str.indexOf(':',t4+1);
+f.year.value=date_str.substring(0,t1);
+f.mon.value=date_str.substring(t1+1,t2);
+f.day.value=date_str.substring(t2+1,t3);
+f.hour.value=date_str.substring(t3+1,t4);
+f.min.value=date_str.substring(t4+1,t5);
+f.sec.value=date_str.substring(t5+1);
+var d=new Date()
+var monthname=new Array(January,February,March,April,May,June,July,August,September,October,November,December)
+/*if (language=='French') {
+document.write(document.tF0.day.value+" ")
+document.write(monthname[f.mon.value-1] + ", ")
+}
+else {*/
+document.write(monthname[f.mon.value-1] + " ")
+document.write(f.day.value + ", ")
+//} 
+document.write(f.year.value)
+</SCRIPT>
+            &nbsp; </FONT>&nbsp;</B><SPAN id=clock 
+            style="POSITION: relative"></SPAN></NOBR>
+            </TD>
+</TR>
+		</TBODY>
+		</TABLE>
+		</TD>
+<!-- system end -->  	
+        	
+        	
+<!-- Version start -->      	
+          		<TD vAlign="top"><TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="277" border="0"><TBODY>
+              	<TR bgColor=#666666><TD colSpan=2><FONT color=#ffffff><B><SCRIPT>dw(i3);</SCRIPT></B></FONT></TD></TR>
+              	<TR>
+                	<TD bgColor="#CCCCCC" height="18">
+                  	<TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="100%" border="0">
+                    <TBODY>
+                    <TR>
+                      <TD width="5%" height="18">&nbsp;</TD>
+<!--Firmware-->       <TD width="95%" height="18"><B><SCRIPT>dw(i4);</SCRIPT></B></TD>
+				 </TR>
+				 </TBODY></TABLE></TD>
+                 <TD width="50%" bgColor="#CCCCCC" height="18">
+				 	<script>var fw_version='<%nvram_get("fw_version");%>';dw(fw_version);</script>
+				 </TD>
+			 </TR>
+             <TR>
+                <TD width="50%" bgColor="#e8f8ff">
+                  <TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="100%" border="0"><TBODY>
+                  <TR>
+                  		<TD width="5%">&nbsp;</TD>
+<!--loader version--> 	<TD width="95%" height="18"><B><SCRIPT>dw(i5);</SCRIPT></B></TD>
+				  </TR>
+				  </TBODY></TABLE>
+				</TD>
+                <TD width="50%" bgColor="#e8f8ff" height=18><script>var ld_version='<%nvram_get("ld_version");%>';dw(ld_version);</script></TD>
+			 </TR>
+             <TR>
+                <TD width="50%" bgColor="#CCCCCC">
+                  <TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="100%" border="0"><TBODY>
+                  	<TR>
+                      <TD width="5%">&nbsp;</TD>
+<!--Hardware Ver-->   <TD width="95%" height="18"><B><SCRIPT>dw(i6);</SCRIPT></B></TD>
+					</TR>
+				  </TBODY></TABLE>
+				</TD>
+                <TD width="50%" bgColor="#CCCCCC" height="18"><script>var hw_version='<%nvram_get("hw_version");%>'; dw(hw_version);</script></TD>
+			 </TR>
+             <TR>
+                <TD width="50%" bgColor="#e8f8ff">
+                  <TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="100%" border="0"><TBODY>
+                    <TR>
+                      <TD width="5%">&nbsp;</TD>
+<!-- SN -->           <TD width="95%" height="18"><SCRIPT>dw("<b>");dw(i7);dw(" </b>");</SCRIPT></TD>
+					</TR>
+				  </TBODY></TABLE>
+				</TD>
+                <TD width="50%" bgColor="#e8f8ff" height="18"><SCRIPT>dw('<%nvram_get("cwf_serial_number");%>');</SCRIPT></TD>
+			  </TR>
+		  	  </TBODY>
+			  </TABLE>
+		  </TD>
+</TR>
+<!-- version end -->
+<!-- features start -->		  
+	<TR>	  
+	<TD vAlign="top">
+            <TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="277" border="0">
+			  <TBODY>
+              <TR><TD vAlign="bottom" colSpan="2" height="8"></TD></TR>
+              <TR bgColor="#666666"><TD colSpan="2"><FONT color="#ffffff"><B><SCRIPT>dw(i20);</SCRIPT></B></FONT></TD></TR>
+              <SCRIPT>    
+if(isAPmode=='0')
+{    // Features
+ var strHtml, nat_enabled_text, fw_enabled_text, wl_sec_enabled_text;
+ var nat_enabled = '<%nvram_get("nat_enabled");%>';
+ var fw_enabled	= '<%nvram_get("fw_spi_enabled");%>';
+ 
+ if (nat_enabled == '1')
+ 	nat_enabled_text = ''+Enabled+'';
+ else
+ 	nat_enabled_text = ''+Disabled+'';
+	
+ if (fw_enabled =='1')
+ 	fw_enabled_text = ''+Enabled+'';
+ else
+ 	fw_enabled_text = ''+Disabled+'';
+	
+
+strHtml =
+  '<tr>' 
+ +'<td bgcolor="#CCCCCC" height="18" width="50%"> '
+ +'<table width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">'
+ +'<tbody> '
+ +'<tr> '
+ +'<td width="5%" height="18">&nbsp;</td>'
+ +'<td height="18" width="95%"><a href="util_system.htm"><b>'+i21+'</b></font>'
+ +'</td>'
+ +'</tr>'
+ +'</tbody> '
+ +'</table>'
+ +'</td>'
+ +'<td bgcolor="#CCCCCC" height="18" width="50%">'
+ +nat_enabled_text
+ +'</td>'
+ +'</tr><tr> '
+ +'<td bgcolor="#E8F8FF" width="50%"> '
+ +'<table width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">'
+ +'<tbody> '
+ +'<tr> '
+ +'<td width="5%" height="18">&nbsp;</td>'
+ +'<td width="95%" height="18"><a href="fw_main.htm"><b>'+i22
+ +'</b></a></td>'
+ +'</tr>'
+ +'</tbody> '
+ +'</table>'
+ +'</td>'
+ +'<td bgcolor="#E8F8FF" width="50%" height="18">'
+ +fw_enabled_text
+ +'</td>'
+ +'</tr>';
+ dw(strHtml);
+} 
+else if (isAPmode=='0')
+{
+ var strHtml='<tr>' 
+ +'<td bgcolor="#CCCCCC" height="18" width="50%"> '
+ +'<table width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">'
+ +'<tbody> '
+ +'<tr> '
+ +'<td width="5%" height="18">&nbsp;</td>'
+ +'<td height="18" width="95%"><a href="utilb_system.htm"><b>'
+ +i21
+ +'</b></font>'
+ +'</td>'
+ +'</tr>'
+ +'</tbody> '
+ +'</table>'
+ +'</td>'
+ +'<td bgcolor="#CCCCCC" height="18" width="50%">'
+ +nat_enabled_text
+ +'</td>'
+ +'</tr>';
+ dw(strHtml); 
+}
+</SCRIPT>
+<SCRIPT>    
+// UPnP
+ var strHtml, upnp_enabled_text;
+ var upnp_enabled = '<%nvram_get("upnp_enabled");%>';
+ 
+ if (upnp_enabled == '1')
+ 	upnp_enabled_text = ''+Enabled+'';
+ else
+ 	upnp_enabled_text = ''+Disabled+'';
+	
+
+strHtml =
+  '<tr>' 
+ +'<td bgcolor="#CCCCCC" height="18" width="50%"> '
+ +'<table width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">'
+ +'<tbody> '
+ +'<tr> '
+ +'<td width="5%" height="18">&nbsp;</td>'
+ +'<td height="18" width="95%"><a href="util_system.htm"><b>'+i33+'</b></font>'
+ +'</td>'
+ +'</tr>'
+ +'</tbody> '
+ +'</table>'
+ +'</td>'
+ +'<td bgcolor="#CCCCCC" height="18" width="50%">'
+ +upnp_enabled_text
+ +'</td>'
+ +'</tr>'
+ dw(strHtml);
+</script>
+
+              <TR>
+                <TD vAlign=top colSpan=2></TD></TR></TBODY></TABLE></TD>
+<!--/TR-->		  
+<!-- features end -->
+		  
+<!-- internet setting start --> 		  
+		  
+          <TD vAlign=top>
+            <SCRIPT>     
+			    
+if(isAPmode=='0')
+{            
+var strHtml, connection_type_text;
+var wan_mac = '<%nvram_get("wan_mac");%>';
+var connection_type = '<%nvram_get("wan_proto");%>';
+if(connection_type=="multipppoe") {	
+	var ppp0_gateway = '<%nvram_get("ppp0_wan_gateway");%>';
+	var ppp1_gateway = '<%nvram_get("ppp1_wan_gateway");%>';
+	if(ppp0_gateway == '10.112.112.112')
+		ppp0_gateway = '0.0.0.0'
+	if(ppp1_gateway == '10.112.112.113')
+		ppp1_gateway = '0.0.0.0'
+	var wan_netmask = '1: <%nvram_get("ppp0_wan_netmask");%>' + "<br>" + '2: <%nvram_get("ppp1_wan_netmask");%>';
+	var wan_ipaddr	= '1: <%nvram_get("ppp0_wan_ipaddr");%>' + "<br>" + '2: <%nvram_get("ppp1_wan_ipaddr");%>';
+	var wan_gateway = '1: ' + ppp0_gateway + "<br>" + '2: ' + ppp1_gateway;
+	var wan_dns1	= '1: <%nvram_list("ppp0_wan_dns", 0);%>' + "<br>" + '2: <%nvram_list("ppp1_wan_dns", 0);%>';
+}
+else {
+	var wan_netmask = '<%nvram_get("wan_netmask");%>';
+	var wan_ipaddr	= '<%nvram_get("wan_ipaddr");%>';
+	var wan_gateway = '<%nvram_get("wan_gateway");%>';
+	var wan_dns1	= '<%nvram_get("wan_dns1");%>';
+}
+
+switch (connection_type)
+{
+	case 'static':
+		connection_type_text = ''+show42+'';
+		break;
+	case 'pppoe':
+		connection_type_text = ''+show43+'';
+		break;
+	case 'dhcp':
+	default :
+		connection_type_text = ''+show44+'';
+		break;
+	case 'pptp':
+		connection_type_text = ''+show45+'';
+		break;
+	case 'hbeat':
+		connection_type_text = ''+show46+'';
+		break;
+	case 'multipppoe':
+		connection_type_text = "Multi-session PPPoE";
+		break;
+}
+strHtml =
+ '<table width="277" border="0" cellspacing="0" cellpadding="0" class="copy_1">'
++'<tr> '
++'<td valign="bottom" colspan="2" height="8"></td>'
++'</tr>'
++'<tr bgcolor=#666666> '
++'<td colspan="2" ><font color=#ffffff><b>'
++i13
++'</font></b></td>'
++'</tr>'                 
++'<tr>' 
++'<td bgcolor="#CCCCCC" height="18" width="50%"> '
++'<table width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">'
++'<tr> '
++'<td width="5%" height="18">&nbsp;</td>'
++'<td width="95%" height="18"><a href="wan_mac.htm"><nobr><b>'+i14
++'</b></nobr></a></td>'
++'</tr></table></td>'
++'<td bgcolor="#CCCCCC" height="18" width="50%">'
++ wan_mac
++'</td></tr><tr> '
++'<td bgcolor="#E8F8FF" width="50%"> '
++'<table width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">'
++'<tr>' 
++'<td width="5%" height="18">&nbsp;</td>'
++'<td width="95%" height="18"><a href="wan_conn.htm"><b>'+i15
++'</b></a></td>'
++'</tr></table></td>'
++'<td bgcolor="#E8F8FF" width="50%" height="18">'
++connection_type_text
++'</td>'
++'</tr><tr> '
++'<td bgcolor="#CCCCCC" width="50%"> '
++'<table width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">'
++'  <tr> '
++'  <td width="5%" height="18">&nbsp;</td>'
++' <td width="95%" height="18"><a href="wan_conn.htm"><b>'+i16
++'</b></a></td>'
++'</tr>'
++'</table>'
++'</td>'
++'<td bgcolor="#CCCCCC" width="50%" height="18">';
+dw(strHtml);  
+dw(wan_netmask);
+
+strHtml='</td></tr><tr> '
++'<td bgcolor="#E8F8FF" width="50%"> '
++'<table width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">'
++'<tr> '
++'<td width="5%" height="18">&nbsp;</td>'
++'<td width="95%" height="18"><a href="wan_conn.htm"><b>'
++i17
++'</b></a></td>'
++'</tr></table></td>'
++'<td bgcolor="#E8F8FF" width="50%" height="18">';
+dw(strHtml); 
+dw(wan_ipaddr); 
+strHtml='</td></tr><tr> '
++'<td bgcolor="#CCCCCC" width="50%"> '
++'<table width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">'
++'<tr> '
++'<td width="5%" height="18">&nbsp;</td>'
++'<td width="95%" height="18"><a href="wan_conn.htm"><b>'
++i18
++'</b></a></td>'
++'</tr>'
++'</table>'
++'</td>'
++'<td bgcolor="#CCCCCC" width="50%" height="18">';
+dw(strHtml); 
+dw(wan_gateway);
+strHtml='</td></tr><tr> '
++'<td bgcolor="#E8F8FF" width="50%"> '
++'<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#E8F8FF" class="copy_1">'
++'<tr> '
++'<td width="5%" height="18">&nbsp;</td>'
++'<td width="95%" height="18"><a href="wan_dns.htm"><b>'+i19
++'</b></a></td>'
++'</tr></table></td>'
++'<td bgcolor="#E8F8FF" width="50%" height="18">';
+dw(strHtml); 
+dw(wan_dns1);
+strHtml='</td></tr>'
++'<tr>'
++'<td valign="top" colspan="2"></td>'
++'</tr></table>';
+dw(strHtml);   
+} 
+</SCRIPT>
+          </TD>
+</TR>
+          
+<!-- internet end -->		  
+		  
+		  
+<!-- LAN start -->		  
+		  
+<TR>		  
+          <td vAlign="top">
+            <TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="277" border="0"><TBODY>
+<!--LAN settings-->     <TR bgColor="#666666"><TD colSpan="2"><FONT color="#ffffff"><B><SCRIPT>dw(i8);</SCRIPT></B></FONT></TD></TR>
+            <TR>
+            	<TD width="150" bgColor="#CCCCCC" height="18">
+				<TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="100%" border="0"><TBODY>
+                    <TR>
+                      <TD width="5%" height="18">&nbsp;</TD>
+                      <TD width="95%" height="18"><B><SCRIPT>dw(i9a);</SCRIPT></B></TD>
+					</TR>
+				</TBODY></TABLE>
+				</TD>
+                <TD width="127" bgColor="#CCCCCC" height="18">
+                  <SCRIPT>
+				  	var lan_mac = '<%nvram_get("lan_mac");%>';
+					var wlan_mac = '<%nvram_get("wl0_macaddr");%>';
+					dw(lan_mac);
+					//dw(' / ');dw(wlan_mac);
+				  </script>
+                </TD>
+			</tr>
+            <tr>
+                <td width="50%" bgColor="#e8f8ff">
+                <TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="100%" border="0"><TBODY>
+                    <TR><TD width="5%" height=18>&nbsp;</TD>
+                    <SCRIPT>
+					if(isAPmode=='0')
+					{
+ 						var strHtml='<td width="95%" height="18" ><a href="lan_settings.htm"><b>'+i10+'</b></a>';
+					}
+					else
+					{
+	 					var strHtml='<td width="95%" height="18"><b>'+i10+'</b>';
+					}
+					dw(strHtml);
+					</SCRIPT>
+                    </td></tr>
+				</TBODY></TABLE>
+				</TD>
+                <TD width="50%" bgColor="#e8f8ff" height="18">
+					<script>
+						var lan_ipaddr = '<%nvram_get("lan_ipaddr");%>';
+						dw(lan_ipaddr);
+					</script>
+				</TD>
+			</TR>
+            <tr>
+                <TD width="50%" bgColor="#CCCCCC">
+                  <TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="100%" border="0"><TBODY>
+                    <TR>
+                      <TD width="5%" height=18>&nbsp;</TD>
+                      <SCRIPT>
+						if(isAPmode=='0')
+						{
+	 						var strHtml='<td width="95%" height="18" ><a href="lan_settings.htm"><b>'+i11+'</b></a>';
+						}
+						else
+						{
+ 							var strHtml='<td width="95%" height="18"><b>'+i11+'</b>';
+						}
+						dw(strHtml);
+					  </SCRIPT>
+                      </TD>
+					 </TR>
+					</TBODY></TABLE>
+				</TD>
+                <TD width="50%" bgColor="#CCCCCC" height="18">
+				<script>
+					var lan_netmask = '<%nvram_get("lan_netmask");%>';
+					dw(lan_netmask);
+				</script>
+				</TD>
+			  </TR>
+              <SCRIPT>
+			  
+if(isAPmode=='0')
+{
+ var strHtml, dhcps_enabled_text;
+ var dhcps_enabled = '<%nvram_get("lan_dhcps_enabled");%>';
+ if (dhcps_enabled == '1')
+ 	dhcps_enabled_text = Enabled;
+ else
+ 	dhcps_enabled_text = Disabled;
+  
+ 
+ strHtml =
+  '<tr>' 
+ +' <td bgcolor="#E8F8FF" width="50%">'
+ +'   <table width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">'
+ +'     <tr>'
+ +'       <td width="5%" height="18">&nbsp;</td>'
+ +'       <td width="95%" height="18"><a href="lan_settings.htm"><b>'+i12+'</b></a></td>'
+ +'     </tr>'
+ +'   </table>'
+ +' </td>'
+ +' <td bgcolor="#E8F8FF" width="50%" height="18">'
+ + dhcps_enabled_text
+ +'</td>'
+ +'</tr>';
+ dw(strHtml);
+}
+</SCRIPT>
+</TBODY></TABLE></TD><!--/TR-->
+
+        
+<!-- LAN end -->
+
+
+<!--WLAN settings start -->
+        	
+          		<TD vAlign="top"><TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="277"  border="0"><TBODY>
+              	<TR bgColor=#666666><TD colSpan=2><FONT color=#ffffff><B><SCRIPT>dw(i32);</SCRIPT></B></FONT></TD></TR>
+<!-- Wireless on/off -->
+<SCRIPT language=javascript>
+var wl_enabled = '<%nvram_get("wl0_enabled");%>';
+if (wl_enabled == '1')
+ 	wl = Enabled;
+ else
+ 	wl = Disabled;
+ dw('<tr>'); 
+ dw('<td bgcolor="#CCCCCC" width="50%">' ); 
+ dw('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">');
+ dw('<tbody><tr>'); 
+ dw('<td width="5%" height="18">&nbsp;</td>');
+ dw('<td width="95%" height="18"><a href="wireless_chan.htm"><b>');
+ dw(show16);dw('</b></a></td>');
+ dw('</tr></tbody>');
+ dw('</table>');
+ dw('</td>');
+ dw('<td bgcolor="#CCCCCC" width="50%" height="18">' + wl + '</td>');
+ dw('</tr>');
+</SCRIPT>                 
+
+<!-- WLAN MAC -->
+            <TR>
+            	<TD width="50%" bgColor="#e8f8ff" height="18">
+				<TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="100%" border="0"><TBODY>
+                    <TR>
+                      <TD width="5%" height="18">&nbsp;</TD>
+                      <TD width="95%" height="18"><B><SCRIPT>dw(i34);</SCRIPT></B></TD>
+					</TR>
+				</TBODY></TABLE>
+				</TD>
+                <TD width="50%" bgColor="#e8f8ff" height="18">
+                  <SCRIPT>
+				  //	var lan_mac = '<%nvram_get("lan_mac");%>';
+				//	var wlan_mac = '<%nvram_get("wl0_macaddr");%>';
+					dw(wlan_mac);
+					
+				  </script>
+                </TD>
+			</tr>
+
+<!-- Wireless mode -->
+
+            <TR>
+            	<TD width="50%" bgColor="#CCCCCC" height="18">
+				<TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="100%" border="0"><TBODY>
+                    <TR>
+                      <TD width="5%" height="18">&nbsp;</TD>
+                      <TD width="95%" height="18"><B><a href="wireless_chan.htm"><SCRIPT>dw(wlc5);</SCRIPT></a></B></TD>
+					</TR>
+				</TBODY></TABLE>
+				</TD>
+                <TD width="50%" bgColor="#CCCCCC" height="18">
+                  <SCRIPT>
+				var wl_mode = '<%nvram_get("wl0_mode");%>';
+				var mode_str="";
+				if(wl_mode == "2") mode_str = "802.11g only";
+				else if(wl_mode == "0") mode_str = "802.11g & 802.11b";
+				else mode_str = "Disabled";
+					
+					dw(mode_str);
+					
+				  </script>
+                </TD>
+			</tr>
+
+
+<!-- channel -->
+
+            <TR>
+            	<TD width="50%" bgColor="#e8f8ff" height="18">
+				<TABLE class="copy_1" cellSpacing="0" cellPadding="0" width="100%" border="0"><TBODY>
+                    <TR>
+                      <TD width="5%" height="18">&nbsp;</TD>
+                      <TD width="95%" height="18"><B><a href="wireless_chan.htm"><SCRIPT>dw(wlc3);</SCRIPT></a></B></TD>
+					</TR>
+				</TBODY></TABLE>
+				</TD>
+                <TD width="50%" bgColor="#e8f8ff" height="18">
+                  <SCRIPT>
+				var wl_channel = '<%nvram_get("wl0_channel");%>';
+				var channel_str="";
+				if(wl_channel == "0") channel_str = "Auto";
+				else channel_str = wl_channel;
+					
+					dw(channel_str);
+					
+				  </script>
+                </TD>
+			</tr>
+
+
+<!-- SSID & security -->
+<SCRIPT language=javascript>
+var wild_wireless = 1;
+var ssid = '<%nvram_get("wl0_ssid");%>';
+var wl_sec_enabled = '<%nvram_get("wl0_sec_mode");%>';
+
+if(wild_wireless == 1 && bssid!=i9b)
+{
+ dw('<tr>'); 
+ dw('<td bgcolor="#CCCCCC" width="50%">' ); 
+ dw('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">');
+ dw('<tbody><tr>'); 
+ dw('<td width="5%" height="18">&nbsp;</td>');
+ dw('<td width="95%" height="18"><a href="wireless_chan.htm"><b>');
+ dw(i23);dw('</b></a></td>');
+ dw('</tr></tbody>');
+ dw('</table>');
+ dw('</td>');
+ dw('<td bgcolor="#CCCCCC" width="50%" height="18">' + ssid + '</td>');
+ dw('</tr>');
+ dw('<tr>'); 
+ dw('<td bgcolor="#E8F8FF" width="50%">'); 
+ dw('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">');
+ dw('<tbody><tr>'); 
+ dw('<td width="5%" height="18">&nbsp;</td>');
+ dw('<td width="95%" height="18"><a href="wireless_encrypt.htm"><b>');
+ dw(i24);dw('</b></a></td>');
+ dw('</tr></tbody>');
+ dw('</table>');
+ dw('</td>');
+ dw('<td bgcolor="#E8F8FF" width="50%" height="18">');
+ if (wl_sec_enabled =='none') 
+ {     
+ 	dw(Disabled); 
+	dw('</td>'); 
+ }
+ else 
+ { 
+  	dw(Enabled); 
+	dw('</td>'); 
+ }
+ dw('</tr>');
+}   
+</SCRIPT>
+
+
+		  	  </TBODY>
+			  </TABLE>
+		  </TD>
+</TR>
+
+
+<!--WLAN end -->
+
+<!-- Language start -->
+        <TR>
+        	<TD colspan="2">
+       		<TABLE bgcolor="#666666" width="100%" border="0" cellspacing="0" cellpadding="0" class="copy_1">
+        	<TR>
+        		<TD colspan="2"><FONT color=#ffffff><B><SCRIPT>dw(langt);</SCRIPT></B></FONT></TD>
+        	</TR>
+        	<TR bgcolor="#CCCCCC">
+        		<TD width="30%" height="18"><FONT class="plaintext_bold"><B><SCRIPT>dw(langcl);</SCRIPT></B></FONT></TD>
+        		<TD><FONT class="plaintext"><SCRIPT>dw(langc);</SCRIPT></FONT></TD>
+        	</TR>
+        	<TR bgcolor="#E8F8FF">
+        		<TD width="30%" height="18"><FONT class="plaintext_bold"><B><SCRIPT>dw(langal);</SCRIPT></B></FONT></TD>
+        		<TD width="70%"><FONT class="plaintext">
+        				<script>
+        				if('<%nvram_get("country_list");%>' == 'us de fr es') {
+        					document.write("<A href=\"javascript:setLang('us','iso-8859-1');\">English</A>&nbsp;&nbsp;");
+        					document.write("<A href=\"javascript:setLang('fr','iso-8859-1');\">Fran&ccedil;ais</A>&nbsp;&nbsp;");
+        					document.write("<A href=\"javascript:setLang('de','iso-8859-1');\">Deutsch</A>&nbsp;&nbsp;");
+        					document.write("<A href=\"javascript:setLang('es','iso-8859-1');\">Espa&ntilde;ol</A>&nbsp;&nbsp;");
+        				}	
+        				else if('<%nvram_get("country_list");%>' == 'us cn tw kr') {
+        					document.write("<A href=\"javascript:setLang('us','iso-8859-1');\">English</A>&nbsp;&nbsp;");
+        					document.write("<A href=\"javascript:setLang('sc','gb2312');\">&#31616;&#20307;&#20013;&#25991;</A>&nbsp;&nbsp;");
+        					document.write("<A href=\"javascript:setLang('tw','utf-8');\">&#32321;&#39636;&#20013;&#25991;</A>&nbsp;&nbsp;");
+        			  	document.write("<A href=\"javascript:setLang('kr','utf-8');\">&#54620;&#44397;&#50612;</A>");
+        				}
+        				else if('<%nvram_get("country_list");%>' == 'jp') {
+        					document.write("<A href=\"javascript:setLang('us','iso-8859-1');\">English</A>&nbsp;&nbsp;");
+	        			  document.write("<A href=\"javascript:setLang('jp','utf-8');\">&#26085;&#26412;&#35486;</A>&nbsp;");
+        				}
+        				else {
+	        			  document.write("<A href=\"javascript:setLang('us','iso-8859-1');\">English</A>&nbsp;");
+	        			  document.write("<A href=\"javascript:setLang('fr','iso-8859-1');\">Fran&ccedil;ais</A>&nbsp;");
+	        			  document.write("<A href=\"javascript:setLang('es','iso-8859-1');\">Espa&ntilde;ol</A>&nbsp;");
+	        			  document.write("<A href=\"javascript:setLang('de','iso-8859-1');\">Deutsch</A>&nbsp;");
+	        			  document.write("<A href=\"javascript:setLang('sc','gb2312');\">&#31616;&#20307;&#20013;&#25991;</A>&nbsp;");
+	        			  document.write("<A href=\"javascript:setLang('tw','utf-8');\">&#32321;&#39636;&#20013;&#25991;</A>&nbsp;");
+	        			  document.write("<A href=\"javascript:setLang('jp','utf-8');\">&#26085;&#26412;&#35486;</A>&nbsp;");
+	        			  document.write("<A href=\"javascript:setLang('kr','utf-8');\">&#54620;&#44397;&#50612;</A>&nbsp;");
+	        			  document.write("<A href=\"javascript:setLang('it','utf-8');\">Italiano</A>&nbsp;");
+		        		  document.write("<A href=\"javascript:setLang('du','utf-8');\">Nederlands</A>");
+        				}
+        				</script>
+        			  <!--A href="javascript:setLang('us','iso-8859-1');">English</A>
+        			  <A href="javascript:setLang('fr','iso-8859-1');">Fran&ccedil;ais</A>
+        			  <A href="javascript:setLang('es','iso-8859-1');">Espa&ntilde;ol</A>
+        			  <A href="javascript:setLang('de','iso-8859-1');">Deutsch</A>
+        			  <A href="javascript:setLang('sc','gb2312');">&#31616;&#20307;&#20013;&#25991;</A>
+        			  <A href="javascript:setLang('tw','utf-8');">&#32321;&#39636;&#20013;&#25991;</A>
+        			  <A href="javascript:setLang('jp','utf-8');">&#26085;&#26412;&#35486;</A>
+        			  <A href="javascript:setLang('kr','utf-8');">&#54620;&#44397;&#50612;</A>
+        			  <A href="javascript:setLang('it','utf-8');">Italiano</A>
+	        		  <A href="javascript:setLang('du','utf-8');">Nederlands</A-->
+        			  </FONT>
+        		</TD>
+        	</TR>
+        	</TABLE>
+        	</TD>
+        </TR><!-- -->
+    			</TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+<SCRIPT language=JavaScript>showTail()</SCRIPT>
+</BODY></HTML>

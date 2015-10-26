@@ -1,0 +1,1 @@
+#undef  CONFIG_RALINK_RT2880_VER_A

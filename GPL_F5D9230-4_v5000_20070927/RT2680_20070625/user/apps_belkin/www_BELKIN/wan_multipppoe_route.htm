@@ -1,0 +1,764 @@
+<HTML><HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<META http-equiv=content-type content=text/html;charset=<%nvram_get("charset");%>>
+<LINK href="styles.css" type=text/css rel=stylesheet>
+<SCRIPT language=Javascript src="language_<%nvram_get("lang_code");%>.js"></SCRIPT>
+<SCRIPT>assign_var();</SCRIPT>
+<SCRIPT language=JavaScript src="validate.js"></SCRIPT>
+<SCRIPT language=JavaScript src="showMenu.js"></SCRIPT>
+<SCRIPT>
+strHtml='<title>'+wmpe1+'</title>';
+dw(strHtml);
+<!--
+var helpItem 	='Connection Type';
+var menuSection	='WAN';
+var menuItem	='Connection Type';
+var isAPmode = ('<%nvram_get("wan_enabled");%>' == '0') ? '1' : '0';
+var TBLHeader = "<TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=550 align=left border=1>\
+                <TR>\
+                <TD width=\"138\"><DIV align=\"center\">"+wmpe13+"</DIV></TD>\
+                <TD width=\"138\"><DIV align=\"center\">"+wmpe25+"</DIV></TD>\
+                <TD width=\"138\"><DIV align=\"center\">"+wmpe26+"</DIV></TD>\
+                <TD width=\"160\"><DIV align=\"center\">"+wmpe27+"</DIV></TD>\
+                </TR>" ;
+var TBLFooter = "</TABLE>" ;
+var TRHeader =  "<TR>" ;
+var TRFooter = "</TR>" ;
+var save_num = 21;
+
+var NS4 = (document.layers);
+var ns4 = (document.layers)? true:false ;
+var ie4 = (document.all)? true:false;
+var ie5  = (document.all && document.getElementById);
+var ns6 = (!document.all && document.getElementById);
+var isp_select = window.opener.document.forms[0].isp.selectedIndex;
+<%autofw_check();%>
+
+function layerWrite(id,nestref,text) 
+{
+	if(ns4) 
+	{
+		var lyr = (nestref)? eval('document.'+nestref+'.document.'+id+'.document') : document.layers[id].document ;
+		lyr.open();
+		lyr.write(text);
+		lyr.close();
+	}
+	else if (ie4)
+		document.all[id].innerHTML = text ;
+  else if(ns6)
+		document.getElementById(id).innerHTML = text ;
+}
+function showRoute()
+{
+	var i=0;
+  	var cf=document.forms[0];
+  	var v="";
+
+	v += TBLHeader ;
+
+	for(i=0 ; i<20 ; i++) {
+		if(eval("cf.route_dst"+i).value != "") {
+			v += TRHeader;
+			if(isp_select == 0 || cf.isp.selectedIndex == 0)
+				v += "<TD><DIV align=\"center\">"+wmpe14+"</DIV></TD>";
+			else if(isp_select == 1 || cf.isp.selectedIndex == 1)
+				v += "<TD><DIV align=\"center\">"+wmpe15+"</DIV></TD>";
+			else
+				v += "<TD><DIV align=\"center\">"+wmpe16+"</DIV></TD>";
+			v += "<TD><DIV align=\"center\">"+eval("cf.route_dst"+i).value+"</DIV></TD>";
+			v += "<TD><DIV align=\"center\">"+eval("cf.route_netmask"+i).value+"</DIV></TD>";
+			v += "<TD><DIV align=\"center\"><INPUT type=\"button\" name=\"edit\" value=\""+wmpe28+"\" onclick=\"route_edit("+i+")\">";
+			v += "<INPUT type=\"button\" name=\"delete\" value=\""+wmpe29+"\" onclick=\"route_delete("+i+")\"></DIV></TD>";
+	   	v += TRFooter;
+		}
+	}
+	v += TBLFooter ;
+	
+	layerWrite('myDiv', null, v);
+	
+	/* save back to keep change */
+	isp_select = cf.isp.selectedIndex;
+	i=0;
+	if(isp_select == 0)
+	{
+		while(i<20)
+		{
+			eval("cf.east_route_dst"+i).value = eval("cf.route_dst"+i).value;
+			eval("cf.east_route_netmask"+i).value = eval("cf.route_netmask"+i).value;
+			
+		/*	if(eval("cf.east_route_dst"+i).value != "")
+			{
+				alert("east_route_dst="+eval("cf.east_route_dst"+i).value);
+				alert("east_route_netmask="+eval("cf.east_route_netmask"+i).value);
+			}
+		*/	i++;
+		}
+	}
+	else
+	if(isp_select == 1) 
+	{
+		while(i<20)
+		{
+			eval("cf.west_route_dst"+i).value = eval("cf.route_dst"+i).value;
+			eval("cf.west_route_netmask"+i).value = eval("cf.route_netmask"+i).value;
+			
+		/*	if(eval("cf.west_route_dst"+i).value != "")
+			{
+				alert("west_route_dst="+eval("cf.west_route_dst"+i).value);
+				alert("west_route_netmask="+eval("cf.west_route_netmask"+i).value);
+			}
+		*/	i++;
+		}
+	}
+	else
+	if(isp_select == 2)
+	{
+		while(i<20)
+		{
+			eval("cf.other_route_dst"+i).value = eval("cf.route_dst"+i).value;
+			eval("cf.other_route_netmask"+i).value = eval("cf.route_netmask"+i).value;
+			
+		/*	if(eval("cf.west_route_dst"+i).value != "")
+			{
+				alert("other_route_dst="+eval("cf.other_route_dst"+i).value);
+				alert("other_route_netmask="+eval("cf.other_route_netmask"+i).value);
+			}
+		*/	i++;
+		}
+	}
+/*
+	alert("west_route_dst0="+cf.west_route_dst0.value);
+	alert("west_route_netmask0="+cf.west_route_netmask0.value);
+	alert("east_route_dst0="+cf.east_route_dst0.value);
+	alert("east_route_netmask0="+cf.east_route_netmask0.value);
+	alert("other_route_dst0="+cf.other_route_dst0.value);
+	alert("other_route_netmask0="+cf.other_route_netmask0.value);
+*/	
+	
+}
+
+function route_edit(sel_index)
+{
+	var cf=document.forms[0];
+	var dst_addr=eval("cf.route_dst"+sel_index).value.split(".");
+	var dst_mask=eval("cf.route_netmask"+sel_index).value.split(".");
+	cf.dst_add1.value=dst_addr[0];
+	cf.dst_add2.value=dst_addr[1];
+	cf.dst_add3.value=dst_addr[2];
+	cf.dst_add4.value=dst_addr[3];
+	cf.dst_mask1.value=dst_mask[0];
+	cf.dst_mask2.value=dst_mask[1];
+	cf.dst_mask3.value=dst_mask[2];
+	cf.dst_mask4.value=dst_mask[3];
+	cf.add.value=wmpe30;
+	save_num = sel_index;
+}
+
+function route_delete(del_index)
+{
+	var cf=document.forms[0];
+	var dst_addr=eval("cf.route_dst"+del_index).value="";
+	var dst_mask=eval("cf.route_netmask"+del_index).value="";
+	cf.dst_add1.value="";
+	cf.dst_add2.value="";
+	cf.dst_add3.value="";
+	cf.dst_add4.value="";
+	cf.dst_mask1.value="";
+	cf.dst_mask2.value="";
+	cf.dst_mask3.value="";
+	cf.dst_mask4.value="";
+	showRoute();
+}
+function isNValidIP(s) 
+{
+	if((isBlank(s))||(isNaN(s))||(s<0||s>255)) 
+    	return true;
+ 	else
+    	return false;
+}
+function check_route()
+{
+	var cf=document.forms[0];
+	
+	if((isBlank(cf.dst_add1.value))||(isNaN(cf.dst_add1.value))||(cf.dst_add1.value<=0||cf.dst_add1.value>=255)) { alert(lsipm4);cf.dst_add1.focus();cf.dst_add1.select(); return false; }
+ 	if((isBlank(cf.dst_add2.value))||(isNaN(cf.dst_add2.value))||(cf.dst_add2.value<0||cf.dst_add2.value>255)) { alert(lsipm4);cf.dst_add2.focus();cf.dst_add2.select(); return false; }
+ 	if((isBlank(cf.dst_add3.value))||(isNaN(cf.dst_add3.value))||(cf.dst_add3.value<0||cf.dst_add3.value>255)) { alert(lsipm4);cf.dst_add3.focus();cf.dst_add3.select(); return false; }
+ 	if((isBlank(cf.dst_add4.value))||(isNaN(cf.dst_add4.value))||(cf.dst_add4.value<=0||cf.dst_add4.value>=255)) { alert(lsipm4);cf.dst_add4.focus();cf.dst_add4.select(); return false; }
+ 	if((isBlank(cf.dst_mask1.value))||(isNaN(cf.dst_mask1.value))||(cf.dst_mask1.value<=0||cf.dst_mask1.value>255)) { alert(vjs28);cf.dst_mask1.focus();cf.dst_mask1.select(); return false; }
+ 	if((isBlank(cf.dst_mask2.value))||(isNaN(cf.dst_mask2.value))||(cf.dst_mask2.value<0||cf.dst_mask2.value>255)) { alert(vjs28);cf.dst_mask2.focus();cf.dst_mask2.select(); return false; }
+ 	if((isBlank(cf.dst_mask3.value))||(isNaN(cf.dst_mask3.value))||(cf.dst_mask3.value<0||cf.dst_mask3.value>255)) { alert(vjs28);cf.dst_mask3.focus();cf.dst_mask3.select(); return false; }
+ 	if((isBlank(cf.dst_mask4.value))||(isNaN(cf.dst_mask4.value))||(cf.dst_mask4.value<0||cf.dst_mask4.value>255)) { alert(vjs28);cf.dst_mask4.focus();cf.dst_mask4.select(); return false; }
+	
+/* check subnet mask */ 	
+	if( !isNValidIP(cf.dst_mask1.value) )
+	{
+		if( cf.dst_mask1.value != '128' && cf.dst_mask1.value != '192' && cf.dst_mask1.value != '224' && 
+		    cf.dst_mask1.value != '240' && cf.dst_mask1.value != '248' && cf.dst_mask1.value != '252' && 
+		    cf.dst_mask1.value != '254' && cf.dst_mask1.value != '255' )
+		{
+			alert(vjs28);
+			cf.dst_mask1.focus();
+			cf.dst_mask1.select();
+			return false;
+		}
+		if( cf.dst_mask4.value == '255')
+		{
+			alert(vjs28);
+			cf.dst_mask4.focus();
+			cf.dst_mask4.select();
+			return false;
+		}
+	}
+	else
+	{
+		alert(vjs28);
+		cf.dst_mask1.focus();
+		cf.dst_mask1.select();
+		return false;	
+	}
+		
+	if( !isNValidIP(cf.dst_mask2.value) )
+	{
+		if( cf.dst_mask1.value != '255' )
+		{
+			if(cf.dst_mask2.value != '0')
+			{
+				alert(vjs28);
+				cf.dst_mask2.focus();
+				cf.dst_mask2.select();
+				return false;
+			}
+		}
+		else
+		if( cf.dst_mask2.value != '128' && cf.dst_mask2.value != '192' && cf.dst_mask2.value != '224' && 
+		    cf.dst_mask2.value != '240' && cf.dst_mask2.value != '248' && cf.dst_mask2.value != '252' && 
+		   cf.dst_mask2.value != '254' && cf.dst_mask2.value != '255' && cf.dst_mask2.value != '0' )
+		{
+			alert(vjs28);
+			cf.dst_mask2.focus();
+			cf.dst_mask2.select();
+			return false;
+		}
+	}	
+	else
+	{
+		alert(vjs28);
+		cf.dst_mask2.focus();
+		cf.dst_mask2.select();
+		return false;	
+	}
+	
+	if( !isNValidIP(cf.dst_mask3.value) )
+	{
+		if( cf.dst_mask2.value != '255' )
+		{
+			if(cf.dst_mask3.value != '0')
+			{
+				alert(vjs28);
+				cf.dst_mask3.focus();
+				cf.dst_mask3.select();
+				return false;
+			}
+		}
+		else
+		if( cf.dst_mask3.value != '128' && cf.dst_mask3.value != '192' && cf.dst_mask3.value != '224' && 
+		    cf.dst_mask3.value != '240' && cf.dst_mask3.value != '248' && cf.dst_mask3.value != '252' && 
+		    cf.dst_mask3.value != '254' && cf.dst_mask3.value != '255' && cf.dst_mask3.value != '0' )
+		{
+			alert(vjs28);
+			cf.dst_mask3.focus();
+			cf.dst_mask3.select();
+			return false;
+		}
+	}	
+	else
+	{
+		alert(vjs28);
+		cf.dst_mask3.focus();
+		cf.dst_mask3.select();
+		return false;	
+	}
+	
+	if( !isNValidIP(cf.dst_mask4.value) )
+	{
+		if( cf.dst_mask3.value != '255' )
+		{
+			if(cf.dst_mask4.value != '0')
+			{
+				alert(vjs28);
+				cf.dst_mask4.focus();
+				cf.dst_mask4.select();
+				return false;
+			}
+		}
+		else
+		if( cf.dst_mask4.value != '128' && cf.dst_mask4.value != '192' && cf.dst_mask4.value != '224' && 
+		    cf.dst_mask4.value != '240' && cf.dst_mask4.value != '248' && cf.dst_mask4.value != '252' && 
+		    cf.dst_mask4.value != '254' && cf.dst_mask4.value != '255' && cf.dst_mask4.value != '0' )
+		{
+			alert(vjs28);
+			cf.dst_mask4.focus();
+			cf.dst_mask4.select();
+			return false;
+		}
+	}	
+	else
+	{
+		alert(vjs28);
+		cf.dst_mask4.focus();
+		cf.dst_mask4.select();
+		return false;	
+	} 	
+/* check subnet mask end */
+	
+	if(save_num == 21) {
+		for(i=0; i<20; i++) {
+			if(eval("cf.route_dst"+i).value == "")
+			{
+				save_num = i;
+				break;
+			}
+		}
+	}
+	eval("cf.route_dst"+save_num).value = cf.dst_add1.value + "." + cf.dst_add2.value + "." + cf.dst_add3.value + "." + cf.dst_add4.value;
+	eval("cf.route_netmask"+save_num).value = cf.dst_mask1.value + "." + cf.dst_mask2.value + "." + cf.dst_mask3.value + "." + cf.dst_mask4.value;
+	save_num = 21;
+	showRoute();
+	cf.dst_add1.value="";
+	cf.dst_add2.value="";
+	cf.dst_add3.value="";
+	cf.dst_add4.value="";
+	cf.dst_mask1.value="";
+	cf.dst_mask2.value="";
+	cf.dst_mask3.value="";
+	cf.dst_mask4.value="";
+	cf.add.value=wmpe21;
+}
+function Init_Value()
+{
+	var cf=document.forms[0];
+	var i=0;
+
+	if("<%nvram_get("static_route_save");%>" == "")
+		use_default_route();
+	
+/*	while(i<20) {
+		eval("cf.route_dst"+i).value = eval("cf.static_route_ipaddr"+i).value;
+		eval("cf.route_netmask"+i).value = eval("cf.static_route_netmask"+i).value;
+		i++;
+	}
+*/	cf.dst_add1.value="";
+	cf.dst_add2.value="";
+	cf.dst_add3.value="";
+	cf.dst_add4.value="";
+	cf.dst_mask1.value="";
+	cf.dst_mask2.value="";
+	cf.dst_mask3.value="";
+	cf.dst_mask4.value="";
+	cf.add.value=wmpe21;
+	cf.cancel.value=wmpe22;
+	if(cf.ppp1_isp_type.value == '')
+		cf.isp.selectedIndex=0;
+	else cf.isp.selectedIndex=cf.ppp1_isp_type.value;
+	
+	isp_change();
+}
+
+function use_default_route()
+{
+	var cf=document.forms[0];
+	cf.east_route_dst0.value = "220.210.194.0";
+	cf.east_route_dst1.value = "220.210.195.0";
+	cf.east_route_dst2.value = "220.210.195.64";
+	cf.east_route_dst3.value = "220.210.197.0";
+	cf.east_route_dst4.value = "220.210.199.0";
+	cf.east_route_dst5.value = "220.210.199.176";
+	cf.east_route_dst6.value = "220.210.199.32";
+	cf.east_route_dst7.value = "220.210.199.200";
+	cf.east_route_dst8.value = "220.210.199.64";
+	cf.east_route_dst9.value = "220.210.203.0";
+	cf.east_route_dst10.value = "220.210.199.208";
+	cf.east_route_dst11.value = "220.210.198.0";
+	cf.east_route_netmask0.value = "255.255.255.128";
+	cf.east_route_netmask1.value = "255.255.255.192";
+	cf.east_route_netmask2.value = "255.255.255.192";
+	cf.east_route_netmask3.value = "255.255.255.128";
+	cf.east_route_netmask4.value = "255.255.255.224";
+	cf.east_route_netmask5.value = "255.255.255.240";
+	cf.east_route_netmask6.value = "255.255.255.224";
+	cf.east_route_netmask7.value = "255.255.255.248";
+	cf.east_route_netmask8.value = "255.255.255.240";
+	cf.east_route_netmask9.value = "255.255.255.224";
+	cf.east_route_netmask10.value = "255.255.255.248";
+	cf.east_route_netmask11.value = "255.255.255.192";
+	
+	cf.west_route_dst0.value = "10.0.0.0";
+	cf.west_route_netmask0.value = "255.0.0.0";
+	
+}
+function isp_change()
+{
+	var cf=document.forms[0];
+	var i=0;
+	isp_select = cf.isp.selectedIndex;
+	
+	if(isp_select == 0)
+	{
+		while(i<20)
+		{
+			eval("cf.route_dst"+i).value = eval("cf.east_route_dst"+i).value;
+			eval("cf.route_netmask"+i).value = eval("cf.east_route_netmask"+i).value;
+			i++;
+		}
+	}
+	else
+	if(isp_select == 1) 
+	{
+		while(i<20)
+		{
+			eval("cf.route_dst"+i).value = eval("cf.west_route_dst"+i).value;
+			eval("cf.route_netmask"+i).value = eval("cf.west_route_netmask"+i).value;
+			i++;
+		}
+	}
+	else
+	if(isp_select == 2)
+	{
+		while(i<20)
+		{
+			eval("cf.route_dst"+i).value = eval("cf.other_route_dst"+i).value;
+			eval("cf.route_netmask"+i).value = eval("cf.other_route_netmask"+i).value;
+			i++;
+		}
+	}
+//	window.opener.document.forms[0].isp.selectedIndex = isp_select;
+	showRoute();
+}
+function isBlank(s) {
+for(i=0;i<s.length;i++) {
+ c=s.charAt(i);
+ if((c!=' ')&&(c!='\n')&&(c!='\t'))return false;}
+return true;
+}
+
+function evaltF() 
+{
+	var cf=document.forms[0];
+	var i=0;
+	//alert(isp_select);
+	while(i<20) {
+		eval("cf.static_route_ipaddr"+i).value = eval("cf.route_dst"+i).value;
+		eval("cf.static_route_netmask"+i).value = eval("cf.route_netmask"+i).value;
+		i++;
+	}
+	cf.static_route_save.value=1;
+	window.opener.wan_form.static_route_save.value=1;
+	cf.ppp1_isp_type.value=cf.isp.selectedIndex;
+
+	cf.submit();
+}
+
+function submitF() {return evaltF();}
+function logoutF()
+{
+document.wan_form.logout.value=1;
+document.wan_form.submit();
+return true;
+} 
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgColor="#ffffff" leftMargin="0" topMargin="0" onload="Init_Value();" marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript>
+	var wanStatus = '<%wan_status();%>';
+	var havepc = <%nvram_get("havepc");%>;
+</SCRIPT>
+<FORM id="wan_form" name="wan_form" action="post.cgi" method="post">
+<input type="hidden" name="command" value="device_data">
+<input type="hidden" name="cur_ipaddr" value="<%nvram_get("lan_ipaddr");%>">
+<input type="hidden" name="next_page" value="wan_multipppoe_route.htm">
+<input type="hidden" name="redirect_timer" value="5000">
+<input type="hidden" name="reboot" value="0">
+<input type="hidden" name="data1" value="ppp1_isp_type static_route_save static_route_ipaddr0 static_route_ipaddr1 static_route_ipaddr2 static_route_ipaddr3 static_route_ipaddr4 static_route_ipaddr5 static_route_ipaddr6 static_route_ipaddr7 static_route_ipaddr8 static_route_ipaddr9 static_route_ipaddr10 static_route_ipaddr11 static_route_ipaddr12 static_route_ipaddr13 static_route_ipaddr14 static_route_ipaddr15 static_route_ipaddr16 static_route_ipaddr17 static_route_ipaddr18 static_route_ipaddr19 static_route_netmask0 static_route_netmask1 static_route_netmask2 static_route_netmask3 static_route_netmask4 static_route_netmask5 static_route_netmask6 static_route_netmask7 static_route_netmask8 static_route_netmask9 static_route_netmask10 static_route_netmask11 static_route_netmask12 static_route_netmask13 static_route_netmask14 static_route_netmask15 static_route_netmask16 static_route_netmask17 static_route_netmask18 static_route_netmask19 
+ east_route_dst0 east_route_dst1 east_route_dst2 east_route_dst3 east_route_dst4 east_route_dst5 east_route_dst6 east_route_dst7 east_route_dst8 east_route_dst9 east_route_dst10 east_route_dst11 east_route_dst12 east_route_dst13 east_route_dst14 east_route_dst15 east_route_dst16 east_route_dst17 east_route_dst18 east_route_dst19 east_route_netmask0 east_route_netmask1 east_route_netmask2 east_route_netmask3 east_route_netmask4 east_route_netmask5 east_route_netmask6 east_route_netmask7 east_route_netmask8 east_route_netmask9 east_route_netmask10 east_route_netmask11 east_route_netmask12 east_route_netmask13 east_route_netmask14 east_route_netmask15 east_route_netmask16 east_route_netmask17 east_route_netmask18 east_route_netmask19 
+ west_route_dst0 west_route_dst1 west_route_dst2 west_route_dst3 west_route_dst4 west_route_dst5 west_route_dst6 west_route_dst7 west_route_dst8 west_route_dst9 west_route_dst10 west_route_dst11 west_route_dst12 west_route_dst13 west_route_dst14 west_route_dst15 west_route_dst16 west_route_dst17 west_route_dst18 west_route_dst19 west_route_netmask0 west_route_netmask1 west_route_netmask2 west_route_netmask3 west_route_netmask4 west_route_netmask5 west_route_netmask6 west_route_netmask7 west_route_netmask8 west_route_netmask9 west_route_netmask10 west_route_netmask11 west_route_netmask12 west_route_netmask13 west_route_netmask14 west_route_netmask15 west_route_netmask16 west_route_netmask17 west_route_netmask18 west_route_netmask19 
+ other_route_dst0 other_route_dst1 other_route_dst2 other_route_dst3 other_route_dst4 other_route_dst5 other_route_dst6 other_route_dst7 other_route_dst8 other_route_dst9 other_route_dst10 other_route_dst11 other_route_dst12 other_route_dst13 other_route_dst14 other_route_dst15 other_route_dst16 other_route_dst17 other_route_dst18 other_route_dst19 other_route_netmask0 other_route_netmask1 other_route_netmask2 other_route_netmask3 other_route_netmask4 other_route_netmask5 other_route_netmask6 other_route_netmask7 other_route_netmask8 other_route_netmask9 other_route_netmask10 other_route_netmask11 other_route_netmask12 other_route_netmask13 other_route_netmask14 other_route_netmask15 other_route_netmask16 other_route_netmask17 other_route_netmask18 other_route_netmask19">
+
+<input type="hidden" name="ppp1_isp_type" value='<%nvram_get("ppp1_isp_type");%>'>
+<input type="hidden" name="route_dst0">
+<input type="hidden" name="route_dst1" >
+<input type="hidden" name="route_dst2">
+<input type="hidden" name="route_dst3">
+<input type="hidden" name="route_dst4">
+<input type="hidden" name="route_dst5">
+<input type="hidden" name="route_dst6">
+<input type="hidden" name="route_dst7">
+<input type="hidden" name="route_dst8">
+<input type="hidden" name="route_dst9">
+<input type="hidden" name="route_dst10">
+<input type="hidden" name="route_dst11">
+<input type="hidden" name="route_dst12">
+<input type="hidden" name="route_dst13">
+<input type="hidden" name="route_dst14">
+<input type="hidden" name="route_dst15">
+<input type="hidden" name="route_dst16">
+<input type="hidden" name="route_dst17">
+<input type="hidden" name="route_dst18">
+<input type="hidden" name="route_dst19">
+
+<input type="hidden" name="route_netmask0">
+<input type="hidden" name="route_netmask1">
+<input type="hidden" name="route_netmask2">
+<input type="hidden" name="route_netmask3">
+<input type="hidden" name="route_netmask4">
+<input type="hidden" name="route_netmask5">
+<input type="hidden" name="route_netmask6">
+<input type="hidden" name="route_netmask7">
+<input type="hidden" name="route_netmask8">
+<input type="hidden" name="route_netmask9">
+<input type="hidden" name="route_netmask10">
+<input type="hidden" name="route_netmask11">
+<input type="hidden" name="route_netmask12">
+<input type="hidden" name="route_netmask13">
+<input type="hidden" name="route_netmask14">
+<input type="hidden" name="route_netmask15">
+<input type="hidden" name="route_netmask16">
+<input type="hidden" name="route_netmask17">
+<input type="hidden" name="route_netmask18">
+<input type="hidden" name="route_netmask19">
+
+<input type="hidden" name="east_route_dst0" value='<%nvram_get("east_route_dst0");%>'>
+<input type="hidden" name="east_route_dst1" value='<%nvram_get("east_route_dst1");%>'>
+<input type="hidden" name="east_route_dst2" value='<%nvram_get("east_route_dst2");%>'>
+<input type="hidden" name="east_route_dst3" value='<%nvram_get("east_route_dst3");%>'>
+<input type="hidden" name="east_route_dst4" value='<%nvram_get("east_route_dst4");%>'>
+<input type="hidden" name="east_route_dst5" value='<%nvram_get("east_route_dst5");%>'>
+<input type="hidden" name="east_route_dst6" value='<%nvram_get("east_route_dst6");%>'>
+<input type="hidden" name="east_route_dst7" value='<%nvram_get("east_route_dst7");%>'>
+<input type="hidden" name="east_route_dst8" value='<%nvram_get("east_route_dst8");%>'>
+<input type="hidden" name="east_route_dst9" value='<%nvram_get("east_route_dst9");%>'>
+<input type="hidden" name="east_route_dst10" value='<%nvram_get("east_route_dst10");%>'>
+<input type="hidden" name="east_route_dst11" value='<%nvram_get("east_route_dst11");%>'>
+<input type="hidden" name="east_route_dst12" value='<%nvram_get("east_route_dst12");%>'>
+<input type="hidden" name="east_route_dst13" value='<%nvram_get("east_route_dst13");%>'>
+<input type="hidden" name="east_route_dst14" value='<%nvram_get("east_route_dst14");%>'>
+<input type="hidden" name="east_route_dst15" value='<%nvram_get("east_route_dst15");%>'>
+<input type="hidden" name="east_route_dst16" value='<%nvram_get("east_route_dst16");%>'>
+<input type="hidden" name="east_route_dst17" value='<%nvram_get("east_route_dst17");%>'>
+<input type="hidden" name="east_route_dst18" value='<%nvram_get("east_route_dst18");%>'>
+<input type="hidden" name="east_route_dst19" value='<%nvram_get("east_route_dst19");%>'>
+
+<input type="hidden" name="east_route_netmask0" value='<%nvram_get("east_route_netmask0");%>'>
+<input type="hidden" name="east_route_netmask1" value='<%nvram_get("east_route_netmask1");%>'>
+<input type="hidden" name="east_route_netmask2" value='<%nvram_get("east_route_netmask2");%>'>
+<input type="hidden" name="east_route_netmask3" value='<%nvram_get("east_route_netmask3");%>'>
+<input type="hidden" name="east_route_netmask4" value='<%nvram_get("east_route_netmask4");%>'>
+<input type="hidden" name="east_route_netmask5" value='<%nvram_get("east_route_netmask5");%>'>
+<input type="hidden" name="east_route_netmask6" value='<%nvram_get("east_route_netmask6");%>'>
+<input type="hidden" name="east_route_netmask7" value='<%nvram_get("east_route_netmask7");%>'>
+<input type="hidden" name="east_route_netmask8" value='<%nvram_get("east_route_netmask8");%>'>
+<input type="hidden" name="east_route_netmask9" value='<%nvram_get("east_route_netmask9");%>'>
+<input type="hidden" name="east_route_netmask10" value='<%nvram_get("east_route_netmask10");%>'>
+<input type="hidden" name="east_route_netmask11" value='<%nvram_get("east_route_netmask11");%>'>
+<input type="hidden" name="east_route_netmask12" value='<%nvram_get("east_route_netmask12");%>'>
+<input type="hidden" name="east_route_netmask13" value='<%nvram_get("east_route_netmask13");%>'>
+<input type="hidden" name="east_route_netmask14" value='<%nvram_get("east_route_netmask14");%>'>
+<input type="hidden" name="east_route_netmask15" value='<%nvram_get("east_route_netmask15");%>'>
+<input type="hidden" name="east_route_netmask16" value='<%nvram_get("east_route_netmask16");%>'>
+<input type="hidden" name="east_route_netmask17" value='<%nvram_get("east_route_netmask17");%>'>
+<input type="hidden" name="east_route_netmask18" value='<%nvram_get("east_route_netmask18");%>'>
+<input type="hidden" name="east_route_netmask19" value='<%nvram_get("east_route_netmask19");%>'>
+
+<input type="hidden" name="west_route_dst0" value='<%nvram_get("west_route_dst0");%>'>
+<input type="hidden" name="west_route_dst1" value='<%nvram_get("west_route_dst1");%>'>
+<input type="hidden" name="west_route_dst2" value='<%nvram_get("west_route_dst2");%>'>
+<input type="hidden" name="west_route_dst3" value='<%nvram_get("west_route_dst3");%>'>
+<input type="hidden" name="west_route_dst4" value='<%nvram_get("west_route_dst4");%>'>
+<input type="hidden" name="west_route_dst5" value='<%nvram_get("west_route_dst5");%>'>
+<input type="hidden" name="west_route_dst6" value='<%nvram_get("west_route_dst6");%>'>
+<input type="hidden" name="west_route_dst7" value='<%nvram_get("west_route_dst7");%>'>
+<input type="hidden" name="west_route_dst8" value='<%nvram_get("west_route_dst8");%>'>
+<input type="hidden" name="west_route_dst9" value='<%nvram_get("west_route_dst9");%>'>
+<input type="hidden" name="west_route_dst10" value='<%nvram_get("west_route_dst10");%>'>
+<input type="hidden" name="west_route_dst11" value='<%nvram_get("west_route_dst11");%>'>
+<input type="hidden" name="west_route_dst12" value='<%nvram_get("west_route_dst12");%>'>
+<input type="hidden" name="west_route_dst13" value='<%nvram_get("west_route_dst13");%>'>
+<input type="hidden" name="west_route_dst14" value='<%nvram_get("west_route_dst14");%>'>
+<input type="hidden" name="west_route_dst15" value='<%nvram_get("west_route_dst15");%>'>
+<input type="hidden" name="west_route_dst16" value='<%nvram_get("west_route_dst16");%>'>
+<input type="hidden" name="west_route_dst17" value='<%nvram_get("west_route_dst17");%>'>
+<input type="hidden" name="west_route_dst18" value='<%nvram_get("west_route_dst18");%>'>
+<input type="hidden" name="west_route_dst19" value='<%nvram_get("west_route_dst19");%>'>
+
+<input type="hidden" name="west_route_netmask0" value='<%nvram_get("west_route_netmask0");%>'>
+<input type="hidden" name="west_route_netmask1" value='<%nvram_get("west_route_netmask1");%>'>
+<input type="hidden" name="west_route_netmask2" value='<%nvram_get("west_route_netmask2");%>'>
+<input type="hidden" name="west_route_netmask3" value='<%nvram_get("west_route_netmask3");%>'>
+<input type="hidden" name="west_route_netmask4" value='<%nvram_get("west_route_netmask4");%>'>
+<input type="hidden" name="west_route_netmask5" value='<%nvram_get("west_route_netmask5");%>'>
+<input type="hidden" name="west_route_netmask6" value='<%nvram_get("west_route_netmask6");%>'>
+<input type="hidden" name="west_route_netmask7" value='<%nvram_get("west_route_netmask7");%>'>
+<input type="hidden" name="west_route_netmask8" value='<%nvram_get("west_route_netmask8");%>'>
+<input type="hidden" name="west_route_netmask9" value='<%nvram_get("west_route_netmask9");%>'>
+<input type="hidden" name="west_route_netmask10" value='<%nvram_get("west_route_netmask10");%>'>
+<input type="hidden" name="west_route_netmask11" value='<%nvram_get("west_route_netmask11");%>'>
+<input type="hidden" name="west_route_netmask12" value='<%nvram_get("west_route_netmask12");%>'>
+<input type="hidden" name="west_route_netmask13" value='<%nvram_get("west_route_netmask13");%>'>
+<input type="hidden" name="west_route_netmask14" value='<%nvram_get("west_route_netmask14");%>'>
+<input type="hidden" name="west_route_netmask15" value='<%nvram_get("west_route_netmask15");%>'>
+<input type="hidden" name="west_route_netmask16" value='<%nvram_get("west_route_netmask16");%>'>
+<input type="hidden" name="west_route_netmask17" value='<%nvram_get("west_route_netmask17");%>'>
+<input type="hidden" name="west_route_netmask18" value='<%nvram_get("west_route_netmask18");%>'>
+<input type="hidden" name="west_route_netmask19" value='<%nvram_get("west_route_netmask19");%>'>
+
+<input type="hidden" name="other_route_dst0" value='<%nvram_get("other_route_dst0");%>'>
+<input type="hidden" name="other_route_dst1" value='<%nvram_get("other_route_dst1");%>'>
+<input type="hidden" name="other_route_dst2" value='<%nvram_get("other_route_dst2");%>'>
+<input type="hidden" name="other_route_dst3" value='<%nvram_get("other_route_dst3");%>'>
+<input type="hidden" name="other_route_dst4" value='<%nvram_get("other_route_dst4");%>'>
+<input type="hidden" name="other_route_dst5" value='<%nvram_get("other_route_dst5");%>'>
+<input type="hidden" name="other_route_dst6" value='<%nvram_get("other_route_dst6");%>'>
+<input type="hidden" name="other_route_dst7" value='<%nvram_get("other_route_dst7");%>'>
+<input type="hidden" name="other_route_dst8" value='<%nvram_get("other_route_dst8");%>'>
+<input type="hidden" name="other_route_dst9" value='<%nvram_get("other_route_dst9");%>'>
+<input type="hidden" name="other_route_dst10" value='<%nvram_get("other_route_dst10");%>'>
+<input type="hidden" name="other_route_dst11" value='<%nvram_get("other_route_dst11");%>'>
+<input type="hidden" name="other_route_dst12" value='<%nvram_get("other_route_dst12");%>'>
+<input type="hidden" name="other_route_dst13" value='<%nvram_get("other_route_dst13");%>'>
+<input type="hidden" name="other_route_dst14" value='<%nvram_get("other_route_dst14");%>'>
+<input type="hidden" name="other_route_dst15" value='<%nvram_get("other_route_dst15");%>'>
+<input type="hidden" name="other_route_dst16" value='<%nvram_get("other_route_dst16");%>'>
+<input type="hidden" name="other_route_dst17" value='<%nvram_get("other_route_dst17");%>'>
+<input type="hidden" name="other_route_dst18" value='<%nvram_get("other_route_dst18");%>'>
+<input type="hidden" name="other_route_dst19" value='<%nvram_get("other_route_dst19");%>'>
+
+<input type="hidden" name="other_route_netmask0" value='<%nvram_get("other_route_netmask0");%>'>
+<input type="hidden" name="other_route_netmask1" value='<%nvram_get("other_route_netmask1");%>'>
+<input type="hidden" name="other_route_netmask2" value='<%nvram_get("other_route_netmask2");%>'>
+<input type="hidden" name="other_route_netmask3" value='<%nvram_get("other_route_netmask3");%>'>
+<input type="hidden" name="other_route_netmask4" value='<%nvram_get("other_route_netmask4");%>'>
+<input type="hidden" name="other_route_netmask5" value='<%nvram_get("other_route_netmask5");%>'>
+<input type="hidden" name="other_route_netmask6" value='<%nvram_get("other_route_netmask6");%>'>
+<input type="hidden" name="other_route_netmask7" value='<%nvram_get("other_route_netmask7");%>'>
+<input type="hidden" name="other_route_netmask8" value='<%nvram_get("other_route_netmask8");%>'>
+<input type="hidden" name="other_route_netmask9" value='<%nvram_get("other_route_netmask9");%>'>
+<input type="hidden" name="other_route_netmask10" value='<%nvram_get("other_route_netmask10");%>'>
+<input type="hidden" name="other_route_netmask11" value='<%nvram_get("other_route_netmask11");%>'>
+<input type="hidden" name="other_route_netmask12" value='<%nvram_get("other_route_netmask12");%>'>
+<input type="hidden" name="other_route_netmask13" value='<%nvram_get("other_route_netmask13");%>'>
+<input type="hidden" name="other_route_netmask14" value='<%nvram_get("other_route_netmask14");%>'>
+<input type="hidden" name="other_route_netmask15" value='<%nvram_get("other_route_netmask15");%>'>
+<input type="hidden" name="other_route_netmask16" value='<%nvram_get("other_route_netmask16");%>'>
+<input type="hidden" name="other_route_netmask17" value='<%nvram_get("other_route_netmask17");%>'>
+<input type="hidden" name="other_route_netmask18" value='<%nvram_get("other_route_netmask18");%>'>
+<input type="hidden" name="other_route_netmask19" value='<%nvram_get("other_route_netmask19");%>'>
+
+<input type="hidden" name="static_route_save" value=<%nvram_get("static_route_save");%>>
+<input type="hidden" name="static_route_ipaddr0"  value='<%nvram_get("static_route_ipaddr0");%>' >
+<input type="hidden" name="static_route_ipaddr1"  value='<%nvram_get("static_route_ipaddr1");%>' >
+<input type="hidden" name="static_route_ipaddr2"  value='<%nvram_get("static_route_ipaddr2");%>' >
+<input type="hidden" name="static_route_ipaddr3"  value='<%nvram_get("static_route_ipaddr3");%>' >
+<input type="hidden" name="static_route_ipaddr4"  value='<%nvram_get("static_route_ipaddr4");%>' >
+<input type="hidden" name="static_route_ipaddr5"  value='<%nvram_get("static_route_ipaddr5");%>' >
+<input type="hidden" name="static_route_ipaddr6"  value='<%nvram_get("static_route_ipaddr6");%>' >
+<input type="hidden" name="static_route_ipaddr7"  value='<%nvram_get("static_route_ipaddr7");%>' >
+<input type="hidden" name="static_route_ipaddr8"  value='<%nvram_get("static_route_ipaddr8");%>' >
+<input type="hidden" name="static_route_ipaddr9"  value='<%nvram_get("static_route_ipaddr9");%>' >
+<input type="hidden" name="static_route_ipaddr10"  value='<%nvram_get("static_route_ipaddr10");%>' >
+<input type="hidden" name="static_route_ipaddr11"  value='<%nvram_get("static_route_ipaddr11");%>' >
+<input type="hidden" name="static_route_ipaddr12"  value='<%nvram_get("static_route_ipaddr12");%>' >
+<input type="hidden" name="static_route_ipaddr13"  value='<%nvram_get("static_route_ipaddr13");%>' >
+<input type="hidden" name="static_route_ipaddr14"  value='<%nvram_get("static_route_ipaddr14");%>' >
+<input type="hidden" name="static_route_ipaddr15"  value='<%nvram_get("static_route_ipaddr15");%>' >
+<input type="hidden" name="static_route_ipaddr16"  value='<%nvram_get("static_route_ipaddr16");%>' >
+<input type="hidden" name="static_route_ipaddr17"  value='<%nvram_get("static_route_ipaddr17");%>' >
+<input type="hidden" name="static_route_ipaddr18"  value='<%nvram_get("static_route_ipaddr18");%>' >
+<input type="hidden" name="static_route_ipaddr19"  value='<%nvram_get("static_route_ipaddr19");%>' >
+
+<input type="hidden" name="static_route_netmask0"  value='<%nvram_get("static_route_netmask0");%>' >
+<input type="hidden" name="static_route_netmask1"  value='<%nvram_get("static_route_netmask1");%>' >
+<input type="hidden" name="static_route_netmask2"  value='<%nvram_get("static_route_netmask2");%>' >
+<input type="hidden" name="static_route_netmask3"  value='<%nvram_get("static_route_netmask3");%>' >
+<input type="hidden" name="static_route_netmask4"  value='<%nvram_get("static_route_netmask4");%>' >
+<input type="hidden" name="static_route_netmask5"  value='<%nvram_get("static_route_netmask5");%>' >
+<input type="hidden" name="static_route_netmask6"  value='<%nvram_get("static_route_netmask6");%>' >
+<input type="hidden" name="static_route_netmask7"  value='<%nvram_get("static_route_netmask7");%>' >
+<input type="hidden" name="static_route_netmask8"  value='<%nvram_get("static_route_netmask8");%>' >
+<input type="hidden" name="static_route_netmask9"  value='<%nvram_get("static_route_netmask9");%>' >
+<input type="hidden" name="static_route_netmask10"  value='<%nvram_get("static_route_netmask10");%>' >
+<input type="hidden" name="static_route_netmask11"  value='<%nvram_get("static_route_netmask11");%>' >
+<input type="hidden" name="static_route_netmask12"  value='<%nvram_get("static_route_netmask12");%>' >
+<input type="hidden" name="static_route_netmask13"  value='<%nvram_get("static_route_netmask13");%>' >
+<input type="hidden" name="static_route_netmask14"  value='<%nvram_get("static_route_netmask14");%>' >
+<input type="hidden" name="static_route_netmask15"  value='<%nvram_get("static_route_netmask15");%>' >
+<input type="hidden" name="static_route_netmask16"  value='<%nvram_get("static_route_netmask16");%>' >
+<input type="hidden" name="static_route_netmask17"  value='<%nvram_get("static_route_netmask17");%>' >
+<input type="hidden" name="static_route_netmask18"  value='<%nvram_get("static_route_netmask18");%>' >
+<input type="hidden" name="static_route_netmask19"  value='<%nvram_get("static_route_netmask19");%>' >
+
+	<table border="0" cellspacing="0" cellpadding="0" align="left" width="100%" height="100%">
+  				<tr> 
+    				<td colspan="3" height="64"> 
+      					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          					<tr>
+<TD class=head_bold height="100%" width="99%" valign="top"><BR>&nbsp;&nbsp;
+<SCRIPT>dw(wmpe31);</SCRIPT>
+<BR><BR>
+<TABLE class=copy_1 border=0>
+  <TBODY>
+  <TR>
+    <TD width=5>&nbsp;</TD>
+    <TD>
+      <TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=550 align=left 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD colSpan=2>
+          	<TABLE class=copy_1 cellSpacing=0 cellPadding=0 width=550 align=left border=0>
+          		<TR><TD>
+          			<SCRIPT>dw(wmpe13);</SCRIPT></TD>
+          			<TD><SELECT name="isp" onchange="javascript:isp_change();">
+					          	<option value=0><SCRIPT>dw(wmpe14);</SCRIPT></option>
+					          	<option value=1><SCRIPT>dw(wmpe15);</SCRIPT></option> 
+					          	<option value=2><SCRIPT>dw(wmpe16);</SCRIPT></option> 
+					          </SELECT></TD></TR>
+          		<TR><TD>
+          			<SCRIPT>dw(wmpe19);</SCRIPT></TD>
+          			<TD><INPUT maxLength=3 size=3 name=dst_add1>.<INPUT maxLength=3 size=3 name=dst_add2>.<INPUT maxLength=3 size=3 name=dst_add3>.<INPUT maxLength=3 size=3 name=dst_add4></TD></TR>
+          		<TR><TD>
+          			<SCRIPT>dw(wmpe20);</SCRIPT></TD>
+          			<TD><INPUT maxLength=3 size=3 name=dst_mask1>.<INPUT maxLength=3 size=3 name=dst_mask2>.<INPUT maxLength=3 size=3 name=dst_mask3>.<INPUT maxLength=3 size=3 name=dst_mask4></TD></TR>
+          		<TR><TD colspan=2 align=middle >
+          			<input type="button" name="cancel" style="{width:60px;}" class="submitBtn" onclick="Init_Value()">
+								<input type="button" name="add" style="{width:60px;}" onClick="check_route();" class="submitBtn"></TD>
+          			</TR>
+          	</TABLE></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD colSpan=2><BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD colSpan=2><BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD align=left colspan=2><SCRIPT>dw(wmpe23);</SCRIPT><BR><DIV ID="myDiv"></DIV></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD colSpan=2><BR><BR></TD></TR>
+        <TR>
+          <TD width=35>&nbsp;</TD>
+          <TD align=middle colSpan=2>
+            <SCRIPT>
+				dw('<input type="button" value="');
+				dw(btn1);
+				dw('" style="{width:160px;}" class="submitBtn" onclick="Init_Value();" onMouseOver="window.status=\'Clear\'; return true;" onMouseOut="window.status=\'\'; return true;">&nbsp;&nbsp;');
+				dw('<input type="button" style="{width:160px;}" value="');
+				dw(btn2);
+				dw('" onClick="return submitF();window.close();" class="submitBtn"></td>');</SCRIPT>
+          </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD></tr>
+			</table>
+</BODY></HTML>
